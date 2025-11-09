@@ -1,0 +1,21 @@
+# GitHub Pages Configuration
+# This file configures Jekyll settings for GitHub Pages
+# If you prefer pure HTML without Jekyll, create a .nojekyll file instead
+
+title: GoGBA
+description: A quiet, reliable, and immersive GBA game emulator
+email: hamberluo@gmail.com
+url: https://yourusername.github.io
+baseurl: /GoGBA-docs
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Exclude from processing
+exclude:
+  - README.md
+  - .git
+  - .gitignore
+
