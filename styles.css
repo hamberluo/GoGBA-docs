@@ -103,6 +103,20 @@ header {
     margin: 0 auto;
 }
 
+.producthunt-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.producthunt-badge img {
+    transition: opacity 0.3s;
+}
+
+.producthunt-badge img:hover {
+    opacity: 0.8;
+}
+
 /* Features Section */
 .features {
     padding: 4rem 0;
@@ -186,6 +200,16 @@ header {
     color: var(--text-secondary);
     font-size: 0.9rem;
     margin-top: 0.5rem;
+}
+
+.platform-links {
+    margin-top: 1.5rem;
+}
+
+.platform-links .btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 0;
 }
 
 /* Contact Section */
