@@ -13,6 +13,11 @@
                 <div class="nav-brand">
                     <h1>GoGBA</h1>
                 </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <ul class="nav-menu">
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="about.html">About</a></li>
@@ -97,7 +102,7 @@
                     </div>
                     <div class="feature-card">
                         <h3>🌍 Multi-language</h3>
-                        <p>Support for 24 languages including English, Chinese, Japanese, and more.</p>
+                        <p>Support for 24 languages: Arabic, German, English, Spanish, Filipino, French, Hindi, Indonesian, Italian, Japanese, Korean, Malay, Dutch, Portuguese (Portugal), Portuguese (Brazil), Russian, Swedish, Thai, Turkish, Ukrainian, Vietnamese, Chinese (Simplified), Chinese (Traditional, Taiwan), and Chinese (Traditional, Hong Kong).</p>
                     </div>
                     <div class="feature-card">
                         <h3>🎨 Custom Covers</h3>
@@ -178,6 +183,19 @@
 
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (mobileToggle && navMenu) {
+                mobileToggle.addEventListener('click', () => {
+                    mobileToggle.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    const isExpanded = mobileToggle.classList.contains('active');
+                    mobileToggle.setAttribute('aria-expanded', isExpanded);
+                });
+            }
+
             // Observe all animated elements
             const animatedElements = document.querySelectorAll('.feature-card, .demo-game-card, .download-card');
             animatedElements.forEach(el => {
