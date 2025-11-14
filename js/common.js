@@ -1,11 +1,24 @@
 // Common functionality for all pages
 
+// Detect mobile device by User Agent
+function isMobileDevice() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
+}
+
 // Mobile menu toggle functionality
 function initMobileMenu() {
     const mobileToggle = document.querySelector('.mobile-menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
     
     if (mobileToggle && navMenu) {
+        // Auto-open menu on mobile devices
+        if (isMobileDevice()) {
+            mobileToggle.classList.add('active');
+            navMenu.classList.add('active');
+            mobileToggle.setAttribute('aria-expanded', 'true');
+        }
+
         mobileToggle.addEventListener('click', () => {
             mobileToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
