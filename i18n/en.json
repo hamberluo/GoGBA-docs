@@ -32,7 +32,7 @@
     "featureSpeed": "⚡ Speed Control",
     "featureSpeedDesc": "Adjust game speed from 1x to 3x for your preferred pace.",
     "featureLang": "🌍 Multi-language",
-    "featureLangDesc": "Support for 24 languages including English, Chinese, Japanese, and more.",
+    "featureLangDesc": "Support for 24 languages.",
     "featureCovers": "🎨 Custom Covers",
     "featureCoversDesc": "Search and select game covers from the libretro database.",
     "demoGames": "Demo Games",
