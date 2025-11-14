@@ -183,19 +183,6 @@
 
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', () => {
-            // Mobile menu toggle
-            const mobileToggle = document.querySelector('.mobile-menu-toggle');
-            const navMenu = document.querySelector('.nav-menu');
-            
-            if (mobileToggle && navMenu) {
-                mobileToggle.addEventListener('click', () => {
-                    mobileToggle.classList.toggle('active');
-                    navMenu.classList.toggle('active');
-                    const isExpanded = mobileToggle.classList.contains('active');
-                    mobileToggle.setAttribute('aria-expanded', isExpanded);
-                });
-            }
-
             // Observe all animated elements
             const animatedElements = document.querySelectorAll('.feature-card, .demo-game-card, .download-card');
             animatedElements.forEach(el => {
@@ -246,6 +233,7 @@
             });
         });
     </script>
+    <script src="js/common.js"></script>
 </body>
 </html>
 
