@@ -33,7 +33,7 @@ body {
     position: relative;
 }
 
-/* Animated background gradient */
+/* Animated background gradient - tech feel */
 body::before {
     content: '';
     position: fixed;
@@ -42,10 +42,24 @@ body::before {
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
-    animation: gradientShift 15s ease infinite;
+        radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(99, 102, 241, 0.04) 0%, transparent 50%);
+    animation: gradientShift 20s ease infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(0deg, transparent 0%, rgba(99, 102, 241, 0.02) 50%, transparent 100%);
+    animation: scanLine 8s linear infinite;
     pointer-events: none;
     z-index: -1;
 }
@@ -53,11 +67,29 @@ body::before {
 @keyframes gradientShift {
     0%, 100% {
         opacity: 1;
-        transform: scale(1);
+        transform: scale(1) translate(0, 0);
+    }
+    33% {
+        opacity: 0.9;
+        transform: scale(1.05) translate(10px, -10px);
+    }
+    66% {
+        opacity: 0.95;
+        transform: scale(1.03) translate(-10px, 10px);
+    }
+}
+
+@keyframes scanLine {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
     }
     50% {
-        opacity: 0.8;
-        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
     }
 }
 
@@ -222,13 +254,14 @@ header {
     transform: translateY(-2px);
 }
 
-/* Hero Section */
+/* Hero Section - Enhanced tech feel */
 .hero {
-    padding: 4rem 0;
+    padding: 5rem 0 6rem;
     text-align: center;
     background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-color) 100%);
     position: relative;
     overflow: hidden;
+    will-change: transform;
 }
 
 .hero::before {
@@ -238,8 +271,22 @@ header {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
-    animation: rotate 20s linear infinite;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 70%);
+    animation: rotate 25s linear infinite;
+    pointer-events: none;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(90deg, transparent 0%, rgba(99, 102, 241, 0.03) 50%, transparent 100%),
+        linear-gradient(0deg, transparent 0%, rgba(139, 92, 246, 0.03) 50%, transparent 100%);
+    animation: gridPulse 4s ease-in-out infinite;
     pointer-events: none;
 }
 
@@ -252,6 +299,15 @@ header {
     }
 }
 
+@keyframes gridPulse {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
 .hero .container {
     position: relative;
     z-index: 1;
@@ -260,23 +316,15 @@ header {
 .hero-title {
     font-size: 3.5rem;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary-color), #8b5cf6, #ec4899);
-    background-size: 200% 200%;
+    background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: fadeInUp 0.8s ease-out, gradientMove 3s ease infinite;
+    animation: fadeInUp 0.8s ease-out;
     font-weight: 700;
     letter-spacing: -0.02em;
-}
-
-@keyframes gradientMove {
-    0%, 100% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
+    position: relative;
+    filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.3));
 }
 
 .hero-subtitle {
@@ -299,6 +347,7 @@ header {
     justify-content: center;
     align-items: center;
     animation: fadeInUp 0.8s ease-out 0.6s backwards;
+    margin-bottom: 2rem;
 }
 
 .producthunt-badge img {
@@ -312,9 +361,181 @@ header {
     filter: drop-shadow(0 8px 12px rgba(99, 102, 241, 0.4));
 }
 
+/* Download Section */
+.download-section {
+    margin: 4rem auto 3rem;
+    max-width: 900px;
+    animation: fadeInUp 0.8s ease-out 0.6s backwards;
+    position: relative;
+}
+
+.download-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.download-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.download-card {
+    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(99, 102, 241, 0.08) 100%);
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.download-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+    animation: rotate 30s linear infinite;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.download-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid transparent;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1)) padding-box,
+                linear-gradient(135deg, var(--primary-color), #8b5cf6) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.download-card:hover::before {
+    opacity: 1;
+}
+
+.download-card:hover::after {
+    opacity: 1;
+}
+
+.download-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color);
+    box-shadow: 0 12px 40px rgba(99, 102, 241, 0.3), 0 0 20px rgba(99, 102, 241, 0.15);
+}
+
+.download-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+}
+
+.download-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.download-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    position: relative;
+    z-index: 1;
+    align-items: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
+    color: white;
+    font-weight: 600;
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+}
+
+.btn-secondary {
+    background-color: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    font-weight: 500;
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(99, 102, 241, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+}
+
+.app-store-badge,
+.google-play-badge {
+    display: inline-block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+}
+
+.store-badge {
+    height: auto;
+    max-width: 180px;
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.app-store-badge:hover .store-badge,
+.google-play-badge:hover .store-badge {
+    transform: scale(1.05);
+}
+
+.app-store-badge:hover,
+.google-play-badge:hover {
+    opacity: 0.9;
+}
+
 /* Features Section */
 .features {
-    padding: 4rem 0;
+    padding: 5rem 0;
     position: relative;
 }
 
@@ -336,23 +557,24 @@ header {
 }
 
 .feature-card {
-    background-color: var(--card-bg);
+    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(99, 102, 241, 0.05) 100%);
     padding: 2rem;
     border-radius: 12px;
     border: 1px solid var(--border-color);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(10px);
 }
 
-.feature-card:nth-child(1) { animation-delay: 0.1s; }
-.feature-card:nth-child(2) { animation-delay: 0.2s; }
-.feature-card:nth-child(3) { animation-delay: 0.3s; }
-.feature-card:nth-child(4) { animation-delay: 0.4s; }
-.feature-card:nth-child(5) { animation-delay: 0.5s; }
-.feature-card:nth-child(6) { animation-delay: 0.6s; }
-.feature-card:nth-child(7) { animation-delay: 0.7s; }
-.feature-card:nth-child(8) { animation-delay: 0.8s; }
+.feature-card:nth-child(1) { animation-delay: 0.05s; }
+.feature-card:nth-child(2) { animation-delay: 0.1s; }
+.feature-card:nth-child(3) { animation-delay: 0.15s; }
+.feature-card:nth-child(4) { animation-delay: 0.2s; }
+.feature-card:nth-child(5) { animation-delay: 0.25s; }
+.feature-card:nth-child(6) { animation-delay: 0.3s; }
+.feature-card:nth-child(7) { animation-delay: 0.35s; }
+.feature-card:nth-child(8) { animation-delay: 0.4s; }
 
 .feature-card::before {
     content: '';
@@ -361,18 +583,41 @@ header {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
-    transition: left 0.5s;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.08), transparent);
+    transition: left 0.6s ease;
+    pointer-events: none;
+}
+
+.feature-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .feature-card:hover::before {
     left: 100%;
 }
 
+.feature-card:hover::after {
+    opacity: 1;
+}
+
 .feature-card:hover {
-    transform: translateY(-10px) scale(1.02);
+    transform: translateY(-6px);
     border-color: var(--primary-color);
-    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2), 0 0 20px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 12px 32px rgba(99, 102, 241, 0.25), 0 0 16px rgba(99, 102, 241, 0.1);
 }
 
 .feature-card h3 {
@@ -493,9 +738,10 @@ header {
 
 /* Contact Section */
 .contact {
-    padding: 4rem 0;
+    padding: 5rem 0;
     text-align: center;
     position: relative;
+    background: var(--bg-secondary);
 }
 
 .contact h2 {
@@ -718,8 +964,9 @@ footer .container {
 
 /* Demo Games Section */
 .demo-games {
-    padding: 4rem 0;
+    padding: 5rem 0;
     position: relative;
+    background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-secondary) 100%);
 }
 
 .demo-games h2 {
@@ -743,19 +990,20 @@ footer .container {
     box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
 }
 
-/* Scroll animations */
+/* Scroll animations - smoother */
 @media (prefers-reduced-motion: no-preference) {
     .feature-card,
-    .platform-card,
-    .demo-game-card {
+    .demo-game-card,
+    .download-card {
         opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        transform: translateY(20px);
+        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .feature-card.visible,
-    .platform-card.visible,
-    .demo-game-card.visible {
+    .demo-game-card.visible,
+    .download-card.visible {
         opacity: 1;
         transform: translateY(0);
     }
@@ -780,8 +1028,16 @@ footer .container {
         grid-template-columns: 1fr;
     }
 
-    .platform-grid {
+    .download-grid {
         grid-template-columns: 1fr;
+    }
+
+    .download-title {
+        font-size: 1.5rem;
+    }
+
+    .download-card {
+        padding: 2rem;
     }
 
     footer .container {
