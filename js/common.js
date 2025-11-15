@@ -12,12 +12,7 @@ function initMobileMenu() {
     const navMenu = document.querySelector('.nav-menu');
     
     if (mobileToggle && navMenu) {
-        // Auto-open menu on mobile devices
-        if (isMobileDevice()) {
-            mobileToggle.classList.add('active');
-            navMenu.classList.add('active');
-            mobileToggle.setAttribute('aria-expanded', 'true');
-        }
+        // Menu is collapsed by default (removed auto-open on mobile devices)
 
         mobileToggle.addEventListener('click', () => {
             mobileToggle.classList.toggle('active');

@@ -188,6 +188,28 @@
 
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', () => {
+            // Disable long press on all buttons
+            const allButtons = document.querySelectorAll('button, .btn, a.btn, .mobile-menu-toggle');
+            allButtons.forEach(button => {
+                // Prevent context menu (right-click/long-press menu)
+                button.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    return false;
+                });
+                // Prevent long press on touch devices
+                let touchStartTime = 0;
+                button.addEventListener('touchstart', (e) => {
+                    touchStartTime = Date.now();
+                });
+                button.addEventListener('touchend', (e) => {
+                    const touchDuration = Date.now() - touchStartTime;
+                    if (touchDuration > 500) { // 500ms threshold for long press
+                        e.preventDefault();
+                        return false;
+                    }
+                });
+            });
+
             // Observe all animated elements
             const animatedElements = document.querySelectorAll('.feature-card, .demo-game-card, .download-card');
             animatedElements.forEach(el => {
