@@ -500,6 +500,12 @@ header.scrolled .nav-brand h1 {
     font-weight: 600;
     padding: 0.9rem 2rem;
     font-size: 1rem;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
 }
 
 .btn-primary:hover {
@@ -511,6 +517,12 @@ header.scrolled .nav-brand h1 {
 .btn-telegram {
     position: relative;
     overflow: hidden;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
 }
 
 .btn-telegram::before {
@@ -554,6 +566,12 @@ header.scrolled .nav-brand h1 {
     font-weight: 500;
     padding: 0.9rem 2rem;
     font-size: 1rem;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
 }
 
 .btn-secondary:hover {
@@ -866,6 +884,12 @@ header.scrolled .nav-brand h1 {
     overflow: hidden;
     font-weight: 500;
     box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
 }
 
 .btn::before {
@@ -1078,6 +1102,12 @@ footer .container {
     cursor: pointer;
     padding: 0.5rem;
     margin-left: auto;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
 }
 
 .mobile-menu-toggle span {
