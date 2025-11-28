@@ -44,19 +44,22 @@
                 <div class="download-section">
                     <h2 class="download-title">Download GoGBA</h2>
                     <div class="download-grid">
-                        <div class="download-card">
+                        <!-- iOS Card -->
+                        <div class="download-card" data-platform="ios">
                             <h3>iOS</h3>
                             <p class="download-subtitle">iOS 15.0+</p>
                             <div class="download-buttons">
-                                <a href="https://testflight.apple.com/join/uRuuWswJ" target="_blank" class="btn btn-primary">TestFlight</a>
-                                <a href="https://apps.apple.com/app/gogba/id6755076672" target="_blank" class="btn btn-secondary">App Store</a>
+                                <a href="https://apps.apple.com/app/gogba/id6755076672" target="_blank" class="btn btn-primary">App Store</a>
+                                <a href="https://testflight.apple.com/join/uRuuWswJ" target="_blank" class="btn btn-secondary">TestFlight</a>
                             </div>
                         </div>
-                        <div class="download-card">
+                        <!-- Android Card -->
+                        <div class="download-card" data-platform="android">
                             <h3>Android</h3>
                             <p class="download-subtitle">Android 7.0+</p>
                             <div class="download-buttons">
-                                <a href="releases/app-release.apk" download="app-release.apk" class="btn btn-primary">Download APK</a>
+                                <a href="https://play.google.com/store/apps/details?id=com.gogba.emu" target="_blank" class="btn btn-primary">Google Play</a>
+                                <a href="releases/app-release.apk" download="app-release.apk" class="btn btn-secondary">Download APK</a>
                             </div>
                         </div>
                     </div>
@@ -198,6 +201,40 @@
 
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', () => {
+            // Detect device type and show/hide download options
+            function detectDeviceAndShowDownloads() {
+                const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                const ua = userAgent.toLowerCase();
+                
+                const isIOS = /iphone|ipad|ipod/.test(ua);
+                const isAndroid = /android/.test(ua);
+                const isMobile = isIOS || isAndroid;
+                
+                const downloadCards = document.querySelectorAll('.download-card[data-platform]');
+                
+                if (isMobile) {
+                    // Mobile device: show only the matching platform
+                    downloadCards.forEach(card => {
+                        const platform = card.getAttribute('data-platform');
+                        if (isIOS && platform === 'ios') {
+                            card.style.display = 'block';
+                        } else if (isAndroid && platform === 'android') {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                } else {
+                    // PC/Mac: show all download options
+                    downloadCards.forEach(card => {
+                        card.style.display = 'block';
+                    });
+                }
+            }
+            
+            // Run device detection
+            detectDeviceAndShowDownloads();
+            
             // Disable long press on all buttons
             const allButtons = document.querySelectorAll('button, .btn, a.btn, .mobile-menu-toggle');
             allButtons.forEach(button => {

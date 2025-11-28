@@ -494,6 +494,11 @@ header.scrolled .nav-brand h1 {
     flex: 1;
 }
 
+.download-buttons .btn {
+    min-width: 180px;
+    text-align: center;
+}
+
 .btn-primary {
     background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
     color: white;
