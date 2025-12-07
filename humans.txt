@@ -1,0 +1,29 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Developer: GoGBA Team
+    Contact: hamberluo@gmail.com
+    Twitter: --
+    From: Worldwide
+
+# THANKS
+
+    libretro gpSP core developers
+    Flutter team
+    RetroAchievements community
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3, JavaScript
+    GitHub Pages
+    Jekyll (optional)
+
+# SITE
+
+    Last update: 2025/01/01
+    Standards: HTML5, CSS3
+    Components: --
+    Software: --
+

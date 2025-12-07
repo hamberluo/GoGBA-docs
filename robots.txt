@@ -1,0 +1,15 @@
+# robots.txt for GoGBA Documentation Website
+
+User-agent: *
+Allow: /
+
+# Disallow admin or private directories if any
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location
+Sitemap: https://gogba.xyz/sitemap.xml
+
+# Crawl-delay (optional, helps prevent server overload)
+Crawl-delay: 1
+
