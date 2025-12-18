@@ -10,7 +10,7 @@
 
 # THANKS
 
-    libretro gpSP core developers
+    libretro vbanext core developers
     Flutter team
     RetroAchievements community
 
