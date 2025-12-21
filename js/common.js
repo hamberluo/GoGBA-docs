@@ -118,14 +118,9 @@ async function detectIPLocation() {
         // Only show links if user is NOT in China (CN)
         // Default state: links are hidden, only show if countryCode !== 'CN'
         if (data && data.countryCode && data.countryCode !== 'CN') {
-            // Show Telegram and Discord links for users outside China
-            const telegramLinks = document.querySelectorAll('.btn-telegram, .community-link-telegram, a[href*="t.me"], a[href*="telegram"]');
+            // Show Discord links for users outside China
             const discordLinks = document.querySelectorAll('.btn-discord, .community-link-discord, a[href*="discord"], a[href*="discord.gg"]');
             const communityLinksContainer = document.querySelector('.community-links');
-            
-            telegramLinks.forEach(link => {
-                link.style.display = 'inline-flex';
-            });
             
             discordLinks.forEach(link => {
                 link.style.display = 'inline-flex';

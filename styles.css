@@ -519,51 +519,6 @@ header.scrolled .nav-brand h1 {
     box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
 }
 
-.btn-telegram {
-    position: relative;
-    overflow: hidden;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    touch-action: manipulation;
-}
-
-.btn-telegram::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-.btn-telegram:hover::before {
-    width: 300px;
-    height: 300px;
-}
-
-.btn-telegram:hover {
-    background: linear-gradient(135deg, #0077b5, #0088cc);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 136, 204, 0.5);
-}
-
-.btn-telegram:active {
-    transform: translateY(0) scale(0.98);
-}
-
-.btn-telegram svg,
-.btn-telegram span {
-    position: relative;
-    z-index: 1;
-}
-
 .btn-discord {
     position: relative;
     overflow: hidden;
