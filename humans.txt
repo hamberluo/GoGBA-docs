@@ -10,7 +10,7 @@
 
 # THANKS
 
-    libretro vbanext core developers
+    libretro mgba core developers
     Flutter team
     RetroAchievements community
 
