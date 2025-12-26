@@ -44,5 +44,21 @@
         <priority>0.5</priority>
     </url>
     
+    <!-- App Release -->
+    <url>
+        <loc>https://gogba.xyz/releases/app-release.apk</loc>
+        <lastmod>2025-12-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Demo Game -->
+    <url>
+        <loc>https://gogba.xyz/demos/ARushedHackJob_jam.gba</loc>
+        <lastmod>2025-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
 </urlset>
 
