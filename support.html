@@ -44,7 +44,7 @@
           "name": "How do I add games to GoGBA?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Open the App and tap the 'Add Games' button, then select 'Scan Game Directory' and choose a folder containing .gba files. The App will automatically scan and add all GBA games in that folder."
+            "text": "GoGBA supports multiple ways to add games: 1) Individual file selection via the 'Add Games' button, 2) Auto-scan directory (automatically scans on startup), 3) External app opening (.gba file association), 4) ZIP compressed files (automatically extracted). Games are stored in the app's documents directory under the games subdirectory."
           }
         },
         {
@@ -52,7 +52,15 @@
           "name": "Where are my save files stored?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Save files (.sav files) are stored locally on your device. On Android, they're in external storage directory. On iOS, they're in the App Documents directory. Save files are automatically saved every 10 seconds, when you exit the game, or when the app goes to the background."
+            "text": "Save files (.sav files) are stored locally on your device. On Android, they're in external storage directory. On iOS, they're in the App Documents directory. Save files are automatically saved every 10 seconds, when you exit the game, or when the app goes to the background. Atomic writes prevent data corruption."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use GoGBA with a controller?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! GoGBA has full gamepad support on both Android and iOS. It automatically detects connected gamepads, supports customizable button mapping, and allows hiding virtual buttons when a gamepad is connected. Configure in Settings → Controls → Gamepad Mapping."
           }
         },
         {
@@ -60,7 +68,15 @@
           "name": "What languages does GoGBA support?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "GoGBA supports 24 languages including English, Chinese, Spanish, French, German, Portuguese, Arabic, Japanese, Korean, Russian, Italian, Dutch, and Swedish. You can change the language in Settings → Language."
+            "text": "GoGBA supports 24 languages including English, Chinese (Simplified/Traditional/Hong Kong), Japanese, Korean, Spanish, French, German, Portuguese (Portugal/Brazil), Arabic, Russian, Italian, Dutch, Swedish, Thai, Filipino, Turkish, Indonesian, Vietnamese, Hindi, Malay, and Ukrainian. Change language in Settings → General → Language."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is RetroAchievements?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "RetroAchievements is an achievement system for retro games. GoGBA integrates with RetroAchievements to provide achievement unlocking, leaderboards, Rich Presence, Hardcore mode, and Encore mode. Log in via Settings → Achievements → RetroAchievements."
           }
         }
       ]
@@ -115,14 +131,17 @@
 
                 <h3>How do I add games to GoGBA?</h3>
                 <p>
-                    GoGBA uses your device's file system to access game ROM files. To add games:
+                    GoGBA supports multiple ways to add games:
                 </p>
                 <ol>
-                    <li>Open the App and tap the "Add Games" button</li>
-                    <li>Select "Scan Game Directory"</li>
-                    <li>Choose a folder containing .gba files</li>
-                    <li>The App will automatically scan and add all GBA games in that folder</li>
+                    <li><strong>Individual file selection:</strong> Tap the "Add Games" button and select a single .gba file using the file picker. The file will be automatically copied to the app's games directory.</li>
+                    <li><strong>Auto-scan directory:</strong> The app automatically scans the games directory on startup and when loading the home page. Simply place .gba files in the app's games directory.</li>
+                    <li><strong>External app opening:</strong> Open .gba files from other apps (file managers, email, etc.). GoGBA will automatically import and open the game.</li>
+                    <li><strong>ZIP support:</strong> ZIP compressed files are automatically extracted when added.</li>
                 </ol>
+                <p>
+                    Games are stored in the app's documents directory under the <code>games</code> subdirectory.
+                </p>
 
                 <h3>Where are my save files stored?</h3>
                 <p>
@@ -139,8 +158,16 @@
 
                 <h3>Can I use GoGBA with a controller?</h3>
                 <p>
-                    Controller support is not currently available in this version of GoGBA. This 
-                    feature may be added in future updates.
+                    Yes! GoGBA has full gamepad support on both Android and iOS:
+                </p>
+                <ul>
+                    <li>Automatically detects connected gamepads</li>
+                    <li>Customizable button mapping (configure in Settings → Controls → Gamepad Mapping)</li>
+                    <li>Option to hide virtual buttons when gamepad is connected</li>
+                    <li>Works with most standard Bluetooth and USB controllers</li>
+                </ul>
+                <p>
+                    To configure gamepad buttons, go to Settings → Controls → Gamepad Mapping.
                 </p>
 
                 <h3>Does GoGBA support cloud saves?</h3>
@@ -157,9 +184,16 @@
 
                 <h3>Can I customize the virtual button layout?</h3>
                 <p>
-                    Basic button customization is available. You can adjust button positions, sizes, 
-                    and transparency through the settings menu. Full customization features are being 
-                    developed for future updates.
+                    GoGBA uses fixed button layouts for consistency, but you can customize:
+                </p>
+                <ul>
+                    <li><strong>Button opacity:</strong> Adjust transparency from 10% to 100% (Settings → Controls → Button Opacity)</li>
+                    <li><strong>Control mode:</strong> Switch between Normal (standard GBA layout) and Arcade (LRAB four-directional buttons) modes</li>
+                    <li><strong>Haptic feedback:</strong> Enable/disable and adjust vibration strength (light/medium/heavy)</li>
+                </ul>
+                <p>
+                    Button position and size editing are not available by design to maintain consistency 
+                    and avoid configuration complexity.
                 </p>
 
                 <h3>What languages does GoGBA support?</h3>
@@ -169,10 +203,13 @@
                 <ul>
                     <li>English</li>
                     <li>中文 (Simplified Chinese)</li>
+                    <li>繁體中文 (Traditional Chinese)</li>
+                    <li>繁體中文（香港）(Hong Kong Chinese)</li>
                     <li>Español (Spanish)</li>
                     <li>Français (French)</li>
                     <li>Deutsch (German)</li>
                     <li>Português (Portuguese)</li>
+                    <li>Português (Brasil) (Brazilian Portuguese)</li>
                     <li>العربية (Arabic)</li>
                     <li>日本語 (Japanese)</li>
                     <li>한국어 (Korean)</li>
@@ -180,22 +217,38 @@
                     <li>Italiano (Italian)</li>
                     <li>Nederlands (Dutch)</li>
                     <li>Svenska (Swedish)</li>
+                    <li>ไทย (Thai)</li>
+                    <li>Filipino</li>
+                    <li>Türkçe (Turkish)</li>
+                    <li>Bahasa Indonesia (Indonesian)</li>
+                    <li>Tiếng Việt (Vietnamese)</li>
+                    <li>हिन्दी (Hindi)</li>
+                    <li>Bahasa Melayu (Malay)</li>
+                    <li>Українська (Ukrainian)</li>
                 </ul>
                 <p>
-                    You can change the language in Settings → Language.
+                    You can change the language in Settings → General → Language.
                 </p>
 
                 <h3>How do I change the theme?</h3>
                 <p>
-                    Go to Settings → Display → Theme to choose from available themes:
+                    Go to Settings → General → Theme to choose from 10 available dark themes:
                 </p>
                 <ul>
-                    <li>OLED Neon (default)</li>
+                    <li>Catppuccin Mocha (default)</li>
+                    <li>OLED Neon</li>
                     <li>Dracula</li>
                     <li>Nord</li>
-                    <li>Catppuccin Mocha</li>
                     <li>Gruvbox</li>
+                    <li>Tokyo Night</li>
+                    <li>One Dark</li>
+                    <li>Monokai</li>
+                    <li>Rose Pine</li>
+                    <li>Kanagawa</li>
                 </ul>
+                <p>
+                    All themes are optimized for eye comfort during long gaming sessions.
+                </p>
 
                 <h3>My game crashes or doesn't load. What should I do?</h3>
                 <p>
@@ -220,6 +273,60 @@
                 <p>
                     To clear cached game covers, go to Settings → Data → Clear Cover Cache. This will 
                     remove all downloaded cover images, and they will be re-downloaded when needed.
+                </p>
+
+                <h3>What is RetroAchievements?</h3>
+                <p>
+                    RetroAchievements is an achievement system for retro games. GoGBA integrates with 
+                    RetroAchievements to provide:
+                </p>
+                <ul>
+                    <li>Achievement unlocking and tracking</li>
+                    <li>Leaderboards for competitive play</li>
+                    <li>Rich Presence (shows your game status to others)</li>
+                    <li>Hardcore mode (no save states, no rewinding)</li>
+                    <li>Encore mode (replay achievements)</li>
+                </ul>
+                <p>
+                    To use RetroAchievements, go to Settings → Achievements → RetroAchievements and 
+                    log in with your RetroAchievements account. You can create a free account at 
+                    <a href="https://retroachievements.org" target="_blank" rel="noopener noreferrer">retroachievements.org</a>.
+                </p>
+
+                <h3>How do I favorite a game?</h3>
+                <p>
+                    Long-press on any game in your library to open the context menu, then select 
+                    "Favorite" or "Unfavorite". Favorite games are displayed at the top of your library, 
+                    before recent games.
+                </p>
+
+                <h3>Can I import a BIOS file?</h3>
+                <p>
+                    Yes! Importing a BIOS file can improve game compatibility. To import a BIOS:
+                </p>
+                <ol>
+                    <li>Go to Settings → Data → BIOS Management</li>
+                    <li>Tap "Import BIOS"</li>
+                    <li>Select your BIOS file (bios.bin)</li>
+                    <li>The BIOS will be stored in the app's support directory</li>
+                </ol>
+                <p>
+                    Note: You must legally own the BIOS file. GoGBA does not provide BIOS files.
+                </p>
+
+                <h3>What video filters are available?</h3>
+                <p>
+                    GoGBA supports multiple video rendering filters for authentic retro visuals:
+                </p>
+                <ul>
+                    <li><strong>LCD:</strong> Simulates LCD screen effect</li>
+                    <li><strong>Scanlines:</strong> Adds scanline effect for CRT-like appearance</li>
+                    <li><strong>Bilinear:</strong> Smooth scaling filter</li>
+                    <li><strong>HQ2x:</strong> High-quality 2x scaling filter</li>
+                </ul>
+                <p>
+                    You can enable multiple filters simultaneously. Configure in Settings → Controls → 
+                    Video Render Filters.
                 </p>
 
                 <h2>Reporting Bugs</h2>

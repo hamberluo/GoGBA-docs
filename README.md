@@ -1,6 +1,16 @@
 # GoGBA Documentation Website
 
-This repository contains the documentation website for GoGBA, a GBA game emulator app.
+This repository contains the documentation website for GoGBA, a quiet, reliable, and immersive GBA game emulator for iOS and Android.
+
+## About GoGBA
+
+GoGBA is a Game Boy Advance emulator designed for mobile devices with a focus on:
+- **Quiet**: No ads, no pop-ups, no distractions
+- **Reliable**: Saves are safe and never lost
+- **Immersive**: Clean UI with transparent buttons and optimized touch controls
+- **Comfortable**: 10 dark themes designed for long gaming sessions
+
+Key features include RetroAchievements integration, full gamepad support, 24 languages, video filters, and seamless save system.
 
 ## Pages
 

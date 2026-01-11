@@ -87,52 +87,84 @@
 
                 <h2>Our Philosophy</h2>
                 <p>
-                    GoGBA is built around a simple principle: <strong>focus, stability, and comfort</strong>. 
+                    GoGBA is built around a simple principle: <strong>quiet, reliable, immersive, and distraction-free</strong>. 
                     We prioritize:
                 </p>
                 <ul>
-                    <li><strong>Quiet:</strong> No ads, no pop-ups, no distractions</li>
-                    <li><strong>Reliable:</strong> Your saves are safe and never lost</li>
-                    <li><strong>Immersive:</strong> Clean UI with transparent buttons and minimal animations</li>
-                    <li><strong>Comfortable:</strong> Dark themes designed for long gaming sessions</li>
+                    <li><strong>Quiet:</strong> No ads, no pop-ups, no distractions. Zero interruptions.</li>
+                    <li><strong>Reliable:</strong> Your saves are safe and never lost. Exit anytime without worry.</li>
+                    <li><strong>Immersive:</strong> Clean UI with transparent buttons, minimal animations, and optimized touch controls.</li>
+                    <li><strong>Comfortable:</strong> 10 dark themes designed for long gaming sessions with eye-friendly colors.</li>
+                    <li><strong>Focused:</strong> We focus on doing the essentials well, rather than overwhelming you with unnecessary options.</li>
                 </ul>
                 <p>
-                    We believe in quality over features. GoGBA focuses on doing the essentials well, 
-                    rather than overwhelming you with unnecessary options.
+                    Our goal: <strong>Open and continue playing instantly. Play for long sessions without fatigue. Exit without worry.</strong>
                 </p>
 
                 <h2>Key Features</h2>
                 <ul>
                     <li>
                         <strong>Seamless Experience:</strong> Open the app and continue playing instantly. 
-                        Your progress is always saved.
+                        Your progress is always saved. Recent games and favorites are prioritized.
                     </li>
                     <li>
                         <strong>Reliable Save System:</strong> Automatic saves every 10 seconds, plus 
-                        saves on exit and when backgrounded. Atomic writes prevent data corruption.
+                        saves on exit and when backgrounded. Atomic writes prevent data corruption. 
+                        Cross-core save compatibility and RTC (Real-Time Clock) support.
                     </li>
                     <li>
-                        <strong>Dark Themes:</strong> Five carefully designed dark themes optimized for 
-                        eye comfort during long sessions.
+                        <strong>Dark Themes:</strong> 10 carefully designed dark themes (Catppuccin Mocha, 
+                        Dracula, Nord, Gruvbox, Tokyo Night, One Dark, Monokai, Rose Pine, Kanagawa, OLED Neon) 
+                        optimized for eye comfort during long sessions.
                     </li>
                     <li>
                         <strong>Clean Interface:</strong> Minimal, distraction-free UI with transparent 
-                        virtual buttons.
+                        virtual buttons (10%-100% opacity adjustable). No UI noise, no distractions.
                     </li>
                     <li>
-                        <strong>Flexible Layout:</strong> Portrait or landscape mode with orientation 
-                        locking.
+                        <strong>Optimized Touch Controls:</strong> Normal mode (standard GBA layout) and 
+                        Arcade mode (LRAB four-directional buttons). Haptic feedback with adjustable strength. 
+                        Directional stick optimization for smooth control.
                     </li>
                     <li>
-                        <strong>Speed Control:</strong> Adjust game speed from 1x to 3x.
+                        <strong>Gamepad Support:</strong> Full controller support with customizable button 
+                        mapping. Option to hide virtual buttons when gamepad is connected. Works on both 
+                        Android and iOS.
                     </li>
                     <li>
-                        <strong>Multi-language:</strong> Support for 24 languages including English, 
-                        Chinese, Japanese, and more.
+                        <strong>RetroAchievements Integration:</strong> Unlock achievements, track progress, 
+                        compete on leaderboards. Rich Presence support shows your game status. Hardcore and 
+                        Encore modes available.
                     </li>
                     <li>
-                        <strong>Custom Covers:</strong> Search and select game covers from the libretro 
-                        database.
+                        <strong>Flexible Layout:</strong> Portrait or landscape mode with orientation locking. 
+                        No unwanted screen rotation during gameplay.
+                    </li>
+                    <li>
+                        <strong>Speed Control:</strong> Adjust game speed from 1x to 3x. Optional audio muting 
+                        during speed-up for focused gameplay.
+                    </li>
+                    <li>
+                        <strong>Video Rendering Filters:</strong> LCD, scanlines, bilinear, and HQ2x filters 
+                        for authentic retro visuals.
+                    </li>
+                    <li>
+                        <strong>Game Library Management:</strong> Auto-scan game directory, favorite games, 
+                        search functionality, list/grid view toggle. Support for external app file opening 
+                        (.gba file association).
+                    </li>
+                    <li>
+                        <strong>BIOS Management:</strong> Optional BIOS file import for enhanced game compatibility.
+                    </li>
+                    <li>
+                        <strong>Multi-language:</strong> Support for 24 languages including English, Chinese 
+                        (Simplified/Traditional/Hong Kong), Japanese, Korean, Spanish, French, German, Portuguese, 
+                        Arabic, Russian, Italian, Dutch, Swedish, Thai, Filipino, Turkish, Indonesian, Vietnamese, 
+                        Hindi, Malay, and Ukrainian.
+                    </li>
+                    <li>
+                        <strong>Custom Covers:</strong> Search and select game covers from the libretro database. 
+                        Automatic cover matching via SHA1/MD5 hash.
                     </li>
                 </ul>
 
@@ -147,23 +179,36 @@
                 <p>GoGBA uses:</p>
                 <ul>
                     <li>
-                        <strong>libretro mgba core:</strong> A high-performance GBA emulation core
+                        <strong>libretro mgba core:</strong> High-performance GBA emulation core with 
+                        native integration for optimal performance
                     </li>
                     <li>
-                        <strong>Flutter:</strong> Cross-platform UI framework for consistent experience 
-                        across platforms
+                        <strong>librcheevos:</strong> RetroAchievements integration library for achievement 
+                        tracking and leaderboards
                     </li>
                     <li>
-                        <strong>Riverpod:</strong> State management for reliable app behavior
+                        <strong>Flutter 3.x:</strong> Cross-platform UI framework for consistent experience 
+                        across Android and iOS
+                    </li>
+                    <li>
+                        <strong>Riverpod 3.1:</strong> State management for reliable app behavior
+                    </li>
+                    <li>
+                        <strong>go_router 17.1:</strong> Declarative routing for smooth navigation
+                    </li>
+                    <li>
+                        <strong>Firebase:</strong> Analytics and Crashlytics for monitoring and stability
                     </li>
                 </ul>
 
                 <h3>Performance Optimizations</h3>
                 <ul>
-                    <li>60 FPS frame rate control for smooth gameplay</li>
+                    <li>60 FPS frame rate control with fixed timestep game loop for smooth, consistent gameplay</li>
                     <li>Refresh rate control on Android (automatically set to 60Hz during gameplay)</li>
                     <li>Efficient rendering with stream-based game screen updates</li>
                     <li>Cover image caching for faster library loading</li>
+                    <li>Native libretro integration for optimal performance on both platforms</li>
+                    <li>Memory-efficient architecture designed for long gaming sessions</li>
                 </ul>
 
                 <h2>Privacy & Data</h2>
@@ -200,6 +245,9 @@
                         License (MPL) 2.0
                     </li>
                     <li>
+                        <strong>librcheevos:</strong> RetroAchievements library for achievement support
+                    </li>
+                    <li>
                         <strong>Flutter:</strong> Licensed under the BSD 3-Clause License
                     </li>
                     <li>
@@ -223,30 +271,52 @@
                     and troubleshooting help.
                 </p>
 
-                <h2>Version History</h2>
+                <h2>Product Maturity</h2>
                 <p>
-                    GoGBA is actively developed and improved. Key features include:
+                    GoGBA has reached production-ready status with complete core functionality:
                 </p>
                 <ul>
                     <li>Complete GBA emulation with libretro mgba core</li>
-                    <li>Local ROM file access via SAF (Android) and File Picker (iOS)</li>
-                    <li>Game library management with list/grid views</li>
-                    <li>Reliable save system with automatic saves</li>
-                    <li>Virtual button controls with haptic feedback</li>
-                    <li>Multi-language support (24 languages)</li>
-                    <li>Dark themes optimized for long sessions</li>
-                    <li>Game cover search and selection</li>
-                    <li>Performance optimizations for smooth gameplay</li>
+                    <li>Dual platform support (Android + iOS) with native integration</li>
+                    <li>Reliable save system with automatic saves and atomic writes</li>
+                    <li>Game library management with auto-scan, favorites, search, and list/grid views</li>
+                    <li>Virtual button controls with Normal/Arcade modes and haptic feedback</li>
+                    <li>Full gamepad support with customizable button mapping</li>
+                    <li>RetroAchievements integration with achievements, leaderboards, and Rich Presence</li>
+                    <li>Multi-language support (24 languages, including App Store metadata)</li>
+                    <li>10 dark themes optimized for long sessions</li>
+                    <li>Game cover search and automatic matching</li>
+                    <li>Video rendering filters (LCD, scanlines, bilinear, HQ2x)</li>
+                    <li>BIOS management for enhanced compatibility</li>
+                    <li>Performance optimizations for smooth 60 FPS gameplay</li>
+                    <li>Automated deployment infrastructure (Fastlane)</li>
+                    <li>Monitoring and analytics (Firebase Analytics + Crashlytics)</li>
                 </ul>
+
+                <h2>Design Decisions</h2>
+                <p>
+                    GoGBA focuses on core functionality and user experience. The following features are 
+                    <strong>explicitly not included</strong> by design:
+                </p>
+                <ul>
+                    <li><strong>Cheat codes (Game Genie/Code Breaker):</strong> We prioritize authentic gameplay experience</li>
+                    <li><strong>Quick save/load:</strong> We focus on reliable automatic save system instead</li>
+                    <li><strong>Button layout editing:</strong> Fixed layouts ensure consistency and avoid configuration complexity</li>
+                </ul>
+                <p>
+                    We believe in quality over quantity—focusing on doing the essentials exceptionally well, 
+                    rather than overwhelming users with unnecessary options.
+                </p>
 
                 <h2>Future Plans</h2>
                 <p>
                     Planned features for future updates include:
                 </p>
                 <ul>
-                    <li>Virtual button position and size customization</li>
-                    <li>Enhanced error handling and recovery</li>
-                    <li>Additional performance optimizations</li>
+                    <li>Network multiplayer support (based on libretro netpacket API)</li>
+                    <li>Gyroscope support for games requiring motion sensors (e.g., WarioWare: Twisted!)</li>
+                    <li>Cloud save synchronization</li>
+                    <li>Theme store</li>
                 </ul>
                 <p>
                     We focus on stability and user experience first, adding new features thoughtfully 
