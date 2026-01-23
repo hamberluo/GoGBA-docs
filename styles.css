@@ -1059,7 +1059,6 @@ footer::before {
     width: 100%;
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
-    animation: shimmer 3s infinite;
 }
 
 footer .container {
