@@ -6,6 +6,56 @@ function isMobileDevice() {
     return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
 }
 
+// Detect operating system
+function detectOS() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const userAgentLower = userAgent.toLowerCase();
+    
+    // Check for iOS
+    if (/iphone|ipad|ipod/.test(userAgentLower)) {
+        return 'ios';
+    }
+    
+    // Check for Android
+    if (/android/.test(userAgentLower)) {
+        return 'android';
+    }
+    
+    // Default to unknown (show both on desktop)
+    return 'unknown';
+}
+
+// Show platform-specific download badges on mobile devices
+function initPlatformSpecificDownloads() {
+    const iosBadge = document.querySelector('.app-store-badge[data-platform="ios"]');
+    const androidBadge = document.querySelector('.google-play-badge[data-platform="android"]');
+    
+    if (!iosBadge || !androidBadge) return;
+    
+    // Only apply on mobile devices
+    if (isMobileDevice()) {
+        const os = detectOS();
+        
+        if (os === 'ios') {
+            // Show iOS badge, hide Android badge
+            iosBadge.style.display = 'inline-flex';
+            androidBadge.style.display = 'none';
+        } else if (os === 'android') {
+            // Show Android badge, hide iOS badge
+            iosBadge.style.display = 'none';
+            androidBadge.style.display = 'inline-flex';
+        } else {
+            // Unknown OS on mobile - show both (fallback)
+            iosBadge.style.display = 'inline-flex';
+            androidBadge.style.display = 'inline-flex';
+        }
+    } else {
+        // Desktop - show both badges
+        iosBadge.style.display = 'inline-flex';
+        androidBadge.style.display = 'inline-flex';
+    }
+}
+
 // Mobile menu toggle functionality
 function initMobileMenu() {
     const mobileToggle = document.querySelector('.mobile-menu-toggle');
@@ -119,25 +169,11 @@ async function detectIPLocation() {
         // Default state: links are hidden, only show if countryCode !== 'CN'
         if (data && data.countryCode && data.countryCode !== 'CN') {
             // Show Discord links for users outside China
-            const discordLinks = document.querySelectorAll('.btn-discord, .community-link-discord, a[href*="discord"], a[href*="discord.gg"]');
-            const communityLinksContainer = document.querySelector('.community-links');
+            const discordLinks = document.querySelectorAll('.btn-discord, a[href*="discord"], a[href*="discord.gg"]');
             
             discordLinks.forEach(link => {
                 link.style.display = 'inline-flex';
             });
-            
-            // Show the community links container if at least one link is visible
-            if (communityLinksContainer) {
-                const visibleLinks = Array.from(communityLinksContainer.querySelectorAll('a')).filter(
-                    link => {
-                        const computedStyle = window.getComputedStyle(link);
-                        return computedStyle.display !== 'none' && link.style.display !== 'none';
-                    }
-                );
-                if (visibleLinks.length > 0) {
-                    communityLinksContainer.style.display = 'flex';
-                }
-            }
         }
         // If countryCode is CN or API fails, links remain hidden (default state)
     } catch (error) {
@@ -151,6 +187,8 @@ async function detectIPLocation() {
 function init() {
     initMobileMenu();
     initHeaderScroll();
+    // Show platform-specific download cards on mobile
+    initPlatformSpecificDownloads();
     // Detect IP location and hide links for China
     detectIPLocation();
 }
