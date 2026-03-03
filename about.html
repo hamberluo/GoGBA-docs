@@ -166,6 +166,11 @@
                         <strong>Custom Covers:</strong> Search and select game covers from the libretro database. 
                         Automatic cover matching via SHA1/MD5 hash.
                     </li>
+                    <li>
+                        <strong>Premium & Cloud Save:</strong> Optional in-app purchase unlocks Cloud Save, 
+                        syncing your game progress across devices via Google Drive (Android/cross-platform) 
+                        or iCloud (iOS). Optional auto-sync keeps saves up to date during gameplay.
+                    </li>
                 </ul>
 
                 <h2>Technical Details</h2>
@@ -216,10 +221,10 @@
                     GoGBA is designed with privacy in mind:
                 </p>
                 <ul>
-                    <li>All data is stored locally on your device</li>
-                    <li>No account required</li>
+                    <li>Core features store all data locally—no account required</li>
                     <li>No data collection or tracking</li>
-                    <li>Game files and saves never leave your device</li>
+                    <li>Optional Cloud Save requires a Google or Apple account to sync saves across devices</li>
+                    <li>Optional Premium upgrade (in-app purchase) unlocks Cloud Save on iOS and Android</li>
                 </ul>
                 <p>
                     For more information, see our <a href="privacy-policy.html">Privacy Policy</a>.
@@ -288,25 +293,11 @@
                     <li>Game cover search and automatic matching</li>
                     <li>Video rendering filters (LCD, scanlines, bilinear, HQ2x)</li>
                     <li>BIOS management for enhanced compatibility</li>
+                    <li>Premium in-app purchase with Cloud Save (Google Drive / iCloud)</li>
                     <li>Performance optimizations for smooth 60 FPS gameplay</li>
                     <li>Automated deployment infrastructure (Fastlane)</li>
                     <li>Monitoring and analytics (Firebase Analytics + Crashlytics)</li>
                 </ul>
-
-                <h2>Design Decisions</h2>
-                <p>
-                    GoGBA focuses on core functionality and user experience. The following features are 
-                    <strong>explicitly not included</strong> by design:
-                </p>
-                <ul>
-                    <li><strong>Cheat codes (Game Genie/Code Breaker):</strong> We prioritize authentic gameplay experience</li>
-                    <li><strong>Quick save/load:</strong> We focus on reliable automatic save system instead</li>
-                    <li><strong>Button layout editing:</strong> Fixed layouts ensure consistency and avoid configuration complexity</li>
-                </ul>
-                <p>
-                    We believe in quality over quantity—focusing on doing the essentials exceptionally well, 
-                    rather than overwhelming users with unnecessary options.
-                </p>
 
                 <h2>Future Plans</h2>
                 <p>
@@ -315,7 +306,6 @@
                 <ul>
                     <li>Network multiplayer support (based on libretro netpacket API)</li>
                     <li>Gyroscope support for games requiring motion sensors (e.g., WarioWare: Twisted!)</li>
-                    <li>Cloud save synchronization</li>
                     <li>Theme store</li>
                 </ul>
                 <p>
