@@ -267,6 +267,54 @@ header.scrolled .nav-brand h1 {
     transform: translateY(-2px);
 }
 
+/* Announcement Section */
+.announcement {
+    padding: 1.5rem 0;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.06) 100%);
+    border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.announcement-box {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem 1.75rem;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(99, 102, 241, 0.08) 100%);
+    border-radius: 12px;
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    box-shadow: 0 4px 24px rgba(99, 102, 241, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.announcement-box::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--primary-color), #8b5cf6);
+    border-radius: 4px 0 0 4px;
+}
+
+.announcement-box h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.875rem;
+}
+
+.announcement-box p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 0.625rem;
+}
+
+.announcement-box p:last-child {
+    margin-bottom: 0;
+}
+
 /* Hero Section - Enhanced tech feel */
 .hero {
     padding: 5rem 0 6rem;
@@ -1362,6 +1410,22 @@ footer .container {
 
     .demo-game-card {
         padding: 1.5rem !important;
+    }
+
+    .announcement {
+        padding: 1.25rem 0;
+    }
+
+    .announcement-box {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .announcement-box h3 {
+        font-size: 1.05rem;
+    }
+
+    .announcement-box p {
+        font-size: 0.9rem;
     }
 
     .community-links {
