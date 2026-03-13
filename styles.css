@@ -1090,6 +1090,51 @@ header.scrolled .nav-brand h1 {
     color: var(--text-primary);
 }
 
+/* Novel episode navigation */
+.novel-ep-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 1rem;
+    font-size: 0.95rem;
+}
+
+.novel-ep-nav a {
+    color: var(--accent-color, var(--primary-color));
+    text-decoration: none;
+}
+
+.novel-ep-nav a:hover {
+    text-decoration: underline;
+}
+
+.novel-ep-nav .sep {
+    color: var(--text-secondary);
+    user-select: none;
+}
+
+.novel-ep-nav-top {
+    margin-bottom: 2rem;
+}
+
+.novel-ep-nav-bottom {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 1rem;
+}
+
+.novel-ep-nav-bottom .nav-left,
+.novel-ep-nav-bottom .nav-center,
+.novel-ep-nav-bottom .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0 0.5rem;
+}
+
 /* Footer */
 footer {
     background-color: var(--bg-secondary);
@@ -1177,6 +1222,63 @@ footer .container {
 .demo-game-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+}
+
+/* Novel episode navigation - unified prev/next styles */
+.novel-ep-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 1rem;
+    font-size: 0.95rem;
+}
+
+.novel-ep-nav a {
+    color: var(--accent-color, var(--primary-color));
+    text-decoration: none;
+}
+
+.novel-ep-nav a:hover {
+    text-decoration: underline;
+}
+
+.novel-ep-nav .nav-sep {
+    color: var(--text-secondary);
+    user-select: none;
+}
+
+.novel-ep-nav-top {
+    margin-bottom: 2rem;
+}
+
+.novel-ep-nav-bottom {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 1rem;
+}
+
+.novel-ep-nav-bottom .nav-left,
+.novel-ep-nav-bottom .nav-center,
+.novel-ep-nav-bottom .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0 0.5rem;
+}
+
+@media (max-width: 600px) {
+    .novel-ep-nav-bottom {
+        align-items: flex-start;
+    }
+
+    .novel-ep-nav-bottom .nav-left,
+    .novel-ep-nav-bottom .nav-center,
+    .novel-ep-nav-bottom .nav-right {
+        justify-content: flex-start;
+    }
 }
 
 /* Scroll animations - smoother */
