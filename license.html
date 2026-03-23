@@ -7,21 +7,21 @@
     <!-- Primary Meta Tags -->
     <title>Open Source Licenses - GoGBA</title>
     <meta name="title" content="Open Source Licenses - GoGBA">
-    <meta name="description" content="GoGBA open source licenses and third-party components. View licenses for mGBA, RCheevos, Flutter, and other dependencies used in GoGBA emulator.">
-    <meta name="keywords" content="GoGBA licenses, open source licenses, mGBA license, RCheevos license, Flutter license, GBA emulator licenses">
+    <meta name="description" content="GoGBA open source licenses: core libraries (mGBA, RCheevos) and main Flutter dependencies, matching the in-app License screen.">
+    <meta name="keywords" content="GoGBA licenses, MPL-2.0, MIT, mGBA, RCheevos, Flutter, Firebase, GBA emulator">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://gogba.xyz/license.html">
     <meta property="og:title" content="Open Source Licenses - GoGBA">
-    <meta property="og:description" content="GoGBA open source licenses and third-party components.">
+    <meta property="og:description" content="Core libraries and main dependencies for GoGBA, aligned with the in-app License screen.">
     <meta property="og:image" content="https://gogba.xyz/images/app_icon.png">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Open Source Licenses - GoGBA">
-    <meta name="twitter:description" content="GoGBA open source licenses and third-party components.">
+    <meta name="twitter:description" content="Core libraries and main dependencies for GoGBA, aligned with the in-app License screen.">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://gogba.xyz/license.html">
@@ -39,7 +39,7 @@
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Open Source Licenses - GoGBA",
-      "description": "GoGBA open source licenses and third-party components",
+      "description": "GoGBA open source licenses (core libraries and main dependencies)",
       "url": "https://gogba.xyz/license.html"
     }
     </script>
@@ -75,19 +75,20 @@
                 <h1>Open Source Licenses</h1>
 
                 <p>
-                    GoGBA uses several open-source components. This page lists the licenses for the 
-                    core libraries and main dependencies used in the application.
+                    GoGBA uses several open-source components. This page lists the same core libraries
+                    and main dependencies shown in the app (Settings → License). Transitive packages
+                    are omitted here for clarity.
                 </p>
 
                 <h2>Core Libraries</h2>
-                
+
                 <div style="margin-bottom: 2rem;">
                     <h3>libretro mGBA Core</h3>
                     <p>
-                        <strong>License:</strong> Mozilla Public License (MPL) 2.0
+                        <strong>License:</strong> MPL-2.0
                     </p>
                     <p>
-                        <strong>Description:</strong> High-performance GBA emulation core based on mGBA, 
+                        <strong>Description:</strong> High-performance GBA emulation core based on mGBA,
                         adapted for libretro with native integration for optimal performance.
                     </p>
                     <p>
@@ -98,10 +99,10 @@
                 <div style="margin-bottom: 2rem;">
                     <h3>RCheevos</h3>
                     <p>
-                        <strong>License:</strong> MIT License
+                        <strong>License:</strong> MIT
                     </p>
                     <p>
-                        <strong>Description:</strong> RetroAchievements library for achievement support, 
+                        <strong>Description:</strong> RetroAchievements library for achievement support,
                         leaderboards, and Rich Presence.
                     </p>
                     <p>
@@ -114,7 +115,7 @@
                 <div style="margin-bottom: 1.5rem;">
                     <h3>Flutter</h3>
                     <p>
-                        <strong>License:</strong> BSD 3-Clause License
+                        <strong>License:</strong> BSD-3-Clause
                     </p>
                     <p>
                         <strong>Description:</strong> UI toolkit for building natively compiled applications.
@@ -127,10 +128,10 @@
                 <div style="margin-bottom: 1.5rem;">
                     <h3>Riverpod</h3>
                     <p>
-                        <strong>License:</strong> MIT License
+                        <strong>License:</strong> MIT
                     </p>
                     <p>
-                        <strong>Description:</strong> A reactive caching and data-binding framework.
+                        <strong>Description:</strong> State management (flutter_riverpod).
                     </p>
                     <p>
                         <strong>Source:</strong> <a href="https://riverpod.dev" target="_blank" rel="noopener noreferrer">https://riverpod.dev</a>
@@ -140,10 +141,10 @@
                 <div style="margin-bottom: 1.5rem;">
                     <h3>GoRouter</h3>
                     <p>
-                        <strong>License:</strong> BSD 3-Clause License
+                        <strong>License:</strong> BSD-3-Clause
                     </p>
                     <p>
-                        <strong>Description:</strong> Declarative routing package for Flutter.
+                        <strong>Description:</strong> Declarative routing for Flutter.
                     </p>
                     <p>
                         <strong>Source:</strong> <a href="https://pub.dev/packages/go_router" target="_blank" rel="noopener noreferrer">https://pub.dev/packages/go_router</a>
@@ -153,10 +154,10 @@
                 <div style="margin-bottom: 1.5rem;">
                     <h3>Slang</h3>
                     <p>
-                        <strong>License:</strong> MIT License
+                        <strong>License:</strong> MIT
                     </p>
                     <p>
-                        <strong>Description:</strong> Internationalization and localization.
+                        <strong>Description:</strong> Internationalization and localization (slang, slang_flutter).
                     </p>
                     <p>
                         <strong>Source:</strong> <a href="https://pub.dev/packages/slang" target="_blank" rel="noopener noreferrer">https://pub.dev/packages/slang</a>
@@ -166,7 +167,7 @@
                 <div style="margin-bottom: 1.5rem;">
                     <h3>File Picker</h3>
                     <p>
-                        <strong>License:</strong> MIT License
+                        <strong>License:</strong> MIT
                     </p>
                     <p>
                         <strong>Description:</strong> Plugin for picking files and folders.
@@ -177,127 +178,22 @@
                 </div>
 
                 <div style="margin-bottom: 1.5rem;">
-                    <h3>Package Info Plus</h3>
+                    <h3>Firebase</h3>
                     <p>
-                        <strong>License:</strong> BSD 3-Clause License
+                        <strong>License:</strong> Apache-2.0
                     </p>
                     <p>
-                        <strong>Description:</strong> Plugin for retrieving package information.
+                        <strong>Description:</strong> Analytics, Crashlytics, Remote Config, and related plugins.
                     </p>
                     <p>
-                        <strong>Source:</strong> <a href="https://pub.dev/packages/package_info_plus" target="_blank" rel="noopener noreferrer">https://pub.dev/packages/package_info_plus</a>
-                    </p>
-                </div>
-
-                <div style="margin-bottom: 1.5rem;">
-                    <h3>Path Provider</h3>
-                    <p>
-                        <strong>License:</strong> BSD 3-Clause License
-                    </p>
-                    <p>
-                        <strong>Description:</strong> Plugin for getting commonly used locations on the filesystem.
-                    </p>
-                    <p>
-                        <strong>Source:</strong> <a href="https://pub.dev/packages/path_provider" target="_blank" rel="noopener noreferrer">https://pub.dev/packages/path_provider</a>
-                    </p>
-                </div>
-
-                <div style="margin-bottom: 1.5rem;">
-                    <h3>FFI</h3>
-                    <p>
-                        <strong>License:</strong> BSD 3-Clause License
-                    </p>
-                    <p>
-                        <strong>Description:</strong> Utilities for working with Foreign Function Interface (FFI) code.
-                    </p>
-                    <p>
-                        <strong>Source:</strong> <a href="https://pub.dev/packages/ffi" target="_blank" rel="noopener noreferrer">https://pub.dev/packages/ffi</a>
-                    </p>
-                </div>
-
-                <div style="margin-bottom: 1.5rem;">
-                    <h3>Crypto</h3>
-                    <p>
-                        <strong>License:</strong> BSD 3-Clause License
-                    </p>
-                    <p>
-                        <strong>Description:</strong> Cryptographic hashing functions.
-                    </p>
-                    <p>
-                        <strong>Source:</strong> <a href="https://pub.dev/packages/crypto" target="_blank" rel="noopener noreferrer">https://pub.dev/packages/crypto</a>
-                    </p>
-                </div>
-
-                <div style="margin-bottom: 1.5rem;">
-                    <h3>Dio</h3>
-                    <p>
-                        <strong>License:</strong> MIT License
-                    </p>
-                    <p>
-                        <strong>Description:</strong> A powerful HTTP client for Dart/Flutter.
-                    </p>
-                    <p>
-                        <strong>Source:</strong> <a href="https://pub.dev/packages/dio" target="_blank" rel="noopener noreferrer">https://pub.dev/packages/dio</a>
-                    </p>
-                </div>
-
-                <div style="margin-bottom: 1.5rem;">
-                    <h3>SQFlite</h3>
-                    <p>
-                        <strong>License:</strong> MIT License
-                    </p>
-                    <p>
-                        <strong>Description:</strong> SQLite plugin for Flutter.
-                    </p>
-                    <p>
-                        <strong>Source:</strong> <a href="https://pub.dev/packages/sqflite" target="_blank" rel="noopener noreferrer">https://pub.dev/packages/sqflite</a>
-                    </p>
-                </div>
-
-                <div style="margin-bottom: 1.5rem;">
-                    <h3>Path</h3>
-                    <p>
-                        <strong>License:</strong> BSD 3-Clause License
-                    </p>
-                    <p>
-                        <strong>Description:</strong> A string-based path manipulation library.
-                    </p>
-                    <p>
-                        <strong>Source:</strong> <a href="https://pub.dev/packages/path" target="_blank" rel="noopener noreferrer">https://pub.dev/packages/path</a>
-                    </p>
-                </div>
-
-                <div style="margin-bottom: 1.5rem;">
-                    <h3>Slang Flutter</h3>
-                    <p>
-                        <strong>License:</strong> MIT License
-                    </p>
-                    <p>
-                        <strong>Description:</strong> Flutter integration for Slang internationalization.
-                    </p>
-                    <p>
-                        <strong>Source:</strong> <a href="https://pub.dev/packages/slang_flutter" target="_blank" rel="noopener noreferrer">https://pub.dev/packages/slang_flutter</a>
-                    </p>
-                </div>
-
-                <div style="margin-bottom: 1.5rem;">
-                    <h3>Firebase Crashlytics</h3>
-                    <p>
-                        <strong>License:</strong> Apache License 2.0
-                    </p>
-                    <p>
-                        <strong>Description:</strong> Firebase Crashlytics plugin for Flutter.
-                    </p>
-                    <p>
-                        <strong>Source:</strong> <a href="https://pub.dev/packages/firebase_crashlytics" target="_blank" rel="noopener noreferrer">https://pub.dev/packages/firebase_crashlytics</a>
+                        <strong>Source:</strong> <a href="https://firebase.google.com/docs/flutter/setup" target="_blank" rel="noopener noreferrer">https://firebase.google.com/docs/flutter/setup</a>
                     </p>
                 </div>
 
                 <h2>Additional Information</h2>
                 <p>
-                    This list includes the main open-source components used in GoGBA. For a complete 
-                    list of all dependencies and their licenses, please refer to the license information 
-                    displayed within the GoGBA application (Settings → License).
+                    For the full dependency tree and SPDX identifiers, use Flutter’s license registry
+                    in the app or run <code>flutter pub deps</code> / inspect each package on pub.dev.
                 </p>
             </div>
         </div>
