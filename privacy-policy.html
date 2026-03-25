@@ -41,7 +41,7 @@
       "name": "Privacy Policy - GoGBA",
       "description": "GoGBA Privacy Policy - Learn how we protect your data",
       "url": "https://gogba.xyz/privacy-policy.html",
-      "dateModified": "2025-03-23"
+      "dateModified": "2026-03-27"
     }
     </script>
 </head>
@@ -75,7 +75,7 @@
             <div class="content-page">
                 <h1>Privacy Policy</h1>
 
-                <p class="policy-meta"><em>Last updated: March 23, 2025</em></p>
+                <p class="policy-meta"><em>Last updated: March 27, 2026</em></p>
 
                 <p>
                     This Privacy Policy describes how GoGBA ("we", "our", or "us") collects, uses, 
@@ -111,6 +111,16 @@
                     <li>
                         <strong>Game Covers:</strong> Game cover images may be downloaded from the 
                         libretro database and cached locally on your device for faster loading.
+                    </li>
+                    <li>
+                        <strong>Remote configuration:</strong> The App may contact 
+                        <strong>Google Firebase Remote Config</strong> to retrieve configuration 
+                        values that apply to all users or to broad app versions (for example, feature 
+                        toggles and per-day usage caps for optional AI Screen Translation). These 
+                        requests are handled by Google's systems; Firebase may process technical 
+                        identifiers as described in 
+                        <a href="https://firebase.google.com/support/privacy">Google's Firebase privacy 
+                        materials</a>. This is separate from uploading game screens for translation.
                     </li>
                 </ul>
 
@@ -178,6 +188,14 @@
                     names, or other visible content—consider whether you are comfortable with that material 
                     being processed by a third-party AI service before using this feature.
                 </p>
+                <p>
+                    If you subscribe to AI Screen Translation, the feature may be subject to 
+                    <strong>reasonable usage limits</strong> (for example, a maximum number of 
+                    translation requests per UTC day). Those limits can be <strong>delivered or updated 
+                    via Firebase Remote Config</strong> without requiring you to install an app update. 
+                    The App applies the limit in effect after it successfully retrieves configuration; 
+                    if configuration cannot be retrieved, a built-in default may apply.
+                </p>
 
                 <h2>2. How We Use Your Information</h2>
                 <p>We use the information collected solely for the following purposes:</p>
@@ -216,6 +234,11 @@
                 <ul>
                     <li>
                         <strong>Firebase Crashlytics:</strong> For crash reporting (optional). 
+                        See <a href="https://firebase.google.com/support/privacy">Firebase Privacy Policy</a>.
+                    </li>
+                    <li>
+                        <strong>Firebase Remote Config:</strong> To deliver app-wide configuration 
+                        (including limits that may apply to optional AI Screen Translation). 
                         See <a href="https://firebase.google.com/support/privacy">Firebase Privacy Policy</a>.
                     </li>
                     <li>
