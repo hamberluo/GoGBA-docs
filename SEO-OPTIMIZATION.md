@@ -42,6 +42,7 @@
   - Support 页面（优先级 0.8，每月更新）
   - Privacy Policy 页面（优先级 0.5，每年更新）
   - Terms of Service 页面（优先级 0.5，每年更新）
+  - License 页面（优先级 0.4，每年更新）
   - 所有 URL 包含 lastmod、changefreq 和 priority 属性
 - ✅ **robots.txt**：搜索引擎爬虫指引文件
 - ✅ **humans.txt**：网站信息文件（可选但有助于 SEO）
@@ -58,28 +59,26 @@
 - ✅ Preconnect 和 DNS-prefetch 标签（加速外部资源加载）
 - ✅ Apple Touch Icon（移动设备优化）
 
-## 📝 需要手动更新的内容
+## 📝 生产 URL 与可选迁移
 
-### 重要：更新 URL 占位符
+### 当前约定（自定义域名）
 
-以下文件中的 URL 需要替换为实际的 GitHub Pages URL：
+仓库根目录已有 **`CNAME`**（`gogba.xyz`），静态页中的 **canonical、Open Graph、`sitemap.xml`、`robots.txt` 的 Sitemap 行** 均使用生产地址：
 
-1. **所有 HTML 文件的 head 部分**：
-   - 将 `https://gogba.xyz/` 替换为实际 URL
-   - 例如：`https://gogba.xyz/`
+**`https://gogba.xyz/`**
 
-2. **sitemap.xml**：
-   - ✅ 文件已完成，包含所有主要页面
-   - ⚠️ 需要将 URL 中的 `https://gogba.xyz/` 替换为实际的 GitHub Pages URL
+无需再把 `gogba.xyz` 当成「占位符」去替换；除非你刻意改用其他域名或仅使用默认 GitHub Pages 地址。
 
-3. **robots.txt**：
-   - 更新 Sitemap URL
+### 若不用自定义域名（仅 GitHub Pages 默认地址）
 
-### 如何找到你的 GitHub Pages URL
+若站点只通过 **`https://<username>.github.io/GoGBA-docs/`** 访问、且不再绑定 `gogba.xyz`，需要**全局一致**地替换（含路径前缀）：
 
-1. 前往 GitHub 仓库设置
-2. 进入"Pages"部分
-3. 你的 URL 格式为：`https://[username].github.io/GoGBA-docs/`
+1. 各 **HTML** 的 canonical、og:url、结构化数据中的绝对 URL  
+2. **`sitemap.xml`** 中每个 `<loc>`  
+3. **`robots.txt`** 中的 `Sitemap:` 行  
+4. 可选：Jekyll 的 **`_config.yml`** 中 `url` / `baseurl`（见 `README.md` / `URLS.md`）
+
+默认 Pages URL 可在仓库 **Settings → Pages** 中查看；将 `<username>` 与仓库名换成你的实际值。
 
 ## 🔍 SEO 最佳实践建议
 
@@ -88,7 +87,7 @@
 #### Google Search Console
 1. 访问 https://search.google.com/search-console
 2. 添加你的网站属性
-3. 提交 sitemap.xml：`https://[你的域名]/sitemap.xml`
+3. 提交 sitemap.xml：`https://gogba.xyz/sitemap.xml`（若仅用 GitHub Pages 默认域名，则改为该环境下的完整 sitemap URL）
    - ✅ sitemap.xml 文件已准备就绪，可直接提交
 
 #### Bing Webmaster Tools
@@ -104,7 +103,7 @@
 
 ### 3. 内容优化建议
 
-- ✅ 关键词已优化：GBA emulator, Game Boy Advance emulator, iOS, Android 等
+- ✅ 关键词已覆盖：掌机模拟（GBA / GBC / GB）、iOS、Android、RetroAchievements 等与产品一致的说法
 - ✅ 描述性标题和 meta 描述
 - ✅ 结构化内容（使用正确的 HTML 标签）
 
@@ -131,11 +130,10 @@
 
 ## 🚀 下一步行动
 
-1. **更新 URL**：将所有占位符 URL 替换为实际 URL
-2. **提交 sitemap**：在 Google Search Console 和 Bing Webmaster Tools 中提交 sitemap
-3. **验证结构化数据**：使用 Google Rich Results Test 验证结构化数据
-4. **监控性能**：使用 Google Analytics 和 Search Console 监控 SEO 表现
-5. **定期更新**：保持内容新鲜，定期更新 sitemap 中的 lastmod 日期
+1. **提交 sitemap**：在 Google Search Console 与 Bing Webmaster Tools 中提交当前环境下的 sitemap URL
+2. **验证结构化数据**：使用 Google Rich Results Test 检查主要页面
+3. **监控表现**：按需使用 Search Console（及分析工具）观察索引与查询
+4. **定期维护**：政策或重大功能变更后同步 HTML；有内容更新时刷新 **`sitemap.xml` 的 `lastmod`**
 
 ## 📚 有用的工具
 
@@ -149,11 +147,11 @@
 
 1. **GitHub Pages 限制**：GitHub Pages 不支持 .htaccess 文件，该文件仅作为参考保留
 2. **Jekyll vs 纯 HTML**：如果使用 Jekyll，某些 meta 标签可能需要使用 Jekyll 变量
-3. **URL 更新**：确保在所有文件中更新 URL 占位符
+3. **URL 一致性**：更换域名或 Pages 路径时，同步 HTML、sitemap、robots 与 `_config.yml`（若启用 Jekyll）
 4. **定期维护**：SEO 需要持续维护，定期检查并更新内容
 
 ---
 
-**最后更新**: 2025-01-01
-**优化完成**: ✅ 所有主要 SEO 优化已完成
+**最后更新**: 2026-04-28  
+**说明**: 与当前 `gogba.xyz` 静态站一致；若仅使用 GitHub Pages 默认 URL，按上文「可选迁移」批量替换。
 
