@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Primary Meta Tags -->
-    <title>Support & FAQ - GoGBA GBA Emulator Help</title>
-    <meta name="title" content="Support & FAQ - GoGBA GBA Emulator Help">
-    <meta name="description" content="Get help with GoGBA GBA emulator. Find answers to frequently asked questions, troubleshooting tips, and contact information for support.">
-    <meta name="keywords" content="GoGBA support, GBA emulator help, GoGBA FAQ, troubleshooting GBA emulator, mobile emulator support">
+    <title>Support &amp; FAQ - GoGBA Handheld Emulator Help</title>
+    <meta name="title" content="Support &amp; FAQ - GoGBA Handheld Emulator Help">
+    <meta name="description" content="Get help with GoGBA (GBA, GBC, GB). FAQs, troubleshooting, and contact information.">
+    <meta name="keywords" content="GoGBA support, GBA emulator help, GBC emulator, Game Boy emulator, GoGBA FAQ, mobile emulator support">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://gogba.xyz/support.html">
-    <meta property="og:title" content="Support & FAQ - GoGBA GBA Emulator Help">
-    <meta property="og:description" content="Get help with GoGBA GBA emulator. Find answers to frequently asked questions and troubleshooting tips.">
+    <meta property="og:title" content="Support &amp; FAQ - GoGBA Handheld Emulator Help">
+    <meta property="og:description" content="Get help with GoGBA. FAQs and troubleshooting for GBA, GBC, and GB emulation.">
     <meta property="og:image" content="https://gogba.xyz/images/app_icon.png">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Support & FAQ - GoGBA GBA Emulator Help">
-    <meta name="twitter:description" content="Get help with GoGBA GBA emulator. Find answers to frequently asked questions.">
+    <meta name="twitter:title" content="Support &amp; FAQ - GoGBA Handheld Emulator Help">
+    <meta name="twitter:description" content="Get help with GoGBA. FAQs and troubleshooting.">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://gogba.xyz/support.html">
@@ -44,7 +44,7 @@
           "name": "How do I add games to GoGBA?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "GoGBA supports multiple ways to add games: 1) Individual file selection via the 'Add Games' button, 2) Auto-scan directory (automatically scans on startup), 3) External app opening (.gba file association), 4) ZIP compressed files (automatically extracted). Games are stored in the app's documents directory under the games subdirectory."
+            "text": "GoGBA supports multiple ways to add games: 1) Individual file selection via the 'Add Games' button, 2) Auto-scan directory (automatically scans on startup), 3) External app opening (.gba, .gbc, .gb, or .zip), 4) ZIP archives (supported ROMs inside are extracted). Games are stored in the app's documents directory under the games subdirectory."
           }
         },
         {
@@ -52,7 +52,7 @@
           "name": "Where are my save files stored?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Save files (.sav files) are stored locally on your device. On Android, they're in external storage directory. On iOS, they're in the App Documents directory. Save files are automatically saved every 10 seconds, when you exit the game, or when the app goes to the background. Atomic writes prevent data corruption."
+            "text": "Save files (.sav files) are stored locally on your device. On Android, they're in external storage directory. On iOS, they're in the App Documents directory. Battery saves are written automatically about every 30 seconds while you are playing, when you exit the game, or when the app goes to the background. Atomic writes help prevent data corruption."
           }
         },
         {
@@ -97,7 +97,6 @@
                 </button>
                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="novel/index.html">Save Point</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="support.html" class="active">Support</a></li>
                     <li><a href="privacy-policy.html">Privacy Policy</a></li>
@@ -136,10 +135,10 @@
                     GoGBA supports multiple ways to add games:
                 </p>
                 <ol>
-                    <li><strong>Individual file selection:</strong> Tap the "Add Games" button and select a single .gba file using the file picker. The file will be automatically copied to the app's games directory.</li>
-                    <li><strong>Auto-scan directory:</strong> The app automatically scans the games directory on startup and when loading the home page. Simply place .gba files in the app's games directory.</li>
-                    <li><strong>External app opening:</strong> Open .gba files from other apps (file managers, email, etc.). GoGBA will automatically import and open the game.</li>
-                    <li><strong>ZIP support:</strong> ZIP compressed files are automatically extracted when added.</li>
+                    <li><strong>Individual file selection:</strong> Tap the "Add Games" button and select a supported ROM (<code>.gba</code>, <code>.gbc</code>, or <code>.gb</code>) or a <code>.zip</code> archive using the file picker. Files are copied into the app's games directory.</li>
+                    <li><strong>Auto-scan directory:</strong> The app scans the games directory on startup and when loading the home page. Place <code>.gba</code>, <code>.gbc</code>, <code>.gb</code>, or <code>.zip</code> files there.</li>
+                    <li><strong>External app opening:</strong> Open supported files from other apps (file managers, email, etc.). GoGBA imports and opens them when possible.</li>
+                    <li><strong>ZIP support:</strong> ZIP archives are unpacked when added; supported ROMs inside are imported.</li>
                 </ol>
                 <p>
                     Games are stored in the app's documents directory under the <code>games</code> subdirectory.
@@ -154,8 +153,8 @@
                     <li><strong>iOS:</strong> App Documents directory</li>
                 </ul>
                 <p>
-                    Save files are automatically saved every 10 seconds, when you exit the game, or 
-                    when the app goes to the background.
+                    Battery save files are written automatically about every 30 seconds while you are playing,
+                    when you exit the game, or when the app goes to the background.
                 </p>
 
                 <h3>Can I use GoGBA with a controller?</h3>
@@ -174,29 +173,29 @@
 
                 <h3>Does GoGBA support cloud saves?</h3>
                 <p>
-                    Cloud save functionality is not currently available. All saves are stored locally 
-                    on your device. We recommend regularly backing up your save files.
+                    <strong>Optional Cloud Save</strong> is available as part of <strong>Premium</strong> (in-app purchase).
+                    When enabled, you can sync battery saves with <strong>Google Drive</strong> (Android / cross-device)
+                    or <strong>iCloud</strong> (iOS), depending on platform and settings. Without Premium, saves stay
+                    on your device only—we still recommend backing up <code>.sav</code> files you care about.
                 </p>
 
                 <h3>How do I change the game speed?</h3>
                 <p>
-                    While playing a game, tap the speed button (1x, 2x, or 3x) located in the game 
-                    interface. You can adjust the speed from 1x (normal) to 3x (fastest).
+                    While playing, use the speed control in the in-game UI (typically 1x–3x). Higher
+                    speed tiers and fine-tuned multipliers may require <strong>Premium</strong>, depending on your build and store SKU.
                 </p>
 
                 <h3>Can I customize the virtual button layout?</h3>
                 <p>
-                    GoGBA uses fixed button layouts for consistency, but you can customize:
+                    You can tune controls in several ways:
                 </p>
                 <ul>
                     <li><strong>Button opacity:</strong> Adjust transparency from 10% to 100% (Settings → Controls → Button Opacity)</li>
-                    <li><strong>Control mode:</strong> Switch between Normal (standard GBA layout) and Arcade (LRAB four-directional buttons) modes</li>
+                    <li><strong>Button size &amp; game scale:</strong> Resize on-screen buttons and zoom the game view where supported (Settings / in-game layout options)</li>
+                    <li><strong>Button positions:</strong> Drag controls to preferred positions; portrait and landscape layouts can be configured separately where the feature is available</li>
+                    <li><strong>Control mode:</strong> Switch between Normal (standard layout) and Arcade (LRAB-style clusters)</li>
                     <li><strong>Haptic feedback:</strong> Enable/disable and adjust vibration strength (light/medium/heavy)</li>
                 </ul>
-                <p>
-                    Button position and size editing are not available by design to maintain consistency 
-                    and avoid configuration complexity.
-                </p>
 
                 <h3>What languages does GoGBA support?</h3>
                 <p>
@@ -257,7 +256,7 @@
                     If you encounter crashes or loading issues:
                 </p>
                 <ol>
-                    <li>Ensure your ROM file is a valid GBA file (.gba extension)</li>
+                    <li>Ensure your ROM is a supported dump: <code>.gba</code>, <code>.gbc</code>, or <code>.gb</code> (single extension in the filename)</li>
                     <li>Try restarting the App</li>
                     <li>Check that you have sufficient storage space</li>
                     <li>Update to the latest version of GoGBA</li>

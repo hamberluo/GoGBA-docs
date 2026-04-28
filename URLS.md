@@ -1,68 +1,39 @@
-# GoGBA App Store URLs Reference
+# GoGBA App Store and web URLs
 
-This document lists all the URLs you'll need when submitting GoGBA to the App Store and Google Play Store.
+Use these URLs in the app and in App Store Connect / Google Play Console.
 
-## GitHub Pages URL
+## Production (custom domain)
 
-After enabling GitHub Pages, your base URL will be:
+Base URL:
+
 ```
-https://yourusername.github.io/GoGBA-docs/
-```
-
-Replace `yourusername` with your actual GitHub username.
-
-## Required URLs for App Stores
-
-### Privacy Policy URL
-```
-https://yourusername.github.io/GoGBA-docs/privacy-policy.html
+https://gogba.xyz/
 ```
 
-### Terms of Service URL
+| Purpose | URL |
+|---------|-----|
+| Privacy Policy | https://gogba.xyz/privacy-policy.html |
+| Terms of Service | https://gogba.xyz/terms-of-service.html |
+| Support | https://gogba.xyz/support.html |
+| Marketing / optional website | https://gogba.xyz/ |
+| About | https://gogba.xyz/about.html |
+
+## GitHub Pages default (fallback only)
+
+If the site is **not** mapped to `gogba.xyz`, use your real GitHub Pages URL instead, for example:
+
 ```
-https://yourusername.github.io/GoGBA-docs/terms-of-service.html
+https://<username>.github.io/GoGBA-docs/
 ```
 
-### Support URL
-```
-https://yourusername.github.io/GoGBA-docs/support.html
-```
+Replace `<username>` and repo name to match your GitHub setup.
 
-### Website URL (Optional)
-```
-https://yourusername.github.io/GoGBA-docs/
-```
-
-## Contact Information
+## Contact
 
 - **Email:** hamberluo@gmail.com
-- **Support Email:** hamberluo@gmail.com
 
-## Setup Instructions
+## Checklist
 
-1. **Enable GitHub Pages:**
-   - Go to your repository settings on GitHub
-   - Navigate to "Pages" in the left sidebar
-   - Under "Source", select `main` branch
-   - Select `/ (root)` folder
-   - Click "Save"
-
-2. **Wait for deployment:**
-   - GitHub Pages typically takes 1-2 minutes to deploy
-   - You'll see a green checkmark when it's ready
-
-3. **Verify URLs:**
-   - Visit each URL to ensure they load correctly
-   - Test on mobile devices to ensure responsive design works
-
-4. **Update URLs in app:**
-   - Add these URLs to your app's settings/about page
-   - Use them when submitting to app stores
-
-## Notes
-
-- All pages are mobile-responsive and will work well on both desktop and mobile devices
-- The `.nojekyll` file ensures GitHub Pages serves pure HTML without Jekyll processing
-- All pages include proper navigation and footer links
-- The design uses a dark theme consistent with your app's aesthetic
-
+1. Open each production URL in a browser (desktop and mobile).
+2. Paste the Privacy, Terms, and Support URLs into store listings.
+3. After Remote Config or policy changes, re-read Privacy / Support for consistency with the shipping app.

@@ -5,33 +5,38 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://gogba.xyz/</loc>
-    <lastmod>2025-01-23</lastmod>
+    <lastmod>2026-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://gogba.xyz/about.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gogba.xyz/support.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gogba.xyz/privacy-policy.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://gogba.xyz/terms-of-service.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://gogba.xyz/license.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
 </urlset>
-
