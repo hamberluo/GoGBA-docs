@@ -10,7 +10,7 @@
 
 # THANKS
 
-    libretro mgba core developers
+    libretro mGBA core developers
     Flutter team
     RetroAchievements community
 
@@ -22,7 +22,7 @@
 
 # SITE
 
-    Last update: 2025/01/01
+    Last update: 2026/04/28
     Standards: HTML5, CSS3
     Components: --
     Software: --

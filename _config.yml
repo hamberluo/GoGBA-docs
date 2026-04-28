@@ -3,10 +3,10 @@
 # If you prefer pure HTML without Jekyll, create a .nojekyll file instead
 
 title: GoGBA
-description: A quiet, reliable, and immersive GBA game emulator
+description: A quiet, reliable, and immersive handheld emulator for GBA, GBC, and GB on iOS and Android
 email: hamberluo@gmail.com
-url: https://yourusername.github.io
-baseurl: /GoGBA-docs
+url: https://gogba.xyz
+baseurl: ""
 
 # Build settings
 theme: minima
