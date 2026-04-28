@@ -1,6 +1,6 @@
 # GoGBA and RetroAchievements Hardcore Compliance
 
-This document maps **GoGBA** (Android/iOS GBA emulator) against the requirements summarized in the official RetroAchievements page: [Hardcore Compliance Requirements](https://docs.retroachievements.org/general/hardcore-compliance-requirements.html).
+This document maps **GoGBA** (Android/iOS handheld emulator: GBA, GBC, and GB via libretro mGBA) against the requirements summarized in the official RetroAchievements page: [Hardcore Compliance Requirements](https://docs.retroachievements.org/general/hardcore-compliance-requirements.html).
 
 It explains **why the current codebase aligns with those requirements** for the areas the product implements, and calls out **product or process items** that sit outside the repo (e.g. store listings, eligibility timeline).
 
@@ -12,7 +12,7 @@ GoGBA integrates RetroAchievements through a dedicated API client (`RcClient`), 
 
 **Cheat use is blocked in hardcore** when RetroAchievements is enabled and the user has an authenticated session, via `shouldBlockCheatsForHardcore` and native `applyCheats` with empty lists.
 
-**Emulator save states (load/slot UI)** are not a shipped feature; persistence uses **standard battery `.sav` / Save RAM** compatible with common GBA practice.
+**Emulator save states (load/slot UI)** are not a shipped feature; persistence uses **standard battery `.sav` / Save RAM** compatible with common Game Boy family practice (GBA/GBC/GB as supported by the core).
 
 **Client identity** uses a purpose-built User-Agent (`GoGBA/<app version> (<OS> <version>) mgba/0.10.5`) as required for integrity reporting.
 

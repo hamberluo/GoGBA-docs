@@ -17,6 +17,7 @@ https://gogba.xyz/
 | Support | https://gogba.xyz/support.html |
 | Marketing / optional website | https://gogba.xyz/ |
 | About | https://gogba.xyz/about.html |
+| Open Source Licenses (in-app / web) | https://gogba.xyz/license.html |
 
 ## GitHub Pages default (fallback only)
 
