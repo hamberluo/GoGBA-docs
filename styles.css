@@ -1127,7 +1127,7 @@ footer .container {
 }
 
 .footer-friends a:hover {
-    color: var(--primary-color);
+    color: var(--text-primary);
 }
 
 /* Demo Games Section */
