@@ -42,6 +42,8 @@
 
     function initTheme() {
         applyTheme(resolveTheme());
+        var toggleBtn = document.querySelector('.theme-toggle');
+        if (toggleBtn) toggleBtn.addEventListener('click', toggleTheme);
         // follow system changes in real time only when user hasn't manually chosen
         if (window.matchMedia) {
             var mq = window.matchMedia('(prefers-color-scheme: dark)');
