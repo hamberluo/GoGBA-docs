@@ -38,6 +38,7 @@ pre, code {
     --accent: #7c5fd6;
     --accent-hover: #6a4fc0;
     --accent-color: var(--accent); /* compat with historical inline styles */
+    --accent-rgb: 124, 95, 214;
 
     /* Light theme (default) */
     --bg-color: #ffffff;
@@ -54,10 +55,10 @@ pre, code {
 }
 
 [data-theme="dark"] {
-    /* dark mode accent uses a slightly brighter derived value */
-    --accent: #8B6FE0;
+    /* dark mode accent — same as light to satisfy WCAG AA on white text */
+    --accent: #7c5fd6;
     --accent-hover: #9d85e8;
-    --accent-color: var(--accent);
+    --accent-rgb: 124, 95, 214;
 
     --bg-color: #0f172a;
     --bg-secondary: #1e293b;
@@ -122,7 +123,7 @@ body::after {
     width: 100%;
     height: 100%;
     background: 
-        linear-gradient(0deg, transparent 0%, rgba(99, 102, 241, 0.02) 50%, transparent 100%);
+        linear-gradient(0deg, transparent 0%, rgba(var(--accent-rgb), 0.02) 50%, transparent 100%);
     animation: scanLine 8s linear infinite;
     pointer-events: none;
     z-index: -1;
@@ -249,7 +250,7 @@ header.scrolled .navbar {
 .nav-brand h1 {
     font-size: 1.5rem;
     color: var(--primary-color);
-    background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-hover));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -286,7 +287,7 @@ header.scrolled .nav-brand h1 {
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, var(--primary-color), #8b5cf6);
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-hover));
     transition: width 0.3s ease;
 }
 
@@ -317,7 +318,7 @@ header.scrolled .nav-brand h1 {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--accent-rgb), 0.06) 0%, transparent 70%);
     animation: rotate 25s linear infinite;
     pointer-events: none;
 }
@@ -330,8 +331,8 @@ header.scrolled .nav-brand h1 {
     right: 0;
     bottom: 0;
     background: 
-        linear-gradient(90deg, transparent 0%, rgba(99, 102, 241, 0.03) 50%, transparent 100%),
-        linear-gradient(0deg, transparent 0%, rgba(139, 92, 246, 0.03) 50%, transparent 100%);
+        linear-gradient(90deg, transparent 0%, rgba(var(--accent-rgb), 0.03) 50%, transparent 100%),
+        linear-gradient(0deg, transparent 0%, rgba(var(--accent-rgb), 0.03) 50%, transparent 100%);
     animation: gridPulse 4s ease-in-out infinite;
     pointer-events: none;
 }
@@ -362,7 +363,7 @@ header.scrolled .nav-brand h1 {
 .hero-title {
     font-size: 3.5rem;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-hover));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -370,7 +371,7 @@ header.scrolled .nav-brand h1 {
     font-weight: 700;
     letter-spacing: -0.02em;
     position: relative;
-    filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.3));
+    filter: drop-shadow(0 0 20px rgba(var(--accent-rgb), 0.3));
 }
 
 .hero-content {
@@ -407,8 +408,8 @@ header.scrolled .nav-brand h1 {
 .hero-badge {
     display: inline-block;
     padding: 0.5rem 1rem;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
-    border: 1px solid rgba(99, 102, 241, 0.3);
+    background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.15), rgba(var(--accent-rgb), 0.15));
+    border: 1px solid rgba(var(--accent-rgb), 0.3);
     border-radius: 20px;
     color: var(--primary-color);
     font-size: 0.9rem;
@@ -418,10 +419,10 @@ header.scrolled .nav-brand h1 {
 }
 
 .hero-badge:hover {
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(139, 92, 246, 0.25));
+    background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.25), rgba(var(--accent-rgb), 0.25));
     border-color: var(--primary-color);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+    box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.2);
 }
 
 .hero-description {
@@ -448,7 +449,7 @@ header.scrolled .nav-brand h1 {
 .producthunt-badge img:hover {
     opacity: 0.8;
     transform: translateY(-3px) scale(1.05);
-    filter: drop-shadow(0 8px 12px rgba(99, 102, 241, 0.4));
+    filter: drop-shadow(0 8px 12px rgba(var(--accent-rgb), 0.4));
 }
 
 /* Download Section */
@@ -467,7 +468,7 @@ header.scrolled .nav-brand h1 {
 }
 
 .download-card {
-    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(99, 102, 241, 0.08) 100%);
+    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(var(--accent-rgb), 0.08) 100%);
     padding: 1.5rem 2.5rem;
     border-radius: 16px;
     border: 1px solid var(--border-color);
@@ -491,7 +492,7 @@ header.scrolled .nav-brand h1 {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--accent-rgb), 0.08) 0%, transparent 70%);
     animation: rotate 30s linear infinite;
     pointer-events: none;
     opacity: 0;
@@ -507,8 +508,8 @@ header.scrolled .nav-brand h1 {
     bottom: 0;
     border: 1px solid transparent;
     border-radius: 16px;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1)) padding-box,
-                linear-gradient(135deg, var(--primary-color), #8b5cf6) border-box;
+    background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.1), rgba(var(--accent-rgb), 0.1)) padding-box,
+                linear-gradient(135deg, var(--primary-color), var(--accent-hover)) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: destination-out;
     mask-composite: exclude;
@@ -528,7 +529,7 @@ header.scrolled .nav-brand h1 {
 .download-card:hover {
     transform: translateY(-8px);
     border-color: var(--primary-color);
-    box-shadow: 0 12px 40px rgba(99, 102, 241, 0.3), 0 0 20px rgba(99, 102, 241, 0.15);
+    box-shadow: 0 12px 40px rgba(var(--accent-rgb), 0.3), 0 0 20px rgba(var(--accent-rgb), 0.15);
 }
 
 .download-card h3 {
@@ -567,7 +568,7 @@ header.scrolled .nav-brand h1 {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-hover));
     color: white;
     font-weight: 600;
     padding: 0.9rem 2rem;
@@ -583,7 +584,7 @@ header.scrolled .nav-brand h1 {
 .btn-primary:hover {
     background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+    box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.5);
 }
 
 .btn-discord {
@@ -666,9 +667,9 @@ header.scrolled .nav-brand h1 {
 
 .btn-secondary:hover {
     border-color: var(--primary-color);
-    background-color: rgba(99, 102, 241, 0.1);
+    background-color: rgba(var(--accent-rgb), 0.1);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.3);
 }
 
 .app-store-badge,
@@ -729,7 +730,7 @@ header.scrolled .nav-brand h1 {
 }
 
 .feature-card {
-    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(99, 102, 241, 0.05) 100%);
+    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(var(--accent-rgb), 0.05) 100%);
     padding: 2rem;
     border-radius: 12px;
     border: 1px solid var(--border-color);
@@ -753,7 +754,7 @@ header.scrolled .nav-brand h1 {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.08), transparent);
+    background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb), 0.08), transparent);
     transition: left 0.6s ease;
     pointer-events: none;
 }
@@ -767,7 +768,7 @@ header.scrolled .nav-brand h1 {
     bottom: 0;
     border-radius: 12px;
     padding: 1px;
-    background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-hover));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -787,7 +788,7 @@ header.scrolled .nav-brand h1 {
 .feature-card:hover {
     transform: translateY(-6px);
     border-color: var(--primary-color);
-    box-shadow: 0 12px 32px rgba(99, 102, 241, 0.25), 0 0 16px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 12px 32px rgba(var(--accent-rgb), 0.25), 0 0 16px rgba(var(--accent-rgb), 0.1);
 }
 
 .feature-card h3 {
@@ -858,7 +859,7 @@ header.scrolled .nav-brand h1 {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--accent-rgb), 0.2) 0%, transparent 70%);
     transform: translate(-50%, -50%);
     transition: width 0.6s, height 0.6s;
 }
@@ -871,7 +872,7 @@ header.scrolled .nav-brand h1 {
 .platform-card:hover {
     transform: translateY(-10px) scale(1.03);
     border-color: var(--primary-color);
-    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3), 0 0 30px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 20px 40px rgba(var(--accent-rgb), 0.3), 0 0 30px rgba(var(--accent-rgb), 0.1);
 }
 
 .platform-card h3 {
@@ -951,7 +952,7 @@ header.scrolled .nav-brand h1 {
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, var(--primary-color), #8b5cf6);
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-hover));
     transition: width 0.3s ease;
 }
 
@@ -961,13 +962,13 @@ header.scrolled .nav-brand h1 {
 
 .contact-email a:hover {
     transform: translateY(-2px);
-    text-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+    text-shadow: 0 0 10px rgba(var(--accent-rgb), 0.5);
 }
 
 .btn {
     display: inline-block;
     padding: 0.75rem 2rem;
-    background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-hover));
     color: white;
     text-decoration: none;
     border-radius: 8px;
@@ -976,7 +977,7 @@ header.scrolled .nav-brand h1 {
     position: relative;
     overflow: hidden;
     font-weight: 500;
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 4px 15px rgba(var(--accent-rgb), 0.3);
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -1006,7 +1007,7 @@ header.scrolled .nav-brand h1 {
 .btn:hover {
     background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.4);
 }
 
 .btn:active {
@@ -1189,7 +1190,7 @@ footer .container {
 
 .demo-game-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+    box-shadow: 0 20px 40px rgba(var(--accent-rgb), 0.2);
 }
 
 /* Scroll animations - smoother */
@@ -1309,7 +1310,7 @@ footer .container {
     }
 
     .nav-menu a:hover {
-        background: rgba(99, 102, 241, 0.1);
+        background: rgba(var(--accent-rgb), 0.1);
     }
 
     .hero {
