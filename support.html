@@ -10,6 +10,14 @@
             t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
           }
           document.documentElement.setAttribute('data-theme', t);
+          var L = localStorage.getItem('lang');
+          if (L !== 'en' && L !== 'zh-Hans' && L !== 'zh-Hant') {
+            var nl = (navigator.language || 'en').toLowerCase();
+            if (nl.indexOf('zh') === 0) {
+              L = (nl.indexOf('tw') > -1 || nl.indexOf('hk') > -1 || nl.indexOf('mo') > -1 || nl.indexOf('hant') > -1) ? 'zh-Hant' : 'zh-Hans';
+            } else { L = 'en'; }
+          }
+          document.documentElement.setAttribute('lang', L);
         } catch (e) {}
       })();
     </script>
@@ -108,14 +116,19 @@
                     <span></span>
                 </button>
                 <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="support.html" class="active">Support</a></li>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                    <li><a href="terms-of-service.html">Terms of Service</a></li>
-                    <li><a href="license.html">License</a></li>
+                    <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                    <li><a href="support.html" class="active" data-i18n="nav.support">Support</a></li>
+                    <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
+                    <li><a href="license.html" data-i18n="nav.license">License</a></li>
                     <li class="nav-controls">
                         <button class="theme-toggle" type="button" aria-label="Toggle theme"></button>
+                        <select class="lang-switch" aria-label="Language">
+                            <option value="en">EN</option>
+                            <option value="zh-Hans">简体中文</option>
+                            <option value="zh-Hant">繁體中文</option>
+                        </select>
                     </li>
                 </ul>
             </div>
@@ -125,265 +138,265 @@
     <main>
         <div class="container">
             <div class="content-page">
-                <h1>Support</h1>
-                <p>
-                    We're here to help! If you have questions, encounter issues, or need assistance 
+                <h1 data-i18n="support.title">Support</h1>
+                <p data-i18n="support.intro">
+                    We're here to help! If you have questions, encounter issues, or need assistance
                     with GoGBA, please don't hesitate to reach out.
                 </p>
 
-                <h2>Contact Us</h2>
-                <p>
-                    For support inquiries, bug reports, feature requests, or general questions, please 
+                <h2 data-i18n="support.contact.title">Contact Us</h2>
+                <p data-i18n="support.contact.intro">
+                    For support inquiries, bug reports, feature requests, or general questions, please
                     contact us at:
                 </p>
-                <p>
+                <p data-i18n-html="support.contact.email">
                     <strong>Email:</strong> <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a>
                 </p>
-                <p>
+                <p data-i18n="support.contact.response">
                     We aim to respond to all inquiries within 48 hours.
                 </p>
 
-                <h2>Frequently Asked Questions</h2>
+                <h2 data-i18n="support.faq.title">Frequently Asked Questions</h2>
 
-                <h3>How do I add games to GoGBA?</h3>
-                <p>
+                <h3 data-i18n="support.faq.addgames.q">How do I add games to GoGBA?</h3>
+                <p data-i18n="support.faq.addgames.intro">
                     GoGBA supports multiple ways to add games:
                 </p>
                 <ol>
-                    <li><strong>Individual file selection:</strong> Tap the "Add Games" button and select a supported ROM (<code>.gba</code>, <code>.gbc</code>, or <code>.gb</code>) or a <code>.zip</code> archive using the file picker. Files are copied into the app's games directory.</li>
-                    <li><strong>Auto-scan directory:</strong> The app scans the games directory on startup and when loading the home page. Place <code>.gba</code>, <code>.gbc</code>, <code>.gb</code>, or <code>.zip</code> files there.</li>
-                    <li><strong>External app opening:</strong> Open supported files from other apps (file managers, email, etc.). GoGBA imports and opens them when possible.</li>
-                    <li><strong>ZIP support:</strong> ZIP archives are unpacked when added; supported ROMs inside are imported.</li>
+                    <li data-i18n-html="support.faq.addgames.item1"><strong>Individual file selection:</strong> Tap the "Add Games" button and select a supported ROM (<code>.gba</code>, <code>.gbc</code>, or <code>.gb</code>) or a <code>.zip</code> archive using the file picker. Files are copied into the app's games directory.</li>
+                    <li data-i18n-html="support.faq.addgames.item2"><strong>Auto-scan directory:</strong> The app scans the games directory on startup and when loading the home page. Place <code>.gba</code>, <code>.gbc</code>, <code>.gb</code>, or <code>.zip</code> files there.</li>
+                    <li data-i18n-html="support.faq.addgames.item3"><strong>External app opening:</strong> Open supported files from other apps (file managers, email, etc.). GoGBA imports and opens them when possible.</li>
+                    <li data-i18n-html="support.faq.addgames.item4"><strong>ZIP support:</strong> ZIP archives are unpacked when added; supported ROMs inside are imported.</li>
                 </ol>
-                <p>
+                <p data-i18n-html="support.faq.addgames.outro">
                     Games are stored in the app's documents directory under the <code>games</code> subdirectory.
                 </p>
 
-                <h3>Where are my save files stored?</h3>
-                <p>
+                <h3 data-i18n="support.faq.saves.q">Where are my save files stored?</h3>
+                <p data-i18n="support.faq.saves.intro">
                     Save files (.sav files) are stored locally on your device:
                 </p>
                 <ul>
-                    <li><strong>Android:</strong> External storage directory</li>
-                    <li><strong>iOS:</strong> App Documents directory</li>
+                    <li data-i18n-html="support.faq.saves.android"><strong>Android:</strong> External storage directory</li>
+                    <li data-i18n-html="support.faq.saves.ios"><strong>iOS:</strong> App Documents directory</li>
                 </ul>
-                <p>
+                <p data-i18n="support.faq.saves.outro">
                     Battery save files are written automatically about every 30 seconds while you are playing,
                     when you exit the game, or when the app goes to the background.
                 </p>
 
-                <h3>Can I use GoGBA with a controller?</h3>
-                <p>
+                <h3 data-i18n="support.faq.controller.q">Can I use GoGBA with a controller?</h3>
+                <p data-i18n="support.faq.controller.intro">
                     Yes! GoGBA has full gamepad support on both Android and iOS:
                 </p>
                 <ul>
-                    <li>Automatically detects connected gamepads</li>
-                    <li>Customizable button mapping (configure in Settings → Controls → Gamepad Mapping)</li>
-                    <li>Option to hide virtual buttons when gamepad is connected</li>
-                    <li>Works with most standard Bluetooth and USB controllers</li>
+                    <li data-i18n="support.faq.controller.item1">Automatically detects connected gamepads</li>
+                    <li data-i18n="support.faq.controller.item2">Customizable button mapping (configure in Settings → Controls → Gamepad Mapping)</li>
+                    <li data-i18n="support.faq.controller.item3">Option to hide virtual buttons when gamepad is connected</li>
+                    <li data-i18n="support.faq.controller.item4">Works with most standard Bluetooth and USB controllers</li>
                 </ul>
-                <p>
+                <p data-i18n="support.faq.controller.outro">
                     To configure gamepad buttons, go to Settings → Controls → Gamepad Mapping.
                 </p>
 
-                <h3>Does GoGBA support cloud saves?</h3>
-                <p>
+                <h3 data-i18n="support.faq.cloud.q">Does GoGBA support cloud saves?</h3>
+                <p data-i18n-html="support.faq.cloud.body">
                     <strong>Optional Cloud Save</strong> is available as part of <strong>Premium</strong> (in-app purchase).
                     When enabled, you can sync battery saves with <strong>Google Drive</strong> (Android / cross-device)
                     or <strong>iCloud</strong> (iOS), depending on platform and settings. Without Premium, saves stay
                     on your device only—we still recommend backing up <code>.sav</code> files you care about.
                 </p>
 
-                <h3>How do I change the game speed?</h3>
-                <p>
+                <h3 data-i18n="support.faq.speed.q">How do I change the game speed?</h3>
+                <p data-i18n-html="support.faq.speed.body">
                     While playing, use the speed control in the in-game UI (typically 1x–3x). Higher
                     speed tiers and fine-tuned multipliers may require <strong>Premium</strong>, depending on your build and store SKU.
                 </p>
 
-                <h3>Can I customize the virtual button layout?</h3>
-                <p>
+                <h3 data-i18n="support.faq.layout.q">Can I customize the virtual button layout?</h3>
+                <p data-i18n="support.faq.layout.intro">
                     You can tune controls in several ways:
                 </p>
                 <ul>
-                    <li><strong>Button opacity:</strong> Adjust transparency from 10% to 100% (Settings → Controls → Button Opacity)</li>
-                    <li><strong>Button size &amp; game scale:</strong> Resize on-screen buttons and zoom the game view where supported (Settings / in-game layout options)</li>
-                    <li><strong>Button positions:</strong> Drag controls to preferred positions; portrait and landscape layouts can be configured separately where the feature is available</li>
-                    <li><strong>Control mode:</strong> Switch between Normal (standard layout) and Arcade (LRAB-style clusters)</li>
-                    <li><strong>Haptic feedback:</strong> Enable/disable and adjust vibration strength (light/medium/heavy)</li>
+                    <li data-i18n-html="support.faq.layout.item1"><strong>Button opacity:</strong> Adjust transparency from 10% to 100% (Settings → Controls → Button Opacity)</li>
+                    <li data-i18n-html="support.faq.layout.item2"><strong>Button size &amp; game scale:</strong> Resize on-screen buttons and zoom the game view where supported (Settings / in-game layout options)</li>
+                    <li data-i18n-html="support.faq.layout.item3"><strong>Button positions:</strong> Drag controls to preferred positions; portrait and landscape layouts can be configured separately where the feature is available</li>
+                    <li data-i18n-html="support.faq.layout.item4"><strong>Control mode:</strong> Switch between Normal (standard layout) and Arcade (LRAB-style clusters)</li>
+                    <li data-i18n-html="support.faq.layout.item5"><strong>Haptic feedback:</strong> Enable/disable and adjust vibration strength (light/medium/heavy)</li>
                 </ul>
 
-                <h3>What languages does GoGBA support?</h3>
-                <p>
+                <h3 data-i18n="support.faq.lang.q">What languages does GoGBA support?</h3>
+                <p data-i18n="support.faq.lang.intro">
                     GoGBA supports 24 languages:
                 </p>
                 <ul>
-                    <li>English</li>
-                    <li>中文 (Simplified Chinese)</li>
-                    <li>繁體中文 (Traditional Chinese)</li>
-                    <li>繁體中文（香港）(Hong Kong Chinese)</li>
-                    <li>Español (Spanish)</li>
-                    <li>Français (French)</li>
-                    <li>Deutsch (German)</li>
-                    <li>Português (Portuguese)</li>
-                    <li>Português (Brasil) (Brazilian Portuguese)</li>
-                    <li>العربية (Arabic)</li>
-                    <li>日本語 (Japanese)</li>
-                    <li>한국어 (Korean)</li>
-                    <li>Русский (Russian)</li>
-                    <li>Italiano (Italian)</li>
-                    <li>Nederlands (Dutch)</li>
-                    <li>Svenska (Swedish)</li>
-                    <li>ไทย (Thai)</li>
-                    <li>Filipino</li>
-                    <li>Türkçe (Turkish)</li>
-                    <li>Bahasa Indonesia (Indonesian)</li>
-                    <li>Tiếng Việt (Vietnamese)</li>
-                    <li>हिन्दी (Hindi)</li>
-                    <li>Bahasa Melayu (Malay)</li>
-                    <li>Українська (Ukrainian)</li>
+                    <li data-i18n="support.faq.lang.item.en">English</li>
+                    <li data-i18n="support.faq.lang.item.zhHans">中文 (Simplified Chinese)</li>
+                    <li data-i18n="support.faq.lang.item.zhHant">繁體中文 (Traditional Chinese)</li>
+                    <li data-i18n="support.faq.lang.item.zhHk">繁體中文（香港）(Hong Kong Chinese)</li>
+                    <li data-i18n="support.faq.lang.item.es">Español (Spanish)</li>
+                    <li data-i18n="support.faq.lang.item.fr">Français (French)</li>
+                    <li data-i18n="support.faq.lang.item.de">Deutsch (German)</li>
+                    <li data-i18n="support.faq.lang.item.pt">Português (Portuguese)</li>
+                    <li data-i18n="support.faq.lang.item.ptBr">Português (Brasil) (Brazilian Portuguese)</li>
+                    <li data-i18n="support.faq.lang.item.ar">العربية (Arabic)</li>
+                    <li data-i18n="support.faq.lang.item.ja">日本語 (Japanese)</li>
+                    <li data-i18n="support.faq.lang.item.ko">한국어 (Korean)</li>
+                    <li data-i18n="support.faq.lang.item.ru">Русский (Russian)</li>
+                    <li data-i18n="support.faq.lang.item.it">Italiano (Italian)</li>
+                    <li data-i18n="support.faq.lang.item.nl">Nederlands (Dutch)</li>
+                    <li data-i18n="support.faq.lang.item.sv">Svenska (Swedish)</li>
+                    <li data-i18n="support.faq.lang.item.th">ไทย (Thai)</li>
+                    <li data-i18n="support.faq.lang.item.fil">Filipino</li>
+                    <li data-i18n="support.faq.lang.item.tr">Türkçe (Turkish)</li>
+                    <li data-i18n="support.faq.lang.item.id">Bahasa Indonesia (Indonesian)</li>
+                    <li data-i18n="support.faq.lang.item.vi">Tiếng Việt (Vietnamese)</li>
+                    <li data-i18n="support.faq.lang.item.hi">हिन्दी (Hindi)</li>
+                    <li data-i18n="support.faq.lang.item.ms">Bahasa Melayu (Malay)</li>
+                    <li data-i18n="support.faq.lang.item.uk">Українська (Ukrainian)</li>
                 </ul>
-                <p>
+                <p data-i18n="support.faq.lang.outro">
                     You can change the language in Settings → General → Language.
                 </p>
 
-                <h3>How do I change the theme?</h3>
-                <p>
+                <h3 data-i18n="support.faq.theme.q">How do I change the theme?</h3>
+                <p data-i18n="support.faq.theme.intro">
                     Go to Settings → General → Theme to choose from 10 available dark themes:
                 </p>
                 <ul>
-                    <li>Catppuccin Mocha (default)</li>
-                    <li>OLED Neon</li>
-                    <li>Dracula</li>
-                    <li>Nord</li>
-                    <li>Gruvbox</li>
-                    <li>Tokyo Night</li>
-                    <li>One Dark</li>
-                    <li>Monokai</li>
-                    <li>Rose Pine</li>
-                    <li>Kanagawa</li>
+                    <li data-i18n="support.faq.theme.item1">Catppuccin Mocha (default)</li>
+                    <li data-i18n="support.faq.theme.item2">OLED Neon</li>
+                    <li data-i18n="support.faq.theme.item3">Dracula</li>
+                    <li data-i18n="support.faq.theme.item4">Nord</li>
+                    <li data-i18n="support.faq.theme.item5">Gruvbox</li>
+                    <li data-i18n="support.faq.theme.item6">Tokyo Night</li>
+                    <li data-i18n="support.faq.theme.item7">One Dark</li>
+                    <li data-i18n="support.faq.theme.item8">Monokai</li>
+                    <li data-i18n="support.faq.theme.item9">Rose Pine</li>
+                    <li data-i18n="support.faq.theme.item10">Kanagawa</li>
                 </ul>
-                <p>
+                <p data-i18n="support.faq.theme.outro">
                     All themes are optimized for eye comfort during long gaming sessions.
                 </p>
 
-                <h3>My game crashes or doesn't load. What should I do?</h3>
-                <p>
+                <h3 data-i18n="support.faq.crash.q">My game crashes or doesn't load. What should I do?</h3>
+                <p data-i18n="support.faq.crash.intro">
                     If you encounter crashes or loading issues:
                 </p>
                 <ol>
-                    <li>Ensure your ROM is a supported dump: <code>.gba</code>, <code>.gbc</code>, or <code>.gb</code> (single extension in the filename)</li>
-                    <li>Try restarting the App</li>
-                    <li>Check that you have sufficient storage space</li>
-                    <li>Update to the latest version of GoGBA</li>
-                    <li>Contact support with details about the issue</li>
+                    <li data-i18n-html="support.faq.crash.item1">Ensure your ROM is a supported dump: <code>.gba</code>, <code>.gbc</code>, or <code>.gb</code> (single extension in the filename)</li>
+                    <li data-i18n="support.faq.crash.item2">Try restarting the App</li>
+                    <li data-i18n="support.faq.crash.item3">Check that you have sufficient storage space</li>
+                    <li data-i18n="support.faq.crash.item4">Update to the latest version of GoGBA</li>
+                    <li data-i18n="support.faq.crash.item5">Contact support with details about the issue</li>
                 </ol>
 
-                <h3>Can I play games in both portrait and landscape mode?</h3>
-                <p>
-                    Yes! GoGBA supports both portrait and landscape orientations. You can lock the 
-                    orientation in Settings → Display → Orientation, or toggle it while playing a game 
+                <h3 data-i18n="support.faq.orientation.q">Can I play games in both portrait and landscape mode?</h3>
+                <p data-i18n="support.faq.orientation.body">
+                    Yes! GoGBA supports both portrait and landscape orientations. You can lock the
+                    orientation in Settings → Display → Orientation, or toggle it while playing a game
                     through the in-game menu.
                 </p>
 
-                <h3>How do I clear the cover cache?</h3>
-                <p>
-                    To clear cached game covers, go to Settings → Data → Clear Cover Cache. This will 
+                <h3 data-i18n="support.faq.cache.q">How do I clear the cover cache?</h3>
+                <p data-i18n="support.faq.cache.body">
+                    To clear cached game covers, go to Settings → Data → Clear Cover Cache. This will
                     remove all downloaded cover images, and they will be re-downloaded when needed.
                 </p>
 
-                <h3>What is RetroAchievements?</h3>
-                <p>
-                    RetroAchievements is an achievement system for retro games. GoGBA integrates with 
+                <h3 data-i18n="support.faq.ra.q">What is RetroAchievements?</h3>
+                <p data-i18n="support.faq.ra.intro">
+                    RetroAchievements is an achievement system for retro games. GoGBA integrates with
                     RetroAchievements to provide:
                 </p>
                 <ul>
-                    <li>Achievement unlocking and tracking</li>
-                    <li>Leaderboards for competitive play</li>
-                    <li>Rich Presence (shows your game status to others)</li>
-                    <li>Hardcore mode (no save states, no rewinding)</li>
-                    <li>Encore mode (replay achievements)</li>
+                    <li data-i18n="support.faq.ra.item1">Achievement unlocking and tracking</li>
+                    <li data-i18n="support.faq.ra.item2">Leaderboards for competitive play</li>
+                    <li data-i18n="support.faq.ra.item3">Rich Presence (shows your game status to others)</li>
+                    <li data-i18n="support.faq.ra.item4">Hardcore mode (no save states, no rewinding)</li>
+                    <li data-i18n="support.faq.ra.item5">Encore mode (replay achievements)</li>
                 </ul>
-                <p>
-                    To use RetroAchievements, go to Settings → Achievements → RetroAchievements and 
-                    log in with your RetroAchievements account. You can create a free account at 
+                <p data-i18n-html="support.faq.ra.outro">
+                    To use RetroAchievements, go to Settings → Achievements → RetroAchievements and
+                    log in with your RetroAchievements account. You can create a free account at
                     <a href="https://retroachievements.org" target="_blank" rel="noopener noreferrer">retroachievements.org</a>.
                 </p>
 
-                <h3>How do I favorite a game?</h3>
-                <p>
-                    Long-press on any game in your library to open the context menu, then select 
-                    "Favorite" or "Unfavorite". Favorite games are displayed at the top of your library, 
+                <h3 data-i18n="support.faq.favorite.q">How do I favorite a game?</h3>
+                <p data-i18n="support.faq.favorite.body">
+                    Long-press on any game in your library to open the context menu, then select
+                    "Favorite" or "Unfavorite". Favorite games are displayed at the top of your library,
                     before recent games.
                 </p>
 
-                <h3>Can I import a BIOS file?</h3>
-                <p>
+                <h3 data-i18n="support.faq.bios.q">Can I import a BIOS file?</h3>
+                <p data-i18n="support.faq.bios.intro">
                     Yes! Importing a BIOS file can improve game compatibility. To import a BIOS:
                 </p>
                 <ol>
-                    <li>Go to Settings → Data → BIOS Management</li>
-                    <li>Tap "Import BIOS"</li>
-                    <li>Select your BIOS file (bios.bin)</li>
-                    <li>The BIOS will be stored in the app's support directory</li>
+                    <li data-i18n="support.faq.bios.item1">Go to Settings → Data → BIOS Management</li>
+                    <li data-i18n="support.faq.bios.item2">Tap "Import BIOS"</li>
+                    <li data-i18n="support.faq.bios.item3">Select your BIOS file (bios.bin)</li>
+                    <li data-i18n="support.faq.bios.item4">The BIOS will be stored in the app's support directory</li>
                 </ol>
-                <p>
+                <p data-i18n="support.faq.bios.outro">
                     Note: You must legally own the BIOS file. GoGBA does not provide BIOS files.
                 </p>
 
-                <h3>What video filters are available?</h3>
-                <p>
+                <h3 data-i18n="support.faq.filters.q">What video filters are available?</h3>
+                <p data-i18n="support.faq.filters.intro">
                     GoGBA supports multiple video rendering filters for authentic retro visuals:
                 </p>
                 <ul>
-                    <li><strong>LCD:</strong> Simulates LCD screen effect</li>
-                    <li><strong>Scanlines:</strong> Adds scanline effect for CRT-like appearance</li>
-                    <li><strong>Bilinear:</strong> Smooth scaling filter</li>
-                    <li><strong>HQ2x:</strong> High-quality 2x scaling filter</li>
+                    <li data-i18n-html="support.faq.filters.item1"><strong>LCD:</strong> Simulates LCD screen effect</li>
+                    <li data-i18n-html="support.faq.filters.item2"><strong>Scanlines:</strong> Adds scanline effect for CRT-like appearance</li>
+                    <li data-i18n-html="support.faq.filters.item3"><strong>Bilinear:</strong> Smooth scaling filter</li>
+                    <li data-i18n-html="support.faq.filters.item4"><strong>HQ2x:</strong> High-quality 2x scaling filter</li>
                 </ul>
-                <p>
-                    You can enable multiple filters simultaneously. Configure in Settings → Controls → 
+                <p data-i18n="support.faq.filters.outro">
+                    You can enable multiple filters simultaneously. Configure in Settings → Controls →
                     Video Render Filters.
                 </p>
 
-                <h2>Reporting Bugs</h2>
-                <p>
-                    If you encounter a bug, please email us at 
-                    <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a> with the following 
+                <h2 data-i18n="support.bugs.title">Reporting Bugs</h2>
+                <p data-i18n-html="support.bugs.intro">
+                    If you encounter a bug, please email us at
+                    <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a> with the following
                     information:
                 </p>
                 <ul>
-                    <li>Device model and operating system version</li>
-                    <li>GoGBA app version</li>
-                    <li>Steps to reproduce the issue</li>
-                    <li>Screenshots or error messages (if applicable)</li>
+                    <li data-i18n="support.bugs.item1">Device model and operating system version</li>
+                    <li data-i18n="support.bugs.item2">GoGBA app version</li>
+                    <li data-i18n="support.bugs.item3">Steps to reproduce the issue</li>
+                    <li data-i18n="support.bugs.item4">Screenshots or error messages (if applicable)</li>
                 </ul>
 
-                <h2>Feature Requests</h2>
-                <p>
-                    We welcome feature requests! Please email us at 
-                    <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a> with your suggestions. 
-                    While we can't guarantee that all requests will be implemented, we value your 
+                <h2 data-i18n="support.feature.title">Feature Requests</h2>
+                <p data-i18n-html="support.feature.body">
+                    We welcome feature requests! Please email us at
+                    <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a> with your suggestions.
+                    While we can't guarantee that all requests will be implemented, we value your
                     feedback and will consider it for future updates.
                 </p>
 
-                <h2>System Requirements</h2>
-                <h3>Android</h3>
+                <h2 data-i18n="support.sysreq.title">System Requirements</h2>
+                <h3 data-i18n="support.sysreq.android.title">Android</h3>
                 <ul>
-                    <li>Android 7.0+</li>
-                    <li>Sufficient storage space for games and saves</li>
+                    <li data-i18n="support.sysreq.android.item1">Android 7.0+</li>
+                    <li data-i18n="support.sysreq.android.item2">Sufficient storage space for games and saves</li>
                 </ul>
 
-                <h3>iOS</h3>
+                <h3 data-i18n="support.sysreq.ios.title">iOS</h3>
                 <ul>
-                    <li>iOS 15.0+</li>
-                    <li>Sufficient storage space for games and saves</li>
+                    <li data-i18n="support.sysreq.ios.item1">iOS 15.0+</li>
+                    <li data-i18n="support.sysreq.ios.item2">Sufficient storage space for games and saves</li>
                 </ul>
 
-                <h2>Additional Resources</h2>
+                <h2 data-i18n="support.resources.title">Additional Resources</h2>
                 <ul>
-                    <li><a href="about.html">About GoGBA</a></li>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    <li data-i18n-html="support.resources.about"><a href="about.html">About GoGBA</a></li>
+                    <li data-i18n-html="support.resources.privacy"><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li data-i18n-html="support.resources.terms"><a href="terms-of-service.html">Terms of Service</a></li>
                 </ul>
             </div>
         </div>
@@ -391,18 +404,19 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 GoGBA. All rights reserved.</p>
+            <p data-i18n="footer.rights">&copy; 2026 GoGBA. All rights reserved.</p>
             <ul class="footer-links">
-                <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                <li><a href="terms-of-service.html">Terms of Service</a></li>
-                <li><a href="license.html">License</a></li>
-                <li><a href="support.html">Support</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+                <li><a href="terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
+                <li><a href="license.html" data-i18n="nav.license">License</a></li>
+                <li><a href="support.html" data-i18n="nav.support">Support</a></li>
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
             </ul>
         </div>
     </footer>
 
     <script src="js/theme.js"></script>
+    <script src="js/i18n.js"></script>
     <script src="js/common.js"></script>
 </body>
 </html>
