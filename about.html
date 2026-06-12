@@ -10,6 +10,14 @@
             t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
           }
           document.documentElement.setAttribute('data-theme', t);
+          var L = localStorage.getItem('lang');
+          if (L !== 'en' && L !== 'zh-Hans' && L !== 'zh-Hant') {
+            var nl = (navigator.language || 'en').toLowerCase();
+            if (nl.indexOf('zh') === 0) {
+              L = (nl.indexOf('tw') > -1 || nl.indexOf('hk') > -1 || nl.indexOf('mo') > -1 || nl.indexOf('hant') > -1) ? 'zh-Hant' : 'zh-Hans';
+            } else { L = 'en'; }
+          }
+          document.documentElement.setAttribute('lang', L);
         } catch (e) {}
       })();
     </script>
@@ -75,14 +83,19 @@
                     <span></span>
                 </button>
                 <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html" class="active">About</a></li>
-                    <li><a href="support.html">Support</a></li>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                    <li><a href="terms-of-service.html">Terms of Service</a></li>
-                    <li><a href="license.html">License</a></li>
+                    <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                    <li><a href="about.html" class="active" data-i18n="nav.about">About</a></li>
+                    <li><a href="support.html" data-i18n="nav.support">Support</a></li>
+                    <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
+                    <li><a href="license.html" data-i18n="nav.license">License</a></li>
                     <li class="nav-controls">
                         <button class="theme-toggle" type="button" aria-label="Toggle theme"></button>
+                        <select class="lang-switch" aria-label="Language">
+                            <option value="en">EN</option>
+                            <option value="zh-Hans">简体中文</option>
+                            <option value="zh-Hant">繁體中文</option>
+                        </select>
                     </li>
                 </ul>
             </div>
@@ -92,207 +105,207 @@
     <main>
         <div class="container">
             <div class="content-page">
-                <h1>About GoGBA</h1>
+                <h1 data-i18n="about.title">About GoGBA</h1>
 
-                <h2>What is GoGBA?</h2>
-                <p>
+                <h2 data-i18n="about.what.title">What is GoGBA?</h2>
+                <p data-i18n-html="about.what.body">
                     GoGBA is a handheld game emulator for mobile devices: <strong>Game Boy Advance</strong>,
                     <strong>Game Boy Color</strong>, and <strong>Game Boy</strong> (using the libretro mGBA core).
                     Our goal is a quiet, reliable, and immersive experience for classic portable titles
                     (including fan favorites like Pokémon, Fire Emblem, and Golden Sun on GBA).
                 </p>
 
-                <h2>Our Philosophy</h2>
-                <p>
-                    GoGBA is built around a simple principle: <strong>quiet, reliable, immersive, and distraction-free</strong>. 
+                <h2 data-i18n="about.philosophy.title">Our Philosophy</h2>
+                <p data-i18n-html="about.philosophy.intro">
+                    GoGBA is built around a simple principle: <strong>quiet, reliable, immersive, and distraction-free</strong>.
                     We prioritize:
                 </p>
                 <ul>
-                    <li><strong>Quiet:</strong> No ads, no pop-ups, no distractions. Zero interruptions.</li>
-                    <li><strong>Reliable:</strong> Your saves are safe and never lost. Exit anytime without worry.</li>
-                    <li><strong>Immersive:</strong> Clean UI with transparent buttons, minimal animations, and optimized touch controls.</li>
-                    <li><strong>Comfortable:</strong> 10 dark themes designed for long gaming sessions with eye-friendly colors.</li>
-                    <li><strong>Focused:</strong> We focus on doing the essentials well, rather than overwhelming you with unnecessary options.</li>
+                    <li data-i18n-html="about.philosophy.quiet"><strong>Quiet:</strong> No ads, no pop-ups, no distractions. Zero interruptions.</li>
+                    <li data-i18n-html="about.philosophy.reliable"><strong>Reliable:</strong> Your saves are safe and never lost. Exit anytime without worry.</li>
+                    <li data-i18n-html="about.philosophy.immersive"><strong>Immersive:</strong> Clean UI with transparent buttons, minimal animations, and optimized touch controls.</li>
+                    <li data-i18n-html="about.philosophy.comfortable"><strong>Comfortable:</strong> 10 dark themes designed for long gaming sessions with eye-friendly colors.</li>
+                    <li data-i18n-html="about.philosophy.focused"><strong>Focused:</strong> We focus on doing the essentials well, rather than overwhelming you with unnecessary options.</li>
                 </ul>
-                <p>
+                <p data-i18n-html="about.philosophy.goal">
                     Our goal: <strong>Open and continue playing instantly. Play for long sessions without fatigue. Exit without worry.</strong>
                 </p>
 
-                <h2>Key Features</h2>
+                <h2 data-i18n="about.features.title">Key Features</h2>
                 <ul>
-                    <li>
-                        <strong>Seamless Experience:</strong> Open the app and continue playing instantly. 
+                    <li data-i18n-html="about.feature.seamless">
+                        <strong>Seamless Experience:</strong> Open the app and continue playing instantly.
                         Your progress is always saved. Recent games and favorites are prioritized.
                     </li>
-                    <li>
-                        <strong>Reliable Save System:</strong> Automatic battery-save writes every 30 seconds while playing, plus 
-                        saves on exit and when backgrounded. Atomic writes prevent data corruption. 
+                    <li data-i18n-html="about.feature.save">
+                        <strong>Reliable Save System:</strong> Automatic battery-save writes every 30 seconds while playing, plus
+                        saves on exit and when backgrounded. Atomic writes prevent data corruption.
                         Cross-core save compatibility and RTC (Real-Time Clock) support.
                     </li>
-                    <li>
-                        <strong>Dark Themes:</strong> 10 carefully designed dark themes (Catppuccin Mocha, 
-                        Dracula, Nord, Gruvbox, Tokyo Night, One Dark, Monokai, Rose Pine, Kanagawa, OLED Neon) 
+                    <li data-i18n-html="about.feature.themes">
+                        <strong>Dark Themes:</strong> 10 carefully designed dark themes (Catppuccin Mocha,
+                        Dracula, Nord, Gruvbox, Tokyo Night, One Dark, Monokai, Rose Pine, Kanagawa, OLED Neon)
                         optimized for eye comfort during long sessions.
                     </li>
-                    <li>
-                        <strong>Clean Interface:</strong> Minimal, distraction-free UI with transparent 
+                    <li data-i18n-html="about.feature.interface">
+                        <strong>Clean Interface:</strong> Minimal, distraction-free UI with transparent
                         virtual buttons (10%-100% opacity adjustable). No UI noise, no distractions.
                     </li>
-                    <li>
-                        <strong>Optimized Touch Controls:</strong> Normal mode (standard GBA layout) and 
-                        Arcade mode (LRAB four-directional buttons). Haptic feedback with adjustable strength. 
+                    <li data-i18n-html="about.feature.touch">
+                        <strong>Optimized Touch Controls:</strong> Normal mode (standard GBA layout) and
+                        Arcade mode (LRAB four-directional buttons). Haptic feedback with adjustable strength.
                         Directional stick optimization for smooth control.
                     </li>
-                    <li>
-                        <strong>Gamepad Support:</strong> Full controller support with customizable button 
-                        mapping. Option to hide virtual buttons when gamepad is connected. Works on both 
+                    <li data-i18n-html="about.feature.gamepad">
+                        <strong>Gamepad Support:</strong> Full controller support with customizable button
+                        mapping. Option to hide virtual buttons when gamepad is connected. Works on both
                         Android and iOS.
                     </li>
-                    <li>
-                        <strong>RetroAchievements Integration:</strong> Unlock achievements, track progress, 
-                        compete on leaderboards. Rich Presence support shows your game status. Hardcore and 
+                    <li data-i18n-html="about.feature.ra">
+                        <strong>RetroAchievements Integration:</strong> Unlock achievements, track progress,
+                        compete on leaderboards. Rich Presence support shows your game status. Hardcore and
                         Encore modes available.
                     </li>
-                    <li>
-                        <strong>Flexible Layout:</strong> Portrait or landscape mode with orientation locking. 
+                    <li data-i18n-html="about.feature.layout">
+                        <strong>Flexible Layout:</strong> Portrait or landscape mode with orientation locking.
                         No unwanted screen rotation during gameplay.
                     </li>
-                    <li>
-                        <strong>Speed Control:</strong> Adjust game speed from 1x to 3x. Optional audio muting 
+                    <li data-i18n-html="about.feature.speed">
+                        <strong>Speed Control:</strong> Adjust game speed from 1x to 3x. Optional audio muting
                         during speed-up for focused gameplay.
                     </li>
-                    <li>
-                        <strong>Video Rendering Filters:</strong> LCD, scanlines, bilinear, and HQ2x filters 
+                    <li data-i18n-html="about.feature.filters">
+                        <strong>Video Rendering Filters:</strong> LCD, scanlines, bilinear, and HQ2x filters
                         for authentic retro visuals.
                     </li>
-                    <li>
-                        <strong>Game Library Management:</strong> Auto-scan game directory, favorite games, 
-                        search functionality, list/grid view toggle. Support for external app file opening 
+                    <li data-i18n-html="about.feature.library">
+                        <strong>Game Library Management:</strong> Auto-scan game directory, favorite games,
+                        search functionality, list/grid view toggle. Support for external app file opening
                         (<code>.gba</code>, <code>.gbc</code>, <code>.gb</code>, and <code>.zip</code>).
                     </li>
-                    <li>
+                    <li data-i18n-html="about.feature.bios">
                         <strong>BIOS Management:</strong> Optional BIOS file import for enhanced game compatibility.
                     </li>
-                    <li>
-                        <strong>Multi-language:</strong> Support for 24 languages including English, Chinese 
-                        (Simplified/Traditional/Hong Kong), Japanese, Korean, Spanish, French, German, Portuguese, 
-                        Arabic, Russian, Italian, Dutch, Swedish, Thai, Filipino, Turkish, Indonesian, Vietnamese, 
+                    <li data-i18n-html="about.feature.lang">
+                        <strong>Multi-language:</strong> Support for 24 languages including English, Chinese
+                        (Simplified/Traditional/Hong Kong), Japanese, Korean, Spanish, French, German, Portuguese,
+                        Arabic, Russian, Italian, Dutch, Swedish, Thai, Filipino, Turkish, Indonesian, Vietnamese,
                         Hindi, Malay, and Ukrainian.
                     </li>
-                    <li>
-                        <strong>Custom Covers:</strong> Search and select game covers from the libretro database. 
+                    <li data-i18n-html="about.feature.covers">
+                        <strong>Custom Covers:</strong> Search and select game covers from the libretro database.
                         Automatic cover matching via SHA1/MD5 hash.
                     </li>
-                    <li>
-                        <strong>Premium & Cloud Save:</strong> Optional in-app purchase unlocks Cloud Save, 
-                        syncing your game progress across devices via Google Drive (Android/cross-platform) 
+                    <li data-i18n-html="about.feature.premium">
+                        <strong>Premium & Cloud Save:</strong> Optional in-app purchase unlocks Cloud Save,
+                        syncing your game progress across devices via Google Drive (Android/cross-platform)
                         or iCloud (iOS). Optional auto-sync keeps saves up to date during gameplay.
                     </li>
                 </ul>
 
-                <h2>Technical Details</h2>
-                <h3>Platform Support</h3>
+                <h2 data-i18n="about.tech.title">Technical Details</h2>
+                <h3 data-i18n="about.tech.platform.title">Platform Support</h3>
                 <ul>
-                    <li><strong>Android:</strong> Android 7.0+</li>
-                    <li><strong>iOS:</strong> iOS 15.0+</li>
+                    <li data-i18n-html="about.tech.platform.android"><strong>Android:</strong> Android 7.0+</li>
+                    <li data-i18n-html="about.tech.platform.ios"><strong>iOS:</strong> iOS 15.0+</li>
                 </ul>
 
-                <h3>Core Technology</h3>
-                <p>GoGBA uses:</p>
+                <h3 data-i18n="about.tech.core.title">Core Technology</h3>
+                <p data-i18n="about.tech.core.intro">GoGBA uses:</p>
                 <ul>
-                    <li>
-                        <strong>libretro mGBA core:</strong> High-performance emulation for GBA, GBC, and GB, based on 
+                    <li data-i18n-html="about.tech.core.mgba">
+                        <strong>libretro mGBA core:</strong> High-performance emulation for GBA, GBC, and GB, based on
                         mGBA, adapted for libretro with native integration for optimal performance
                     </li>
-                    <li>
-                        <strong>RCheevos:</strong> RetroAchievements integration library for achievement 
+                    <li data-i18n-html="about.tech.core.rcheevos">
+                        <strong>RCheevos:</strong> RetroAchievements integration library for achievement
                         tracking and leaderboards
                     </li>
-                    <li>
-                        <strong>Flutter 3.x:</strong> Cross-platform UI framework for consistent experience 
+                    <li data-i18n-html="about.tech.core.flutter">
+                        <strong>Flutter 3.x:</strong> Cross-platform UI framework for consistent experience
                         across Android and iOS
                     </li>
-                    <li>
+                    <li data-i18n-html="about.tech.core.riverpod">
                         <strong>Riverpod 3.x:</strong> State management for reliable app behavior
                     </li>
-                    <li>
+                    <li data-i18n-html="about.tech.core.router">
                         <strong>go_router 17.x:</strong> Declarative routing for smooth navigation
                     </li>
-                    <li>
-                        <strong>Firebase:</strong> Analytics, Crashlytics, and Remote Config (including 
-                        parameters such as optional AI Screen Translation usage limits) for monitoring, 
+                    <li data-i18n-html="about.tech.core.firebase">
+                        <strong>Firebase:</strong> Analytics, Crashlytics, and Remote Config (including
+                        parameters such as optional AI Screen Translation usage limits) for monitoring,
                         stability, and operational configuration
                     </li>
                 </ul>
 
-                <h3>Performance Optimizations</h3>
+                <h3 data-i18n="about.tech.perf.title">Performance Optimizations</h3>
                 <ul>
-                    <li>60 FPS frame rate control with fixed timestep game loop for smooth, consistent gameplay</li>
-                    <li>Refresh rate control on Android (automatically set to 60Hz during gameplay)</li>
-                    <li>Efficient rendering with stream-based game screen updates</li>
-                    <li>Cover image caching for faster library loading</li>
-                    <li>Native libretro integration for optimal performance on both platforms</li>
-                    <li>Memory-efficient architecture designed for long gaming sessions</li>
+                    <li data-i18n="about.tech.perf.fps">60 FPS frame rate control with fixed timestep game loop for smooth, consistent gameplay</li>
+                    <li data-i18n="about.tech.perf.refresh">Refresh rate control on Android (automatically set to 60Hz during gameplay)</li>
+                    <li data-i18n="about.tech.perf.render">Efficient rendering with stream-based game screen updates</li>
+                    <li data-i18n="about.tech.perf.cache">Cover image caching for faster library loading</li>
+                    <li data-i18n="about.tech.perf.native">Native libretro integration for optimal performance on both platforms</li>
+                    <li data-i18n="about.tech.perf.memory">Memory-efficient architecture designed for long gaming sessions</li>
                 </ul>
 
-                <h2>Privacy & Data</h2>
-                <p>
+                <h2 data-i18n="about.privacy.title">Privacy &amp; Data</h2>
+                <p data-i18n="about.privacy.intro">
                     GoGBA is designed with privacy in mind:
                 </p>
                 <ul>
-                    <li>Core features store all data locally—no account required</li>
-                    <li>No data collection or tracking</li>
-                    <li>Optional Cloud Save requires a Google or Apple account to sync saves across devices</li>
-                    <li>Optional Premium upgrade (in-app purchase) unlocks Cloud Save on iOS and Android</li>
-                    <li>Optional AI Screen Translation (subscription) sends captured game screen images to Google's AI when you use the feature; usage may be capped (limits can be updated via Firebase Remote Config)—see our <a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li data-i18n="about.privacy.local">Core features store all data locally—no account required</li>
+                    <li data-i18n="about.privacy.notrack">No data collection or tracking</li>
+                    <li data-i18n="about.privacy.cloud">Optional Cloud Save requires a Google or Apple account to sync saves across devices</li>
+                    <li data-i18n="about.privacy.premium">Optional Premium upgrade (in-app purchase) unlocks Cloud Save on iOS and Android</li>
+                    <li data-i18n-html="about.privacy.ai">Optional AI Screen Translation (subscription) sends captured game screen images to Google's AI when you use the feature; usage may be capped (limits can be updated via Firebase Remote Config)—see our <a href="privacy-policy.html">Privacy Policy</a></li>
                 </ul>
-                <p>
+                <p data-i18n-html="about.privacy.more">
                     For more information, see our <a href="privacy-policy.html">Privacy Policy</a>.
                 </p>
 
-                <h2>Legal Notice</h2>
-                <p>
-                    GoGBA is an emulation tool. You are responsible for ensuring you have the legal 
-                    right to use any ROM files you load into the app. We do not provide, distribute, 
+                <h2 data-i18n="about.legal.title">Legal Notice</h2>
+                <p data-i18n="about.legal.body">
+                    GoGBA is an emulation tool. You are responsible for ensuring you have the legal
+                    right to use any ROM files you load into the app. We do not provide, distribute,
                     or facilitate access to ROM files. Please only use ROM files for games you legally own.
                 </p>
-                <p>
+                <p data-i18n-html="about.legal.more">
                     For more information, see our <a href="terms-of-service.html">Terms of Service</a>.
                 </p>
 
-                <h2>Contact</h2>
-                <p>
+                <h2 data-i18n="about.contact.title">Contact</h2>
+                <p data-i18n="about.contact.intro">
                     For questions, feedback, or support, please contact us:
                 </p>
-                <p>
+                <p data-i18n-html="about.contact.email">
                     <strong>Email:</strong> <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a>
                 </p>
-                <p>
-                    Visit our <a href="support.html">Support page</a> for frequently asked questions 
+                <p data-i18n-html="about.contact.support">
+                    Visit our <a href="support.html">Support page</a> for frequently asked questions
                     and troubleshooting help.
                 </p>
 
-                <h2>Product Maturity</h2>
-                <p>
+                <h2 data-i18n="about.maturity.title">Product Maturity</h2>
+                <p data-i18n="about.maturity.intro">
                     GoGBA has reached production-ready status with complete core functionality:
                 </p>
                 <ul>
-                    <li>Complete handheld emulation (GBA, GBC, GB) with the libretro mGBA core</li>
-                    <li>Dual platform support (Android + iOS) with native integration</li>
-                    <li>Reliable save system with automatic saves and atomic writes</li>
-                    <li>Game library management with auto-scan, favorites, search, and list/grid views</li>
-                    <li>Virtual button controls with Normal/Arcade modes and haptic feedback</li>
-                    <li>Full gamepad support with customizable button mapping</li>
-                    <li>RetroAchievements integration with achievements, leaderboards, and Rich Presence</li>
-                    <li>Multi-language support (24 languages, including App Store metadata)</li>
-                    <li>10 dark themes optimized for long sessions</li>
-                    <li>Game cover search and automatic matching</li>
-                    <li>Video rendering filters (LCD, scanlines, bilinear, HQ2x)</li>
-                    <li>BIOS management for enhanced compatibility</li>
-                    <li>Premium in-app purchase with Cloud Save (Google Drive / iCloud)</li>
-                    <li>Performance optimizations for smooth 60 FPS gameplay</li>
-                    <li>Automated deployment infrastructure (Fastlane)</li>
-                    <li>Monitoring and analytics (Firebase Analytics + Crashlytics)</li>
+                    <li data-i18n="about.maturity.emulation">Complete handheld emulation (GBA, GBC, GB) with the libretro mGBA core</li>
+                    <li data-i18n="about.maturity.platform">Dual platform support (Android + iOS) with native integration</li>
+                    <li data-i18n="about.maturity.save">Reliable save system with automatic saves and atomic writes</li>
+                    <li data-i18n="about.maturity.library">Game library management with auto-scan, favorites, search, and list/grid views</li>
+                    <li data-i18n="about.maturity.controls">Virtual button controls with Normal/Arcade modes and haptic feedback</li>
+                    <li data-i18n="about.maturity.gamepad">Full gamepad support with customizable button mapping</li>
+                    <li data-i18n="about.maturity.ra">RetroAchievements integration with achievements, leaderboards, and Rich Presence</li>
+                    <li data-i18n="about.maturity.lang">Multi-language support (24 languages, including App Store metadata)</li>
+                    <li data-i18n="about.maturity.themes">10 dark themes optimized for long sessions</li>
+                    <li data-i18n="about.maturity.covers">Game cover search and automatic matching</li>
+                    <li data-i18n="about.maturity.filters">Video rendering filters (LCD, scanlines, bilinear, HQ2x)</li>
+                    <li data-i18n="about.maturity.bios">BIOS management for enhanced compatibility</li>
+                    <li data-i18n="about.maturity.premium">Premium in-app purchase with Cloud Save (Google Drive / iCloud)</li>
+                    <li data-i18n="about.maturity.perf">Performance optimizations for smooth 60 FPS gameplay</li>
+                    <li data-i18n="about.maturity.deploy">Automated deployment infrastructure (Fastlane)</li>
+                    <li data-i18n="about.maturity.monitor">Monitoring and analytics (Firebase Analytics + Crashlytics)</li>
                 </ul>
             </div>
         </div>
@@ -300,18 +313,19 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 GoGBA. All rights reserved.</p>
+            <p data-i18n="footer.rights">&copy; 2026 GoGBA. All rights reserved.</p>
             <ul class="footer-links">
-                <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                <li><a href="terms-of-service.html">Terms of Service</a></li>
-                <li><a href="license.html">License</a></li>
-                <li><a href="support.html">Support</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+                <li><a href="terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
+                <li><a href="license.html" data-i18n="nav.license">License</a></li>
+                <li><a href="support.html" data-i18n="nav.support">Support</a></li>
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
             </ul>
         </div>
     </footer>
 
     <script src="js/theme.js"></script>
+    <script src="js/i18n.js"></script>
     <script src="js/common.js"></script>
 </body>
 </html>
