@@ -1530,3 +1530,17 @@ footer .container {
     border-color: var(--accent);
 }
 
+
+.lang-switch {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 0.35rem 0.5rem;
+    transition: border-color 0.2s ease;
+}
+
+.lang-switch:hover { border-color: var(--accent); }
+.lang-switch option { color: #1a1a1a; }

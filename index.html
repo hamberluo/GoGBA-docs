@@ -10,6 +10,14 @@
             t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
           }
           document.documentElement.setAttribute('data-theme', t);
+          var L = localStorage.getItem('lang');
+          if (L !== 'en' && L !== 'zh-Hans' && L !== 'zh-Hant') {
+            var nl = (navigator.language || 'en').toLowerCase();
+            if (nl.indexOf('zh') === 0) {
+              L = (nl.indexOf('tw') > -1 || nl.indexOf('hk') > -1 || nl.indexOf('mo') > -1 || nl.indexOf('hant') > -1) ? 'zh-Hant' : 'zh-Hans';
+            } else { L = 'en'; }
+          }
+          document.documentElement.setAttribute('lang', L);
         } catch (e) {}
       })();
     </script>
@@ -135,14 +143,19 @@
                     <span></span>
                 </button>
                 <ul class="nav-menu">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="support.html">Support</a></li>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                    <li><a href="terms-of-service.html">Terms of Service</a></li>
-                    <li><a href="license.html">License</a></li>
+                    <li><a href="index.html" class="active" data-i18n="nav.home">Home</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                    <li><a href="support.html" data-i18n="nav.support">Support</a></li>
+                    <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
+                    <li><a href="license.html" data-i18n="nav.license">License</a></li>
                     <li class="nav-controls">
                         <button class="theme-toggle" type="button" aria-label="Toggle theme"></button>
+                        <select class="lang-switch" aria-label="Language">
+                            <option value="en">EN</option>
+                            <option value="zh-Hans">简体中文</option>
+                            <option value="zh-Hant">繁體中文</option>
+                        </select>
                     </li>
                 </ul>
             </div>
@@ -155,8 +168,8 @@
                 <div class="hero-content">
                     <!-- Introduction Text -->
                     <div class="hero-text">
-                        <p class="hero-subtitle">A quiet, reliable, and immersive handheld emulator</p>
-                        <p class="hero-description">Play Game Boy Advance, Game Boy Color, and Game Boy classics with optimized touch controls, seamless saves, RetroAchievements integration, and full gamepad support.</p>
+                        <p class="hero-subtitle" data-i18n="home.hero.subtitle">A quiet, reliable, and immersive handheld emulator</p>
+                        <p class="hero-description" data-i18n="home.hero.description">Play Game Boy Advance, Game Boy Color, and Game Boy classics with optimized touch controls, seamless saves, RetroAchievements integration, and full gamepad support.</p>
                     </div>
                     
                     <!-- Download Section -->
@@ -178,31 +191,31 @@
 
         <section class="features">
             <div class="container">
-                <h2>Key Features</h2>
+                <h2 data-i18n="home.features.title">Key Features</h2>
                 <div class="feature-grid">
                     <div class="feature-card">
-                        <h3>Seamless Experience</h3>
-                        <p>Open and continue playing instantly. Your saves are always safe.</p>
+                        <h3 data-i18n="home.feature.seamless.title">Seamless Experience</h3>
+                        <p data-i18n="home.feature.seamless.desc">Open and continue playing instantly. Your saves are always safe.</p>
                     </div>
                     <div class="feature-card">
-                        <h3>Reliable Save System</h3>
-                        <p>Automatic battery-save writes every 30 seconds while you play, plus saves on exit and when backgrounded.</p>
+                        <h3 data-i18n="home.feature.save.title">Reliable Save System</h3>
+                        <p data-i18n="home.feature.save.desc">Automatic battery-save writes every 30 seconds while you play, plus saves on exit and when backgrounded.</p>
                     </div>
                     <div class="feature-card">
-                        <h3>Optimized Touch Controls</h3>
-                        <p>Normal and Arcade control modes with haptic feedback.</p>
+                        <h3 data-i18n="home.feature.touch.title">Optimized Touch Controls</h3>
+                        <p data-i18n="home.feature.touch.desc">Normal and Arcade control modes with haptic feedback.</p>
                     </div>
                     <div class="feature-card">
-                        <h3>Gamepad Support</h3>
-                        <p>Full controller support with customizable button mapping.</p>
+                        <h3 data-i18n="home.feature.gamepad.title">Gamepad Support</h3>
+                        <p data-i18n="home.feature.gamepad.desc">Full controller support with customizable button mapping.</p>
                     </div>
                     <div class="feature-card">
-                        <h3>RetroAchievements</h3>
-                        <p>Unlock achievements and compete on leaderboards.</p>
+                        <h3 data-i18n="home.feature.ra.title">RetroAchievements</h3>
+                        <p data-i18n="home.feature.ra.desc">Unlock achievements and compete on leaderboards.</p>
                     </div>
                     <div class="feature-card">
-                        <h3>Dark Themes</h3>
-                        <p>10 carefully designed dark themes for eye comfort.</p>
+                        <h3 data-i18n="home.feature.themes.title">Dark Themes</h3>
+                        <p data-i18n="home.feature.themes.desc">10 carefully designed dark themes for eye comfort.</p>
                     </div>
                 </div>
             </div>
@@ -210,12 +223,12 @@
 
         <section class="demo-games">
             <div class="container">
-                <h2>Demo Games</h2>
+                <h2 data-i18n="home.demo.title">Demo Games</h2>
                 <div class="demo-game-card" style="max-width: 800px; margin: 2rem auto; padding: 2rem; background-color: var(--bg-secondary); border-radius: 12px; border: 1px solid var(--border-color);">
-                    <h3 style="margin-top: 0;">A Rushed Hack Job</h3>
-                    <p>A GBA-format homebrew demo ROM to try GoGBA (also supports GBC and GB titles).</p>
+                    <h3 style="margin-top: 0;" data-i18n="home.demo.name">A Rushed Hack Job</h3>
+                    <p data-i18n="home.demo.desc">A GBA-format homebrew demo ROM to try GoGBA (also supports GBC and GB titles).</p>
                     <div style="margin: 1.5rem 0;">
-                        <a href="demos/ARushedHackJob_jam.gba" download="ARushedHackJob_jam.gba" class="btn" style="display: inline-block; margin-right: 1rem;">Download Demo Game</a>
+                        <a href="demos/ARushedHackJob_jam.gba" download="ARushedHackJob_jam.gba" class="btn" style="display: inline-block; margin-right: 1rem;" data-i18n="home.demo.download">Download Demo Game</a>
                     </div>
                     <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
                         <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text-secondary);">
@@ -229,13 +242,13 @@
 
         <section class="contact">
             <div class="container">
-                <h2>Contact & Support</h2>
+                <h2 data-i18n="home.contact.title">Contact & Support</h2>
                 <p>
                     <a href="https://discord.gg/J9M455r4hC" target="_blank" rel="noopener noreferrer" class="btn btn-discord">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink: 0;">
                             <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
                         </svg>
-                        <span>Join Discord</span>
+                        <span data-i18n="home.contact.discord">Join Discord</span>
                     </a>
                 </p>
             </div>
@@ -244,13 +257,13 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 GoGBA. All rights reserved.</p>
+            <p data-i18n="footer.rights">&copy; 2026 GoGBA. All rights reserved.</p>
             <ul class="footer-links">
-                <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                <li><a href="terms-of-service.html">Terms of Service</a></li>
-                <li><a href="license.html">License</a></li>
-                <li><a href="support.html">Support</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+                <li><a href="terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
+                <li><a href="license.html" data-i18n="nav.license">License</a></li>
+                <li><a href="support.html" data-i18n="nav.support">Support</a></li>
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
             </ul>
             <div class="footer-friends">
                 <span class="friends-label">Friends:</span>
@@ -383,6 +396,7 @@
         });
     </script>
     <script src="js/theme.js"></script>
+    <script src="js/i18n.js"></script>
     <script src="js/common.js"></script>
 </body>
 </html>

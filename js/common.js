@@ -186,6 +186,7 @@ async function detectIPLocation() {
 // Initialize when DOM is ready
 function init() {
     if (window.GoGBATheme) window.GoGBATheme.init();
+    if (window.GoGBAI18n) window.GoGBAI18n.init();
     initMobileMenu();
     initHeaderScroll();
     // Show platform-specific download cards on mobile
