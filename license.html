@@ -10,6 +10,14 @@
             t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
           }
           document.documentElement.setAttribute('data-theme', t);
+          var L = localStorage.getItem('lang');
+          if (L !== 'en' && L !== 'zh-Hans' && L !== 'zh-Hant') {
+            var nl = (navigator.language || 'en').toLowerCase();
+            if (nl.indexOf('zh') === 0) {
+              L = (nl.indexOf('tw') > -1 || nl.indexOf('hk') > -1 || nl.indexOf('mo') > -1 || nl.indexOf('hant') > -1) ? 'zh-Hant' : 'zh-Hans';
+            } else { L = 'en'; }
+          }
+          document.documentElement.setAttribute('lang', L);
         } catch (e) {}
       })();
     </script>
@@ -69,14 +77,19 @@
                     <span></span>
                 </button>
                 <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="support.html">Support</a></li>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                    <li><a href="terms-of-service.html">Terms of Service</a></li>
-                    <li><a href="license.html" class="active">License</a></li>
+                    <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                    <li><a href="support.html" data-i18n="nav.support">Support</a></li>
+                    <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
+                    <li><a href="license.html" class="active" data-i18n="nav.license">License</a></li>
                     <li class="nav-controls">
                         <button class="theme-toggle" type="button" aria-label="Toggle theme"></button>
+                        <select class="lang-switch" aria-label="Language">
+                            <option value="en">EN</option>
+                            <option value="zh-Hans">简体中文</option>
+                            <option value="zh-Hant">繁體中文</option>
+                        </select>
                     </li>
                 </ul>
             </div>
@@ -86,138 +99,138 @@
     <main>
         <div class="container">
             <div class="content-page">
-                <h1>Open Source Licenses</h1>
+                <h1 data-i18n="license.title">Open Source Licenses</h1>
 
-                <p>
+                <p data-i18n="license.intro">
                     GoGBA uses several open-source components. This page lists the same core libraries
                     and main dependencies shown in the app (Settings → License). Transitive packages
                     are omitted here for clarity.
                 </p>
 
-                <h2>Core Libraries</h2>
+                <h2 data-i18n="license.core.title">Core Libraries</h2>
 
                 <div style="margin-bottom: 2rem;">
                     <h3>libretro mGBA Core</h3>
                     <p>
-                        <strong>License:</strong> MPL-2.0
+                        <strong data-i18n="license.label.license">License:</strong> MPL-2.0
                     </p>
                     <p>
-                        <strong>Description:</strong> High-performance emulation for Game Boy Advance, Game Boy Color, and Game Boy, based on mGBA and adapted for libretro with native integration for optimal performance.
+                        <strong data-i18n="license.label.description">Description:</strong> <span data-i18n="license.mgba.desc">High-performance emulation for Game Boy Advance, Game Boy Color, and Game Boy, based on mGBA and adapted for libretro with native integration for optimal performance.</span>
                     </p>
                     <p>
-                        <strong>Source:</strong> <a href="https://github.com/hamberluo/libretro-mgba" target="_blank" rel="noopener noreferrer">https://github.com/hamberluo/libretro-mgba</a>
+                        <strong data-i18n="license.label.source">Source:</strong> <a href="https://github.com/hamberluo/libretro-mgba" target="_blank" rel="noopener noreferrer">https://github.com/hamberluo/libretro-mgba</a>
                     </p>
                 </div>
 
                 <div style="margin-bottom: 2rem;">
                     <h3>RCheevos</h3>
                     <p>
-                        <strong>License:</strong> MIT
+                        <strong data-i18n="license.label.license">License:</strong> MIT
                     </p>
                     <p>
-                        <strong>Description:</strong> RetroAchievements library for achievement support,
-                        leaderboards, and Rich Presence.
+                        <strong data-i18n="license.label.description">Description:</strong> <span data-i18n="license.rcheevos.desc">RetroAchievements library for achievement support,
+                        leaderboards, and Rich Presence.</span>
                     </p>
                     <p>
-                        <strong>Source:</strong> <a href="https://github.com/RetroAchievements/rcheevos" target="_blank" rel="noopener noreferrer">https://github.com/RetroAchievements/rcheevos</a>
+                        <strong data-i18n="license.label.source">Source:</strong> <a href="https://github.com/RetroAchievements/rcheevos" target="_blank" rel="noopener noreferrer">https://github.com/RetroAchievements/rcheevos</a>
                     </p>
                 </div>
 
-                <h2>Main Dependencies</h2>
+                <h2 data-i18n="license.deps.title">Main Dependencies</h2>
 
                 <div style="margin-bottom: 1.5rem;">
                     <h3>Flutter</h3>
                     <p>
-                        <strong>License:</strong> BSD-3-Clause
+                        <strong data-i18n="license.label.license">License:</strong> BSD-3-Clause
                     </p>
                     <p>
-                        <strong>Description:</strong> UI toolkit for building natively compiled applications.
+                        <strong data-i18n="license.label.description">Description:</strong> <span data-i18n="license.flutter.desc">UI toolkit for building natively compiled applications.</span>
                     </p>
                     <p>
-                        <strong>Source:</strong> <a href="https://flutter.dev" target="_blank" rel="noopener noreferrer">https://flutter.dev</a>
+                        <strong data-i18n="license.label.source">Source:</strong> <a href="https://flutter.dev" target="_blank" rel="noopener noreferrer">https://flutter.dev</a>
                     </p>
                 </div>
 
                 <div style="margin-bottom: 1.5rem;">
                     <h3>Riverpod</h3>
                     <p>
-                        <strong>License:</strong> MIT
+                        <strong data-i18n="license.label.license">License:</strong> MIT
                     </p>
                     <p>
-                        <strong>Description:</strong> State management (flutter_riverpod).
+                        <strong data-i18n="license.label.description">Description:</strong> <span data-i18n="license.riverpod.desc">State management (flutter_riverpod).</span>
                     </p>
                     <p>
-                        <strong>Source:</strong> <a href="https://riverpod.dev" target="_blank" rel="noopener noreferrer">https://riverpod.dev</a>
+                        <strong data-i18n="license.label.source">Source:</strong> <a href="https://riverpod.dev" target="_blank" rel="noopener noreferrer">https://riverpod.dev</a>
                     </p>
                 </div>
 
                 <div style="margin-bottom: 1.5rem;">
                     <h3>GoRouter</h3>
                     <p>
-                        <strong>License:</strong> BSD-3-Clause
+                        <strong data-i18n="license.label.license">License:</strong> BSD-3-Clause
                     </p>
                     <p>
-                        <strong>Description:</strong> Declarative routing for Flutter.
+                        <strong data-i18n="license.label.description">Description:</strong> <span data-i18n="license.gorouter.desc">Declarative routing for Flutter.</span>
                     </p>
                     <p>
-                        <strong>Source:</strong> <a href="https://pub.dev/packages/go_router" target="_blank" rel="noopener noreferrer">https://pub.dev/packages/go_router</a>
+                        <strong data-i18n="license.label.source">Source:</strong> <a href="https://pub.dev/packages/go_router" target="_blank" rel="noopener noreferrer">https://pub.dev/packages/go_router</a>
                     </p>
                 </div>
 
                 <div style="margin-bottom: 1.5rem;">
                     <h3>Slang</h3>
                     <p>
-                        <strong>License:</strong> MIT
+                        <strong data-i18n="license.label.license">License:</strong> MIT
                     </p>
                     <p>
-                        <strong>Description:</strong> Internationalization and localization (slang, slang_flutter).
+                        <strong data-i18n="license.label.description">Description:</strong> <span data-i18n="license.slang.desc">Internationalization and localization (slang, slang_flutter).</span>
                     </p>
                     <p>
-                        <strong>Source:</strong> <a href="https://pub.dev/packages/slang" target="_blank" rel="noopener noreferrer">https://pub.dev/packages/slang</a>
+                        <strong data-i18n="license.label.source">Source:</strong> <a href="https://pub.dev/packages/slang" target="_blank" rel="noopener noreferrer">https://pub.dev/packages/slang</a>
                     </p>
                 </div>
 
                 <div style="margin-bottom: 1.5rem;">
                     <h3>Fusion Pixel Font</h3>
                     <p>
-                        <strong>License:</strong> OFL-1.1
+                        <strong data-i18n="license.label.license">License:</strong> OFL-1.1
                     </p>
                     <p>
-                        <strong>Description:</strong> Open-source Pan-CJK pixel font used for the Premium Fusion Pixel style.
+                        <strong data-i18n="license.label.description">Description:</strong> <span data-i18n="license.fusion.desc">Open-source Pan-CJK pixel font used for the Premium Fusion Pixel style.</span>
                     </p>
                     <p>
-                        <strong>Source:</strong> <a href="https://github.com/TakWolf/fusion-pixel-font" target="_blank" rel="noopener noreferrer">https://github.com/TakWolf/fusion-pixel-font</a>
+                        <strong data-i18n="license.label.source">Source:</strong> <a href="https://github.com/TakWolf/fusion-pixel-font" target="_blank" rel="noopener noreferrer">https://github.com/TakWolf/fusion-pixel-font</a>
                     </p>
                 </div>
 
                 <div style="margin-bottom: 1.5rem;">
                     <h3>File Picker</h3>
                     <p>
-                        <strong>License:</strong> MIT
+                        <strong data-i18n="license.label.license">License:</strong> MIT
                     </p>
                     <p>
-                        <strong>Description:</strong> Plugin for picking files and folders.
+                        <strong data-i18n="license.label.description">Description:</strong> <span data-i18n="license.filepicker.desc">Plugin for picking files and folders.</span>
                     </p>
                     <p>
-                        <strong>Source:</strong> <a href="https://pub.dev/packages/file_picker" target="_blank" rel="noopener noreferrer">https://pub.dev/packages/file_picker</a>
+                        <strong data-i18n="license.label.source">Source:</strong> <a href="https://pub.dev/packages/file_picker" target="_blank" rel="noopener noreferrer">https://pub.dev/packages/file_picker</a>
                     </p>
                 </div>
 
                 <div style="margin-bottom: 1.5rem;">
                     <h3>Firebase</h3>
                     <p>
-                        <strong>License:</strong> Apache-2.0
+                        <strong data-i18n="license.label.license">License:</strong> Apache-2.0
                     </p>
                     <p>
-                        <strong>Description:</strong> Analytics, Crashlytics, Remote Config, and related plugins.
+                        <strong data-i18n="license.label.description">Description:</strong> <span data-i18n="license.firebase.desc">Analytics, Crashlytics, Remote Config, and related plugins.</span>
                     </p>
                     <p>
-                        <strong>Source:</strong> <a href="https://firebase.google.com/docs/flutter/setup" target="_blank" rel="noopener noreferrer">https://firebase.google.com/docs/flutter/setup</a>
+                        <strong data-i18n="license.label.source">Source:</strong> <a href="https://firebase.google.com/docs/flutter/setup" target="_blank" rel="noopener noreferrer">https://firebase.google.com/docs/flutter/setup</a>
                     </p>
                 </div>
 
-                <h2>Additional Information</h2>
-                <p>
+                <h2 data-i18n="license.additional.title">Additional Information</h2>
+                <p data-i18n-html="license.additional.body">
                     For the full dependency tree and SPDX identifiers, use Flutter’s license registry
                     in the app or run <code>flutter pub deps</code> / inspect each package on pub.dev.
                 </p>
@@ -227,18 +240,19 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 GoGBA. All rights reserved.</p>
+            <p data-i18n="footer.rights">&copy; 2026 GoGBA. All rights reserved.</p>
             <ul class="footer-links">
-                <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                <li><a href="terms-of-service.html">Terms of Service</a></li>
-                <li><a href="license.html">License</a></li>
-                <li><a href="support.html">Support</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+                <li><a href="terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
+                <li><a href="license.html" data-i18n="nav.license">License</a></li>
+                <li><a href="support.html" data-i18n="nav.support">Support</a></li>
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
             </ul>
         </div>
     </footer>
 
     <script src="js/theme.js"></script>
+    <script src="js/i18n.js"></script>
     <script src="js/common.js"></script>
 </body>
 </html>
