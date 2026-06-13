@@ -48,6 +48,7 @@ pre, code {
     --border-color: #e2e2e8;
     --card-bg: #f5f5f7;
     --hover-bg: #ececf2;
+    --header-bg-rgb: 255, 255, 255;
 
     /* historical naming compat */
     --primary-color: var(--accent);
@@ -67,6 +68,7 @@ pre, code {
     --border-color: #334155;
     --card-bg: #1e293b;
     --hover-bg: #334155;
+    --header-bg-rgb: 30, 41, 59;
 
     --primary-color: var(--accent);
     --primary-dark: var(--accent-hover);
@@ -218,7 +220,7 @@ body::after {
 
 /* Header & Navigation */
 header {
-    background-color: rgba(30, 41, 59, 0.8);
+    background-color: rgba(var(--header-bg-rgb), 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
     position: sticky;
@@ -228,7 +230,7 @@ header {
 }
 
 header.scrolled {
-    background-color: rgba(30, 41, 59, 0.95);
+    background-color: rgba(var(--header-bg-rgb), 0.95);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
