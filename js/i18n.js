@@ -35,6 +35,8 @@
             'home.demo.download': 'Download Demo Game',
             'home.contact.title': 'Contact & Support',
             'home.contact.discord': 'Join Discord',
+            'badge.appstore.alt': 'Download on the App Store',
+            'badge.googleplay.alt': 'Get it on Google Play',
             'about.title': 'About GoGBA',
             'about.what.title': 'What is GoGBA?',
             'about.what.body': 'GoGBA is a handheld game emulator for mobile devices: <strong>Game Boy Advance</strong>, <strong>Game Boy Color</strong>, and <strong>Game Boy</strong> (using the libretro mGBA core). Our goal is a quiet, reliable, and immersive experience for classic portable titles (including fan favorites like Pokémon, Fire Emblem, and Golden Sun on GBA).',
@@ -429,6 +431,8 @@
             'home.demo.download': '下载演示游戏',
             'home.contact.title': '联系与支持',
             'home.contact.discord': '加入 Discord',
+            'badge.appstore.alt': '在 App Store 下载',
+            'badge.googleplay.alt': '在 Google Play 获取',
             'about.title': '关于 GoGBA',
             'about.what.title': '什么是 GoGBA？',
             'about.what.body': 'GoGBA 是一款面向移动设备的掌机游戏模拟器，支持 <strong>Game Boy Advance</strong>、<strong>Game Boy Color</strong> 和 <strong>Game Boy</strong>（采用 libretro mGBA 核心）。我们的目标，是为经典掌机游戏带来安静、可靠、沉浸的体验（包括 GBA 上备受喜爱的 Pokémon、Fire Emblem 和 Golden Sun 等作品）。',
@@ -823,6 +827,8 @@
             'home.demo.download': '下載演示遊戲',
             'home.contact.title': '聯繫與支援',
             'home.contact.discord': '加入 Discord',
+            'badge.appstore.alt': '在 App Store 下載',
+            'badge.googleplay.alt': '在 Google Play 取得',
             'about.title': '關於 GoGBA',
             'about.what.title': '什麼是 GoGBA？',
             'about.what.body': 'GoGBA 是一款面向行動裝置的掌機遊戲模擬器，支援 <strong>Game Boy Advance</strong>、<strong>Game Boy Color</strong> 與 <strong>Game Boy</strong>（採用 libretro mGBA 核心）。我們的目標，是為經典掌機遊戲帶來安靜、可靠、沉浸的體驗（包括 GBA 上備受喜愛的 Pokémon、Fire Emblem 與 Golden Sun 等作品）。',
@@ -1243,11 +1249,28 @@
         }
         document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : lang);
         updateSwitcher(lang);
+        updateBadges(lang);
     }
 
     function updateSwitcher(lang) {
         var sel = document.querySelector('.lang-switch');
         if (sel && sel.value !== lang) sel.value = lang;
+    }
+
+    // Store-badge sources depend on language AND theme:
+    // - App Store: black lockup on light theme, white lockup on dark theme.
+    // - Google Play: single color version for both themes.
+    function updateBadges(lang) {
+        var L = SUPPORTED.indexOf(lang) > -1 ? lang : resolveLang();
+        var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+        var appstore = document.querySelector('[data-badge="appstore"]');
+        if (appstore) {
+            appstore.setAttribute('src', 'images/app_store_' + L + (dark ? '_wht' : '_blk') + '.svg');
+        }
+        var googleplay = document.querySelector('[data-badge="googleplay"]');
+        if (googleplay) {
+            googleplay.setAttribute('src', 'images/play_store_' + L + '.svg');
+        }
     }
 
     function setLang(lang) {
@@ -1264,5 +1287,5 @@
         }
     }
 
-    window.GoGBAI18n = { init: initI18n, setLang: setLang, resolve: resolveLang, SUPPORTED: SUPPORTED };
+    window.GoGBAI18n = { init: initI18n, setLang: setLang, resolve: resolveLang, updateBadges: updateBadges, SUPPORTED: SUPPORTED };
 })();

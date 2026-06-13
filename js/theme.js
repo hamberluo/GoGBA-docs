@@ -22,6 +22,10 @@
     function applyTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
         updateToggleButton(theme);
+        // App Store badge color follows the theme (black on light, white on dark)
+        if (window.GoGBAI18n && window.GoGBAI18n.updateBadges) {
+            window.GoGBAI18n.updateBadges();
+        }
     }
 
     function updateToggleButton(theme) {
