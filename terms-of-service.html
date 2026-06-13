@@ -10,6 +10,14 @@
             t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
           }
           document.documentElement.setAttribute('data-theme', t);
+          var L = localStorage.getItem('lang');
+          if (L !== 'en' && L !== 'zh-Hans' && L !== 'zh-Hant') {
+            var nl = (navigator.language || 'en').toLowerCase();
+            if (nl.indexOf('zh') === 0) {
+              L = (nl.indexOf('tw') > -1 || nl.indexOf('hk') > -1 || nl.indexOf('mo') > -1 || nl.indexOf('hant') > -1) ? 'zh-Hant' : 'zh-Hans';
+            } else { L = 'en'; }
+          }
+          document.documentElement.setAttribute('lang', L);
         } catch (e) {}
       })();
     </script>
@@ -70,14 +78,19 @@
                     <span></span>
                 </button>
                 <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="support.html">Support</a></li>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                    <li><a href="terms-of-service.html" class="active">Terms of Service</a></li>
-                    <li><a href="license.html">License</a></li>
+                    <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                    <li><a href="support.html" data-i18n="nav.support">Support</a></li>
+                    <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html" class="active" data-i18n="nav.terms">Terms of Service</a></li>
+                    <li><a href="license.html" data-i18n="nav.license">License</a></li>
                     <li class="nav-controls">
                         <button class="theme-toggle" type="button" aria-label="Toggle theme"></button>
+                        <select class="lang-switch" aria-label="Language">
+                            <option value="en">EN</option>
+                            <option value="zh-Hans">简体中文</option>
+                            <option value="zh-Hant">繁體中文</option>
+                        </select>
                     </li>
                 </ul>
             </div>
@@ -87,23 +100,23 @@
     <main>
         <div class="container">
             <div class="content-page">
-                <h1>Terms of Service</h1>
+                <h1 data-i18n="terms.title">Terms of Service</h1>
 
-                <p class="policy-meta"><em>Last updated: March 27, 2026</em></p>
+                <p class="policy-meta" data-i18n-html="terms.updated"><em>Last updated: March 27, 2026</em></p>
 
-                <p>
-                    Please read these Terms of Service ("Terms") carefully before using the GoGBA 
+                <p data-i18n="terms.intro">
+                    Please read these Terms of Service ("Terms") carefully before using the GoGBA
                     mobile application ("App") operated by us ("we", "our", or "us").
                 </p>
 
-                <h2>1. Acceptance of Terms</h2>
-                <p>
-                    By downloading, installing, or using GoGBA, you agree to be bound by these Terms. 
+                <h2 data-i18n="terms.s1.title">1. Acceptance of Terms</h2>
+                <p data-i18n="terms.s1.body">
+                    By downloading, installing, or using GoGBA, you agree to be bound by these Terms.
                     If you do not agree to these Terms, please do not use the App.
                 </p>
 
-                <h2>2. Description of Service</h2>
-                <p>
+                <h2 data-i18n="terms.s2.title">2. Description of Service</h2>
+                <p data-i18n-html="terms.s2.body">
                     GoGBA is a handheld game emulator application for <strong>Game Boy Advance</strong>,
                     <strong>Game Boy Color</strong>, and <strong>Game Boy</strong> titles on your mobile device,
                     using the libretro mGBA core. Additional features include an optional Premium 
@@ -118,192 +131,192 @@
                     <a href="privacy-policy.html">Privacy Policy</a>.
                 </p>
 
-                <h2>3. Legal Use and ROM Files</h2>
-                <h3>3.1 ROM Ownership</h3>
-                <p>
-                    You are solely responsible for ensuring that you have the legal right to use any 
-                    ROM files you load into GoGBA. You must only use ROM files for games that you 
+                <h2 data-i18n="terms.s3.title">3. Legal Use and ROM Files</h2>
+                <h3 data-i18n="terms.s3.1.title">3.1 ROM Ownership</h3>
+                <p data-i18n="terms.s3.1.body">
+                    You are solely responsible for ensuring that you have the legal right to use any
+                    ROM files you load into GoGBA. You must only use ROM files for games that you
                     legally own.
                 </p>
 
-                <h3>3.2 Copyright Compliance</h3>
-                <p>
-                    Downloading, distributing, or using ROM files for games you do not own is illegal 
-                    and violates copyright laws. We do not provide, distribute, or facilitate access 
+                <h3 data-i18n="terms.s3.2.title">3.2 Copyright Compliance</h3>
+                <p data-i18n="terms.s3.2.body">
+                    Downloading, distributing, or using ROM files for games you do not own is illegal
+                    and violates copyright laws. We do not provide, distribute, or facilitate access
                     to ROM files. You are responsible for obtaining ROM files legally.
                 </p>
 
-                <h3>3.3 Our Position</h3>
-                <p>
-                    GoGBA is provided as an emulation tool. We do not endorse or encourage piracy. 
+                <h3 data-i18n="terms.s3.3.title">3.3 Our Position</h3>
+                <p data-i18n="terms.s3.3.body">
+                    GoGBA is provided as an emulation tool. We do not endorse or encourage piracy.
                     We are not responsible for how you use the App or any ROM files you may use with it.
                 </p>
 
-                <h2>4. User Responsibilities</h2>
-                <p>You agree to:</p>
+                <h2 data-i18n="terms.s4.title">4. User Responsibilities</h2>
+                <p data-i18n="terms.s4.intro">You agree to:</p>
                 <ul>
-                    <li>Use the App only for lawful purposes</li>
-                    <li>Only use ROM files for games you legally own</li>
-                    <li>Not use the App to violate any laws or regulations</li>
-                    <li>Not reverse engineer, decompile, or disassemble the App</li>
-                    <li>Not remove or alter any copyright notices or proprietary markings</li>
+                    <li data-i18n="terms.s4.item1">Use the App only for lawful purposes</li>
+                    <li data-i18n="terms.s4.item2">Only use ROM files for games you legally own</li>
+                    <li data-i18n="terms.s4.item3">Not use the App to violate any laws or regulations</li>
+                    <li data-i18n="terms.s4.item4">Not reverse engineer, decompile, or disassemble the App</li>
+                    <li data-i18n="terms.s4.item5">Not remove or alter any copyright notices or proprietary markings</li>
                 </ul>
 
-                <h2>5. Intellectual Property</h2>
-                <h3>5.1 App Ownership</h3>
-                <p>
-                    The App, including its design, code, and documentation, is owned by us and is 
+                <h2 data-i18n="terms.s5.title">5. Intellectual Property</h2>
+                <h3 data-i18n="terms.s5.1.title">5.1 App Ownership</h3>
+                <p data-i18n="terms.s5.1.body">
+                    The App, including its design, code, and documentation, is owned by us and is
                     protected by copyright and other intellectual property laws.
                 </p>
 
-                <h3>5.2 Third-Party Components</h3>
-                <p>
+                <h3 data-i18n="terms.s5.2.title">5.2 Third-Party Components</h3>
+                <p data-i18n="terms.s5.2.intro">
                     GoGBA uses the following open-source components:
                 </p>
                 <ul>
-                    <li>
-                        <strong>libretro mGBA core:</strong> Licensed under the Mozilla Public 
+                    <li data-i18n-html="terms.s5.2.mgba">
+                        <strong>libretro mGBA core:</strong> Licensed under the Mozilla Public
                         License (MPL-2.0). See the App's license page for details.
                     </li>
-                    <li>
-                        <strong>RCheevos:</strong> Licensed under the MIT License. See the App's 
+                    <li data-i18n-html="terms.s5.2.rcheevos">
+                        <strong>RCheevos:</strong> Licensed under the MIT License. See the App's
                         license page for details.
                     </li>
-                    <li>
+                    <li data-i18n-html="terms.s5.2.flutter">
                         <strong>Flutter:</strong> Licensed under the BSD 3-Clause License.
                     </li>
-                    <li>
+                    <li data-i18n-html="terms.s5.2.riverpod">
                         <strong>Riverpod:</strong> Licensed under the MIT License.
                     </li>
-                    <li>
+                    <li data-i18n-html="terms.s5.2.router">
                         <strong>GoRouter:</strong> Licensed under the BSD 3-Clause License.
                     </li>
-                    <li>
+                    <li data-i18n-html="terms.s5.2.slang">
                         <strong>Slang:</strong> Licensed under the MIT License.
                     </li>
-                    <li>
+                    <li data-i18n-html="terms.s5.2.font">
                         <strong>Fusion Pixel Font:</strong> Licensed under OFL-1.1.
                     </li>
-                    <li>
+                    <li data-i18n-html="terms.s5.2.picker">
                         <strong>File Picker:</strong> Licensed under the MIT License.
                     </li>
-                    <li>
+                    <li data-i18n-html="terms.s5.2.firebase">
                         <strong>Firebase (Flutter plugins):</strong> Licensed under the Apache 2.0 License.
                     </li>
-                    <li>
+                    <li data-i18n="terms.s5.2.other">
                         Other open-source dependencies as listed in the App's license information.
                     </li>
                 </ul>
 
-                <h3>5.3 Game Content</h3>
-                <p>
-                    Game ROMs, artwork, music, and other game content are the property of their 
+                <h3 data-i18n="terms.s5.3.title">5.3 Game Content</h3>
+                <p data-i18n="terms.s5.3.body">
+                    Game ROMs, artwork, music, and other game content are the property of their
                     respective copyright holders. We claim no ownership over any game content.
                 </p>
 
-                <h2>6. Disclaimer of Warranties</h2>
-                <p>
-                    THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, 
-                    EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF 
+                <h2 data-i18n="terms.s6.title">6. Disclaimer of Warranties</h2>
+                <p data-i18n="terms.s6.body1">
+                    THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND,
+                    EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF
                     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.
                 </p>
-                <p>
+                <p data-i18n="terms.s6.intro">
                     We do not guarantee that:
                 </p>
                 <ul>
-                    <li>The App will be error-free or uninterrupted</li>
-                    <li>All ROM files will work correctly with the App</li>
-                    <li>Save files will never be lost or corrupted</li>
-                    <li>The App will meet your specific requirements</li>
-                    <li>Cloud Save will be continuously available; it depends on third-party services 
+                    <li data-i18n="terms.s6.item1">The App will be error-free or uninterrupted</li>
+                    <li data-i18n="terms.s6.item2">All ROM files will work correctly with the App</li>
+                    <li data-i18n="terms.s6.item3">Save files will never be lost or corrupted</li>
+                    <li data-i18n="terms.s6.item4">The App will meet your specific requirements</li>
+                    <li data-i18n="terms.s6.item5">Cloud Save will be continuously available; it depends on third-party services
                         (Google Drive, iCloud) which may change, be interrupted, or discontinued</li>
-                    <li>AI Screen Translation depends on third-party AI services (Google); translations 
+                    <li data-i18n="terms.s6.item6">AI Screen Translation depends on third-party AI services (Google); translations
                         may be inaccurate, incomplete, or unavailable, and service availability may change</li>
-                    <li>AI Screen Translation may be subject to usage limits (including limits loaded via 
+                    <li data-i18n="terms.s6.item7">AI Screen Translation may be subject to usage limits (including limits loaded via
                         remote configuration) that can change from time to time</li>
                 </ul>
 
-                <h2>7. Limitation of Liability</h2>
-                <p>
-                    TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE SHALL NOT BE LIABLE FOR ANY INDIRECT, 
-                    INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED 
-                    TO LOSS OF DATA, LOSS OF PROFITS, OR BUSINESS INTERRUPTION, ARISING OUT OF OR 
+                <h2 data-i18n="terms.s7.title">7. Limitation of Liability</h2>
+                <p data-i18n="terms.s7.body">
+                    TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE SHALL NOT BE LIABLE FOR ANY INDIRECT,
+                    INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED
+                    TO LOSS OF DATA, LOSS OF PROFITS, OR BUSINESS INTERRUPTION, ARISING OUT OF OR
                     RELATED TO YOUR USE OF THE APP.
                 </p>
 
-                <h2>8. Data and Save Files</h2>
-                <p>
-                    While we implement measures to protect your save data, we cannot guarantee that 
-                    save files will never be lost or corrupted. You are responsible for backing up 
+                <h2 data-i18n="terms.s8.title">8. Data and Save Files</h2>
+                <p data-i18n="terms.s8.body1">
+                    While we implement measures to protect your save data, we cannot guarantee that
+                    save files will never be lost or corrupted. You are responsible for backing up
                     your save files regularly.
                 </p>
-                <p>
-                    <strong>Cloud Save:</strong> When you enable Cloud Save, your save files are stored 
-                    by third-party providers (Google Drive or iCloud). We are not responsible for the 
-                    availability, reliability, or data integrity of these services. We recommend 
+                <p data-i18n-html="terms.s8.cloud">
+                    <strong>Cloud Save:</strong> When you enable Cloud Save, your save files are stored
+                    by third-party providers (Google Drive or iCloud). We are not responsible for the
+                    availability, reliability, or data integrity of these services. We recommend
                     maintaining local backups of your save files. You use Cloud Save at your own risk.
                 </p>
-                <p>
-                    <strong>AI Screen Translation:</strong> If you use this optional feature, screen 
-                    images are processed by Google as described in our 
-                    <a href="privacy-policy.html">Privacy Policy</a>. We do not guarantee translation 
-                    quality, fitness for a particular game, uninterrupted access to the underlying 
-                    AI service, or any particular usage quota; applicable limits may be updated remotely. 
+                <p data-i18n-html="terms.s8.ai">
+                    <strong>AI Screen Translation:</strong> If you use this optional feature, screen
+                    images are processed by Google as described in our
+                    <a href="privacy-policy.html">Privacy Policy</a>. We do not guarantee translation
+                    quality, fitness for a particular game, uninterrupted access to the underlying
+                    AI service, or any particular usage quota; applicable limits may be updated remotely.
                     You use AI Screen Translation at your own risk.
                 </p>
 
-                <h2>9. In-App Purchases</h2>
-                <p>
-                    Premium, AI Screen Translation, and other in-app purchases are processed by Apple 
-                    (App Store) or Google (Google Play). Refunds are governed by the respective platform's 
-                    policies. All purchases are final sale except as required by applicable law. We do not 
+                <h2 data-i18n="terms.s9.title">9. In-App Purchases</h2>
+                <p data-i18n="terms.s9.body">
+                    Premium, AI Screen Translation, and other in-app purchases are processed by Apple
+                    (App Store) or Google (Google Play). Refunds are governed by the respective platform's
+                    policies. All purchases are final sale except as required by applicable law. We do not
                     process payments directly and have no control over platform refund or billing procedures.
                 </p>
 
-                <h2>10. Modifications to the App</h2>
-                <p>
-                    We reserve the right to modify, update, or discontinue the App at any time without 
-                    prior notice. We are not obligated to provide updates or support for any particular 
+                <h2 data-i18n="terms.s10.title">10. Modifications to the App</h2>
+                <p data-i18n="terms.s10.body">
+                    We reserve the right to modify, update, or discontinue the App at any time without
+                    prior notice. We are not obligated to provide updates or support for any particular
                     version of the App.
                 </p>
 
-                <h2>11. Termination</h2>
-                <p>
-                    We reserve the right to terminate or suspend your access to the App at any time, 
+                <h2 data-i18n="terms.s11.title">11. Termination</h2>
+                <p data-i18n="terms.s11.body">
+                    We reserve the right to terminate or suspend your access to the App at any time,
                     with or without cause or notice, for any reason, including if you breach these Terms.
                 </p>
 
-                <h2>12. Changes to Terms</h2>
-                <p>
-                    We may update these Terms from time to time. We will notify you of any changes by 
-                    posting the new Terms on this page and updating the "Last Updated" date. Your 
+                <h2 data-i18n="terms.s12.title">12. Changes to Terms</h2>
+                <p data-i18n="terms.s12.body">
+                    We may update these Terms from time to time. We will notify you of any changes by
+                    posting the new Terms on this page and updating the "Last Updated" date. Your
                     continued use of the App after such changes constitutes acceptance of the new Terms.
                 </p>
 
-                <h2>13. Governing Law</h2>
-                <p>
-                    These Terms shall be governed by and construed in accordance with applicable laws, 
+                <h2 data-i18n="terms.s13.title">13. Governing Law</h2>
+                <p data-i18n="terms.s13.body">
+                    These Terms shall be governed by and construed in accordance with applicable laws,
                     without regard to its conflict of law provisions.
                 </p>
 
-                <h2>14. Severability</h2>
-                <p>
-                    If any provision of these Terms is found to be unenforceable or invalid, that 
-                    provision shall be limited or eliminated to the minimum extent necessary, and the 
+                <h2 data-i18n="terms.s14.title">14. Severability</h2>
+                <p data-i18n="terms.s14.body">
+                    If any provision of these Terms is found to be unenforceable or invalid, that
+                    provision shall be limited or eliminated to the minimum extent necessary, and the
                     remaining provisions shall remain in full force and effect.
                 </p>
 
-                <h2>15. Contact Information</h2>
-                <p>
+                <h2 data-i18n="terms.s15.title">15. Contact Information</h2>
+                <p data-i18n="terms.s15.intro">
                     If you have any questions about these Terms, please contact us at:
                 </p>
-                <p>
+                <p data-i18n-html="terms.s15.email">
                     <strong>Email:</strong> <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a>
                 </p>
 
-                <h2>16. Acknowledgment</h2>
-                <p>
-                    BY USING GOGBA, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS, UNDERSTAND THEM, 
+                <h2 data-i18n="terms.s16.title">16. Acknowledgment</h2>
+                <p data-i18n="terms.s16.body">
+                    BY USING GOGBA, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS, UNDERSTAND THEM,
                     AND AGREE TO BE BOUND BY THEM.
                 </p>
             </div>
@@ -312,18 +325,19 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 GoGBA. All rights reserved.</p>
+            <p data-i18n="footer.rights">&copy; 2026 GoGBA. All rights reserved.</p>
             <ul class="footer-links">
-                <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                <li><a href="terms-of-service.html">Terms of Service</a></li>
-                <li><a href="license.html">License</a></li>
-                <li><a href="support.html">Support</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+                <li><a href="terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
+                <li><a href="license.html" data-i18n="nav.license">License</a></li>
+                <li><a href="support.html" data-i18n="nav.support">Support</a></li>
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
             </ul>
         </div>
     </footer>
 
     <script src="js/theme.js"></script>
+    <script src="js/i18n.js"></script>
     <script src="js/common.js"></script>
 </body>
 </html>
