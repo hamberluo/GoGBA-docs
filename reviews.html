@@ -54,128 +54,93 @@
     <link rel="stylesheet" href="styles.css">
 
     <style>
-      /* ===== Reviews page — built on the site's design tokens ===== */
-      :root { --rv-green: #6d8710; --rv-glow: rgba(155, 188, 15, .35); }
-      [data-theme="dark"] { --rv-green: #9bbc0f; }
+      /* ===== Reviews page — reuses the site's design tokens & components ===== */
 
-      .rv-hero { padding: 40px 0 8px; }
-      .rv-console {
-        max-width: 940px; margin: 0 auto;
-        background: linear-gradient(160deg, var(--accent), var(--accent-hover) 65%, var(--primary-dark));
-        border-radius: 24px; padding: 22px 22px 26px;
-        box-shadow: 0 24px 60px -20px rgba(var(--accent-rgb), .5), inset 0 2px 0 rgba(255,255,255,.22), inset 0 -6px 16px rgba(0,0,0,.24);
-        position: relative;
+      /* Hero: dual-platform rating panel, built on site accent (purple) */
+      .rv-hero { padding: 3rem 0 1rem; }
+      .rv-panel {
+        max-width: 900px; margin: 0 auto;
+        background: linear-gradient(135deg, var(--card-bg) 0%, rgba(var(--accent-rgb), 0.06) 100%);
+        border: 1px solid var(--border-color); border-radius: 16px;
+        padding: 2rem 2rem 2.25rem;
       }
-      .rv-console-label {
-        color: rgba(255,255,255,.72); font-size: 11px; letter-spacing: .3em;
-        font-weight: 700; text-transform: uppercase; margin: 0 0 14px 4px;
+      .rv-panel-label {
+        color: var(--text-secondary); font-size: 0.8rem; letter-spacing: .08em;
+        font-weight: 600; text-transform: uppercase; margin: 0 0 1.25rem;
       }
-      .rv-brand-mark {
-        position: absolute; top: 16px; right: 26px; font-weight: 800;
-        letter-spacing: .14em; font-size: 12px; color: rgba(255,255,255,.55);
-      }
-      .rv-lcd {
-        background: radial-gradient(120% 140% at 50% 0%, #20301a, #131b10);
-        border-radius: 12px; padding: 30px 28px 26px;
-        box-shadow: inset 0 0 0 3px rgba(0,0,0,.5), inset 0 0 40px rgba(0,0,0,.7);
-        position: relative; overflow: hidden;
-      }
-      .rv-lcd::after {
-        content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .45;
-        background: repeating-linear-gradient(0deg, transparent 0 3px, rgba(0,0,0,.14) 3px 4px);
-      }
-      .rv-lcd-eyebrow {
-        color: #7f9c2a; font-family: 'Courier New', monospace; font-size: 11px;
-        letter-spacing: .28em; text-transform: uppercase; font-weight: 700; margin-bottom: 12px;
-      }
-      /* Two platform panels side by side inside the LCD */
-      .rv-platforms { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-      .rv-platforms > div + div {
-        border-left: 1px solid rgba(127,156,42,.35); padding-left: 22px;
-      }
+      .rv-platforms { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+      .rv-platforms > div + div { border-left: 1px solid var(--border-color); padding-left: 1.5rem; }
       .rv-plat-name {
         display: inline-flex; align-items: center; gap: 6px;
-        color: #9fbe3c; font-family: 'Courier New', monospace; font-size: 11px;
-        letter-spacing: .18em; text-transform: uppercase; font-weight: 700; margin-bottom: 10px;
+        color: var(--primary-color); font-size: 0.8rem;
+        letter-spacing: .04em; font-weight: 700; margin-bottom: .5rem;
       }
-      .rv-plat-name .ico { font-size: 13px; filter: grayscale(.15); }
-      .rv-rating-row { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+      .rv-plat-name .ico { font-size: 1rem; }
+      .rv-rating-row { display: flex; align-items: baseline; gap: .9rem; flex-wrap: wrap; }
       .rv-score {
-        font-size: 56px; font-weight: 800; line-height: .9; color: #cde94f;
-        font-family: 'Courier New', monospace; font-variant-numeric: tabular-nums;
-        text-shadow: 0 0 18px var(--rv-glow);
+        font-size: 3.25rem; font-weight: 800; line-height: .9;
+        color: var(--primary-color); font-variant-numeric: tabular-nums;
       }
-      .rv-stars { font-size: 22px; letter-spacing: 3px; color: #b6d63f; }
-      .rv-stars .dim { color: #4d5f24; }
-      .rv-rating-meta { color: #7f9c2a; font-family: 'Courier New', monospace; font-size: 12.5px; margin-top: 6px; }
-      .rv-rating-meta b { color: #c6e34a; }
-      .rv-lcd h2 {
-        color: #e6ffa0; font-size: clamp(20px, 2.6vw, 27px); margin: 20px 0 6px;
-        font-weight: 800; text-wrap: balance; text-shadow: 0 0 12px var(--rv-glow); border: 0; padding: 0;
+      .rv-stars { font-size: 1.25rem; letter-spacing: 2px; color: var(--accent); }
+      .rv-stars .dim { color: var(--border-color); }
+      .rv-rating-meta { color: var(--text-secondary); font-size: 0.85rem; margin-top: .35rem; }
+      .rv-rating-meta b { color: var(--text-primary); font-weight: 700; }
+      .rv-panel h2 {
+        color: var(--text-primary); font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+        margin: 1.5rem 0 .4rem; font-weight: 700; text-wrap: balance;
       }
-      .rv-lcd p { color: #7f9c2a; font-family: 'Courier New', monospace; font-size: 13px; margin: 0; }
+      .rv-panel > p { color: var(--text-secondary); font-size: 0.95rem; margin: 0; line-height: 1.6; }
 
+      /* Stats row */
       .rv-stats {
         display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
-        max-width: 940px; margin: 18px auto 0; background: var(--border-color);
+        max-width: 900px; margin: 1.25rem auto 0; background: var(--border-color);
         border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden;
       }
-      .rv-stat { background: var(--card-bg); padding: 16px 12px; text-align: center; }
-      .rv-stat .n { font-size: 27px; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1; }
-      [data-theme="dark"] .rv-stat .n { color: var(--accent-hover); }
-      .rv-stat .l { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-secondary); margin-top: 6px; }
+      .rv-stat { background: var(--card-bg); padding: 1.1rem .75rem; text-align: center; }
+      .rv-stat .n { font-size: 1.75rem; font-weight: 800; color: var(--primary-color); font-variant-numeric: tabular-nums; line-height: 1; }
+      .rv-stat .l { font-size: 0.72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--text-secondary); margin-top: .4rem; }
 
-      .rv-section { padding: 32px 0 4px; }
-      .rv-shead { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
-      .rv-shead .dot {
-        width: 11px; height: 11px; border-radius: 3px; background: var(--rv-green);
-        box-shadow: 0 0 0 3px var(--bg-color), 0 0 12px var(--rv-glow); flex: none;
+      /* Section head — matches .content-page h2 language */
+      .rv-section { padding: 2.5rem 0 0; }
+      .rv-shead { margin-bottom: 1.25rem; }
+      .rv-shead h2 {
+        font-size: 1.6rem; margin: 0; font-weight: 700; color: var(--primary-color);
+        display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap;
       }
-      .rv-shead h2 { font-size: 20px; margin: 0; font-weight: 800; border: 0; padding: 0; color: var(--text-primary); }
       .rv-shead .count {
-        font-size: 12px; color: var(--text-secondary); font-weight: 700;
-        background: var(--hover-bg); padding: 3px 10px; border-radius: 20px; font-variant-numeric: tabular-nums;
+        font-size: 0.8rem; color: var(--text-secondary); font-weight: 600;
+        background: var(--hover-bg); padding: .1rem .6rem; border-radius: 20px; font-variant-numeric: tabular-nums;
       }
-      .rv-shead .desc { color: var(--text-secondary); font-size: 13px; margin-left: auto; text-align: right; }
+      .rv-shead .desc { color: var(--text-secondary); font-size: 0.95rem; margin: .4rem 0 0; }
 
-      .rv-grid { columns: 3 290px; column-gap: 18px; }
+      /* Card grid — regular columns, reuses .feature-card look */
+      .rv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
       .rv-card {
-        break-inside: avoid; margin-bottom: 18px; background: var(--card-bg);
-        border: 1px solid var(--border-color); border-radius: 14px; padding: 16px 18px 14px;
-        transition: transform .16s ease, box-shadow .16s ease;
+        background: linear-gradient(135deg, var(--card-bg) 0%, rgba(var(--accent-rgb), 0.05) 100%);
+        border: 1px solid var(--border-color); border-radius: 12px; padding: 1.25rem 1.35rem;
+        transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s, border-color 0.3s;
       }
-      .rv-card:hover { transform: translateY(-3px); box-shadow: 0 12px 26px -14px rgba(var(--accent-rgb), .4); }
-      .rv-top { display: flex; align-items: center; gap: 9px; margin-bottom: 8px; }
-      .rv-flag { font-size: 18px; line-height: 1; flex: none; }
-      .rv-name { font-weight: 700; font-size: 14px; color: var(--text-primary); flex: 1; min-width: 0;
+      .rv-card:hover {
+        transform: translateY(-6px); border-color: var(--primary-color);
+        box-shadow: 0 12px 32px rgba(var(--accent-rgb), 0.2);
+      }
+      .rv-top { display: flex; align-items: center; gap: .55rem; margin-bottom: .6rem; }
+      .rv-flag { font-size: 1.15rem; line-height: 1; flex: none; }
+      .rv-name { font-weight: 700; font-size: 0.9rem; color: var(--text-primary); flex: 1; min-width: 0;
         white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-      .rv-ministars { color: var(--rv-green); font-size: 12px; letter-spacing: 1px; flex: none; }
-      .rv-quote { font-size: 14.5px; color: var(--text-primary); margin: 0 0 10px; line-height: 1.5; }
-      .rv-quote .hl { background: linear-gradient(transparent 60%, var(--rv-glow) 60%); font-weight: 600; }
-      .rv-meta { display: flex; flex-wrap: wrap; gap: 5px 9px; font-size: 11px; color: var(--text-secondary); align-items: center; }
-
-      /* Per-card platform badge */
-      .rv-plat {
-        flex: none; display: inline-flex; align-items: center; gap: 4px;
-        font-size: 10.5px; font-weight: 700; letter-spacing: .02em;
-        padding: 2px 8px; border-radius: 20px; line-height: 1.4;
-        border: 1px solid var(--border-color); color: var(--text-secondary);
-        background: var(--hover-bg);
-      }
-      .rv-plat.ios { color: #0a84c4; border-color: rgba(10,132,196,.4); background: rgba(10,132,196,.08); }
-      [data-theme="dark"] .rv-plat.ios { color: #5ac8fa; border-color: rgba(90,200,250,.35); background: rgba(90,200,250,.1); }
-      .rv-plat.gp { color: var(--rv-green); border-color: var(--rv-glow); background: rgba(155,188,15,.1); }
-      .rv-plat .ico { font-size: 11px; }
+      .rv-quote { font-size: 0.95rem; color: var(--text-primary); margin: 0 0 .7rem; line-height: 1.55; }
+      .rv-quote .hl { color: var(--primary-color); font-weight: 600; }
+      .rv-meta { display: flex; flex-wrap: wrap; gap: .3rem .6rem; font-size: 0.75rem; color: var(--text-secondary); align-items: center; }
 
       @media (max-width: 620px) {
         .rv-stats { grid-template-columns: repeat(2, 1fr); }
-        .rv-platforms { grid-template-columns: 1fr; gap: 18px; }
+        .rv-platforms { grid-template-columns: 1fr; gap: 1.25rem; }
         .rv-platforms > div + div {
-          border-left: 0; padding-left: 0; padding-top: 16px;
-          border-top: 1px solid rgba(127,156,42,.35);
+          border-left: 0; padding-left: 0; padding-top: 1.1rem;
+          border-top: 1px solid var(--border-color);
         }
-        .rv-score { font-size: 50px; }
-        .rv-shead .desc { display: none; }
+        .rv-score { font-size: 2.75rem; }
       }
     </style>
 </head>
@@ -213,39 +178,35 @@
     </header>
 
     <main>
-        <!-- HERO / LCD -->
+        <!-- HERO: dual-platform ratings -->
         <div class="rv-hero">
           <div class="container">
-            <div class="rv-console">
-              <span class="rv-brand-mark">GoGBA</span>
-              <p class="rv-console-label" data-i18n="reviews.hero.label">Ratings &amp; Reviews · App Store &amp; Google Play</p>
-              <div class="rv-lcd">
-                <div class="rv-lcd-eyebrow" data-i18n="reviews.hero.eyebrow">▶ Default store ratings · both platforms</div>
-                <div class="rv-platforms">
-                  <div>
-                    <div class="rv-plat-name"><span class="ico">🍎</span> App Store</div>
-                    <div class="rv-rating-row">
-                      <div class="rv-score">4.6</div>
-                      <div>
-                        <div class="rv-stars">★★★★<span class="dim">★</span></div>
-                        <div class="rv-rating-meta" data-i18n-html="reviews.hero.ios"><b>71</b> ratings · <b>21</b> with reviews</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="rv-plat-name"><span class="ico">▶</span> Google Play</div>
-                    <div class="rv-rating-row">
-                      <div class="rv-score">4.26</div>
-                      <div>
-                        <div class="rv-stars">★★★★<span class="dim">★</span></div>
-                        <div class="rv-rating-meta" data-i18n-html="reviews.hero.gp"><b>162</b> ratings · <b>96</b> with reviews</div>
-                      </div>
+            <div class="rv-panel">
+              <p class="rv-panel-label" data-i18n="reviews.hero.label">Ratings &amp; Reviews · App Store &amp; Google Play</p>
+              <div class="rv-platforms">
+                <div>
+                  <div class="rv-plat-name"><span class="ico">🍎</span> App Store</div>
+                  <div class="rv-rating-row">
+                    <div class="rv-score">4.6</div>
+                    <div>
+                      <div class="rv-stars">★★★★<span class="dim">★</span></div>
+                      <div class="rv-rating-meta" data-i18n-html="reviews.hero.ios"><b>71</b> ratings · <b>21</b> with reviews</div>
                     </div>
                   </div>
                 </div>
-                <h2 data-i18n="reviews.hero.headline">Players call GoGBA the best GBA emulator they've ever used</h2>
-                <p data-i18n="reviews.hero.sub">// Every positive written review · both stores · 15+ countries · multilingual</p>
+                <div>
+                  <div class="rv-plat-name"><span class="ico">▶</span> Google Play</div>
+                  <div class="rv-rating-row">
+                    <div class="rv-score">4.26</div>
+                    <div>
+                      <div class="rv-stars">★★★★<span class="dim">★</span></div>
+                      <div class="rv-rating-meta" data-i18n-html="reviews.hero.gp"><b>162</b> ratings · <b>96</b> with reviews</div>
+                    </div>
+                  </div>
+                </div>
               </div>
+              <h2 data-i18n="reviews.hero.headline">Players call GoGBA the best GBA emulator they've ever used</h2>
+              <p data-i18n="reviews.hero.sub">Every positive written review · both stores · 15+ countries · multilingual</p>
             </div>
 
             <div class="rv-stats">
@@ -262,99 +223,89 @@
           <!-- 1. Best emulator -->
           <section class="rv-section">
             <div class="rv-shead">
-              <span class="dot"></span>
-              <h2 data-i18n="reviews.g1.title">"The best emulator I've used"</h2>
-              <span class="count">14</span>
-              <span class="desc" data-i18n="reviews.g1.desc">The most repeated line: this is the best GBA emulator</span>
+              <h2><span data-i18n="reviews.g1.title">"The best emulator I've used"</span> <span class="count">15</span></h2>
+              <p class="desc" data-i18n="reviews.g1.desc">The most repeated line: this is the best GBA emulator</p>
             </div>
             <div class="rv-grid">
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Timothy Tweedie</span></div><p class="rv-quote"><span class="hl">Best Emulator I have found.</span></p><div class="rv-meta">Galaxy A36 · 2026-07</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇹🇷</span><span class="rv-name">Mehmet</span></div><p class="rv-quote"><span class="hl">The best of all GBA emulators.</span> Every detail has been thought of. The interface is fantastic. Game thumbnails appear automatically. Shortcut keys make gameplay easy. It also runs GBC and GB games. Congratulations!</p><div class="rv-meta">POCO X6 Pro · TR · 2026-07</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Raffy</span></div><p class="rv-quote"><span class="hl">Highly underrated GBA emulator and perhaps one of the best</span> — and I've tried a LOT of GBA emulators. Has all the must-have features like fast-forward, quicksaves, and control customization. Must-try!</p><div class="rv-meta">Galaxy S23+ · 2026-06</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Michael Zhang</span></div><p class="rv-quote">Easy to use, a reasonable layout and a quite good experience. <span class="hl">It's better than mGBA (mobile phone).</span></p><div class="rv-meta">Redmi Note 12 Turbo · 2026-06</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇩🇪</span><span class="rv-name">Purda Maximilian</span></div><p class="rv-quote"><span class="hl">Simply awesome, your app is fantastic as it is — simply a masterpiece.</span></p><div class="rv-meta">Galaxy A71 · DE · 2026-06</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇮🇳</span><span class="rv-name">MANAS PANDEY</span></div><p class="rv-quote"><span class="hl">The Best GB emulator out there!</span> The themes and buttons are very comfy and the overall gameplay experience is top notch 😃</p><div class="rv-meta">Galaxy A12 · 2026-05</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Connie Liza Pasay</span></div><p class="rv-quote">Game Boy Advance, Game Boy Color and Game Boy — all ready to play. <span class="hl">10/10 rate.</span></p><div class="rv-meta">Galaxy M42 · 2026-05</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Daniel Assis</span></div><p class="rv-quote"><span class="hl">The best GBA emulator ever</span> — practical, fast, bug-free, ad-free, I have nothing to complain about. It deserves 1,000 stars! Over 40 hours in, zero problems 🗿🍷</p><div class="rv-meta">Redmi 10C · PT-BR · 2026-04</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇸🇦</span><span class="rv-name">Hossam Mostafa</span></div><p class="rv-quote"><span class="hl">The best GBA emulator in the world.</span> Fantastic, powerful, easy to use, and supports Arabic. Thank you to the creators of this legend ❤</p><div class="rv-meta">Galaxy A30 · AR · 2026-04</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇪🇸</span><span class="rv-name">Reynel Batista</span></div><p class="rv-quote">I don't usually leave reviews, but this developer deserves one. <span class="hl">One of the best free Game Boy emulators for mobile</span> — loads quickly and the save system works flawlessly. A well-deserved 5 stars.</p><div class="rv-meta">Oukitel C61 · ES · 2026-04</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">avi byrd</span></div><p class="rv-quote"><span class="hl">It was perfect, it worked like a charm.</span> All I had to do was install the app and the ROM and enter the files!</p><div class="rv-meta">Galaxy A36 · 2026-04</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇻🇳</span><span class="rv-name">Tưởng Văn</span></div><p class="rv-quote"><span class="hl">The best GBA emulator I've ever used.</span> The interface is highly customizable, and I can even choose game cover art. I really like this app.</p><div class="rv-meta">Redmi 13 · 2026-03</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Arman Kumar</span></div><p class="rv-quote"><span class="hl">Best emulator.</span></p><div class="rv-meta">Galaxy M53 · 2026-03</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇨🇳</span><span class="rv-name">Owen Eiffel</span></div><p class="rv-quote">A fantastic, smooth, ad-free GBA emulator — <span class="hl">the best GBA emulator I've ever used so far.</span></p><div class="rv-meta">OnePlus 13 · ZH · 2026-02</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇺🇸</span><span class="rv-name">JonathanRocks17</span></div><p class="rv-quote"><span class="hl">Best GBA App.</span> The quality is way better and the sound is much cleaner than the last ones.</p><div class="rv-meta"><span class="rv-plat ios"><span class="ico">🍎</span> App Store</span> · v1.14.0 · 2026-03</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Timothy Tweedie</span></div><p class="rv-quote"><span class="hl">Best Emulator I have found.</span></p><div class="rv-meta">2026-07</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇹🇷</span><span class="rv-name">Mehmet</span></div><p class="rv-quote"><span class="hl">The best of all GBA emulators.</span> Every detail has been thought of. The interface is fantastic. Game thumbnails appear automatically. Shortcut keys make gameplay easy. It also runs GBC and GB games. Congratulations!</p><div class="rv-meta">TR · 2026-07</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Raffy</span></div><p class="rv-quote"><span class="hl">Highly underrated GBA emulator and perhaps one of the best</span> — and I've tried a LOT of GBA emulators. Has all the must-have features like fast-forward, quicksaves, and control customization. Must-try!</p><div class="rv-meta">2026-06</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Michael Zhang</span></div><p class="rv-quote">Easy to use, a reasonable layout and a quite good experience. <span class="hl">It's better than mGBA (mobile phone).</span></p><div class="rv-meta">2026-06</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇩🇪</span><span class="rv-name">Purda Maximilian</span></div><p class="rv-quote"><span class="hl">Simply awesome, your app is fantastic as it is — simply a masterpiece.</span></p><div class="rv-meta">DE · 2026-06</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇮🇳</span><span class="rv-name">MANAS PANDEY</span></div><p class="rv-quote"><span class="hl">The Best GB emulator out there!</span> The themes and buttons are very comfy and the overall gameplay experience is top notch 😃</p><div class="rv-meta">2026-05</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Connie Liza Pasay</span></div><p class="rv-quote">Game Boy Advance, Game Boy Color and Game Boy — all ready to play. <span class="hl">10/10 rate.</span></p><div class="rv-meta">2026-05</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Daniel Assis</span></div><p class="rv-quote"><span class="hl">The best GBA emulator ever</span> — practical, fast, bug-free, ad-free, I have nothing to complain about. It deserves 1,000 stars! Over 40 hours in, zero problems 🗿🍷</p><div class="rv-meta">PT-BR · 2026-04</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇸🇦</span><span class="rv-name">Hossam Mostafa</span></div><p class="rv-quote"><span class="hl">The best GBA emulator in the world.</span> Fantastic, powerful, easy to use, and supports Arabic. Thank you to the creators of this legend ❤</p><div class="rv-meta">AR · 2026-04</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇪🇸</span><span class="rv-name">Reynel Batista</span></div><p class="rv-quote">I don't usually leave reviews, but this developer deserves one. <span class="hl">One of the best free Game Boy emulators for mobile</span> — loads quickly and the save system works flawlessly. A well-deserved 5 stars.</p><div class="rv-meta">ES · 2026-04</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">avi byrd</span></div><p class="rv-quote"><span class="hl">It was perfect, it worked like a charm.</span> All I had to do was install the app and the ROM and enter the files!</p><div class="rv-meta">2026-04</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇻🇳</span><span class="rv-name">Tưởng Văn</span></div><p class="rv-quote"><span class="hl">The best GBA emulator I've ever used.</span> The interface is highly customizable, and I can even choose game cover art. I really like this app.</p><div class="rv-meta">2026-03</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Arman Kumar</span></div><p class="rv-quote"><span class="hl">Best emulator.</span></p><div class="rv-meta">2026-03</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇨🇳</span><span class="rv-name">Owen Eiffel</span></div><p class="rv-quote">A fantastic, smooth, ad-free GBA emulator — <span class="hl">the best GBA emulator I've ever used so far.</span></p><div class="rv-meta">ZH · 2026-02</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇺🇸</span><span class="rv-name">JonathanRocks17</span></div><p class="rv-quote"><span class="hl">Best GBA App.</span> The quality is way better and the sound is much cleaner than the last ones.</p><div class="rv-meta">2026-03</div></div>
             </div>
           </section>
 
           <!-- 2. No ads / free / no paywalls -->
           <section class="rv-section">
             <div class="rv-shead">
-              <span class="dot"></span>
-              <h2 data-i18n="reviews.g2.title">No ads · Free · No paywalls</h2>
-              <span class="count">6</span>
-              <span class="desc" data-i18n="reviews.g2.desc">The differentiator players name again and again</span>
+              <h2><span data-i18n="reviews.g2.title">No ads · Free · No paywalls</span> <span class="count">9</span></h2>
+              <p class="desc" data-i18n="reviews.g2.desc">The differentiator players name again and again</p>
             </div>
             <div class="rv-grid">
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇮🇩</span><span class="rv-name">Ferry harry setiawan</span></div><p class="rv-quote"><span class="hl">There are no ads</span> and you can play Pokémon Quetzal 8.4+. Runs great on Funtouch Vivo. GG!</p><div class="rv-meta">Vivo Y17s · ID · 2026-06</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">The Ingited Fulgur Deus</span></div><p class="rv-quote"><span class="hl">No ads nor paywalls.</span> There is a premium service, but it's only to download your games and play without interruption. It works perfectly.</p><div class="rv-meta">Galaxy S23 FE · 2026-05</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Adriano Carlos</span></div><p class="rv-quote">Very good, <span class="hl">you can download games</span>, although it's not as fast as those 5-star emulators.</p><div class="rv-meta">Redmi Note 11 · PT-BR · 2026-05</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Jeremy Martin</span></div><p class="rv-quote">App has worked great for me so far. <span class="hl">No issues saving or basic features being locked behind paywalls.</span> Clean with good customization. Would highly recommend.</p><div class="rv-meta">Galaxy S25 FE · 2026-04</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇩🇪</span><span class="rv-name">Kianosch Saidi</span></div><p class="rv-quote"><span class="hl">No ads, works without Wi-Fi, and it's free.</span> It's really great.</p><div class="rv-meta">Galaxy A15 · DE · 2026-04</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Tom McGovern</span></div><p class="rv-quote"><span class="hl">Very good and ad free.</span></p><div class="rv-meta">Galaxy A17 · 2026-04</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇺🇸</span><span class="rv-name">TripleTSahurCityBoi</span></div><p class="rv-quote">Really good especially for old RPGs like Pokémon. My favorite feature is 3× speed mode. <span class="hl">Also there's no ads and every feature is completely free.</span></p><div class="rv-meta"><span class="rv-plat ios"><span class="ico">🍎</span> App Store</span> · v1.10.2 · 2026-03</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇨🇳</span><span class="rv-name">zhangsu12314</span></div><p class="rv-quote">功能完善，支持手柄映射，<span class="hl">不用开 VIP 也非常好用，支持一下。</span></p><div class="rv-meta"><span class="rv-plat ios"><span class="ico">🍎</span> App Store</span> · v3.1.0 · ZH · 2026-05</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇺🇸</span><span class="rv-name">来一斤熊大</span></div><p class="rv-quote"><span class="hl">支持中文，无广告</span>，太好了，方便简洁。</p><div class="rv-meta"><span class="rv-plat ios"><span class="ico">🍎</span> App Store</span> · v1.2.7 · ZH · 2025-12</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇮🇩</span><span class="rv-name">Ferry harry setiawan</span></div><p class="rv-quote"><span class="hl">There are no ads</span> and you can play Pokémon Quetzal 8.4+. Runs great on Funtouch Vivo. GG!</p><div class="rv-meta">ID · 2026-06</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">The Ingited Fulgur Deus</span></div><p class="rv-quote"><span class="hl">No ads nor paywalls.</span> There is a premium service, but it's only to download your games and play without interruption. It works perfectly.</p><div class="rv-meta">2026-05</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Adriano Carlos</span></div><p class="rv-quote">Very good, <span class="hl">you can download games</span>, although it's not as fast as those 5-star emulators.</p><div class="rv-meta">PT-BR · 2026-05</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Jeremy Martin</span></div><p class="rv-quote">App has worked great for me so far. <span class="hl">No issues saving or basic features being locked behind paywalls.</span> Clean with good customization. Would highly recommend.</p><div class="rv-meta">2026-04</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇩🇪</span><span class="rv-name">Kianosch Saidi</span></div><p class="rv-quote"><span class="hl">No ads, works without Wi-Fi, and it's free.</span> It's really great.</p><div class="rv-meta">DE · 2026-04</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Tom McGovern</span></div><p class="rv-quote"><span class="hl">Very good and ad free.</span></p><div class="rv-meta">2026-04</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇺🇸</span><span class="rv-name">TripleTSahurCityBoi</span></div><p class="rv-quote">Really good especially for old RPGs like Pokémon. My favorite feature is 3× speed mode. <span class="hl">Also there's no ads and every feature is completely free.</span></p><div class="rv-meta">2026-03</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇨🇳</span><span class="rv-name">zhangsu12314</span></div><p class="rv-quote">功能完善，支持手柄映射，<span class="hl">不用开 VIP 也非常好用，支持一下。</span></p><div class="rv-meta">ZH · 2026-05</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇺🇸</span><span class="rv-name">来一斤熊大</span></div><p class="rv-quote"><span class="hl">支持中文，无广告</span>，太好了，方便简洁。</p><div class="rv-meta">ZH · 2025-12</div></div>
             </div>
           </section>
 
           <!-- 3. RetroAchievements -->
           <section class="rv-section">
             <div class="rv-shead">
-              <span class="dot"></span>
-              <h2 data-i18n="reviews.g3.title">RetroAchievements is a core draw</h2>
-              <span class="count">5</span>
-              <span class="desc" data-i18n="reviews.g3.desc">The achievement system pulls players over from rivals</span>
+              <h2><span data-i18n="reviews.g3.title">RetroAchievements is a core draw</span> <span class="count">5</span></h2>
+              <p class="desc" data-i18n="reviews.g3.desc">The achievement system pulls players over from rivals</p>
             </div>
             <div class="rv-grid">
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Vitor de Oliveira</span></div><p class="rv-quote">This emulator is great — <span class="hl">it has RetroAchievements, it's easy to use, supports BIOS files and external controllers.</span> Very good.</p><div class="rv-meta">Moto G05 · PT-BR · 2026-07</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Vitor de Oliveira</span></div><p class="rv-quote">This emulator is great — <span class="hl">it has RetroAchievements, it's easy to use, supports BIOS files and external controllers.</span> Very good.</p><div class="rv-meta">PT-BR · 2026-07</div></div>
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇵🇱</span><span class="rv-name">Paweł Mateusz Zimny</span></div><p class="rv-quote"><span class="hl">Working great, have access to RetroAchievements which is great 👍</span></p><div class="rv-meta">2026-02</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Jacob Nitz</span></div><p class="rv-quote">Using this since it became RetroAchievements compatible. <span class="hl">Absolutely amazing emulator, highly recommend!</span> My only wish is tilt controls — but it's on the roadmap, so I'm happy to wait to play WarioWare: Twisted! the way it was meant to be.</p><div class="rv-meta">Galaxy S25+ · 2026-01</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇪🇸</span><span class="rv-name">Emilio Rodríguez</span></div><p class="rv-quote"><span class="hl">Much better than Pizzaboy GBA Pro</span>, which has glitches with RetroAchievements and a boring UI — and this one's free too.</p><div class="rv-meta">Motorola Edge S · ES · 2026-01</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇪🇸</span><span class="rv-name">fantasmashy</span></div><p class="rv-quote"><span class="hl">I just needed a GBA emulator with RetroAchievements integration for my old phone</span> — and this is it.</p><div class="rv-meta">LG G6 · ES · 2025-12</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Jacob Nitz</span></div><p class="rv-quote">Using this since it became RetroAchievements compatible. <span class="hl">Absolutely amazing emulator, highly recommend!</span> My only wish is tilt controls — but it's on the roadmap, so I'm happy to wait to play WarioWare: Twisted! the way it was meant to be.</p><div class="rv-meta">2026-01</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇪🇸</span><span class="rv-name">Emilio Rodríguez</span></div><p class="rv-quote"><span class="hl">Much better than Pizzaboy GBA Pro</span>, which has glitches with RetroAchievements and a boring UI — and this one's free too.</p><div class="rv-meta">ES · 2026-01</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇪🇸</span><span class="rv-name">fantasmashy</span></div><p class="rv-quote"><span class="hl">I just needed a GBA emulator with RetroAchievements integration for my old phone</span> — and this is it.</p><div class="rv-meta">ES · 2025-12</div></div>
             </div>
           </section>
 
           <!-- 4. Simple / smooth / good UI -->
           <section class="rv-section">
             <div class="rv-shead">
-              <span class="dot"></span>
-              <h2 data-i18n="reviews.g4.title">Simple · Smooth · Great-looking UI</h2>
-              <span class="count">9</span>
-              <span class="desc" data-i18n="reviews.g4.desc">"Simple, fast, no fiddling with complicated menus"</span>
+              <h2><span data-i18n="reviews.g4.title">Simple · Smooth · Great-looking UI</span> <span class="count">12</span></h2>
+              <p class="desc" data-i18n="reviews.g4.desc">"Simple, fast, no fiddling with complicated menus"</p>
             </div>
             <div class="rv-grid">
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Joás da Silva Farias</span></div><p class="rv-quote"><span class="hl">The app is very good, practical, and has no drawbacks so far.</span></p><div class="rv-meta">Moto G75 · PT-BR · 2026-07</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇪🇸</span><span class="rv-name">Liam Leiva</span></div><p class="rv-quote"><span class="hl">Wow, this emulator is amazing! I love the features it has in the basic version.</span> Keep improving this incredible emulator and I'll definitely be a regular user.</p><div class="rv-meta">Oppo CPH2269 · ES · 2026-07</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇫🇷</span><span class="rv-name">Didier Bernardino</span></div><p class="rv-quote">This app is great — <span class="hl">it's fast, smooth, and easy to use</span> with both hands and buttons.</p><div class="rv-meta">Redmi 15 · FR · 2026-06</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">ron sprecker</span></div><p class="rv-quote"><span class="hl">Excellent — been needing this for a while.</span></p><div class="rv-meta">Motorola Edge 2025 · 2026-06</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Bradley Wicks</span></div><p class="rv-quote"><span class="hl">Good GoGBA!</span></p><div class="rv-meta">Moto G 2026 · 2026-06</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Muhammad Bernard</span></div><p class="rv-quote"><span class="hl">I love it, thank you for making this app.</span></p><div class="rv-meta">realme C71 · 2026-02</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Android ProATM</span></div><p class="rv-quote"><span class="hl">This GBA emulator is amazing — nice work on the emulator.</span></p><div class="rv-meta">Galaxy S24 Ultra · 2026-01</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Matheus Pereira Ribeiro</span></div><p class="rv-quote">This app is very good. <span class="hl">Its biggest advantage is its simplicity</span> — settings are easy to adjust, accessing titles is much easier, and it runs smoothly without complicated menus. Worth downloading!</p><div class="rv-meta">Galaxy A15 · PT-BR · 2025-12</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">secreto absoluto</span></div><p class="rv-quote"><span class="hl">The app is beautiful and works very well!!!</span> Only suggestion: add cable link via Wi-Fi or Bluetooth — that would be perfect!</p><div class="rv-meta">Moto G30 · PT-BR · 2025-12</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇺🇸</span><span class="rv-name">MikeHerty</span></div><p class="rv-quote"><span class="hl">Simple, clean interface, the fast forward is great, minimal crashes.</span> 👌🏼</p><div class="rv-meta"><span class="rv-plat ios"><span class="ico">🍎</span> App Store</span> · v2.5.0 · 2026-04</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇨🇳</span><span class="rv-name">cosplayi</span></div><p class="rv-quote"><span class="hl">用着顺畅。</span></p><div class="rv-meta"><span class="rv-plat ios"><span class="ico">🍎</span> App Store</span> · v3.12.4 · ZH · 2026-07</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇭🇰</span><span class="rv-name">哈哈VB不好是不是</span></div><p class="rv-quote"><span class="hl">功能挺齐全的，存档、多倍加速都有，界面也很简洁。</span></p><div class="rv-meta"><span class="rv-plat ios"><span class="ico">🍎</span> App Store</span> · v1.5.2 · ZH · 2025-12</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Joás da Silva Farias</span></div><p class="rv-quote"><span class="hl">The app is very good, practical, and has no drawbacks so far.</span></p><div class="rv-meta">PT-BR · 2026-07</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇪🇸</span><span class="rv-name">Liam Leiva</span></div><p class="rv-quote"><span class="hl">Wow, this emulator is amazing! I love the features it has in the basic version.</span> Keep improving this incredible emulator and I'll definitely be a regular user.</p><div class="rv-meta">ES · 2026-07</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇫🇷</span><span class="rv-name">Didier Bernardino</span></div><p class="rv-quote">This app is great — <span class="hl">it's fast, smooth, and easy to use</span> with both hands and buttons.</p><div class="rv-meta">FR · 2026-06</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">ron sprecker</span></div><p class="rv-quote"><span class="hl">Excellent — been needing this for a while.</span></p><div class="rv-meta">2026-06</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Bradley Wicks</span></div><p class="rv-quote"><span class="hl">Good GoGBA!</span></p><div class="rv-meta">2026-06</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Muhammad Bernard</span></div><p class="rv-quote"><span class="hl">I love it, thank you for making this app.</span></p><div class="rv-meta">2026-02</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Android ProATM</span></div><p class="rv-quote"><span class="hl">This GBA emulator is amazing — nice work on the emulator.</span></p><div class="rv-meta">2026-01</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Matheus Pereira Ribeiro</span></div><p class="rv-quote">This app is very good. <span class="hl">Its biggest advantage is its simplicity</span> — settings are easy to adjust, accessing titles is much easier, and it runs smoothly without complicated menus. Worth downloading!</p><div class="rv-meta">PT-BR · 2025-12</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">secreto absoluto</span></div><p class="rv-quote"><span class="hl">The app is beautiful and works very well!!!</span> Only suggestion: add cable link via Wi-Fi or Bluetooth — that would be perfect!</p><div class="rv-meta">PT-BR · 2025-12</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇺🇸</span><span class="rv-name">MikeHerty</span></div><p class="rv-quote"><span class="hl">Simple, clean interface, the fast forward is great, minimal crashes.</span> 👌🏼</p><div class="rv-meta">2026-04</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇨🇳</span><span class="rv-name">cosplayi</span></div><p class="rv-quote"><span class="hl">用着顺畅。</span></p><div class="rv-meta">ZH · 2026-07</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇭🇰</span><span class="rv-name">哈哈VB不好是不是</span></div><p class="rv-quote"><span class="hl">功能挺齐全的，存档、多倍加速都有，界面也很简洁。</span></p><div class="rv-meta">ZH · 2025-12</div></div>
             </div>
           </section>
 
           <!-- 5. Short praise, worldwide -->
           <section class="rv-section">
             <div class="rv-shead">
-              <span class="dot"></span>
-              <h2 data-i18n="reviews.g5.title">Short praise · From around the world</h2>
-              <span class="count">14+</span>
-              <span class="desc" data-i18n="reviews.g5.desc">A single "good / very good / awesome" counts too</span>
+              <h2><span data-i18n="reviews.g5.title">Short praise · From around the world</span> <span class="count">16</span></h2>
+              <p class="desc" data-i18n="reviews.g5.desc">A single "good / very good / awesome" counts too</p>
             </div>
             <div class="rv-grid">
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇸🇦</span><span class="rv-name">ايهاب محمد</span></div><p class="rv-quote"><span class="hl">Excellent!</span> We request one for the NDS, please.</p><div class="rv-meta">AR · 2026-07</div></div>
@@ -372,23 +323,21 @@
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Samuel Jesus</span></div><p class="rv-quote"><span class="hl">It's too good, I recommend it!</span></p><div class="rv-meta">PT-BR · 2026-04</div></div>
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇮🇩</span><span class="rv-name">Qian Shabiq</span></div><p class="rv-quote"><span class="hl">Good game.</span></p><div class="rv-meta">ID · 2026-04</div></div>
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Brendan Richardson</span></div><p class="rv-quote"><span class="hl">Good stuff.</span></p><div class="rv-meta">2026-01</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇨🇳</span><span class="rv-name">王者·</span></div><p class="rv-quote"><span class="hl">最好的，好用。</span></p><div class="rv-meta"><span class="rv-plat ios"><span class="ico">🍎</span> App Store</span> · v3.8.4 · ZH · 2026-06</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇨🇳</span><span class="rv-name">王者·</span></div><p class="rv-quote"><span class="hl">最好的，好用。</span></p><div class="rv-meta">ZH · 2026-06</div></div>
             </div>
           </section>
 
           <!-- 6. Praise + feature requests -->
           <section class="rv-section">
             <div class="rv-shead">
-              <span class="dot"></span>
-              <h2 data-i18n="reviews.g6.title">Thumbs up + wishlist</h2>
-              <span class="count">6</span>
-              <span class="desc" data-i18n="reviews.g6.desc">Love the app, and point the way: filters, multiplayer, more consoles</span>
+              <h2><span data-i18n="reviews.g6.title">Thumbs up + wishlist</span> <span class="count">6</span></h2>
+              <p class="desc" data-i18n="reviews.g6.desc">Love the app, and point the way: filters, multiplayer, more consoles</p>
             </div>
             <div class="rv-grid">
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇪🇸</span><span class="rv-name">Liam Leiva</span></div><p class="rv-quote">I'd love to see more folders in the Data directory (edited controls, graphics drivers…). <span class="hl">Keep improving this incredible emulator.</span></p><div class="rv-meta">v3.12.5 · 2026-07</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇪🇸</span><span class="rv-name">Liam Leiva</span></div><p class="rv-quote">I'd love to see more folders in the Data directory (edited controls, graphics drivers…). <span class="hl">Keep improving this incredible emulator.</span></p><div class="rv-meta">2026-07</div></div>
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇹🇭</span><span class="rv-name">heartbreak zero</span></div><p class="rv-quote">It works fine, but the screen is a bit small. <span class="hl">Overall, it's good.</span></p><div class="rv-meta">TH · 2026-04</div></div>
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇸🇦</span><span class="rv-name">Hossam Mostafa</span></div><p class="rv-quote"><span class="hl">The best GBA emulator in the world</span> — please add a "scan folder" option so all games appear automatically.</p><div class="rv-meta">AR · 2026-04</div></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Adeel Shah</span></div><p class="rv-quote"><span class="hl">Great clean experience.</span> Can you add integer scaling and in-game access to video filter options?</p><div class="rv-meta">v1.10.1 · 2026-02</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Adeel Shah</span></div><p class="rv-quote"><span class="hl">Great clean experience.</span> Can you add integer scaling and in-game access to video filter options?</p><div class="rv-meta">2026-02</div></div>
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Marcos Vinicios</span></div><p class="rv-quote"><span class="hl">The app is great</span> — just two things: landscape screen, and multiplayer support.</p><div class="rv-meta">PT-BR · 2026-02</div></div>
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Caio Ferreira</span></div><p class="rv-quote">The app is very good — <span class="hl">I have some ideas to improve it</span>: control customization, filters, BIOS selection, more RetroAchievements options (unlock sounds).</p><div class="rv-meta">PT-BR · 2025-12</div></div>
             </div>
