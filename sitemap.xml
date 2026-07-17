@@ -16,6 +16,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://gogba.xyz/reviews.html</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://gogba.xyz/support.html</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>

@@ -1546,3 +1546,43 @@ footer .container {
 
 .lang-switch:hover { border-color: var(--accent); }
 .lang-switch option { color: #1a1a1a; }
+
+/* ===== Home hero — social proof CTA (links to reviews.html) ===== */
+.social-proof {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    margin-top: 1.25rem;
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: rgba(var(--accent-rgb), 0.08);
+    border: 1px solid rgba(var(--accent-rgb), 0.25);
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.social-proof:hover {
+    background: rgba(var(--accent-rgb), 0.14);
+    border-color: rgba(var(--accent-rgb), 0.45);
+    transform: translateY(-1px);
+}
+.social-proof .sp-stars {
+    color: #9bbc0f;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+.social-proof .sp-dim { color: rgba(155, 188, 15, 0.35); }
+.social-proof .sp-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.social-proof .sp-text strong { color: var(--text-primary); font-variant-numeric: tabular-nums; }
+.social-proof .sp-cta {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
+}
+[data-theme="dark"] .social-proof .sp-cta { color: var(--accent-hover); }
