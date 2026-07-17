@@ -26,15 +26,15 @@
     <!-- Primary Meta Tags -->
     <title>Reviews - What Players Say About GoGBA</title>
     <meta name="title" content="Reviews - What Players Say About GoGBA">
-    <meta name="description" content="Real player reviews of GoGBA from Google Play. Players from 15+ countries call it the best GBA emulator: no ads, no paywalls, RetroAchievements, and a clean, simple interface.">
-    <meta name="keywords" content="GoGBA reviews, GBA emulator reviews, best GBA emulator, Game Boy emulator reviews, RetroAchievements emulator">
+    <meta name="description" content="Real player reviews of GoGBA from the App Store and Google Play. Players from 15+ countries call it the best GBA emulator: no ads, no paywalls, RetroAchievements, and a clean, simple interface.">
+    <meta name="keywords" content="GoGBA reviews, GBA emulator reviews, best GBA emulator, Game Boy emulator reviews, RetroAchievements emulator, iOS GBA emulator">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://gogba.xyz/reviews.html">
     <meta property="og:title" content="Reviews - What Players Say About GoGBA">
-    <meta property="og:description" content="Real player reviews of GoGBA. Players call it the best GBA emulator: no ads, no paywalls, RetroAchievements, and a clean interface.">
+    <meta property="og:description" content="Real player reviews of GoGBA from the App Store and Google Play. Players call it the best GBA emulator: no ads, no paywalls, RetroAchievements, and a clean interface.">
     <meta property="og:image" content="https://gogba.xyz/images/app_icon.png">
 
     <!-- Twitter -->
@@ -88,15 +88,26 @@
         color: #7f9c2a; font-family: 'Courier New', monospace; font-size: 11px;
         letter-spacing: .28em; text-transform: uppercase; font-weight: 700; margin-bottom: 12px;
       }
-      .rv-rating-row { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
+      /* Two platform panels side by side inside the LCD */
+      .rv-platforms { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+      .rv-platforms > div + div {
+        border-left: 1px solid rgba(127,156,42,.35); padding-left: 22px;
+      }
+      .rv-plat-name {
+        display: inline-flex; align-items: center; gap: 6px;
+        color: #9fbe3c; font-family: 'Courier New', monospace; font-size: 11px;
+        letter-spacing: .18em; text-transform: uppercase; font-weight: 700; margin-bottom: 10px;
+      }
+      .rv-plat-name .ico { font-size: 13px; filter: grayscale(.15); }
+      .rv-rating-row { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
       .rv-score {
-        font-size: 68px; font-weight: 800; line-height: .9; color: #cde94f;
+        font-size: 56px; font-weight: 800; line-height: .9; color: #cde94f;
         font-family: 'Courier New', monospace; font-variant-numeric: tabular-nums;
         text-shadow: 0 0 18px var(--rv-glow);
       }
-      .rv-stars { font-size: 27px; letter-spacing: 3px; color: #b6d63f; }
+      .rv-stars { font-size: 22px; letter-spacing: 3px; color: #b6d63f; }
       .rv-stars .dim { color: #4d5f24; }
-      .rv-rating-meta { color: #7f9c2a; font-family: 'Courier New', monospace; font-size: 13px; margin-top: 6px; }
+      .rv-rating-meta { color: #7f9c2a; font-family: 'Courier New', monospace; font-size: 12.5px; margin-top: 6px; }
       .rv-rating-meta b { color: #c6e34a; }
       .rv-lcd h2 {
         color: #e6ffa0; font-size: clamp(20px, 2.6vw, 27px); margin: 20px 0 6px;
@@ -143,10 +154,27 @@
       .rv-quote .hl { background: linear-gradient(transparent 60%, var(--rv-glow) 60%); font-weight: 600; }
       .rv-meta { display: flex; flex-wrap: wrap; gap: 5px 9px; font-size: 11px; color: var(--text-secondary); align-items: center; }
 
+      /* Per-card platform badge */
+      .rv-plat {
+        flex: none; display: inline-flex; align-items: center; gap: 4px;
+        font-size: 10.5px; font-weight: 700; letter-spacing: .02em;
+        padding: 2px 8px; border-radius: 20px; line-height: 1.4;
+        border: 1px solid var(--border-color); color: var(--text-secondary);
+        background: var(--hover-bg);
+      }
+      .rv-plat.ios { color: #0a84c4; border-color: rgba(10,132,196,.4); background: rgba(10,132,196,.08); }
+      [data-theme="dark"] .rv-plat.ios { color: #5ac8fa; border-color: rgba(90,200,250,.35); background: rgba(90,200,250,.1); }
+      .rv-plat.gp { color: var(--rv-green); border-color: var(--rv-glow); background: rgba(155,188,15,.1); }
+      .rv-plat .ico { font-size: 11px; }
 
       @media (max-width: 620px) {
         .rv-stats { grid-template-columns: repeat(2, 1fr); }
-        .rv-score { font-size: 54px; }
+        .rv-platforms { grid-template-columns: 1fr; gap: 18px; }
+        .rv-platforms > div + div {
+          border-left: 0; padding-left: 0; padding-top: 16px;
+          border-top: 1px solid rgba(127,156,42,.35);
+        }
+        .rv-score { font-size: 50px; }
         .rv-shead .desc { display: none; }
       }
     </style>
@@ -190,25 +218,40 @@
           <div class="container">
             <div class="rv-console">
               <span class="rv-brand-mark">GoGBA</span>
-              <p class="rv-console-label" data-i18n="reviews.hero.label">Ratings &amp; Reviews · Google Play</p>
+              <p class="rv-console-label" data-i18n="reviews.hero.label">Ratings &amp; Reviews · App Store &amp; Google Play</p>
               <div class="rv-lcd">
-                <div class="rv-lcd-eyebrow" data-i18n="reviews.hero.eyebrow">▶ Default Google Play rating</div>
-                <div class="rv-rating-row">
-                  <div class="rv-score">4.26</div>
+                <div class="rv-lcd-eyebrow" data-i18n="reviews.hero.eyebrow">▶ Default store ratings · both platforms</div>
+                <div class="rv-platforms">
                   <div>
-                    <div class="rv-stars">★★★★<span class="dim">★</span></div>
-                    <div class="rv-rating-meta" data-i18n-html="reviews.hero.count"><b>162</b> ratings · <b>96</b> with reviews</div>
+                    <div class="rv-plat-name"><span class="ico">🍎</span> App Store</div>
+                    <div class="rv-rating-row">
+                      <div class="rv-score">4.6</div>
+                      <div>
+                        <div class="rv-stars">★★★★<span class="dim">★</span></div>
+                        <div class="rv-rating-meta" data-i18n-html="reviews.hero.ios"><b>71</b> ratings · <b>21</b> with reviews</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="rv-plat-name"><span class="ico">▶</span> Google Play</div>
+                    <div class="rv-rating-row">
+                      <div class="rv-score">4.26</div>
+                      <div>
+                        <div class="rv-stars">★★★★<span class="dim">★</span></div>
+                        <div class="rv-rating-meta" data-i18n-html="reviews.hero.gp"><b>162</b> ratings · <b>96</b> with reviews</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <h2 data-i18n="reviews.hero.headline">Players call GoGBA the best GBA emulator they've ever used</h2>
-                <p data-i18n="reviews.hero.sub">// Every positive written review · 15+ countries · multilingual</p>
+                <p data-i18n="reviews.hero.sub">// Every positive written review · both stores · 15+ countries · multilingual</p>
               </div>
             </div>
 
             <div class="rv-stats">
-              <div class="rv-stat"><div class="n">55+</div><div class="l" data-i18n="reviews.stat.reviews">Positive reviews</div></div>
+              <div class="rv-stat"><div class="n">60+</div><div class="l" data-i18n="reviews.stat.reviews">Positive reviews</div></div>
               <div class="rv-stat"><div class="n">15+</div><div class="l" data-i18n="reviews.stat.langs">Languages</div></div>
-              <div class="rv-stat"><div class="n">14</div><div class="l" data-i18n="reviews.stat.best">Say "the best"</div></div>
+              <div class="rv-stat"><div class="n">15</div><div class="l" data-i18n="reviews.stat.best">Say "the best"</div></div>
               <div class="rv-stat"><div class="n">0</div><div class="l" data-i18n="reviews.stat.ads">Ad complaints</div></div>
             </div>
           </div>
@@ -239,6 +282,7 @@
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇻🇳</span><span class="rv-name">Tưởng Văn</span></div><p class="rv-quote"><span class="hl">The best GBA emulator I've ever used.</span> The interface is highly customizable, and I can even choose game cover art. I really like this app.</p><div class="rv-meta">Redmi 13 · 2026-03</div></div>
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Arman Kumar</span></div><p class="rv-quote"><span class="hl">Best emulator.</span></p><div class="rv-meta">Galaxy M53 · 2026-03</div></div>
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇨🇳</span><span class="rv-name">Owen Eiffel</span></div><p class="rv-quote">A fantastic, smooth, ad-free GBA emulator — <span class="hl">the best GBA emulator I've ever used so far.</span></p><div class="rv-meta">OnePlus 13 · ZH · 2026-02</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇺🇸</span><span class="rv-name">JonathanRocks17</span></div><p class="rv-quote"><span class="hl">Best GBA App.</span> The quality is way better and the sound is much cleaner than the last ones.</p><div class="rv-meta"><span class="rv-plat ios"><span class="ico">🍎</span> App Store</span> · v1.14.0 · 2026-03</div></div>
             </div>
           </section>
 
@@ -257,6 +301,9 @@
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Jeremy Martin</span></div><p class="rv-quote">App has worked great for me so far. <span class="hl">No issues saving or basic features being locked behind paywalls.</span> Clean with good customization. Would highly recommend.</p><div class="rv-meta">Galaxy S25 FE · 2026-04</div></div>
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇩🇪</span><span class="rv-name">Kianosch Saidi</span></div><p class="rv-quote"><span class="hl">No ads, works without Wi-Fi, and it's free.</span> It's really great.</p><div class="rv-meta">Galaxy A15 · DE · 2026-04</div></div>
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Tom McGovern</span></div><p class="rv-quote"><span class="hl">Very good and ad free.</span></p><div class="rv-meta">Galaxy A17 · 2026-04</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇺🇸</span><span class="rv-name">TripleTSahurCityBoi</span></div><p class="rv-quote">Really good especially for old RPGs like Pokémon. My favorite feature is 3× speed mode. <span class="hl">Also there's no ads and every feature is completely free.</span></p><div class="rv-meta"><span class="rv-plat ios"><span class="ico">🍎</span> App Store</span> · v1.10.2 · 2026-03</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇨🇳</span><span class="rv-name">zhangsu12314</span></div><p class="rv-quote">功能完善，支持手柄映射，<span class="hl">不用开 VIP 也非常好用，支持一下。</span></p><div class="rv-meta"><span class="rv-plat ios"><span class="ico">🍎</span> App Store</span> · v3.1.0 · ZH · 2026-05</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇺🇸</span><span class="rv-name">来一斤熊大</span></div><p class="rv-quote"><span class="hl">支持中文，无广告</span>，太好了，方便简洁。</p><div class="rv-meta"><span class="rv-plat ios"><span class="ico">🍎</span> App Store</span> · v1.2.7 · ZH · 2025-12</div></div>
             </div>
           </section>
 
@@ -295,6 +342,9 @@
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Android ProATM</span></div><p class="rv-quote"><span class="hl">This GBA emulator is amazing — nice work on the emulator.</span></p><div class="rv-meta">Galaxy S24 Ultra · 2026-01</div></div>
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Matheus Pereira Ribeiro</span></div><p class="rv-quote">This app is very good. <span class="hl">Its biggest advantage is its simplicity</span> — settings are easy to adjust, accessing titles is much easier, and it runs smoothly without complicated menus. Worth downloading!</p><div class="rv-meta">Galaxy A15 · PT-BR · 2025-12</div></div>
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">secreto absoluto</span></div><p class="rv-quote"><span class="hl">The app is beautiful and works very well!!!</span> Only suggestion: add cable link via Wi-Fi or Bluetooth — that would be perfect!</p><div class="rv-meta">Moto G30 · PT-BR · 2025-12</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇺🇸</span><span class="rv-name">MikeHerty</span></div><p class="rv-quote"><span class="hl">Simple, clean interface, the fast forward is great, minimal crashes.</span> 👌🏼</p><div class="rv-meta"><span class="rv-plat ios"><span class="ico">🍎</span> App Store</span> · v2.5.0 · 2026-04</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇨🇳</span><span class="rv-name">cosplayi</span></div><p class="rv-quote"><span class="hl">用着顺畅。</span></p><div class="rv-meta"><span class="rv-plat ios"><span class="ico">🍎</span> App Store</span> · v3.12.4 · ZH · 2026-07</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇭🇰</span><span class="rv-name">哈哈VB不好是不是</span></div><p class="rv-quote"><span class="hl">功能挺齐全的，存档、多倍加速都有，界面也很简洁。</span></p><div class="rv-meta"><span class="rv-plat ios"><span class="ico">🍎</span> App Store</span> · v1.5.2 · ZH · 2025-12</div></div>
             </div>
           </section>
 
@@ -322,6 +372,7 @@
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Samuel Jesus</span></div><p class="rv-quote"><span class="hl">It's too good, I recommend it!</span></p><div class="rv-meta">PT-BR · 2026-04</div></div>
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇮🇩</span><span class="rv-name">Qian Shabiq</span></div><p class="rv-quote"><span class="hl">Good game.</span></p><div class="rv-meta">ID · 2026-04</div></div>
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Brendan Richardson</span></div><p class="rv-quote"><span class="hl">Good stuff.</span></p><div class="rv-meta">2026-01</div></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇨🇳</span><span class="rv-name">王者·</span></div><p class="rv-quote"><span class="hl">最好的，好用。</span></p><div class="rv-meta"><span class="rv-plat ios"><span class="ico">🍎</span> App Store</span> · v3.8.4 · ZH · 2026-06</div></div>
             </div>
           </section>
 
