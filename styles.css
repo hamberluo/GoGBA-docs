@@ -1140,33 +1140,6 @@ footer .container {
     transform: translateY(-2px);
 }
 
-.footer-friends {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    width: 100%;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color);
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-}
-
-.footer-friends .friends-label {
-    opacity: 0.7;
-}
-
-.footer-friends a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-friends a:hover {
-    color: var(--text-primary);
-}
-
 /* Demo Games Section */
 .demo-games {
     padding: 5rem 0;
@@ -1402,10 +1375,6 @@ footer .container {
         flex-wrap: wrap;
         justify-content: center;
         gap: 1rem;
-    }
-
-    .footer-friends {
-        justify-content: center;
     }
 
     .content-page {
