@@ -1269,15 +1269,14 @@
         if (sel && sel.value !== lang) sel.value = lang;
     }
 
-    // Store-badge sources depend on language AND theme:
-    // - App Store: black lockup on light theme, white lockup on dark theme.
-    // - Google Play: single color version for both themes.
+    // Store-badge sources depend on language only. The site is dark-only, so the
+    // App Store lockup is always the white one; Google Play ships a single color
+    // version for either ground.
     function updateBadges(lang) {
         var L = SUPPORTED.indexOf(lang) > -1 ? lang : resolveLang();
-        var dark = document.documentElement.getAttribute('data-theme') === 'dark';
         var appstore = document.querySelector('[data-badge="appstore"]');
         if (appstore) {
-            appstore.setAttribute('src', 'images/app_store_' + L + (dark ? '_wht' : '_blk') + '.svg');
+            appstore.setAttribute('src', 'images/app_store_' + L + '_wht.svg');
         }
         var googleplay = document.querySelector('[data-badge="googleplay"]');
         if (googleplay) {

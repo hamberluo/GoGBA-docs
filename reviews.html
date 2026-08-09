@@ -5,11 +5,6 @@
     <script>
       (function () {
         try {
-          var t = localStorage.getItem('theme');
-          if (t !== 'light' && t !== 'dark') {
-            t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
-          }
-          document.documentElement.setAttribute('data-theme', t);
           var L = localStorage.getItem('lang');
           if (L !== 'en' && L !== 'zh-Hans' && L !== 'zh-Hant') {
             var nl = (navigator.language || 'en').toLowerCase();
@@ -109,7 +104,6 @@
                     <li><a href="terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
                     <li><a href="license.html" data-i18n="nav.license">License</a></li>
                     <li class="nav-controls">
-                        <button class="theme-toggle" type="button" aria-label="Toggle theme"></button>
                         <select class="lang-switch" aria-label="Language">
                             <option value="en">EN</option>
                             <option value="zh-Hans">简体中文</option>
@@ -168,7 +162,6 @@
         </div>
     </footer>
 
-    <script src="js/theme.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/common.js"></script>
 </body>

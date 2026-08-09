@@ -33,54 +33,34 @@ pre, code {
     word-wrap: break-word;
 }
 
-/* Palette follows the app's default Azure colorway (hue 228°, drawn from the
-   GBA/RG34XX indigo shell). Dark mode reuses the app's values verbatim so the
-   site and the first app screen read as the same machine; light mode keeps the
-   hue but drops the lightness, because the app's #8499EB primary is built for a
-   near-black ground and only reaches 2.7:1 on white. */
-:root {
-    /* Light mode accent — hue 228° at L56%, the point where it clears AA both as
-       text on white (5.41:1) and as a button ground under white text */
-    --accent: #3e5ee0;
-    --accent-hover: #2a47c4;
-    --accent-color: var(--accent); /* compat with historical inline styles */
-    --accent-rgb: 62, 94, 224;
-    --on-accent: #ffffff; /* label color when accent is the ground */
+/* One palette, lifted from the app's default Coral colorway (hue 15°, from the
+   KONKR Coral Orange / GBA Spice Orange shell). The app ships dark-only — every
+   colorway is Brightness.dark — so the site is dark-only too and the values are
+   the app's own, which is what lets the landing page and the first app screen
+   read as the same machine.
 
-    /* Light theme (default) — neutrals carry the same 228° cast as the app's */
-    --bg-color: #ffffff;
-    --bg-secondary: #f4f5f8;
-    --text-primary: #191a1f;
-    --text-secondary: #525560;
-    --border-color: #dee0e8;
-    --card-bg: #f4f5f8;
-    --hover-bg: #eaebf1;
-    --header-bg-rgb: 255, 255, 255;
+   There is no light mode. An earlier revision had one, but a warm accent has to
+   fall to roughly #BF4A22 to clear AA on white, by which point it reads brick
+   rather than coral. */
+:root {
+    --accent: #e78d6e;        /* app primary */
+    --accent-hover: #eeac96;
+    --accent-color: var(--accent); /* compat with historical inline styles */
+    --accent-rgb: 231, 141, 110;
+    /* The accent is a light tint on a near-black ground, so a filled button
+       takes a dark label — the app's onPrimary. White on it would be 2.2:1. */
+    --on-accent: #141110;
+
+    --bg-color: #211c1b;      /* app background0 */
+    --bg-secondary: #141110;  /* app background1 / surface */
+    --text-primary: #f1efef;  /* app onSurface */
+    --text-secondary: #b9afac;/* app onSurfaceVariant */
+    --border-color: #4b4340;  /* app outline */
+    --card-bg: #141110;
+    --hover-bg: #342e2c;      /* app background2 */
+    --header-bg-rgb: 33, 28, 27;
 
     /* historical naming compat */
-    --primary-color: var(--accent);
-    --primary-dark: var(--accent-hover);
-}
-
-[data-theme="dark"] {
-    /* Lifted straight from the app's Azure theme: primary #8499EB on the
-       background0 ground is 6.27:1 */
-    --accent: #8499eb;
-    --accent-hover: #a2b2f0;
-    --accent-rgb: 132, 153, 235;
-    /* The accent is a light tint here, so a filled button takes a near-black
-       label — the app's onPrimary. White on it would be 2.7:1. */
-    --on-accent: #101014;
-
-    --bg-color: #1b1c21;      /* app background0 */
-    --bg-secondary: #101014;  /* app background1 / surface */
-    --text-primary: #eff0f1;  /* app onSurface */
-    --text-secondary: #acafb9;/* app onSurfaceVariant */
-    --border-color: #40424b;  /* app outline */
-    --card-bg: #101014;
-    --hover-bg: #2c2e34;      /* app background2 */
-    --header-bg-rgb: 27, 28, 33;
-
     --primary-color: var(--accent);
     --primary-dark: var(--accent-hover);
 }
@@ -113,19 +93,12 @@ body::before {
     width: 100%;
     height: 100%;
     background:
-        radial-gradient(circle at 20% 50%, rgba(var(--accent-rgb), 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(var(--accent-rgb), 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(var(--accent-rgb), 0.03) 0%, transparent 50%);
-    animation: gradientShift 20s ease infinite;
-    pointer-events: none;
-    z-index: -1;
-}
-
-[data-theme="dark"] body::before {
-    background:
         radial-gradient(circle at 20% 50%, rgba(var(--accent-rgb), 0.08) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(var(--accent-rgb), 0.08) 0%, transparent 50%),
         radial-gradient(circle at 40% 20%, rgba(var(--accent-rgb), 0.04) 0%, transparent 50%);
+    animation: gradientShift 20s ease infinite;
+    pointer-events: none;
+    z-index: -1;
 }
 
 body::after {
@@ -1488,30 +1461,12 @@ footer .container {
     }
 }
 
-/* Nav controls: theme toggle + language switch */
+/* Nav controls: language switch */
 .nav-controls {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
-
-.theme-toggle {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    color: var(--text-primary);
-    cursor: pointer;
-    font-size: 1rem;
-    line-height: 1;
-    padding: 0.35rem 0.5rem;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.theme-toggle:hover {
-    background-color: var(--hover-bg);
-    border-color: var(--accent);
-}
-
 
 .lang-switch {
     background: transparent;
@@ -1525,7 +1480,7 @@ footer .container {
 }
 
 .lang-switch:hover { border-color: var(--accent); }
-.lang-switch option { color: #191a1f; }
+.lang-switch option { color: #1f1b19; }
 
 /* ===== Home hero — social proof CTA (links to reviews.html) ===== */
 .social-proof {
@@ -1562,7 +1517,6 @@ footer .container {
 .social-proof .sp-cta {
     font-size: 0.9rem;
     font-weight: 700;
-    color: var(--accent);
+    color: var(--accent-hover);
     white-space: nowrap;
 }
-[data-theme="dark"] .social-proof .sp-cta { color: var(--accent-hover); }
