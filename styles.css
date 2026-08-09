@@ -33,21 +33,28 @@ pre, code {
     word-wrap: break-word;
 }
 
+/* Palette follows the app's default Azure colorway (hue 228°, drawn from the
+   GBA/RG34XX indigo shell). Dark mode reuses the app's values verbatim so the
+   site and the first app screen read as the same machine; light mode keeps the
+   hue but drops the lightness, because the app's #8499EB primary is built for a
+   near-black ground and only reaches 2.7:1 on white. */
 :root {
-    /* Accent — app-icon purple, light mode uses a slightly darker derived value for contrast */
-    --accent: #7c5fd6;
-    --accent-hover: #6a4fc0;
+    /* Light mode accent — hue 228° at L56%, the point where it clears AA both as
+       text on white (5.41:1) and as a button ground under white text */
+    --accent: #3e5ee0;
+    --accent-hover: #2a47c4;
     --accent-color: var(--accent); /* compat with historical inline styles */
-    --accent-rgb: 124, 95, 214;
+    --accent-rgb: 62, 94, 224;
+    --on-accent: #ffffff; /* label color when accent is the ground */
 
-    /* Light theme (default) */
+    /* Light theme (default) — neutrals carry the same 228° cast as the app's */
     --bg-color: #ffffff;
-    --bg-secondary: #f5f5f7;
-    --text-primary: #1a1a1a;
-    --text-secondary: #555555;
-    --border-color: #e2e2e8;
-    --card-bg: #f5f5f7;
-    --hover-bg: #ececf2;
+    --bg-secondary: #f4f5f8;
+    --text-primary: #191a1f;
+    --text-secondary: #525560;
+    --border-color: #dee0e8;
+    --card-bg: #f4f5f8;
+    --hover-bg: #eaebf1;
     --header-bg-rgb: 255, 255, 255;
 
     /* historical naming compat */
@@ -56,19 +63,23 @@ pre, code {
 }
 
 [data-theme="dark"] {
-    /* dark mode accent — same as light to satisfy WCAG AA on white text */
-    --accent: #7c5fd6;
-    --accent-hover: #9d85e8;
-    --accent-rgb: 124, 95, 214;
+    /* Lifted straight from the app's Azure theme: primary #8499EB on the
+       background0 ground is 6.27:1 */
+    --accent: #8499eb;
+    --accent-hover: #a2b2f0;
+    --accent-rgb: 132, 153, 235;
+    /* The accent is a light tint here, so a filled button takes a near-black
+       label — the app's onPrimary. White on it would be 2.7:1. */
+    --on-accent: #101014;
 
-    --bg-color: #0f172a;
-    --bg-secondary: #1e293b;
-    --text-primary: #f1f5f9;
-    --text-secondary: #cbd5e1;
-    --border-color: #334155;
-    --card-bg: #1e293b;
-    --hover-bg: #334155;
-    --header-bg-rgb: 30, 41, 59;
+    --bg-color: #1b1c21;      /* app background0 */
+    --bg-secondary: #101014;  /* app background1 / surface */
+    --text-primary: #eff0f1;  /* app onSurface */
+    --text-secondary: #acafb9;/* app onSurfaceVariant */
+    --border-color: #40424b;  /* app outline */
+    --card-bg: #101014;
+    --hover-bg: #2c2e34;      /* app background2 */
+    --header-bg-rgb: 27, 28, 33;
 
     --primary-color: var(--accent);
     --primary-dark: var(--accent-hover);
@@ -102,9 +113,9 @@ body::before {
     width: 100%;
     height: 100%;
     background:
-        radial-gradient(circle at 20% 50%, rgba(124, 95, 214, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(124, 95, 214, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(124, 95, 214, 0.03) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(var(--accent-rgb), 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(var(--accent-rgb), 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(var(--accent-rgb), 0.03) 0%, transparent 50%);
     animation: gradientShift 20s ease infinite;
     pointer-events: none;
     z-index: -1;
@@ -112,9 +123,9 @@ body::before {
 
 [data-theme="dark"] body::before {
     background:
-        radial-gradient(circle at 20% 50%, rgba(139, 111, 224, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(139, 111, 224, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(139, 111, 224, 0.04) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(var(--accent-rgb), 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(var(--accent-rgb), 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(var(--accent-rgb), 0.04) 0%, transparent 50%);
 }
 
 body::after {
@@ -571,7 +582,7 @@ header.scrolled .nav-brand h1 {
 
 .btn-primary {
     background: linear-gradient(135deg, var(--primary-color), var(--accent-hover));
-    color: white;
+    color: var(--on-accent);
     font-weight: 600;
     padding: 0.9rem 2rem;
     font-size: 1rem;
@@ -971,7 +982,7 @@ header.scrolled .nav-brand h1 {
     display: inline-block;
     padding: 0.75rem 2rem;
     background: linear-gradient(135deg, var(--primary-color), var(--accent-hover));
-    color: white;
+    color: var(--on-accent);
     text-decoration: none;
     border-radius: 8px;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -1514,7 +1525,7 @@ footer .container {
 }
 
 .lang-switch:hover { border-color: var(--accent); }
-.lang-switch option { color: #1a1a1a; }
+.lang-switch option { color: #191a1f; }
 
 /* ===== Home hero — social proof CTA (links to reviews.html) ===== */
 .social-proof {
