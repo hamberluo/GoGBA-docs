@@ -84,65 +84,10 @@ main {
     overflow-x: hidden;
 }
 
-/* Animated background gradient - tech feel */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:
-        radial-gradient(circle at 20% 50%, rgba(var(--accent-rgb), 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(var(--accent-rgb), 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(var(--accent-rgb), 0.04) 0%, transparent 50%);
-    animation: gradientShift 20s ease infinite;
-    pointer-events: none;
-    z-index: -1;
-}
-
-body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        linear-gradient(0deg, transparent 0%, rgba(var(--accent-rgb), 0.02) 50%, transparent 100%);
-    animation: scanLine 8s linear infinite;
-    pointer-events: none;
-    z-index: -1;
-}
-
-@keyframes gradientShift {
-    0%, 100% {
-        opacity: 1;
-        transform: scale(1) translate(0, 0);
-    }
-    33% {
-        opacity: 0.9;
-        transform: scale(1.05) translate(10px, -10px);
-    }
-    66% {
-        opacity: 0.95;
-        transform: scale(1.03) translate(-10px, 10px);
-    }
-}
-
-@keyframes scanLine {
-    0% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh);
-        opacity: 0;
-    }
-}
+/* No full-viewport accent wash. A warm hue carries far more visual weight than
+   a cool one at the same alpha, so the animated orange radials that used to sit
+   here read as glare across a whole page rather than as atmosphere. The accent
+   now stays where the app puts it: buttons, links, icons, hover borders. */
 
 /* Fade in animation */
 @keyframes fadeInUp {
@@ -233,13 +178,11 @@ header.scrolled .navbar {
     align-items: center;
 }
 
+/* Small enough to carry the accent as a flat fill — the brand mark is where a
+   saturated color belongs. No gradient: at 1.5rem it just muddies the glyphs. */
 .nav-brand h1 {
     font-size: 1.5rem;
-    color: var(--primary-color);
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-hover));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent);
     transition: all 0.3s ease;
 }
 
@@ -297,48 +240,19 @@ header.scrolled .nav-brand h1 {
     will-change: transform;
 }
 
+/* A single still glow anchored behind the hero, at a third of the old alpha.
+   The rotating radial and the pulsing grid that used to overlay it kept the
+   whole first screen in motion, which is what made the warm tint tiring. */
 .hero::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(var(--accent-rgb), 0.06) 0%, transparent 70%);
-    animation: rotate 25s linear infinite;
+    top: -40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 140%;
+    background: radial-gradient(ellipse at center, rgba(var(--accent-rgb), 0.05) 0%, transparent 60%);
     pointer-events: none;
-}
-
-.hero::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        linear-gradient(90deg, transparent 0%, rgba(var(--accent-rgb), 0.03) 50%, transparent 100%),
-        linear-gradient(0deg, transparent 0%, rgba(var(--accent-rgb), 0.03) 50%, transparent 100%);
-    animation: gridPulse 4s ease-in-out infinite;
-    pointer-events: none;
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes gridPulse {
-    0%, 100% {
-        opacity: 0.3;
-    }
-    50% {
-        opacity: 0.6;
-    }
 }
 
 .hero .container {
@@ -346,18 +260,17 @@ header.scrolled .nav-brand h1 {
     z-index: 1;
 }
 
+/* The headline is the single largest block of type on the page, so it stays
+   near-white. Filling 3.5rem of it with the accent (plus a 20px glow) put the
+   loudest color in the largest area — exactly backwards. */
 .hero-title {
     font-size: 3.5rem;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-hover));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
     animation: fadeInUp 0.8s ease-out;
     font-weight: 700;
     letter-spacing: -0.02em;
     position: relative;
-    filter: drop-shadow(0 0 20px rgba(var(--accent-rgb), 0.3));
 }
 
 .hero-content {
@@ -394,8 +307,8 @@ header.scrolled .nav-brand h1 {
 .hero-badge {
     display: inline-block;
     padding: 0.5rem 1rem;
-    background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.15), rgba(var(--accent-rgb), 0.15));
-    border: 1px solid rgba(var(--accent-rgb), 0.3);
+    background: rgba(var(--accent-rgb), 0.1);
+    border: 1px solid rgba(var(--accent-rgb), 0.22);
     border-radius: 20px;
     color: var(--primary-color);
     font-size: 0.9rem;
@@ -405,10 +318,10 @@ header.scrolled .nav-brand h1 {
 }
 
 .hero-badge:hover {
-    background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.25), rgba(var(--accent-rgb), 0.25));
+    background: rgba(var(--accent-rgb), 0.16);
     border-color: var(--primary-color);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .hero-description {
@@ -435,7 +348,7 @@ header.scrolled .nav-brand h1 {
 .producthunt-badge img:hover {
     opacity: 0.8;
     transform: translateY(-3px) scale(1.05);
-    filter: drop-shadow(0 8px 12px rgba(var(--accent-rgb), 0.4));
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.45));
 }
 
 /* Download Section */
@@ -454,7 +367,7 @@ header.scrolled .nav-brand h1 {
 }
 
 .download-card {
-    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(var(--accent-rgb), 0.08) 100%);
+    background: var(--card-bg);
     padding: 1.5rem 2.5rem;
     border-radius: 16px;
     border: 1px solid var(--border-color);
@@ -478,8 +391,7 @@ header.scrolled .nav-brand h1 {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(var(--accent-rgb), 0.08) 0%, transparent 70%);
-    animation: rotate 30s linear infinite;
+    background: radial-gradient(circle, rgba(var(--accent-rgb), 0.05) 0%, transparent 70%);
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -515,7 +427,7 @@ header.scrolled .nav-brand h1 {
 .download-card:hover {
     transform: translateY(-8px);
     border-color: var(--primary-color);
-    box-shadow: 0 12px 40px rgba(var(--accent-rgb), 0.3), 0 0 20px rgba(var(--accent-rgb), 0.15);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(var(--accent-rgb), 0.18);
 }
 
 .download-card h3 {
@@ -570,7 +482,7 @@ header.scrolled .nav-brand h1 {
 .btn-primary:hover {
     background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.5);
+    box-shadow: 0 8px 22px rgba(var(--accent-rgb), 0.26);
 }
 
 .btn-discord {
@@ -655,7 +567,7 @@ header.scrolled .nav-brand h1 {
     border-color: var(--primary-color);
     background-color: rgba(var(--accent-rgb), 0.1);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.3);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
 }
 
 .app-store-badge,
@@ -716,7 +628,7 @@ header.scrolled .nav-brand h1 {
 }
 
 .feature-card {
-    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(var(--accent-rgb), 0.05) 100%);
+    background: var(--card-bg);
     padding: 2rem;
     border-radius: 12px;
     border: 1px solid var(--border-color);
@@ -774,7 +686,7 @@ header.scrolled .nav-brand h1 {
 .feature-card:hover {
     transform: translateY(-6px);
     border-color: var(--primary-color);
-    box-shadow: 0 12px 32px rgba(var(--accent-rgb), 0.25), 0 0 16px rgba(var(--accent-rgb), 0.1);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
 
 .feature-card h3 {
@@ -845,7 +757,7 @@ header.scrolled .nav-brand h1 {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(var(--accent-rgb), 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--accent-rgb), 0.1) 0%, transparent 70%);
     transform: translate(-50%, -50%);
     transition: width 0.6s, height 0.6s;
 }
@@ -858,7 +770,7 @@ header.scrolled .nav-brand h1 {
 .platform-card:hover {
     transform: translateY(-10px) scale(1.03);
     border-color: var(--primary-color);
-    box-shadow: 0 20px 40px rgba(var(--accent-rgb), 0.3), 0 0 30px rgba(var(--accent-rgb), 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
 }
 
 .platform-card h3 {
@@ -948,7 +860,6 @@ header.scrolled .nav-brand h1 {
 
 .contact-email a:hover {
     transform: translateY(-2px);
-    text-shadow: 0 0 10px rgba(var(--accent-rgb), 0.5);
 }
 
 .btn {
@@ -963,7 +874,7 @@ header.scrolled .nav-brand h1 {
     position: relative;
     overflow: hidden;
     font-weight: 500;
-    box-shadow: 0 4px 15px rgba(var(--accent-rgb), 0.3);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -993,7 +904,7 @@ header.scrolled .nav-brand h1 {
 .btn:hover {
     background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.4);
+    box-shadow: 0 8px 22px rgba(var(--accent-rgb), 0.22);
 }
 
 .btn:active {
@@ -1149,7 +1060,7 @@ footer .container {
 
 .demo-game-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(var(--accent-rgb), 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* Scroll animations - smoother */
