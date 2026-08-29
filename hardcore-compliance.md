@@ -78,7 +78,7 @@ Remote Config **`retro_achievements_hardcore_enabled`** can hide hardcore UX app
 
 | Requirement | Notes for GoGBA |
 |-------------|-----------------|
-| Monetization / feature matrix | Store listings and in-app paywall describe premium vs free; **paid features must not violate hardcore rules**. Cheat application itself is **free** (manual entry, `.cht` file/URL import); only the **bundled libretro cheat library** is premium-gated. Either way **hardcore still blocks** cheat application when RA + authenticated + hardcore, and the block is checked independently of the free master switch and of entitlement. |
+| Monetization / feature matrix | Store listings and in-app paywall describe premium vs free; **paid features must not violate hardcore rules**. Since **3.18.0**, cheat application itself is **free** (manual entry, `.cht` file/URL import); only the **bundled libretro cheat library** is premium-gated. Either way **hardcore still blocks** cheat application when RA + authenticated + hardcore, and the block is checked independently of the free master switch and of entitlement. |
 | Licenses & FOSS cores | **Open source licenses** screen lists **libretro mGBA** (MPL-2.0) and upstream link (`lib/pages/settings/license_page.dart`). Commercial use must stay compatible with those licenses and any other shipped natives. |
 | Privacy policy | App store metadata points to a privacy URL; policy must stay **non-placeholder** and consistent with analytics/crash reporting (RA §F / auto-fail on contradictory privacy text). |
 
