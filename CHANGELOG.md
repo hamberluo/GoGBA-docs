@@ -9,7 +9,6 @@ build tooling, and reverted experiments are left out. Grouped by minor version.
 
 - Landscape now starts at the largest picture, with button opacity at 50%
 - Landscape buttons sit closer to the edge and steer clear of the camera cutout
-- The speed row can stack vertically, set separately per orientation
 - Clearer titles and switch labels on the instant save page
 
 ## 3.17 — August 2026
