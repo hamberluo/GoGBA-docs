@@ -1432,3 +1432,19 @@ footer .container {
     white-space: nowrap;
 }
 
+
+/* ICP filing — required on the mainland-facing site, so it shows only for
+   the Chinese locales that visitors there actually see. */
+.beian { display: none; }
+
+html[lang="zh-Hans"] .beian,
+html[lang="zh-Hant"] .beian {
+    display: block;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.beian a { color: inherit; text-decoration: none; }
+.beian a:hover { color: var(--accent); }
