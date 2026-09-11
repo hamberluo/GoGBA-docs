@@ -40,30 +40,32 @@
             border-top: 1px solid var(--border-color);
         }
 
-        .pay-qr {
-            width: 200px; height: 200px;
-            margin: 0 auto 16px;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+        .pay-label { display: block; font-size: .9rem; font-weight: 600; margin-bottom: 8px; }
+
+        .pay-input {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--text-primary);
             background: var(--hover-bg);
-            display: flex; align-items: center; justify-content: center;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            box-sizing: border-box;
         }
-        .pay-qr img { width: 100%; height: 100%; border-radius: 12px; }
-        .pay-qr-placeholder { color: var(--text-secondary); font-size: .9rem; }
+        .pay-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .pay-input.is-invalid { border-color: #e0685f; }
 
-        .pay-amount { text-align: center; color: var(--text-secondary); margin-bottom: 20px; }
-        .pay-amount strong { color: var(--accent); font-size: 1.15rem; }
+        .pay-note { color: var(--text-secondary); font-size: .85rem; line-height: 1.7; margin: 10px 0 16px; }
 
-        .pay-steps { counter-reset: paystep; list-style: none; padding: 0; margin: 0 0 16px; }
-        .pay-steps li {
-            color: var(--text-secondary); font-size: .92rem; line-height: 1.7;
-            padding-left: 28px; position: relative; margin-bottom: 8px;
-        }
-        .pay-steps li::before {
-            counter-increment: paystep;
-            content: counter(paystep) ".";
-            position: absolute; left: 6px; color: var(--accent); font-weight: 600;
-        }
+        .pay-error { color: #e0685f; font-size: .85rem; margin: 8px 0 0; }
+
+        .pay-notice { color: var(--text-secondary); font-size: .85rem; margin: 0 0 14px; text-align: center; }
+
+        #pay-next { width: 100%; text-align: center; margin-bottom: 14px; }
 
         .pay-foot { color: var(--text-secondary); font-size: .85rem; line-height: 1.7; }
         .pay-foot a { color: var(--accent); }
@@ -142,19 +144,15 @@
                 </div>
                 <p class="price-note">共 9 项功能，含游戏工具箱。有效期 365 天，不自动续费，到期后可自愿重新购买。</p>
                 <button type="button" class="btn btn-primary" id="buy-btn" aria-expanded="false" aria-controls="pay-panel">立即开通</button>
-                <p class="buy-hint">微信扫码支付，支付后在本页获取激活码</p>
+                <p class="buy-hint">支持微信 / 支付宝，支付成功后自动发码</p>
 
                 <div class="pay-panel" id="pay-panel" hidden>
-                    <div class="pay-qr">
-                        <span class="pay-qr-placeholder">收款二维码</span>
-                    </div>
-                    <p class="pay-amount">应付金额 <strong>¥29.00</strong></p>
-                    <ol class="pay-steps">
-                        <li>用微信扫描上方二维码，确认金额后付款。</li>
-                        <li>在支付备注中填写你的邮箱，用于日后换机恢复。</li>
-                        <li>支付完成后本页会显示激活码，请复制保存。</li>
-                    </ol>
-                    <p class="pay-foot">支付遇到问题？请联系 <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a>，我们会在 2 个工作日内处理。</p>
+                    <label class="pay-label" for="buy-email">接收激活码的邮箱</label>
+                    <input type="email" id="buy-email" class="pay-input" placeholder="you@example.com"
+                        autocomplete="email" inputmode="email" required>
+                    <p class="pay-note">激活码会发到这个邮箱，也是日后找回的唯一凭证，请填写常用邮箱。</p>
+                    <button type="button" class="btn btn-primary" id="pay-next">下一步，去支付</button>
+                    <p class="pay-foot">遇到问题请联系 <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a>。提交即表示你已阅读<a href="privacy-policy.html">隐私政策</a>。</p>
                 </div>
             </div>
 
@@ -182,14 +180,15 @@
 
             <section class="info-section" id="buy">
                 <h2>如何购买</h2>
-                <p>高级版通过微信扫码支付开通，流程如下：</p>
+                <p>全程自动，无需等待人工处理：</p>
                 <ol class="steps">
-                    <li>在本页点击「立即开通」，页面会显示微信收款二维码。</li>
-                    <li>使用微信扫码完成支付。</li>
-                    <li>支付成功后页面会显示一串激活码，请复制保存。</li>
+                    <li>在本页点击「立即开通」，填写用于接收激活码的邮箱。</li>
+                    <li>使用微信或支付宝扫码完成支付。</li>
+                    <li>支付成功后激活码立即显示在页面上，同时发送到你的邮箱。</li>
                     <li>打开 GoGBA，进入「设置 → 高级版」，粘贴激活码即可解锁。</li>
                 </ol>
-                <p>激活码与设备绑定。更换设备时，可在应用内使用购买时填写的邮箱恢复，每年可恢复 3 次。</p>
+                <p>一个激活码最多可绑定 3 台设备。更换设备时，在应用内的设备管理中解绑旧设备，即可在新设备上激活。</p>
+                <p>若刷机或重装后激活码找不到了，可在应用内的「凭证丢失」入口，用购买时填写的邮箱接收验证码取回。</p>
             </section>
 
             <section class="info-section">
@@ -244,13 +243,64 @@
         (function () {
             var btn = document.getElementById('buy-btn');
             var panel = document.getElementById('pay-panel');
-            if (!btn || !panel) return;
+            var email = document.getElementById('buy-email');
+            var next = document.getElementById('pay-next');
+            if (!btn || !panel || !email || !next) return;
+
             btn.addEventListener('click', function () {
                 var opening = panel.hidden;
                 panel.hidden = !opening;
                 btn.setAttribute('aria-expanded', String(opening));
-                btn.textContent = opening ? '收起支付' : '立即开通';
-                if (opening) panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                btn.textContent = opening ? '收起' : '立即开通';
+                if (opening) {
+                    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    email.focus();
+                }
+            });
+
+            function showError(msg) {
+                var err = panel.querySelector('.pay-error');
+                if (!err) {
+                    err = document.createElement('p');
+                    err.className = 'pay-error';
+                    email.insertAdjacentElement('afterend', err);
+                }
+                err.textContent = msg;
+                email.classList.add('is-invalid');
+            }
+
+            function clearError() {
+                var err = panel.querySelector('.pay-error');
+                if (err) err.remove();
+                email.classList.remove('is-invalid');
+            }
+
+            function showNotice(msg) {
+                var note = panel.querySelector('.pay-notice');
+                if (!note) {
+                    note = document.createElement('p');
+                    note.className = 'pay-notice';
+                    note.setAttribute('role', 'status');
+                    next.insertAdjacentElement('afterend', note);
+                }
+                note.textContent = msg;
+            }
+
+            email.addEventListener('input', clearError);
+
+            next.addEventListener('click', function () {
+                var value = email.value.trim();
+                // Deliberately loose: the authoritative check is the code
+                // actually arriving, so only obvious typos are worth blocking.
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+                    showError('请填写有效的邮箱地址');
+                    email.focus();
+                    return;
+                }
+                clearError();
+                // TODO: POST to the order endpoint, then redirect to the
+                // 虎皮椒 payment page returned by it.
+                showNotice('支付通道正在接入中，请稍后再试。');
             });
         })();
     </script>
