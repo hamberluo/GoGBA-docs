@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoGBA 高级版 — 年度</title>
-    <meta name="description" content="GoGBA 高级版年度会员，一次开通解锁云存档、金手指库与游戏工具箱等全部功能。">
+    <title>GoGBA 高级版 — 买断制</title>
+    <meta name="description" content="GoGBA 高级版与游戏工具箱，一次买断永久有效，解锁云存档、金手指库与宝可梦工具。">
     <link rel="icon" type="image/png" href="images/app_icon.png">
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -15,14 +15,24 @@
         .premium-head h1 { font-size: 2rem; margin-bottom: 12px; }
         .premium-head p { color: var(--text-secondary); max-width: 40em; margin: 0 auto; }
 
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 760px;
+            margin: 0 auto 48px;
+        }
+
         .price-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 32px;
-            max-width: 560px;
-            margin: 0 auto 48px;
+            display: flex;
+            flex-direction: column;
         }
+
+        .price-card .price-note { flex: 1; }
 
         .price-name { font-size: 1.15rem; font-weight: 600; }
         .price-tag { display: flex; align-items: baseline; gap: 8px; margin: 12px 0 4px; }
@@ -65,7 +75,7 @@
 
         .pay-notice { color: var(--text-secondary); font-size: .85rem; margin: 0 0 14px; text-align: center; }
 
-        #pay-next { width: 100%; text-align: center; margin-bottom: 14px; }
+        .pay-next { width: 100%; text-align: center; margin-bottom: 14px; }
 
         .pay-foot { color: var(--text-secondary); font-size: .85rem; line-height: 1.7; }
         .pay-foot a { color: var(--accent); }
@@ -132,33 +142,54 @@
     <main class="premium-main">
         <div class="container">
             <div class="premium-head">
-                <h1>GoGBA 高级版</h1>
-                <p>GoGBA 本体永久免费。高级版是可选的付费升级，开通后解锁下列全部功能。感谢你的支持 — 是这份付费让 GoGBA 能一直做下去。</p>
+                <h1>GoGBA 付费解锁</h1>
+                <p>GoGBA 本体永久免费。高级版与游戏工具箱是两项可选的付费升级，均为一次买断、永久有效，可按需单独购买。感谢你的支持 — 是这份付费让 GoGBA 能一直做下去。</p>
             </div>
 
-            <div class="price-card">
-                <div class="price-name">高级版 · 年度</div>
-                <div class="price-tag">
-                    <span class="price-amount">¥29</span>
-                    <span class="price-unit">/ 年</span>
-                </div>
-                <p class="price-note">共 9 项功能，含游戏工具箱。有效期 365 天，不自动续费，到期后可自愿重新购买。</p>
-                <button type="button" class="btn btn-primary" id="buy-btn" aria-expanded="false" aria-controls="pay-panel">立即开通</button>
-                <p class="buy-hint">支持微信 / 支付宝，支付成功后自动发码</p>
+            <div class="price-grid">
+                <div class="price-card" data-sku="premium">
+                    <div class="price-name">高级版</div>
+                    <div class="price-tag">
+                        <span class="price-amount">¥49.9</span>
+                        <span class="price-unit">一次买断</span>
+                    </div>
+                    <p class="price-note">云存档、内置金手指库、手动存档槽位等 5 项功能。一次付费，永久有效。</p>
+                    <button type="button" class="btn btn-primary buy-btn" aria-expanded="false">立即购买</button>
+                    <p class="buy-hint">支持微信 / 支付宝，支付成功后自动发码</p>
 
-                <div class="pay-panel" id="pay-panel" hidden>
-                    <label class="pay-label" for="buy-email">接收激活码的邮箱</label>
-                    <input type="email" id="buy-email" class="pay-input" placeholder="you@example.com"
-                        autocomplete="email" inputmode="email" required>
-                    <p class="pay-note">激活码会发到这个邮箱，也是日后找回的唯一凭证，请填写常用邮箱。</p>
-                    <button type="button" class="btn btn-primary" id="pay-next">下一步，去支付</button>
-                    <p class="pay-foot">遇到问题请联系 <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a>。提交即表示你已阅读<a href="privacy-policy.html">隐私政策</a>。</p>
+                    <div class="pay-panel" hidden>
+                        <label class="pay-label">接收激活码的邮箱</label>
+                        <input type="email" class="pay-input buy-email" placeholder="you@example.com"
+                            autocomplete="email" inputmode="email" required>
+                        <p class="pay-note">激活码会发到这个邮箱，也是日后找回的唯一凭证，请填写常用邮箱。</p>
+                        <button type="button" class="btn btn-primary pay-next">下一步，去支付</button>
+                        <p class="pay-foot">遇到问题请联系 <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a>。提交即表示你已阅读<a href="privacy-policy.html">隐私政策</a>。</p>
+                    </div>
+                </div>
+                <div class="price-card" data-sku="toolkit">
+                    <div class="price-name">游戏工具箱</div>
+                    <div class="price-tag">
+                        <span class="price-amount">¥19.9</span>
+                        <span class="price-unit">一次买断</span>
+                    </div>
+                    <p class="price-note">图鉴、属性相克、性格一览，离线可用无广告。一次付费，永久有效。</p>
+                    <button type="button" class="btn btn-primary buy-btn" aria-expanded="false">立即购买</button>
+                    <p class="buy-hint">支持微信 / 支付宝，支付成功后自动发码</p>
+
+                    <div class="pay-panel" hidden>
+                        <label class="pay-label">接收激活码的邮箱</label>
+                        <input type="email" class="pay-input buy-email" placeholder="you@example.com"
+                            autocomplete="email" inputmode="email" required>
+                        <p class="pay-note">激活码会发到这个邮箱，也是日后找回的唯一凭证，请填写常用邮箱。</p>
+                        <button type="button" class="btn btn-primary pay-next">下一步，去支付</button>
+                        <p class="pay-foot">遇到问题请联系 <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a>。提交即表示你已阅读<a href="privacy-policy.html">隐私政策</a>。</p>
+                    </div>
                 </div>
             </div>
 
             <div class="benefit-grid">
                 <div class="benefit-card">
-                    <h3>云存档与金手指</h3>
+                    <h3>高级版</h3>
                     <ul>
                         <li>云存档跨设备同步</li>
                         <li>内置金手指库 — 数千款游戏现成代码</li>
@@ -182,33 +213,28 @@
                 <h2>如何购买</h2>
                 <p>全程自动，无需等待人工处理：</p>
                 <ol class="steps">
-                    <li>在本页点击「立即开通」，填写用于接收激活码的邮箱。</li>
+                    <li>在上方选择要购买的项目，点击「立即购买」并填写用于接收激活码的邮箱。</li>
                     <li>使用微信或支付宝扫码完成支付。</li>
                     <li>支付成功后激活码立即显示在页面上，同时发送到你的邮箱。</li>
                     <li>打开 GoGBA，进入「设置 → 高级版」，粘贴激活码即可解锁。</li>
                 </ol>
-                <p>一个激活码最多可绑定 3 台设备。更换设备时，在应用内的设备管理中解绑旧设备，即可在新设备上激活。</p>
-                <p>若刷机或重装后激活码找不到了，可在应用内的「凭证丢失」入口，用购买时填写的邮箱接收验证码取回。</p>
-            </section>
-
-            <section class="info-section">
-                <h2>会员到期后会怎样</h2>
-                <p>到期后不会锁定任何已有功能，你的存档、金手指和设置都完整保留。到期只表示不再享有后续新增的高级版功能，以及应用内的支持者标识。</p>
-                <p>若希望继续获得后续新增功能，可在本页再次购买一年，价格与首次购买相同。</p>
+                <p>高级版与游戏工具箱分开售卖，各自独立解锁，可只买其中一项。两项都需要时分别购买，会得到两个激活码，都在同一处输入。</p>
+                <p>一个激活码最多可同时绑定 3 台设备。名额满了也不会激活失败——最早绑定的那台会自动让位给新设备，你无需手动解绑。同一台设备重装应用不额外占用名额。</p>
+                <p>激活码请自行妥善保存。它是解锁的唯一凭证，也会在购买后发送到你填写的邮箱，建议不要删除那封邮件。</p>
             </section>
 
             <section class="info-section">
                 <h2>适用范围</h2>
                 <ul>
-                    <li>本页购买的高级版仅适用于通过官网或网盘下载的 Android 版本。</li>
+                    <li>本页购买的激活码仅适用于通过官网或网盘下载的 Android 版本。</li>
                     <li>iOS 版本及 Google Play 版本请在应用内购买，两者不通用。</li>
-                    <li>高级版不含任何游戏 ROM。GoGBA 仅提供模拟器功能，游戏内容需由你自行提供。</li>
+                    <li>付费项目均不含任何游戏 ROM。GoGBA 仅提供模拟器功能，游戏内容需由你自行提供。</li>
                 </ul>
             </section>
 
             <section class="info-section">
                 <h2>退款政策</h2>
-                <p>高级版属于虚拟商品，激活码一经使用即视为已交付，不支持退款。</p>
+                <p>高级版与游戏工具箱均属虚拟商品，激活码一经使用即视为已交付，不支持退款。</p>
                 <p>若遇到支付成功但未收到激活码、激活码无法使用等问题，请通过下方邮箱联系，我们会在 2 个工作日内处理并按实际情况全额退款。</p>
             </section>
 
@@ -241,66 +267,72 @@
     <script src="js/common.js"></script>
     <script>
         (function () {
-            var btn = document.getElementById('buy-btn');
-            var panel = document.getElementById('pay-panel');
-            var email = document.getElementById('buy-email');
-            var next = document.getElementById('pay-next');
-            if (!btn || !panel || !email || !next) return;
+            // Each price card is self-contained: its own email field, its own
+            // panel, its own SKU. Nothing is shared between the two cards.
+            document.querySelectorAll('.price-card').forEach(function (card) {
+                var sku = card.getAttribute('data-sku');
+                var btn = card.querySelector('.buy-btn');
+                var panel = card.querySelector('.pay-panel');
+                var email = card.querySelector('.buy-email');
+                var next = card.querySelector('.pay-next');
+                if (!btn || !panel || !email || !next) return;
 
-            btn.addEventListener('click', function () {
-                var opening = panel.hidden;
-                panel.hidden = !opening;
-                btn.setAttribute('aria-expanded', String(opening));
-                btn.textContent = opening ? '收起' : '立即开通';
-                if (opening) {
-                    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    email.focus();
+                btn.addEventListener('click', function () {
+                    var opening = panel.hidden;
+                    panel.hidden = !opening;
+                    btn.setAttribute('aria-expanded', String(opening));
+                    btn.textContent = opening ? '收起' : '立即购买';
+                    if (opening) {
+                        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        email.focus();
+                    }
+                });
+
+                function showError(msg) {
+                    var err = panel.querySelector('.pay-error');
+                    if (!err) {
+                        err = document.createElement('p');
+                        err.className = 'pay-error';
+                        email.insertAdjacentElement('afterend', err);
+                    }
+                    err.textContent = msg;
+                    email.classList.add('is-invalid');
                 }
-            });
 
-            function showError(msg) {
-                var err = panel.querySelector('.pay-error');
-                if (!err) {
-                    err = document.createElement('p');
-                    err.className = 'pay-error';
-                    email.insertAdjacentElement('afterend', err);
+                function clearError() {
+                    var err = panel.querySelector('.pay-error');
+                    if (err) err.remove();
+                    email.classList.remove('is-invalid');
                 }
-                err.textContent = msg;
-                email.classList.add('is-invalid');
-            }
 
-            function clearError() {
-                var err = panel.querySelector('.pay-error');
-                if (err) err.remove();
-                email.classList.remove('is-invalid');
-            }
-
-            function showNotice(msg) {
-                var note = panel.querySelector('.pay-notice');
-                if (!note) {
-                    note = document.createElement('p');
-                    note.className = 'pay-notice';
-                    note.setAttribute('role', 'status');
-                    next.insertAdjacentElement('afterend', note);
+                function showNotice(msg) {
+                    var note = panel.querySelector('.pay-notice');
+                    if (!note) {
+                        note = document.createElement('p');
+                        note.className = 'pay-notice';
+                        note.setAttribute('role', 'status');
+                        next.insertAdjacentElement('afterend', note);
+                    }
+                    note.textContent = msg;
                 }
-                note.textContent = msg;
-            }
 
-            email.addEventListener('input', clearError);
+                email.addEventListener('input', clearError);
 
-            next.addEventListener('click', function () {
-                var value = email.value.trim();
-                // Deliberately loose: the authoritative check is the code
-                // actually arriving, so only obvious typos are worth blocking.
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-                    showError('请填写有效的邮箱地址');
-                    email.focus();
-                    return;
-                }
-                clearError();
-                // TODO: POST to the order endpoint, then redirect to the
-                // 虎皮椒 payment page returned by it.
-                showNotice('支付通道正在接入中，请稍后再试。');
+                next.addEventListener('click', function () {
+                    var value = email.value.trim();
+                    // Deliberately loose: the authoritative check is the code
+                    // actually arriving, so only obvious typos are worth blocking.
+                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+                        showError('请填写有效的邮箱地址');
+                        email.focus();
+                        return;
+                    }
+                    clearError();
+                    // TODO: POST { email: value, sku: sku } to the order
+                    // endpoint, then redirect to the 虎皮椒 payment page it returns.
+                    void sku;
+                    showNotice('支付通道正在接入中，请稍后再试。');
+                });
             });
         })();
     </script>
