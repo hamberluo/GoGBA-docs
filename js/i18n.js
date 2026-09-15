@@ -848,6 +848,9 @@
             'nav.terms': '服務條款',
             'nav.license': '授權條款',
             'nav.reviews': '使用者評價',
+            'nav.premium': '高級版',
+            'home.apk.link': '下載 APK',
+            'home.apk.note': '無法使用 Google Play？直接下載安裝包',
             'home.socialproof': '<span class="sp-cta">看看玩家怎麼說 \u2192</span>',
             'footer.rights': '© 2026 GoGBA。保留所有權利。',
             'reviews.g1.title': '「用過最好的模擬器」',
@@ -1288,7 +1291,10 @@
         // to iOS and Play visitors who cannot redeem it.
         var scoped = document.querySelectorAll('[data-lang-only]');
         for (var n = 0; n < scoped.length; n++) {
-            scoped[n].hidden = scoped[n].getAttribute('data-lang-only') !== lang;
+            // 逗号分隔，可列多个语言：激活码对简体和繁体读者都有意义，
+            // 只绑一个语言会让另一半永远看不到入口。
+            var only = scoped[n].getAttribute('data-lang-only').split(',');
+            scoped[n].hidden = only.indexOf(lang) === -1;
         }
 
         var nodes = document.querySelectorAll('[data-i18n]');

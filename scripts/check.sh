@@ -10,6 +10,18 @@ cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
 fail=0
 
+# 独立 JS 文件：i18n.js 坏掉的表现是整站不翻译。
+for f in js/*.js; do
+    [ -f "$f" ] || continue
+    if ! node --check "$f" 2>/tmp/_err; then
+        echo "✗ $f 语法错误:"
+        sed 's/^/    /' /tmp/_err | head -4
+        fail=1
+    fi
+done
+
+node scripts/check_i18n_keys.js || fail=1
+
 for f in *.html; do
     # 内联 <script> 交给 node 做真正的语法解析，不靠数括号。
     python3 - "$f" <<'PY' > /tmp/_inline.js
