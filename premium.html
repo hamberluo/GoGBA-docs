@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoGBA 高级版 — 买断制</title>
+    <meta name="description" content="GoGBA 高级版与游戏工具箱，一次买断永久有效，解锁云存档、金手指库与宝可梦工具。">
+    <link rel="icon" type="image/png" href="images/app_icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .premium-main { padding: 48px 0 72px; }
+
+        .premium-head { text-align: center; margin-bottom: 40px; }
+        .premium-head h1 { font-size: 2rem; margin-bottom: 12px; }
+        .premium-head p { color: var(--text-secondary); max-width: 40em; margin: 0 auto; }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 760px;
+            margin: 0 auto 48px;
+        }
+
+        .price-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-card .price-note { flex: 1; }
+
+        .price-name { font-size: 1.15rem; font-weight: 600; }
+        .price-tag { display: flex; align-items: baseline; gap: 8px; margin: 12px 0 4px; }
+        .price-amount { font-size: 2.75rem; font-weight: 700; color: var(--accent); line-height: 1; }
+        .price-unit { color: var(--text-secondary); }
+        .price-note { color: var(--text-secondary); font-size: .9rem; margin-bottom: 24px; }
+
+        .price-card .btn-primary { width: 100%; text-align: center; }
+
+        .price-card .btn-primary { border: 0; cursor: pointer; font-family: inherit; }
+
+        .pay-panel {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .pay-label { display: block; font-size: .9rem; font-weight: 600; margin-bottom: 8px; }
+
+        .pay-input {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--text-primary);
+            background: var(--hover-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+        .pay-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .pay-input.is-invalid { border-color: #e0685f; }
+
+        .pay-note { color: var(--text-secondary); font-size: .85rem; line-height: 1.7; margin: 10px 0 16px; }
+
+        .pay-error { color: #e0685f; font-size: .85rem; margin: 8px 0 0; }
+
+        .pay-notice { color: var(--text-secondary); font-size: .85rem; margin: 0 0 14px; text-align: center; }
+
+        .pay-next { width: 100%; text-align: center; margin-bottom: 14px; }
+
+        .pay-foot { color: var(--text-secondary); font-size: .85rem; line-height: 1.7; }
+        .pay-foot a { color: var(--accent); }
+
+        .buy-hint { color: var(--text-secondary); font-size: .85rem; text-align: center; margin-top: 12px; }
+
+        .qr-wrap { text-align: center; }
+        .qr-wrap img {
+            width: 220px; height: 220px;
+            border-radius: 12px;
+            background: #fff;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .qr-steps { counter-reset: qrstep; list-style: none; padding: 0; margin: 16px 0 0; text-align: left; }
+        .qr-steps li {
+            position: relative; padding-left: 28px; margin-bottom: 8px;
+            color: var(--text-secondary); font-size: .9rem; line-height: 1.6;
+        }
+        .qr-steps li::before {
+            counter-increment: qrstep; content: counter(qrstep);
+            position: absolute; left: 0; top: 1px;
+            width: 19px; height: 19px; border-radius: 50%;
+            background: var(--hover-bg); color: var(--text-primary);
+            font-size: .72rem; display: flex; align-items: center; justify-content: center;
+        }
+
+        .code-box {
+            background: var(--hover-bg);
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+            margin-bottom: 14px;
+        }
+        .code-value {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: .04em;
+            word-break: break-all;
+            user-select: all;
+            margin-bottom: 14px;
+        }
+        .code-warn {
+            color: var(--text-primary);
+            font-size: .9rem;
+            font-weight: 600;
+            margin: 0 0 6px;
+        }
+        .order-no {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: .8rem;
+            color: var(--text-secondary);
+            word-break: break-all;
+            user-select: all;
+        }
+        .spinner {
+            width: 18px; height: 18px;
+            border: 2px solid var(--border-color);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: -3px;
+            animation: spin .8s linear infinite;
+            margin-right: 8px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
+
+        .benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 48px; }
+
+        .benefit-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .benefit-card h3 { font-size: 1.05rem; margin-bottom: 16px; }
+        .benefit-card ul { list-style: none; padding: 0; margin: 0; }
+        .benefit-card li { color: var(--text-secondary); padding: 7px 0 7px 22px; position: relative; font-size: .95rem; }
+        .benefit-card li::before { content: "·"; position: absolute; left: 6px; color: var(--accent); font-weight: 700; }
+
+        .info-section { max-width: 760px; margin: 0 auto 32px; }
+        .info-section h2 { font-size: 1.2rem; margin-bottom: 14px; }
+        .info-section p,
+        .info-section li { color: var(--text-secondary); line-height: 1.75; }
+        .info-section ul { padding-left: 1.2em; }
+        .info-section li { margin-bottom: 6px; }
+        .info-section a { color: var(--accent); }
+
+        .steps { counter-reset: step; list-style: none; padding: 0; }
+        .steps li { padding-left: 34px; position: relative; margin-bottom: 12px; }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute; left: 0; top: 2px;
+            width: 22px; height: 22px; border-radius: 50%;
+            background: var(--hover-bg); color: var(--text-primary);
+            font-size: .8rem; display: flex; align-items: center; justify-content: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>GoGBA</h1>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="展开菜单" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li data-lang-only="zh-Hans"><a href="premium.html" class="active">高级版</a></li>
+                <li><a href="support.html">支持</a></li>
+                <li><a href="privacy-policy.html">隐私政策</a></li>
+                <li><a href="terms-of-service.html">服务条款</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="premium-main">
+        <div class="container">
+            <div class="premium-head">
+                <h1>GoGBA 付费解锁</h1>
+                <p>GoGBA 本体永久免费。高级版与游戏工具箱是两项可选的付费升级，均为一次买断、永久有效，可按需单独购买。感谢你的支持 — 是这份付费让 GoGBA 能一直做下去。</p>
+            </div>
+
+            <div class="price-grid">
+                <div class="price-card" data-sku="premium">
+                    <div class="price-name">高级版</div>
+                    <div class="price-tag">
+                        <span class="price-amount">¥49.9</span>
+                        <span class="price-unit">一次买断</span>
+                    </div>
+                    <p class="price-note">云存档、内置金手指库、手动存档槽位等 5 项功能。一次付费，永久有效。</p>
+                    <button type="button" class="btn btn-primary buy-btn" aria-expanded="false">立即购买</button>
+                    <p class="buy-hint">微信扫码支付，支付成功后当场显示激活码</p>
+
+                    <div class="pay-panel" hidden>
+                        <div class="pay-stage pay-stage-form">
+                            <label class="pay-label">邮箱（选填）</label>
+                            <input type="email" class="pay-input buy-email" placeholder="you@example.com"
+                                autocomplete="email" inputmode="email">
+                            <p class="pay-note">激活码会直接显示在本页，不会发送邮件。留下邮箱只是为了日后联系客服时能找到你的订单。</p>
+                            <button type="button" class="btn btn-primary pay-next">下一步，去支付</button>
+                            <p class="pay-foot">遇到问题请联系 <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a>。提交即表示你已阅读<a href="privacy-policy.html">隐私政策</a>。</p>
+                        </div>
+
+                        <div class="pay-stage pay-stage-qr" hidden>
+                            <div class="qr-wrap">
+                                <img class="pay-qr" alt="微信支付二维码" width="220" height="220">
+                            </div>
+                            <ol class="qr-steps">
+                                <li>长按上方二维码保存图片</li>
+                                <li>打开微信 →「扫一扫」→ 右上角「相册」</li>
+                                <li>选择刚保存的图片完成支付</li>
+                            </ol>
+                            <p class="pay-note pay-waiting"><span class="spinner"></span>等待支付结果，支付完成后请回到本页。</p>
+                        </div>
+
+                        <div class="pay-stage pay-stage-done" hidden>
+                            <div class="code-box">
+                                <p class="code-warn">请立即保存激活码</p>
+                                <div class="code-value"></div>
+                                <button type="button" class="btn btn-primary copy-code">复制激活码</button>
+                            </div>
+                            <p class="pay-note">
+                                激活码不会通过邮件发送，本页是唯一一次展示。<br>
+                                订单号：<span class="order-no"></span><br>
+                                凭订单号可再次取回激活码，建议一并截图保存。
+                            </p>
+                            <p class="pay-foot">打开 GoGBA →「设置 → 高级版」，粘贴激活码即可解锁。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-card" data-sku="toolkit">
+                    <div class="price-name">游戏工具箱</div>
+                    <div class="price-tag">
+                        <span class="price-amount">¥19.9</span>
+                        <span class="price-unit">一次买断</span>
+                    </div>
+                    <p class="price-note">图鉴、属性相克、性格一览，离线可用无广告。一次付费，永久有效。</p>
+                    <button type="button" class="btn btn-primary buy-btn" aria-expanded="false">立即购买</button>
+                    <p class="buy-hint">微信扫码支付，支付成功后当场显示激活码</p>
+
+                    <div class="pay-panel" hidden>
+                        <div class="pay-stage pay-stage-form">
+                            <label class="pay-label">邮箱（选填）</label>
+                            <input type="email" class="pay-input buy-email" placeholder="you@example.com"
+                                autocomplete="email" inputmode="email">
+                            <p class="pay-note">激活码会直接显示在本页，不会发送邮件。留下邮箱只是为了日后联系客服时能找到你的订单。</p>
+                            <button type="button" class="btn btn-primary pay-next">下一步，去支付</button>
+                            <p class="pay-foot">遇到问题请联系 <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a>。提交即表示你已阅读<a href="privacy-policy.html">隐私政策</a>。</p>
+                        </div>
+
+                        <div class="pay-stage pay-stage-qr" hidden>
+                            <div class="qr-wrap">
+                                <img class="pay-qr" alt="微信支付二维码" width="220" height="220">
+                            </div>
+                            <ol class="qr-steps">
+                                <li>长按上方二维码保存图片</li>
+                                <li>打开微信 →「扫一扫」→ 右上角「相册」</li>
+                                <li>选择刚保存的图片完成支付</li>
+                            </ol>
+                            <p class="pay-note pay-waiting"><span class="spinner"></span>等待支付结果，支付完成后请回到本页。</p>
+                        </div>
+
+                        <div class="pay-stage pay-stage-done" hidden>
+                            <div class="code-box">
+                                <p class="code-warn">请立即保存激活码</p>
+                                <div class="code-value"></div>
+                                <button type="button" class="btn btn-primary copy-code">复制激活码</button>
+                            </div>
+                            <p class="pay-note">
+                                激活码不会通过邮件发送，本页是唯一一次展示。<br>
+                                订单号：<span class="order-no"></span><br>
+                                凭订单号可再次取回激活码，建议一并截图保存。
+                            </p>
+                            <p class="pay-foot">打开 GoGBA →「设置 → 高级版」，粘贴激活码即可解锁。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="benefit-grid">
+                <div class="benefit-card">
+                    <h3>高级版</h3>
+                    <ul>
+                        <li>云存档跨设备同步</li>
+                        <li>内置金手指库 — 数千款游戏现成代码</li>
+                        <li>手动存档槽位 — 四个由你掌控</li>
+                        <li>自定义速度最高 5×</li>
+                        <li>像素字体样式</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <h3>游戏工具箱</h3>
+                    <ul>
+                        <li>图鉴 — 种族值、属性与进化</li>
+                        <li>属性相克 — 全 18 属性，含第三世代注释</li>
+                        <li>性格一览 — 能力加成与削弱一目了然</li>
+                        <li>离线可用，无广告</li>
+                    </ul>
+                </div>
+            </div>
+
+            <section class="info-section" id="buy">
+                <h2>如何购买</h2>
+                <p>全程自动，无需等待人工处理：</p>
+                <ol class="steps">
+                    <li>在上方选择要购买的项目，点击「立即购买」。</li>
+                    <li>长按二维码保存图片，在微信「扫一扫 → 相册」中选择它完成支付。</li>
+                    <li>支付成功后激活码立即显示在本页。</li>
+                    <li>打开 GoGBA，进入「设置 → 高级版」，粘贴激活码即可解锁。</li>
+                </ol>
+                <p>高级版与游戏工具箱分开售卖，各自独立解锁，可只买其中一项。两项都需要时分别购买，会得到两个激活码，都在同一处输入。</p>
+                <p>一个激活码最多可同时绑定 3 台设备。名额满了也不会激活失败——最早绑定的那台会自动让位给新设备，你无需手动解绑。同一台设备重装应用不额外占用名额。</p>
+                <p><strong>激活码只在支付成功后的页面上展示一次，不会发送邮件</strong>，请当场复制或截图保存。同时保存订单号，凭它可以再次取回激活码。</p>
+            </section>
+
+            <section class="info-section">
+                <h2>适用范围</h2>
+                <ul>
+                    <li>本页购买的激活码仅适用于通过官网或网盘下载的 Android 版本。</li>
+                    <li>iOS 版本及 Google Play 版本请在应用内购买，两者不通用。</li>
+                    <li>付费项目均不含任何游戏 ROM。GoGBA 仅提供模拟器功能，游戏内容需由你自行提供。</li>
+                </ul>
+            </section>
+
+            <section class="info-section">
+                <h2>退款政策</h2>
+                <p>高级版与游戏工具箱均属虚拟商品，激活码一经使用即视为已交付，不支持退款。</p>
+                <p>若遇到支付成功但未收到激活码、激活码无法使用等问题，请通过下方邮箱联系，我们会在 2 个工作日内处理并按实际情况全额退款。</p>
+            </section>
+
+            <section class="info-section">
+                <h2>联系方式</h2>
+                <p>
+                    邮箱：<a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a><br>
+                    更多帮助请见<a href="support.html">支持页面</a>。
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 GoGBA. 保留所有权利。</p>
+            <ul class="footer-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="support.html">支持</a></li>
+                <li><a href="privacy-policy.html">隐私政策</a></li>
+                <li><a href="terms-of-service.html">服务条款</a></li>
+                <li><a href="license.html">许可</a></li>
+            </ul>
+            <p class="beian">
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">沪ICP备2025152741号-1</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script>
+        (function () {
+            // Same origin as this page: the site is / and the function is
+            // /license on the one domain the plan allows.
+            var API = '/license';
+
+            function post(path, body) {
+                return fetch(API + path, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                }).then(function (response) {
+                    if (!response.ok) throw new Error('HTTP ' + response.status);
+                    return response.json();
+                });
+            }
+
+            document.querySelectorAll('.price-card').forEach(function (card) {
+                var sku = card.getAttribute('data-sku');
+                var btn = card.querySelector('.buy-btn');
+                var panel = card.querySelector('.pay-panel');
+                var email = card.querySelector('.buy-email');
+                var next = card.querySelector('.pay-next');
+                var stages = {
+                    form: card.querySelector('.pay-stage-form'),
+                    qr: card.querySelector('.pay-stage-qr'),
+                    done: card.querySelector('.pay-stage-done')
+                };
+                if (!btn || !panel || !next) return;
+
+                function showStage(name) {
+                    Object.keys(stages).forEach(function (key) {
+                        stages[key].hidden = key !== name;
+                    });
+                }
+
+                btn.addEventListener('click', function () {
+                    var opening = panel.hidden;
+                    panel.hidden = !opening;
+                    btn.setAttribute('aria-expanded', String(opening));
+                    btn.textContent = opening ? '收起' : '立即购买';
+                    if (opening) {
+                        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                });
+
+                function showNotice(msg) {
+                    var note = stages.form.querySelector('.pay-notice');
+                    if (!note) {
+                        note = document.createElement('p');
+                        note.className = 'pay-notice';
+                        note.setAttribute('role', 'status');
+                        next.insertAdjacentElement('afterend', note);
+                    }
+                    note.textContent = msg;
+                }
+
+                next.addEventListener('click', function () {
+                    next.disabled = true;
+                    showNotice('正在创建订单…');
+
+                    // The email is optional and never receives anything, so it
+                    // is sent as typed and the server keeps it only if usable.
+                    post('/order', { sku: sku, email: email ? email.value.trim() : '' })
+                        .then(function (order) {
+                            showNotice('');
+                            showStage('qr');
+                            card.querySelector('.pay-qr').src = order.qrcodeUrl;
+                            pollUntilPaid(order.orderNo);
+                        })
+                        .catch(function () {
+                            next.disabled = false;
+                            showNotice('创建订单失败，请稍后再试。');
+                        });
+                });
+
+                function pollUntilPaid(orderNo) {
+                    // Polling is the buyer's own view of their order; the
+                    // authority on payment is the gateway callback. This only
+                    // decides when to stop showing a QR code.
+                    var delay = 2000;
+                    var deadline = Date.now() + 15 * 60 * 1000;
+
+                    (function check() {
+                        if (Date.now() > deadline) {
+                            card.querySelector('.pay-waiting').textContent =
+                                '等待超时。若已完成支付，请联系客服并提供订单号 ' + orderNo;
+                            return;
+                        }
+
+                        post('/order/status', { orderNo: orderNo })
+                            .then(function (result) {
+                                if (result.status === 'delivered' && result.code) {
+                                    showCode(result.code, orderNo);
+                                    return;
+                                }
+                                setTimeout(check, delay);
+                            })
+                            .catch(function () {
+                                // A transient failure must not abandon a buyer
+                                // who has already paid; back off and keep going.
+                                delay = Math.min(delay * 2, 15000);
+                                setTimeout(check, delay);
+                            });
+                    })();
+                }
+
+                function showCode(code, orderNo) {
+                    showStage('done');
+                    card.querySelector('.code-value').textContent = code;
+                    card.querySelector('.order-no').textContent = orderNo;
+
+                    // Leaving the page is how a code is lost, so warn on the
+                    // way out. Only armed once a code is actually on screen.
+                    window.addEventListener('beforeunload', function (event) {
+                        event.preventDefault();
+                        event.returnValue = '';
+                    });
+
+                    var copy = card.querySelector('.copy-code');
+                    copy.addEventListener('click', function () {
+                        var done = function () {
+                            copy.textContent = '已复制';
+                            setTimeout(function () { copy.textContent = '复制激活码'; }, 2000);
+                        };
+                        if (navigator.clipboard) {
+                            navigator.clipboard.writeText(code).then(done, selectInstead);
+                        } else {
+                            selectInstead();
+                        }
+                    });
+
+                    function selectInstead() {
+                        // Clipboard access is refused in some in-app browsers;
+                        // selecting the text leaves the buyer able to copy it
+                        // by hand rather than stranded.
+                        var range = document.createRange();
+                        range.selectNodeContents(card.querySelector('.code-value'));
+                        var selection = window.getSelection();
+                        selection.removeAllRanges();
+                        selection.addRange(range);
+                        copy.textContent = '请长按选中的文字复制';
+                    }
+                }
+            });
+
+        })();
+                }
+
+                function showCode(code, orderNo) {
+                    showStage('done');
+                    card.querySelector('.code-value').textContent = code;
+                    card.querySelector('.order-no').textContent = orderNo;
+
+                    // Leaving the page is how a code is lost, so warn on the
+                    // way out. Only armed once a code is actually on screen.
+                    window.addEventListener('beforeunload', function (event) {
+                        event.preventDefault();
+                        event.returnValue = '';
+                    });
+
+                    var copy = card.querySelector('.copy-code');
+                    copy.addEventListener('click', function () {
+                        var done = function () {
+                            copy.textContent = '已复制';
+                            setTimeout(function () { copy.textContent = '复制激活码'; }, 2000);
+                        };
+                        if (navigator.clipboard) {
+                            navigator.clipboard.writeText(code).then(done, selectInstead);
+                        } else {
+                            selectInstead();
+                        }
+                    });
+
+                    function selectInstead() {
+                        // Clipboard access is refused in some in-app browsers;
+                        // selecting the text leaves the buyer able to copy it
+                        // by hand rather than stranded.
+                        var range = document.createRange();
+                        range.selectNodeContents(card.querySelector('.code-value'));
+                        var selection = window.getSelection();
+                        selection.removeAllRanges();
+                        selection.addRange(range);
+                        copy.textContent = '请长按选中的文字复制';
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>

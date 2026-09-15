@@ -14,6 +14,7 @@
             'nav.terms': 'Terms of Service',
             'nav.license': 'License',
             'nav.reviews': 'Reviews',
+            'nav.premium': 'Premium',
             'home.socialproof': '<span class="sp-cta">See what players say \u2192</span>',
             'footer.rights': '© 2026 GoGBA. All rights reserved.',
             'reviews.g1.title': '"The best emulator I\'ve used"',
@@ -421,6 +422,7 @@
             'license.additional.body': 'For the full dependency tree and SPDX identifiers, use Flutter’s license registry in the app or run <code>flutter pub deps</code> / inspect each package on pub.dev.'
         },
         'zh-Hans': {
+            'nav.premium': '高级版',
             'nav.home': '首页',
             'nav.about': '关于',
             'nav.support': '支持',
@@ -1277,6 +1279,14 @@
     }
 
     function render(lang) {
+        // Elements that only make sense in one language. The activation-code
+        // page serves mainland Android users; showing it in English would sell
+        // to iOS and Play visitors who cannot redeem it.
+        var scoped = document.querySelectorAll('[data-lang-only]');
+        for (var n = 0; n < scoped.length; n++) {
+            scoped[n].hidden = scoped[n].getAttribute('data-lang-only') !== lang;
+        }
+
         var nodes = document.querySelectorAll('[data-i18n]');
         for (var i = 0; i < nodes.length; i++) {
             var key = nodes[i].getAttribute('data-i18n');
