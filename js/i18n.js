@@ -15,6 +15,8 @@
             'nav.license': 'License',
             'nav.reviews': 'Reviews',
             'nav.premium': 'Premium',
+            'home.apk.link': 'Download APK',
+            'home.apk.note': 'No Google Play? Install the package directly',
             'home.socialproof': '<span class="sp-cta">See what players say \u2192</span>',
             'footer.rights': '© 2026 GoGBA. All rights reserved.',
             'reviews.g1.title': '"The best emulator I\'ve used"',
@@ -423,6 +425,8 @@
         },
         'zh-Hans': {
             'nav.premium': '高级版',
+            'home.apk.link': '下载 APK',
+            'home.apk.note': '无法使用 Google Play？直接下载安装包',
             'nav.home': '首页',
             'nav.about': '关于',
             'nav.support': '支持',

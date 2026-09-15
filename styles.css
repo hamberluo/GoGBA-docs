@@ -1448,3 +1448,17 @@ html[lang="zh-Hant"] .beian {
 
 .beian a { color: inherit; text-decoration: none; }
 .beian a:hover { color: var(--accent); }
+
+/* Direct APK link, shown only in Chinese — see index.html. */
+.apk-direct {
+    margin-top: 12px;
+    font-size: .9rem;
+    text-align: center;
+}
+.apk-direct a { color: var(--accent); font-weight: 600; }
+.apk-direct .apk-note {
+    display: block;
+    margin-top: 2px;
+    color: var(--text-secondary);
+    font-size: .82rem;
+}

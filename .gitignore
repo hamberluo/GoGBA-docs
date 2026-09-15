@@ -1,0 +1,4 @@
+
+# Release binaries: uploaded to static hosting, not versioned here. Each one
+# is 40MB+ and would stay in history forever.
+downloads/*.apk
