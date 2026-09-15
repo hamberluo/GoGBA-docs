@@ -533,47 +533,6 @@
             });
 
         })();
-                }
-
-                function showCode(code, orderNo) {
-                    showStage('done');
-                    card.querySelector('.code-value').textContent = code;
-                    card.querySelector('.order-no').textContent = orderNo;
-
-                    // Leaving the page is how a code is lost, so warn on the
-                    // way out. Only armed once a code is actually on screen.
-                    window.addEventListener('beforeunload', function (event) {
-                        event.preventDefault();
-                        event.returnValue = '';
-                    });
-
-                    var copy = card.querySelector('.copy-code');
-                    copy.addEventListener('click', function () {
-                        var done = function () {
-                            copy.textContent = '已复制';
-                            setTimeout(function () { copy.textContent = '复制激活码'; }, 2000);
-                        };
-                        if (navigator.clipboard) {
-                            navigator.clipboard.writeText(code).then(done, selectInstead);
-                        } else {
-                            selectInstead();
-                        }
-                    });
-
-                    function selectInstead() {
-                        // Clipboard access is refused in some in-app browsers;
-                        // selecting the text leaves the buyer able to copy it
-                        // by hand rather than stranded.
-                        var range = document.createRange();
-                        range.selectNodeContents(card.querySelector('.code-value'));
-                        var selection = window.getSelection();
-                        selection.removeAllRanges();
-                        selection.addRange(range);
-                        copy.textContent = '请长按选中的文字复制';
-                    }
-                }
-            });
-        })();
     </script>
 </body>
 
