@@ -21,6 +21,7 @@ for f in js/*.js; do
 done
 
 node scripts/check_i18n_keys.js || fail=1
+node scripts/check_payment_branch.js || fail=1
 
 for f in *.html; do
     # 内联 <script> 交给 node 做真正的语法解析，不靠数括号。

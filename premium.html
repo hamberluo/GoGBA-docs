@@ -237,10 +237,10 @@
                                 <img class="pay-qr" alt="微信支付二维码" width="220" height="220">
                             </div>
                             <ol class="qr-steps">
-                                <li>长按上方二维码保存图片</li>
-                                <li>打开微信 →「扫一扫」→ 右上角「相册」</li>
-                                <li>选择刚保存的图片完成支付</li>
+                                <li>打开微信 →「扫一扫」</li>
+                                <li>扫描上方二维码完成支付</li>
                             </ol>
+                            <p class="pay-mobile" hidden>正在打开微信支付…<br>没有自动跳转？<a class="pay-open" href="#" rel="noopener">点此继续支付</a></p>
                             <p class="pay-note pay-waiting"><span class="spinner"></span>等待支付结果，支付完成后请回到本页。</p>
                         </div>
 
@@ -284,10 +284,10 @@
                                 <img class="pay-qr" alt="微信支付二维码" width="220" height="220">
                             </div>
                             <ol class="qr-steps">
-                                <li>长按上方二维码保存图片</li>
-                                <li>打开微信 →「扫一扫」→ 右上角「相册」</li>
-                                <li>选择刚保存的图片完成支付</li>
+                                <li>打开微信 →「扫一扫」</li>
+                                <li>扫描上方二维码完成支付</li>
                             </ol>
+                            <p class="pay-mobile" hidden>正在打开微信支付…<br>没有自动跳转？<a class="pay-open" href="#" rel="noopener">点此继续支付</a></p>
                             <p class="pay-note pay-waiting"><span class="spinner"></span>等待支付结果，支付完成后请回到本页。</p>
                         </div>
 
@@ -453,7 +453,7 @@
                         .then(function (order) {
                             showNotice('');
                             showStage('qr');
-                            card.querySelector('.pay-qr').src = order.qrcodeUrl;
+                            showPayment(order);
                             pollUntilPaid(order.orderNo);
                         })
                         .catch(function () {
@@ -461,6 +461,30 @@
                             showNotice('创建订单失败，请稍后再试。');
                         });
                 });
+
+                // The gateway hands back two different things and they are not
+                // interchangeable: url_qrcode is an image only a second device
+                // can scan, and url is a cashier page that opens WeChat itself.
+                // Showing the image on a phone leaves the buyer scanning a code
+                // on the very screen they would need to scan it with.
+                function showPayment(order) {
+                    var onPhone = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+                    var link = card.querySelector('.pay-open');
+                    var hint = card.querySelector('.pay-mobile');
+
+                    if (onPhone && order.paymentUrl) {
+                        card.querySelector('.qr-wrap').hidden = true;
+                        card.querySelector('.qr-steps').hidden = true;
+                        hint.hidden = false;
+                        link.href = order.paymentUrl;
+                        // Navigating straight away can be swallowed as a popup,
+                        // since the click that started this has long returned.
+                        window.location.href = order.paymentUrl;
+                        return;
+                    }
+
+                    card.querySelector('.pay-qr').src = order.qrcodeUrl;
+                }
 
                 function pollUntilPaid(orderNo) {
                     // Polling is the buyer's own view of their order; the
