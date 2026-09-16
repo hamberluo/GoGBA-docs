@@ -283,19 +283,18 @@
     </footer>
 
     <script>
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        // Cards fade in as they are scrolled to. They start at opacity 0, so
+        // anything the observer does not reach stays invisible — which is what
+        // a bottom inset did to the cards already on screen at load, leaving
+        // the "Key Features" heading above an empty stretch of page.
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', () => {
@@ -355,10 +354,16 @@
                 });
             });
 
-            // Observe all animated elements
+            // Observe all animated elements. A card that is already on screen
+            // is shown outright: the observer would fire for it anyway, but not
+            // before a first paint that would flash the section empty.
             const animatedElements = document.querySelectorAll('.feature-card, .demo-game-card, .download-card');
             animatedElements.forEach(el => {
-                observer.observe(el);
+                if (el.getBoundingClientRect().top < window.innerHeight) {
+                    el.classList.add('visible');
+                } else {
+                    observer.observe(el);
+                }
             });
             
             // Add subtle parallax effect to hero section
