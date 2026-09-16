@@ -679,6 +679,10 @@
                 function showCode(code, orderNo) {
                     forget();
                     showStage('done');
+                    // The buy button sits outside the panel, so switching the
+                    // stage never touched it: it stayed on screen reading
+                    // "collapse", and pressing it hid the code.
+                    btn.hidden = true;
                     card.querySelector('.code-value').textContent = code;
                     card.querySelector('.order-no').textContent = orderNo;
 
