@@ -70,10 +70,39 @@ function initHeaderScroll() {
     handleScroll();
 }
 
-// Discord links ship hidden (styles.css .btn-discord) and are revealed only
-// outside mainland China, where Discord is unreachable. Any failure leaves them
-// hidden, which is the safe direction.
+// Discord links ship hidden (styles.css .btn-discord) and are revealed only to
+// a reader we have positively established is not a Chinese one — Discord is
+// unreachable there, so offering the link is at best a dead end.
 //
+// Two independent signals each mark a reader as Chinese, and either one alone
+// is enough to keep the link hidden:
+//
+//   - the IP. Anything we cannot prove to be outside CN counts as CN: a failed
+//     lookup, a non-200, a missing country_code. Treating "unknown" as abroad
+//     would show the link on exactly the request we know least about.
+//   - the language. Reading the site in Simplified or Traditional Chinese
+//     marks a Chinese reader regardless of where the IP lands.
+//
+// So the link needs a confirmed non-CN IP *and* English to appear, and every
+// unproven case falls to hidden.
+let ipSaysChina = true;
+
+function langSaysChina() {
+    // The language actually rendered, not the stored preference: a page that
+    // serves only some languages resolves to one of its own.
+    const lang = window.GoGBAI18n ? window.GoGBAI18n.current() : null;
+    // Anything that is not the English build is treated as Chinese — the site
+    // ships no third language, so this is the whole of the non-en set.
+    return lang !== 'en';
+}
+
+function updateDiscordVisibility() {
+    const show = !ipSaysChina && !langSaysChina();
+    document.querySelectorAll('.btn-discord').forEach(link => {
+        link.style.display = show ? 'inline-flex' : 'none';
+    });
+}
+
 // ipapi.co is the only endpoint: the site is HTTPS, and ip-api.com's free tier
 // is HTTP-only, so a request to it is blocked as mixed content every time.
 async function detectIPLocation() {
@@ -84,14 +113,14 @@ async function detectIPLocation() {
         if (!response.ok) throw new Error('HTTP ' + response.status);
 
         const data = await response.json();
-        if (data.country_code && data.country_code !== 'CN') {
-            document.querySelectorAll('.btn-discord').forEach(link => {
-                link.style.display = 'inline-flex';
-            });
-        }
+        // Only a country_code we actually received, and that is not CN, clears
+        // the IP check; everything else leaves it set.
+        ipSaysChina = !data.country_code || data.country_code === 'CN';
     } catch (error) {
-        console.log('IP geolocation detection failed:', error);
+        console.log('IP geolocation detection failed, treating as CN:', error);
+        ipSaysChina = true;
     }
+    updateDiscordVisibility();
 }
 
 // Initialize when DOM is ready
@@ -101,7 +130,9 @@ function init() {
     initHeaderScroll();
     // Show platform-specific download cards on mobile
     initPlatformSpecificDownloads();
-    // Detect IP location and hide links for China
+    // Re-decide on every language switch; the IP verdict is already cached.
+    document.addEventListener('gogba:langchange', updateDiscordVisibility);
+    // Resolve the IP signal; the link stays hidden until it comes back clear.
     detectIPLocation();
 }
 

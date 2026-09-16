@@ -1560,6 +1560,12 @@
         document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : lang);
         updateSwitcher(lang);
         updateBadges(lang);
+        // Anything outside the dictionary that depends on the rendered
+        // language listens for this — the Discord link is shown to English
+        // readers only, and must re-decide on every switch, not just at load.
+        try {
+            document.dispatchEvent(new CustomEvent('gogba:langchange', { detail: { lang: lang } }));
+        } catch (e) {}
     }
 
     function updateSwitcher(lang) {
@@ -1601,6 +1607,7 @@
     window.GoGBAI18n = {
         init: initI18n, setLang: setLang, resolve: resolveLang,
         updateBadges: updateBadges, SUPPORTED: SUPPORTED,
+        current: resolveLang,
         t: function (key) { return t(resolveLang(), key); }
     };
 })();
