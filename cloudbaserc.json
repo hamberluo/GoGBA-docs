@@ -10,16 +10,8 @@
     "outputDir": ".",
     "ignore": [
       ".git/**",
-      ".github/**",
-      ".gitignore",
       ".DS_Store",
-      "**/.DS_Store",
-      "cloudbaserc.json",
-      "scripts/**",
-      "README.md",
-      "SEO-OPTIMIZATION.md",
-      "URLS.md",
-      "hardcore-compliance.md"
+      "**/.DS_Store"
     ]
   }
 }
