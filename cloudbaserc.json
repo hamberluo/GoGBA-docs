@@ -1,0 +1,25 @@
+{
+  "version": "2.0",
+  "envId": "gogba-license-d6gl8myhy2ea32f64",
+  "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
+  "app": {
+    "serviceName": "gogba-doc",
+    "framework": "static",
+    "installCommand": "",
+    "buildCommand": "",
+    "outputDir": ".",
+    "ignore": [
+      ".git/**",
+      ".github/**",
+      ".gitignore",
+      ".DS_Store",
+      "**/.DS_Store",
+      "cloudbaserc.json",
+      "scripts/**",
+      "README.md",
+      "SEO-OPTIMIZATION.md",
+      "URLS.md",
+      "hardcore-compliance.md"
+    ]
+  }
+}
