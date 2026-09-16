@@ -1,15 +1,72 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-Hans" data-langs="zh-Hans,zh-Hant">
 
 <head>
     <meta charset="UTF-8">
+    <script>
+      // This page exists in Chinese only, so an English preference resolves to
+      // Simplified rather than to 'en' — there is no English copy to fall to.
+      (function () {
+        try {
+          var L = localStorage.getItem('lang');
+          if (L !== 'zh-Hant') {
+            var nl = (navigator.language || '').toLowerCase();
+            var hant = nl.indexOf('tw') > -1 || nl.indexOf('hk') > -1 || nl.indexOf('mo') > -1 || nl.indexOf('hant') > -1;
+            L = (L !== 'zh-Hans' && hant) ? 'zh-Hant' : 'zh-Hans';
+          }
+          document.documentElement.setAttribute('lang', L);
+        } catch (e) {}
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
     <title>GoGBA 高级版 — 买断制</title>
+    <meta name="title" content="GoGBA 高级版 — 买断制">
     <meta name="description" content="GoGBA 高级版与游戏工具箱，一次买断永久有效，解锁云存档、金手指库与宝可梦工具。">
-    <link rel="icon" type="image/png" href="images/app_icon.png">
+    <!-- Not indexed: the activation code works only with the Android build
+         downloaded from this site, is paid for in CNY over WeChat Pay, and is
+         sold in Chinese alone. A search result in any other language is a dead
+         end, so the page is reached from the Chinese nav, not from search. -->
+    <meta name="robots" content="noindex, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gogba.xyz/premium.html">
+    <meta property="og:title" content="GoGBA 高级版 — 买断制">
+    <meta property="og:description" content="高级版与游戏工具箱，一次买断永久有效，解锁云存档、金手指库与宝可梦工具。">
+    <meta property="og:image" content="https://gogba.xyz/images/app_icon.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="GoGBA 高级版 — 买断制">
+    <meta name="twitter:description" content="高级版与游戏工具箱，一次买断永久有效，解锁云存档、金手指库与宝可梦工具。">
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48.png">
+    <link rel="apple-touch-icon" href="images/app_icon.png">
+
     <link rel="stylesheet" href="styles.css">
     <style>
         .premium-main { padding: 48px 0 72px; }
+
+        .foreign-note {
+            max-width: 46em;
+            margin: 0 auto 32px;
+            padding: 16px 20px;
+            border: 1px solid rgba(var(--accent-rgb), 0.35);
+            border-radius: 12px;
+            background: rgba(var(--accent-rgb), 0.08);
+            color: var(--text-secondary);
+            font-size: .9rem;
+            line-height: 1.7;
+        }
+        .foreign-note strong { color: var(--text-primary); }
+        .foreign-note a { color: var(--accent); }
+        /* i18n toggles [hidden] without touching display. */
+        .foreign-note[hidden] { display: none; }
 
         .premium-head { text-align: center; margin-bottom: 40px; }
         .premium-head h1 { font-size: 2rem; margin-bottom: 12px; }
@@ -40,9 +97,13 @@
         .price-unit { color: var(--text-secondary); }
         .price-note { color: var(--text-secondary); font-size: .9rem; margin-bottom: 24px; }
 
-        .price-card .btn-primary { width: 100%; text-align: center; }
-
-        .price-card .btn-primary { border: 0; cursor: pointer; font-family: inherit; }
+        .price-card .btn-primary {
+            width: 100%;
+            text-align: center;
+            border: 0;
+            cursor: pointer;
+            font-family: inherit;
+        }
 
         .pay-panel {
             margin-top: 24px;
@@ -57,6 +118,8 @@
             padding: 12px 14px;
             font-size: 1rem;
             font-family: inherit;
+            /* The label wraps the input, so the bold label weight would leak in. */
+            font-weight: 400;
             color: var(--text-primary);
             background: var(--hover-bg);
             border: 1px solid var(--border-color);
@@ -184,125 +247,153 @@
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <h1>GoGBA</h1>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <h1>GoGBA</h1>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                    <li><a href="reviews.html" data-i18n="nav.reviews">Reviews</a></li>
+                    <li data-lang-only="zh-Hans,zh-Hant"><a href="premium.html" class="active" data-i18n="nav.premium">高级版</a></li>
+                    <li><a href="support.html" data-i18n="nav.support">Support</a></li>
+                    <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
+                    <li><a href="license.html" data-i18n="nav.license">License</a></li>
+                    <li class="nav-controls">
+                        <!-- Chinese only: this page sells the activation-code
+                             build, which no English-reading audience can buy. -->
+                        <select class="lang-switch" aria-label="Language">
+                            <option value="zh-Hans">简体中文</option>
+                            <option value="zh-Hant">繁體中文</option>
+                        </select>
+                    </li>
+                </ul>
             </div>
-            <button class="mobile-menu-toggle" aria-label="展开菜单" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu">
-                <li><a href="index.html">首页</a></li>
-                <li data-lang-only="zh-Hans,zh-Hant"><a href="premium.html" class="active">高级版</a></li>
-                <li><a href="support.html">支持</a></li>
-                <li><a href="privacy-policy.html">隐私政策</a></li>
-                <li><a href="terms-of-service.html">服务条款</a></li>
-            </ul>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <main class="premium-main">
         <div class="container">
+            <!-- For readers this page has no copy for. It is not translated:
+                 the offer itself is unavailable to them (WeChat Pay, CNY, and a
+                 code that only unlocks the APK from this site), so the useful
+                 answer is where to buy instead, not a translation of the page. -->
+            <p class="foreign-note" data-lang-unless="zh-Hans,zh-Hant" hidden>
+                This page sells activation codes for the Android build distributed
+                from this site. Payment is in CNY via WeChat Pay, and the code does
+                not apply to the App Store or Google Play versions.
+                <strong>On iOS or Google Play, buy Premium inside the app</strong>
+                — open GoGBA and go to Settings → Premium.
+                <a href="support.html">Support</a> has more.
+            </p>
+
             <div class="premium-head">
-                <h1>GoGBA 付费解锁</h1>
-                <p>GoGBA 本体永久免费。高级版与游戏工具箱是两项可选的付费升级，均为一次买断、永久有效，可按需单独购买。感谢你的支持 — 是这份付费让 GoGBA 能一直做下去。</p>
+                <h1 data-i18n="pr.title">GoGBA 付费解锁</h1>
+                <p data-i18n="pr.intro">GoGBA 本体永久免费。高级版与游戏工具箱是两项可选的付费升级，均为一次买断、永久有效，可按需单独购买。感谢你的支持 — 是这份付费让 GoGBA 能一直做下去。</p>
             </div>
 
             <div class="price-grid">
                 <div class="price-card" data-sku="premium">
-                    <div class="price-name">高级版</div>
+                    <div class="price-name" data-i18n="pr.premium.name">高级版</div>
                     <div class="price-tag">
                         <span class="price-amount">¥49.9</span>
-                        <span class="price-unit">一次买断</span>
+                        <span class="price-unit" data-i18n="pr.oneoff">一次买断</span>
                     </div>
-                    <p class="price-note">云存档、内置金手指库、手动存档槽位等 5 项功能。一次付费，永久有效。</p>
-                    <button type="button" class="btn btn-primary buy-btn" aria-expanded="false">立即购买</button>
-                    <p class="buy-hint">微信扫码支付，支付成功后当场显示激活码</p>
+                    <p class="price-note" data-i18n="pr.premium.note">云存档、内置金手指库、手动存档槽位等 5 项功能。一次付费，永久有效。</p>
+                    <button type="button" class="btn btn-primary buy-btn" aria-expanded="false" data-i18n="pr.buy">立即购买</button>
+                    <p class="buy-hint" data-i18n="pr.buyhint">微信扫码支付，支付成功后当场显示激活码</p>
 
                     <div class="pay-panel" hidden>
                         <div class="pay-stage pay-stage-form">
-                            <label class="pay-label">邮箱（选填）</label>
-                            <input type="email" class="pay-input buy-email" placeholder="you@example.com"
-                                autocomplete="email" inputmode="email">
-                            <p class="pay-note">激活码会直接显示在本页，不会发送邮件。留下邮箱只是为了日后联系客服时能找到你的订单。</p>
-                            <button type="button" class="btn btn-primary pay-next">下一步，去支付</button>
-                            <p class="pay-foot">遇到问题请联系 <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a>。提交即表示你已阅读<a href="privacy-policy.html">隐私政策</a>。</p>
+                            <label class="pay-label"><span data-i18n="pr.email">邮箱（选填）</span>
+                                <input type="email" class="pay-input buy-email" placeholder="you@example.com"
+                                    autocomplete="email" inputmode="email">
+                            </label>
+                            <p class="pay-note" data-i18n="pr.emailnote">激活码会直接显示在本页，不会发送邮件。留下邮箱只是为了日后联系客服时能找到你的订单。</p>
+                            <button type="button" class="btn btn-primary pay-next" data-i18n="pr.next">下一步，去支付</button>
+                            <p class="pay-foot" data-i18n-html="pr.payfoot">遇到问题请联系 <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a>。提交即表示你已阅读<a href="privacy-policy.html">隐私政策</a>。</p>
                         </div>
 
                         <div class="pay-stage pay-stage-qr" hidden>
                             <div class="qr-wrap">
-                                <img class="pay-qr" alt="微信支付二维码" width="220" height="220">
+                                <img class="pay-qr" alt="微信支付二维码" data-i18n-attr="alt:pr.qralt" width="220" height="220">
                             </div>
                             <ol class="qr-steps">
-                                <li>打开微信 →「扫一扫」</li>
-                                <li>扫描上方二维码完成支付</li>
+                                <li data-i18n="pr.step1">打开微信 →「扫一扫」</li>
+                                <li data-i18n="pr.step2">扫描上方二维码完成支付</li>
                             </ol>
-                            <p class="pay-mobile" hidden>正在打开微信支付…<br>没有自动跳转？<a class="pay-open" href="#" rel="noopener">点此继续支付</a></p>
-                            <p class="pay-note pay-waiting"><span class="spinner"></span>等待支付结果，支付完成后请回到本页。</p>
+                            <p class="pay-mobile" hidden><span data-i18n-html="pr.mobile">正在打开微信支付…<br>没有自动跳转？</span><a class="pay-open" href="#" rel="noopener" data-i18n="pr.payopen">点此继续支付</a></p>
+                            <p class="pay-note pay-waiting" data-i18n-html="pr.waiting"><span class="spinner"></span>等待支付结果，支付完成后请回到本页。</p>
                         </div>
 
                         <div class="pay-stage pay-stage-done" hidden>
                             <div class="code-box">
-                                <p class="code-warn">请立即保存激活码</p>
+                                <p class="code-warn" data-i18n="pr.savenow">请立即保存激活码</p>
                                 <div class="code-value"></div>
-                                <button type="button" class="btn btn-primary copy-code">复制激活码</button>
+                                <button type="button" class="btn btn-primary copy-code" data-i18n="pr.copy">复制激活码</button>
                             </div>
                             <p class="pay-note">
-                                激活码不会通过邮件发送，本页是唯一一次展示。<br>
-                                订单号：<span class="order-no"></span><br>
-                                凭订单号可再次取回激活码，建议一并截图保存。
+                                <span data-i18n="pr.onceonly">激活码不会通过邮件发送，本页是唯一一次展示。</span><br>
+                                <span data-i18n="pr.orderno">订单号：</span><span class="order-no"></span><br>
+                                <span data-i18n="pr.keepno">凭订单号可再次取回激活码，建议一并截图保存。</span>
                             </p>
-                            <p class="pay-foot">打开 GoGBA →「设置 → 高级版」，粘贴激活码即可解锁。</p>
+                            <p class="pay-foot" data-i18n="pr.redeem">打开 GoGBA →「设置 → 高级版」，粘贴激活码即可解锁。</p>
                         </div>
                     </div>
                 </div>
                 <div class="price-card" data-sku="toolkit">
-                    <div class="price-name">游戏工具箱</div>
+                    <div class="price-name" data-i18n="pr.toolkit.name">游戏工具箱</div>
                     <div class="price-tag">
                         <span class="price-amount">¥19.9</span>
-                        <span class="price-unit">一次买断</span>
+                        <span class="price-unit" data-i18n="pr.oneoff">一次买断</span>
                     </div>
-                    <p class="price-note">图鉴、属性相克、性格一览，离线可用无广告。一次付费，永久有效。</p>
-                    <button type="button" class="btn btn-primary buy-btn" aria-expanded="false">立即购买</button>
-                    <p class="buy-hint">微信扫码支付，支付成功后当场显示激活码</p>
+                    <p class="price-note" data-i18n="pr.toolkit.note">图鉴、属性相克、性格一览，离线可用无广告。一次付费，永久有效。</p>
+                    <button type="button" class="btn btn-primary buy-btn" aria-expanded="false" data-i18n="pr.buy">立即购买</button>
+                    <p class="buy-hint" data-i18n="pr.buyhint">微信扫码支付，支付成功后当场显示激活码</p>
 
                     <div class="pay-panel" hidden>
                         <div class="pay-stage pay-stage-form">
-                            <label class="pay-label">邮箱（选填）</label>
-                            <input type="email" class="pay-input buy-email" placeholder="you@example.com"
-                                autocomplete="email" inputmode="email">
-                            <p class="pay-note">激活码会直接显示在本页，不会发送邮件。留下邮箱只是为了日后联系客服时能找到你的订单。</p>
-                            <button type="button" class="btn btn-primary pay-next">下一步，去支付</button>
-                            <p class="pay-foot">遇到问题请联系 <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a>。提交即表示你已阅读<a href="privacy-policy.html">隐私政策</a>。</p>
+                            <label class="pay-label"><span data-i18n="pr.email">邮箱（选填）</span>
+                                <input type="email" class="pay-input buy-email" placeholder="you@example.com"
+                                    autocomplete="email" inputmode="email">
+                            </label>
+                            <p class="pay-note" data-i18n="pr.emailnote">激活码会直接显示在本页，不会发送邮件。留下邮箱只是为了日后联系客服时能找到你的订单。</p>
+                            <button type="button" class="btn btn-primary pay-next" data-i18n="pr.next">下一步，去支付</button>
+                            <p class="pay-foot" data-i18n-html="pr.payfoot">遇到问题请联系 <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a>。提交即表示你已阅读<a href="privacy-policy.html">隐私政策</a>。</p>
                         </div>
 
                         <div class="pay-stage pay-stage-qr" hidden>
                             <div class="qr-wrap">
-                                <img class="pay-qr" alt="微信支付二维码" width="220" height="220">
+                                <img class="pay-qr" alt="微信支付二维码" data-i18n-attr="alt:pr.qralt" width="220" height="220">
                             </div>
                             <ol class="qr-steps">
-                                <li>打开微信 →「扫一扫」</li>
-                                <li>扫描上方二维码完成支付</li>
+                                <li data-i18n="pr.step1">打开微信 →「扫一扫」</li>
+                                <li data-i18n="pr.step2">扫描上方二维码完成支付</li>
                             </ol>
-                            <p class="pay-mobile" hidden>正在打开微信支付…<br>没有自动跳转？<a class="pay-open" href="#" rel="noopener">点此继续支付</a></p>
-                            <p class="pay-note pay-waiting"><span class="spinner"></span>等待支付结果，支付完成后请回到本页。</p>
+                            <p class="pay-mobile" hidden><span data-i18n-html="pr.mobile">正在打开微信支付…<br>没有自动跳转？</span><a class="pay-open" href="#" rel="noopener" data-i18n="pr.payopen">点此继续支付</a></p>
+                            <p class="pay-note pay-waiting" data-i18n-html="pr.waiting"><span class="spinner"></span>等待支付结果，支付完成后请回到本页。</p>
                         </div>
 
                         <div class="pay-stage pay-stage-done" hidden>
                             <div class="code-box">
-                                <p class="code-warn">请立即保存激活码</p>
+                                <p class="code-warn" data-i18n="pr.savenow">请立即保存激活码</p>
                                 <div class="code-value"></div>
-                                <button type="button" class="btn btn-primary copy-code">复制激活码</button>
+                                <button type="button" class="btn btn-primary copy-code" data-i18n="pr.copy">复制激活码</button>
                             </div>
                             <p class="pay-note">
-                                激活码不会通过邮件发送，本页是唯一一次展示。<br>
-                                订单号：<span class="order-no"></span><br>
-                                凭订单号可再次取回激活码，建议一并截图保存。
+                                <span data-i18n="pr.onceonly">激活码不会通过邮件发送，本页是唯一一次展示。</span><br>
+                                <span data-i18n="pr.orderno">订单号：</span><span class="order-no"></span><br>
+                                <span data-i18n="pr.keepno">凭订单号可再次取回激活码，建议一并截图保存。</span>
                             </p>
-                            <p class="pay-foot">打开 GoGBA →「设置 → 高级版」，粘贴激活码即可解锁。</p>
+                            <p class="pay-foot" data-i18n="pr.redeem">打开 GoGBA →「设置 → 高级版」，粘贴激活码即可解锁。</p>
                         </div>
                     </div>
                 </div>
@@ -310,60 +401,60 @@
 
             <div class="benefit-grid">
                 <div class="benefit-card">
-                    <h3>高级版</h3>
+                    <h3 data-i18n="pr.premium.name">高级版</h3>
                     <ul>
-                        <li>云存档跨设备同步</li>
-                        <li>内置金手指库 — 数千款游戏现成代码</li>
-                        <li>手动存档槽位 — 四个由你掌控</li>
-                        <li>自定义速度最高 5×</li>
-                        <li>像素字体样式</li>
+                        <li data-i18n="pr.f.cloud">云存档跨设备同步</li>
+                        <li data-i18n="pr.f.cheats">内置金手指库 — 数千款游戏现成代码</li>
+                        <li data-i18n="pr.f.slots">手动存档槽位 — 四个由你掌控</li>
+                        <li data-i18n="pr.f.speed">自定义速度最高 5×</li>
+                        <li data-i18n="pr.f.font">像素字体样式</li>
                     </ul>
                 </div>
                 <div class="benefit-card">
-                    <h3>游戏工具箱</h3>
+                    <h3 data-i18n="pr.toolkit.name">游戏工具箱</h3>
                     <ul>
-                        <li>图鉴 — 种族值、属性与进化</li>
-                        <li>属性相克 — 全 18 属性，含第三世代注释</li>
-                        <li>性格一览 — 能力加成与削弱一目了然</li>
-                        <li>离线可用，无广告</li>
+                        <li data-i18n="pr.f.dex">图鉴 — 种族值、属性与进化</li>
+                        <li data-i18n="pr.f.types">属性相克 — 全 18 属性，含第三世代注释</li>
+                        <li data-i18n="pr.f.natures">性格一览 — 能力加成与削弱一目了然</li>
+                        <li data-i18n="pr.f.offline">离线可用，无广告</li>
                     </ul>
                 </div>
             </div>
 
             <section class="info-section" id="buy">
-                <h2>如何购买</h2>
-                <p>全程自动，无需等待人工处理：</p>
+                <h2 data-i18n="pr.how.title">如何购买</h2>
+                <p data-i18n="pr.how.lead">全程自动，无需等待人工处理：</p>
                 <ol class="steps">
-                    <li>在上方选择要购买的项目，点击「立即购买」。</li>
-                    <li>长按二维码保存图片，在微信「扫一扫 → 相册」中选择它完成支付。</li>
-                    <li>支付成功后激活码立即显示在本页。</li>
-                    <li>打开 GoGBA，进入「设置 → 高级版」，粘贴激活码即可解锁。</li>
+                    <li data-i18n="pr.how.s1">在上方选择要购买的项目，点击「立即购买」。</li>
+                    <li data-i18n="pr.how.s2">长按二维码保存图片，在微信「扫一扫 → 相册」中选择它完成支付。</li>
+                    <li data-i18n="pr.how.s3">支付成功后激活码立即显示在本页。</li>
+                    <li data-i18n="pr.how.s4">打开 GoGBA，进入「设置 → 高级版」，粘贴激活码即可解锁。</li>
                 </ol>
-                <p>高级版与游戏工具箱分开售卖，各自独立解锁，可只买其中一项。两项都需要时分别购买，会得到两个激活码，都在同一处输入。</p>
-                <p>一个激活码最多可同时绑定 3 台设备。名额满了也不会激活失败——最早绑定的那台会自动让位给新设备，你无需手动解绑。同一台设备重装应用不额外占用名额。</p>
-                <p><strong>激活码只在支付成功后的页面上展示一次，不会发送邮件</strong>，请当场复制或截图保存。同时保存订单号，凭它可以再次取回激活码。</p>
+                <p data-i18n="pr.how.separate">高级版与游戏工具箱分开售卖，各自独立解锁，可只买其中一项。两项都需要时分别购买，会得到两个激活码，都在同一处输入。</p>
+                <p data-i18n="pr.how.devices">一个激活码最多可同时绑定 3 台设备。名额满了也不会激活失败——最早绑定的那台会自动让位给新设备，你无需手动解绑。同一台设备重装应用不额外占用名额。</p>
+                <p data-i18n-html="pr.how.once"><strong>激活码只在支付成功后的页面上展示一次，不会发送邮件</strong>，请当场复制或截图保存。同时保存订单号，凭它可以再次取回激活码。</p>
             </section>
 
             <section class="info-section">
-                <h2>适用范围</h2>
+                <h2 data-i18n="pr.scope.title">适用范围</h2>
                 <ul>
-                    <li>本页购买的激活码仅适用于通过官网或网盘下载的 Android 版本。</li>
-                    <li>iOS 版本及 Google Play 版本请在应用内购买，两者不通用。</li>
-                    <li>付费项目均不含任何游戏 ROM。GoGBA 仅提供模拟器功能，游戏内容需由你自行提供。</li>
+                    <li data-i18n="pr.scope.android">本页购买的激活码仅适用于通过官网或网盘下载的 Android 版本。</li>
+                    <li data-i18n="pr.scope.ios">iOS 版本及 Google Play 版本请在应用内购买，两者不通用。</li>
+                    <li data-i18n="pr.scope.rom">付费项目均不含任何游戏 ROM。GoGBA 仅提供模拟器功能，游戏内容需由你自行提供。</li>
                 </ul>
             </section>
 
             <section class="info-section">
-                <h2>退款政策</h2>
-                <p>高级版与游戏工具箱均属虚拟商品，激活码一经使用即视为已交付，不支持退款。</p>
-                <p>若遇到支付成功但未收到激活码、激活码无法使用等问题，请通过下方邮箱联系，我们会在 2 个工作日内处理并按实际情况全额退款。</p>
+                <h2 data-i18n="pr.refund.title">退款政策</h2>
+                <p data-i18n="pr.refund.p1">高级版与游戏工具箱均属虚拟商品，激活码一经使用即视为已交付，不支持退款。</p>
+                <p data-i18n="pr.refund.p2">若遇到支付成功但未收到激活码、激活码无法使用等问题，请通过下方邮箱联系，我们会在 2 个工作日内处理并按实际情况全额退款。</p>
             </section>
 
             <section class="info-section">
-                <h2>联系方式</h2>
+                <h2 data-i18n="pr.contact.title">联系方式</h2>
                 <p>
-                    邮箱：<a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a><br>
-                    更多帮助请见<a href="support.html">支持页面</a>。
+                    <span data-i18n="pr.contact.email">邮箱：</span><a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a><br>
+                    <span data-i18n-html="pr.contact.more">更多帮助请见<a href="support.html">支持页面</a>。</span>
                 </p>
             </section>
         </div>
@@ -371,13 +462,15 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 GoGBA. 保留所有权利。</p>
+            <p data-i18n="footer.rights">&copy; 2026 GoGBA. All rights reserved.</p>
             <ul class="footer-links">
-                <li><a href="index.html">首页</a></li>
-                <li><a href="support.html">支持</a></li>
-                <li><a href="privacy-policy.html">隐私政策</a></li>
-                <li><a href="terms-of-service.html">服务条款</a></li>
-                <li><a href="license.html">许可</a></li>
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                <li><a href="reviews.html" data-i18n="nav.reviews">Reviews</a></li>
+                <li data-lang-only="zh-Hans,zh-Hant"><a href="premium.html" data-i18n="nav.premium">高级版</a></li>
+                <li><a href="support.html" data-i18n="nav.support">Support</a></li>
+                <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+                <li><a href="terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
+                <li><a href="license.html" data-i18n="nav.license">License</a></li>
             </ul>
             <p class="beian">
                 <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">沪ICP备2025152741号-1</a>
@@ -385,12 +478,21 @@
         </div>
     </footer>
 
+    <script src="js/i18n.js"></script>
     <script src="js/common.js"></script>
     <script>
         (function () {
             // Same origin as this page: the site is / and the function is
             // /license on the one domain the plan allows.
             var API = '/license';
+
+            // Status messages are built at runtime, so they read from the
+            // dictionary rather than from a data-i18n element. The Chinese text
+            // is the fallback if i18n.js somehow did not load.
+            function t(key, fallback) {
+                var s = window.GoGBAI18n && window.GoGBAI18n.t(key);
+                return s || fallback;
+            }
 
             function post(path, body) {
                 return fetch(API + path, {
@@ -426,7 +528,7 @@
                     var opening = panel.hidden;
                     panel.hidden = !opening;
                     btn.setAttribute('aria-expanded', String(opening));
-                    btn.textContent = opening ? '收起' : '立即购买';
+                    btn.textContent = opening ? t('pr.collapse', '收起') : t('pr.buy', '立即购买');
                     if (opening) {
                         panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                     }
@@ -445,7 +547,7 @@
 
                 next.addEventListener('click', function () {
                     next.disabled = true;
-                    showNotice('正在创建订单…');
+                    showNotice(t('pr.creating', '正在创建订单…'));
 
                     // The email is optional and never receives anything, so it
                     // is sent as typed and the server keeps it only if usable.
@@ -458,7 +560,7 @@
                         })
                         .catch(function () {
                             next.disabled = false;
-                            showNotice('创建订单失败，请稍后再试。');
+                            showNotice(t('pr.createfail', '创建订单失败，请稍后再试。'));
                         });
                 });
 
@@ -496,7 +598,7 @@
                     (function check() {
                         if (Date.now() > deadline) {
                             card.querySelector('.pay-waiting').textContent =
-                                '等待超时。若已完成支付，请联系客服并提供订单号 ' + orderNo;
+                                t('pr.timeout', '等待超时。若已完成支付，请联系客服并提供订单号 ') + orderNo;
                             return;
                         }
 
@@ -532,8 +634,8 @@
                     var copy = card.querySelector('.copy-code');
                     copy.addEventListener('click', function () {
                         var done = function () {
-                            copy.textContent = '已复制';
-                            setTimeout(function () { copy.textContent = '复制激活码'; }, 2000);
+                            copy.textContent = t('pr.copied', '已复制');
+                            setTimeout(function () { copy.textContent = t('pr.copy', '复制激活码'); }, 2000);
                         };
                         if (navigator.clipboard) {
                             navigator.clipboard.writeText(code).then(done, selectInstead);
@@ -551,7 +653,7 @@
                         var selection = window.getSelection();
                         selection.removeAllRanges();
                         selection.addRange(range);
-                        copy.textContent = '请长按选中的文字复制';
+                        copy.textContent = t('pr.longpress', '请长按选中的文字复制');
                     }
                 }
             });

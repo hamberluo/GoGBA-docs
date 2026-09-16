@@ -7,6 +7,67 @@
 
     var I18N = {
         'en': {
+            // premium.html is Chinese-only (it declares data-langs), so these
+            // carry the Simplified text purely to keep the key sets aligned.
+            'pr.title': 'GoGBA 付费解锁',
+            'pr.intro': 'GoGBA 本体永久免费。高级版与游戏工具箱是两项可选的付费升级，均为一次买断、永久有效，可按需单独购买。感谢你的支持 — 是这份付费让 GoGBA 能一直做下去。',
+            'pr.premium.name': '高级版',
+            'pr.toolkit.name': '游戏工具箱',
+            'pr.oneoff': '一次买断',
+            'pr.premium.note': '云存档、内置金手指库、手动存档槽位等 5 项功能。一次付费，永久有效。',
+            'pr.toolkit.note': '图鉴、属性相克、性格一览，离线可用无广告。一次付费，永久有效。',
+            'pr.buy': '立即购买',
+            'pr.collapse': '收起',
+            'pr.buyhint': '微信扫码支付，支付成功后当场显示激活码',
+            'pr.email': '邮箱（选填）',
+            'pr.emailnote': '激活码会直接显示在本页，不会发送邮件。留下邮箱只是为了日后联系客服时能找到你的订单。',
+            'pr.next': '下一步，去支付',
+            'pr.payfoot': '遇到问题请联系 <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a>。提交即表示你已阅读<a href="privacy-policy.html">隐私政策</a>。',
+            'pr.qralt': '微信支付二维码',
+            'pr.step1': '打开微信 →「扫一扫」',
+            'pr.step2': '扫描上方二维码完成支付',
+            'pr.mobile': '正在打开微信支付…<br>没有自动跳转？',
+            'pr.payopen': '点此继续支付',
+            'pr.waiting': '<span class="spinner"></span>等待支付结果，支付完成后请回到本页。',
+            'pr.savenow': '请立即保存激活码',
+            'pr.copy': '复制激活码',
+            'pr.copied': '已复制',
+            'pr.longpress': '请长按选中的文字复制',
+            'pr.onceonly': '激活码不会通过邮件发送，本页是唯一一次展示。',
+            'pr.orderno': '订单号：',
+            'pr.keepno': '凭订单号可再次取回激活码，建议一并截图保存。',
+            'pr.redeem': '打开 GoGBA →「设置 → 高级版」，粘贴激活码即可解锁。',
+            'pr.creating': '正在创建订单…',
+            'pr.createfail': '创建订单失败，请稍后再试。',
+            'pr.timeout': '等待超时。若已完成支付，请联系客服并提供订单号 ',
+            'pr.f.cloud': '云存档跨设备同步',
+            'pr.f.cheats': '内置金手指库 — 数千款游戏现成代码',
+            'pr.f.slots': '手动存档槽位 — 四个由你掌控',
+            'pr.f.speed': '自定义速度最高 5×',
+            'pr.f.font': '像素字体样式',
+            'pr.f.dex': '图鉴 — 种族值、属性与进化',
+            'pr.f.types': '属性相克 — 全 18 属性，含第三世代注释',
+            'pr.f.natures': '性格一览 — 能力加成与削弱一目了然',
+            'pr.f.offline': '离线可用，无广告',
+            'pr.how.title': '如何购买',
+            'pr.how.lead': '全程自动，无需等待人工处理：',
+            'pr.how.s1': '在上方选择要购买的项目，点击「立即购买」。',
+            'pr.how.s2': '长按二维码保存图片，在微信「扫一扫 → 相册」中选择它完成支付。',
+            'pr.how.s3': '支付成功后激活码立即显示在本页。',
+            'pr.how.s4': '打开 GoGBA，进入「设置 → 高级版」，粘贴激活码即可解锁。',
+            'pr.how.separate': '高级版与游戏工具箱分开售卖，各自独立解锁，可只买其中一项。两项都需要时分别购买，会得到两个激活码，都在同一处输入。',
+            'pr.how.devices': '一个激活码最多可同时绑定 3 台设备。名额满了也不会激活失败——最早绑定的那台会自动让位给新设备，你无需手动解绑。同一台设备重装应用不额外占用名额。',
+            'pr.how.once': '<strong>激活码只在支付成功后的页面上展示一次，不会发送邮件</strong>，请当场复制或截图保存。同时保存订单号，凭它可以再次取回激活码。',
+            'pr.scope.title': '适用范围',
+            'pr.scope.android': '本页购买的激活码仅适用于通过官网或网盘下载的 Android 版本。',
+            'pr.scope.ios': 'iOS 版本及 Google Play 版本请在应用内购买，两者不通用。',
+            'pr.scope.rom': '付费项目均不含任何游戏 ROM。GoGBA 仅提供模拟器功能，游戏内容需由你自行提供。',
+            'pr.refund.title': '退款政策',
+            'pr.refund.p1': '高级版与游戏工具箱均属虚拟商品，激活码一经使用即视为已交付，不支持退款。',
+            'pr.refund.p2': '若遇到支付成功但未收到激活码、激活码无法使用等问题，请通过下方邮箱联系，我们会在 2 个工作日内处理并按实际情况全额退款。',
+            'pr.contact.title': '联系方式',
+            'pr.contact.email': '邮箱：',
+            'pr.contact.more': '更多帮助请见<a href="support.html">支持页面</a>。',
             'nav.home': 'Home',
             'nav.about': 'About',
             'nav.support': 'Support',
@@ -20,6 +81,7 @@
             'home.socialproof': '<span class="sp-cta">See what players say \u2192</span>',
             'footer.rights': '© 2026 GoGBA. All rights reserved.',
             'reviews.g1.title': '"The best emulator I\'ve used"',
+            'reviews.title': 'What Players Say',
             'reviews.r1': '<span class="hl">Already the best GB, GBC and GBA emulator on Android</span> — and it keeps getting better. Yes, I already paid to support it, because it truly deserves it and the follow-up is impeccable 👍',
             'reviews.r2': '<span class="hl">One of the best emulators I’ve ever used.</span> On top of RetroAchievements, you can remap the controls and more.',
             'reviews.r3': '<span class="hl">The best of all GBA emulators.</span> Every detail has been thought of. The interface is fantastic. Game thumbnails appear automatically. Shortcut keys make gameplay easy. It also runs GBC and GB games. Congratulations!',
@@ -53,6 +115,7 @@
             'home.demo.name': 'A Rushed Hack Job',
             'home.demo.desc': 'A GBA-format homebrew demo ROM to try GoGBA (also supports GBC and GB titles).',
             'home.demo.download': 'Download Demo Game',
+            'home.demo.source': 'Open-source homebrew game. See details on <a href="https://gamebrew.org/wiki/A_Rushed_Hack_Job_GBA" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">GameBrew</a>.',
             'home.contact.title': 'Contact & Support',
             'home.contact.discord': 'Join Discord',
             'badge.appstore.alt': 'Download on the App Store',
@@ -424,6 +487,65 @@
             'license.additional.body': 'For the full dependency tree and SPDX identifiers, use Flutter’s license registry in the app or run <code>flutter pub deps</code> / inspect each package on pub.dev.'
         },
         'zh-Hans': {
+            'pr.title': 'GoGBA 付费解锁',
+            'pr.intro': 'GoGBA 本体永久免费。高级版与游戏工具箱是两项可选的付费升级，均为一次买断、永久有效，可按需单独购买。感谢你的支持 — 是这份付费让 GoGBA 能一直做下去。',
+            'pr.premium.name': '高级版',
+            'pr.toolkit.name': '游戏工具箱',
+            'pr.oneoff': '一次买断',
+            'pr.premium.note': '云存档、内置金手指库、手动存档槽位等 5 项功能。一次付费，永久有效。',
+            'pr.toolkit.note': '图鉴、属性相克、性格一览，离线可用无广告。一次付费，永久有效。',
+            'pr.buy': '立即购买',
+            'pr.collapse': '收起',
+            'pr.buyhint': '微信扫码支付，支付成功后当场显示激活码',
+            'pr.email': '邮箱（选填）',
+            'pr.emailnote': '激活码会直接显示在本页，不会发送邮件。留下邮箱只是为了日后联系客服时能找到你的订单。',
+            'pr.next': '下一步，去支付',
+            'pr.payfoot': '遇到问题请联系 <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a>。提交即表示你已阅读<a href="privacy-policy.html">隐私政策</a>。',
+            'pr.qralt': '微信支付二维码',
+            'pr.step1': '打开微信 →「扫一扫」',
+            'pr.step2': '扫描上方二维码完成支付',
+            'pr.mobile': '正在打开微信支付…<br>没有自动跳转？',
+            'pr.payopen': '点此继续支付',
+            'pr.waiting': '<span class="spinner"></span>等待支付结果，支付完成后请回到本页。',
+            'pr.savenow': '请立即保存激活码',
+            'pr.copy': '复制激活码',
+            'pr.copied': '已复制',
+            'pr.longpress': '请长按选中的文字复制',
+            'pr.onceonly': '激活码不会通过邮件发送，本页是唯一一次展示。',
+            'pr.orderno': '订单号：',
+            'pr.keepno': '凭订单号可再次取回激活码，建议一并截图保存。',
+            'pr.redeem': '打开 GoGBA →「设置 → 高级版」，粘贴激活码即可解锁。',
+            'pr.creating': '正在创建订单…',
+            'pr.createfail': '创建订单失败，请稍后再试。',
+            'pr.timeout': '等待超时。若已完成支付，请联系客服并提供订单号 ',
+            'pr.f.cloud': '云存档跨设备同步',
+            'pr.f.cheats': '内置金手指库 — 数千款游戏现成代码',
+            'pr.f.slots': '手动存档槽位 — 四个由你掌控',
+            'pr.f.speed': '自定义速度最高 5×',
+            'pr.f.font': '像素字体样式',
+            'pr.f.dex': '图鉴 — 种族值、属性与进化',
+            'pr.f.types': '属性相克 — 全 18 属性，含第三世代注释',
+            'pr.f.natures': '性格一览 — 能力加成与削弱一目了然',
+            'pr.f.offline': '离线可用，无广告',
+            'pr.how.title': '如何购买',
+            'pr.how.lead': '全程自动，无需等待人工处理：',
+            'pr.how.s1': '在上方选择要购买的项目，点击「立即购买」。',
+            'pr.how.s2': '长按二维码保存图片，在微信「扫一扫 → 相册」中选择它完成支付。',
+            'pr.how.s3': '支付成功后激活码立即显示在本页。',
+            'pr.how.s4': '打开 GoGBA，进入「设置 → 高级版」，粘贴激活码即可解锁。',
+            'pr.how.separate': '高级版与游戏工具箱分开售卖，各自独立解锁，可只买其中一项。两项都需要时分别购买，会得到两个激活码，都在同一处输入。',
+            'pr.how.devices': '一个激活码最多可同时绑定 3 台设备。名额满了也不会激活失败——最早绑定的那台会自动让位给新设备，你无需手动解绑。同一台设备重装应用不额外占用名额。',
+            'pr.how.once': '<strong>激活码只在支付成功后的页面上展示一次，不会发送邮件</strong>，请当场复制或截图保存。同时保存订单号，凭它可以再次取回激活码。',
+            'pr.scope.title': '适用范围',
+            'pr.scope.android': '本页购买的激活码仅适用于通过官网或网盘下载的 Android 版本。',
+            'pr.scope.ios': 'iOS 版本及 Google Play 版本请在应用内购买，两者不通用。',
+            'pr.scope.rom': '付费项目均不含任何游戏 ROM。GoGBA 仅提供模拟器功能，游戏内容需由你自行提供。',
+            'pr.refund.title': '退款政策',
+            'pr.refund.p1': '高级版与游戏工具箱均属虚拟商品，激活码一经使用即视为已交付，不支持退款。',
+            'pr.refund.p2': '若遇到支付成功但未收到激活码、激活码无法使用等问题，请通过下方邮箱联系，我们会在 2 个工作日内处理并按实际情况全额退款。',
+            'pr.contact.title': '联系方式',
+            'pr.contact.email': '邮箱：',
+            'pr.contact.more': '更多帮助请见<a href="support.html">支持页面</a>。',
             'nav.premium': '高级版',
             'home.apk.link': '下载 APK',
             'home.apk.note': '无法使用 Google Play？直接下载安装包',
@@ -437,6 +559,7 @@
             'home.socialproof': '<span class="sp-cta">看看玩家怎么说 \u2192</span>',
             'footer.rights': '© 2026 GoGBA。保留所有权利。',
             'reviews.g1.title': '「用过最好的模拟器」',
+            'reviews.title': '玩家怎么说',
             'reviews.r1': '<span class="hl">已经是 Android 上最好的 GB、GBC、GBA 模拟器</span>，而且还在不断变好。是的，我已经付费支持了，因为它真的值得，后续维护也无可挑剔 👍',
             'reviews.r2': '<span class="hl">我用过最好的模拟器之一。</span>除了 RetroAchievements 成就，还能自定义按键等等。',
             'reviews.r3': '<span class="hl">所有 GBA 模拟器里最好的一个。</span>每个细节都想到了，界面非常出色，游戏封面会自动显示，快捷键让操作变得轻松，还能跑 GBC 和 GB 游戏。厉害！',
@@ -470,6 +593,7 @@
             'home.demo.name': 'A Rushed Hack Job',
             'home.demo.desc': '一个 GBA 格式的自制演示 ROM，用于试玩 GoGBA（同时支持 GBC 与 GB 游戏）。',
             'home.demo.download': '下载演示游戏',
+            'home.demo.source': '开源自制游戏。详情见 <a href="https://gamebrew.org/wiki/A_Rushed_Hack_Job_GBA" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">GameBrew</a>。',
             'home.contact.title': '联系与支持',
             'home.contact.discord': '加入 Discord',
             'badge.appstore.alt': '在 App Store 下载',
@@ -841,6 +965,65 @@
             'license.additional.body': '如需完整的依赖树和 SPDX 标识符，请使用应用内 Flutter 的许可注册表，或运行 <code>flutter pub deps</code> / 在 pub.dev 上查看各个软件包。'
         },
         'zh-Hant': {
+            'pr.title': 'GoGBA 付費解鎖',
+            'pr.intro': 'GoGBA 本體永久免費。高級版與遊戲工具箱是兩項可選的付費升級，均為一次買斷、永久有效，可按需單獨購買。感謝你的支持 — 是這份付費讓 GoGBA 能一直做下去。',
+            'pr.premium.name': '高級版',
+            'pr.toolkit.name': '遊戲工具箱',
+            'pr.oneoff': '一次買斷',
+            'pr.premium.note': '雲存檔、內建金手指庫、手動存檔欄位等 5 項功能。一次付費，永久有效。',
+            'pr.toolkit.note': '圖鑑、屬性相剋、性格一覽，離線可用無廣告。一次付費，永久有效。',
+            'pr.buy': '立即購買',
+            'pr.collapse': '收起',
+            'pr.buyhint': '微信掃碼支付，支付成功後當場顯示啟用碼',
+            'pr.email': '電子郵件（選填）',
+            'pr.emailnote': '啟用碼會直接顯示在本頁，不會寄送郵件。留下電子郵件只是為了日後聯絡客服時能找到你的訂單。',
+            'pr.next': '下一步，去支付',
+            'pr.payfoot': '遇到問題請聯絡 <a href="mailto:hamberluo@gmail.com">hamberluo@gmail.com</a>。送出即表示你已閱讀<a href="privacy-policy.html">隱私政策</a>。',
+            'pr.qralt': '微信支付 QR code',
+            'pr.step1': '開啟微信 →「掃一掃」',
+            'pr.step2': '掃描上方 QR code 完成支付',
+            'pr.mobile': '正在開啟微信支付…<br>沒有自動跳轉？',
+            'pr.payopen': '點此繼續支付',
+            'pr.waiting': '<span class="spinner"></span>等待支付結果，支付完成後請回到本頁。',
+            'pr.savenow': '請立即儲存啟用碼',
+            'pr.copy': '複製啟用碼',
+            'pr.copied': '已複製',
+            'pr.longpress': '請長按選取的文字複製',
+            'pr.onceonly': '啟用碼不會透過郵件寄送，本頁是唯一一次顯示。',
+            'pr.orderno': '訂單編號：',
+            'pr.keepno': '憑訂單編號可再次取回啟用碼，建議一併截圖儲存。',
+            'pr.redeem': '開啟 GoGBA →「設定 → 高級版」，貼上啟用碼即可解鎖。',
+            'pr.creating': '正在建立訂單…',
+            'pr.createfail': '建立訂單失敗，請稍後再試。',
+            'pr.timeout': '等待逾時。若已完成支付，請聯絡客服並提供訂單編號 ',
+            'pr.f.cloud': '雲存檔跨裝置同步',
+            'pr.f.cheats': '內建金手指庫 — 數千款遊戲現成代碼',
+            'pr.f.slots': '手動存檔欄位 — 四個由你掌控',
+            'pr.f.speed': '自訂速度最高 5×',
+            'pr.f.font': '像素字型樣式',
+            'pr.f.dex': '圖鑑 — 種族值、屬性與進化',
+            'pr.f.types': '屬性相剋 — 全 18 屬性，含第三世代註釋',
+            'pr.f.natures': '性格一覽 — 能力加成與削弱一目了然',
+            'pr.f.offline': '離線可用，無廣告',
+            'pr.how.title': '如何購買',
+            'pr.how.lead': '全程自動，無需等待人工處理：',
+            'pr.how.s1': '在上方選擇要購買的項目，點擊「立即購買」。',
+            'pr.how.s2': '長按 QR code 儲存圖片，在微信「掃一掃 → 相簿」中選擇它完成支付。',
+            'pr.how.s3': '支付成功後啟用碼立即顯示在本頁。',
+            'pr.how.s4': '開啟 GoGBA，進入「設定 → 高級版」，貼上啟用碼即可解鎖。',
+            'pr.how.separate': '高級版與遊戲工具箱分開販售，各自獨立解鎖，可只買其中一項。兩項都需要時分別購買，會得到兩個啟用碼，都在同一處輸入。',
+            'pr.how.devices': '一個啟用碼最多可同時綁定 3 台裝置。名額滿了也不會啟用失敗——最早綁定的那台會自動讓位給新裝置，你無需手動解除綁定。同一台裝置重新安裝應用程式不額外佔用名額。',
+            'pr.how.once': '<strong>啟用碼只在支付成功後的頁面上顯示一次，不會寄送郵件</strong>，請當場複製或截圖儲存。同時儲存訂單編號，憑它可以再次取回啟用碼。',
+            'pr.scope.title': '適用範圍',
+            'pr.scope.android': '本頁購買的啟用碼僅適用於透過官網或網路硬碟下載的 Android 版本。',
+            'pr.scope.ios': 'iOS 版本及 Google Play 版本請在應用程式內購買，兩者不通用。',
+            'pr.scope.rom': '付費項目均不含任何遊戲 ROM。GoGBA 僅提供模擬器功能，遊戲內容需由你自行提供。',
+            'pr.refund.title': '退款政策',
+            'pr.refund.p1': '高級版與遊戲工具箱均屬虛擬商品，啟用碼一經使用即視為已交付，不支援退款。',
+            'pr.refund.p2': '若遇到支付成功但未收到啟用碼、啟用碼無法使用等問題，請透過下方電子郵件聯絡，我們會在 2 個工作天內處理並按實際情況全額退款。',
+            'pr.contact.title': '聯絡方式',
+            'pr.contact.email': '電子郵件：',
+            'pr.contact.more': '更多協助請見<a href="support.html">支援頁面</a>。',
             'nav.home': '首頁',
             'nav.about': '關於',
             'nav.support': '支援',
@@ -854,6 +1037,7 @@
             'home.socialproof': '<span class="sp-cta">看看玩家怎麼說 \u2192</span>',
             'footer.rights': '© 2026 GoGBA。保留所有權利。',
             'reviews.g1.title': '「用過最好的模擬器」',
+            'reviews.title': '玩家怎麼說',
             'reviews.r1': '<span class="hl">已經是 Android 上最好的 GB、GBC、GBA 模擬器</span>，而且還在不斷變好。是的，我已經付費支持了，因為它真的值得，後續維護也無可挑剔 👍',
             'reviews.r2': '<span class="hl">我用過最好的模擬器之一。</span>除了 RetroAchievements 成就，還能自訂按鍵等等。',
             'reviews.r3': '<span class="hl">所有 GBA 模擬器裡最好的一個。</span>每個細節都想到了，介面非常出色，遊戲封面會自動顯示，快捷鍵讓操作變得輕鬆，還能跑 GBC 和 GB 遊戲。厲害！',
@@ -887,6 +1071,7 @@
             'home.demo.name': 'A Rushed Hack Job',
             'home.demo.desc': '一個 GBA 格式的自製演示 ROM，用於試玩 GoGBA（同時支援 GBC 與 GB 遊戲）。',
             'home.demo.download': '下載演示遊戲',
+            'home.demo.source': '開源自製遊戲。詳情見 <a href="https://gamebrew.org/wiki/A_Rushed_Hack_Job_GBA" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">GameBrew</a>。',
             'home.contact.title': '聯繫與支援',
             'home.contact.discord': '加入 Discord',
             'badge.appstore.alt': '在 App Store 下載',
@@ -1274,10 +1459,24 @@
         return 'en';
     }
 
+    // A page may serve only some languages — premium.html sells the
+    // activation-code build and exists in Chinese alone. It declares that with
+    // <html data-langs="zh-Hans,zh-Hant">, and a language outside the set falls
+    // back to the first one listed rather than rendering half-translated.
+    function pageLangs() {
+        var attr = document.documentElement.getAttribute('data-langs');
+        if (!attr) return SUPPORTED;
+        var allowed = attr.split(',').map(function (s) { return s.trim(); })
+            .filter(function (s) { return SUPPORTED.indexOf(s) > -1; });
+        return allowed.length ? allowed : SUPPORTED;
+    }
+
     function resolveLang() {
+        var allowed = pageLangs();
         var stored = getStoredLang();
-        if (SUPPORTED.indexOf(stored) > -1) return stored;
-        return mapNavigatorLang();
+        if (allowed.indexOf(stored) > -1) return stored;
+        var mapped = mapNavigatorLang();
+        return allowed.indexOf(mapped) > -1 ? mapped : allowed[0];
     }
 
     function t(lang, key) {
@@ -1291,10 +1490,23 @@
         // to iOS and Play visitors who cannot redeem it.
         var scoped = document.querySelectorAll('[data-lang-only]');
         for (var n = 0; n < scoped.length; n++) {
-            // 逗号分隔，可列多个语言：激活码对简体和繁体读者都有意义，
-            // 只绑一个语言会让另一半永远看不到入口。
+            // Comma-separated, so one element can list several languages: an
+            // activation code means something to both Simplified and
+            // Traditional readers, and binding one would hide it from the other.
             var only = scoped[n].getAttribute('data-lang-only').split(',');
             scoped[n].hidden = only.indexOf(lang) === -1;
+        }
+
+        // Shown only to readers this page has no copy for. A Chinese-only page
+        // resolves `lang` to Chinese whatever the browser asks for, so the test
+        // is what the reader actually requested, not what we rendered.
+        var foreign = document.querySelectorAll('[data-lang-unless]');
+        if (foreign.length) {
+            var wanted = getStoredLang() || mapNavigatorLang();
+            for (var f = 0; f < foreign.length; f++) {
+                var unless = foreign[f].getAttribute('data-lang-unless').split(',');
+                foreign[f].hidden = unless.indexOf(wanted) > -1;
+            }
         }
 
         var nodes = document.querySelectorAll('[data-i18n]');
@@ -1347,7 +1559,7 @@
     }
 
     function setLang(lang) {
-        if (SUPPORTED.indexOf(lang) === -1) return;
+        if (pageLangs().indexOf(lang) === -1) return;
         try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
         render(lang);
     }
@@ -1360,5 +1572,11 @@
         }
     }
 
-    window.GoGBAI18n = { init: initI18n, setLang: setLang, resolve: resolveLang, updateBadges: updateBadges, SUPPORTED: SUPPORTED };
+    // t() is for strings a page builds at runtime — premium.html's payment
+    // status messages have no element to carry data-i18n.
+    window.GoGBAI18n = {
+        init: initI18n, setLang: setLang, resolve: resolveLang,
+        updateBadges: updateBadges, SUPPORTED: SUPPORTED,
+        t: function (key) { return t(resolveLang(), key); }
+    };
 })();

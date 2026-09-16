@@ -10,7 +10,7 @@ const html = readFileSync(new URL('../premium.html', import.meta.url), 'utf8');
 const source = html.match(/function showPayment\(order\) \{[\s\S]*?\n {16}\}/);
 
 if (!source) {
-  console.error('✗ premium.html 里找不到 showPayment —— 支付分支检查已失效');
+  console.error('✗ premium.html: showPayment not found — this branch check is broken');
   process.exit(1);
 }
 
@@ -45,21 +45,21 @@ const expect = (name, ok) => { if (!ok) failures.push(name); };
 
 for (const [label, ua] of Object.entries(PHONES)) {
   const { elements, navigated } = run(ua, ORDER);
-  expect(`${label} 应跳转 url`, navigated === ORDER.paymentUrl);
-  expect(`${label} 不应展示二维码`, elements['.pay-qr'].src === '');
-  expect(`${label} 兜底链接应指向 url`, elements['.pay-open'].href === ORDER.paymentUrl);
+  expect(`${label} should navigate to url`, navigated === ORDER.paymentUrl);
+  expect(`${label} should not render a QR code`, elements['.pay-qr'].src === '');
+  expect(`${label} fallback link should point at url`, elements['.pay-open'].href === ORDER.paymentUrl);
 }
 
 const desktop = run(DESKTOP, ORDER);
-expect('桌面应展示 url_qrcode', desktop.elements['.pay-qr'].src === ORDER.qrcodeUrl);
-expect('桌面不应跳转', desktop.navigated === '');
+expect('desktop should render url_qrcode', desktop.elements['.pay-qr'].src === ORDER.qrcodeUrl);
+expect('desktop should not navigate', desktop.navigated === '');
 
 const withoutUrl = run(PHONES.iPhone, { paymentUrl: '', qrcodeUrl: ORDER.qrcodeUrl });
-expect('手机端缺 url 应回退二维码', withoutUrl.elements['.pay-qr'].src === ORDER.qrcodeUrl);
+expect('phone without url should fall back to the QR code', withoutUrl.elements['.pay-qr'].src === ORDER.qrcodeUrl);
 
 if (failures.length) {
-  console.error('✗ 支付分支错误:');
+  console.error('✗ payment branch failures:');
   for (const f of failures) console.error(`    ${f}`);
   process.exit(1);
 }
-console.log('✓ 支付分支（手机跳转 / 桌面二维码）');
+console.log('✓ payment branch (phone → cashier, desktop → QR)');
