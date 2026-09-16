@@ -595,6 +595,14 @@ header.scrolled .nav-brand h1 {
     background: var(--bg-secondary);
 }
 
+/* The section ships with `hidden` in the markup, like .btn-discord ships
+   display:none — common.js reveals both together once the reader is placed
+   outside China, and a reader without JS never sees a heading over empty
+   space. This only restores the block display `hidden` suppresses. */
+[data-discord-section]:not([hidden]) {
+    display: block;
+}
+
 .contact h2 {
     margin-bottom: 1rem;
 }

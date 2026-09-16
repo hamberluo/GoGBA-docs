@@ -101,6 +101,12 @@ function updateDiscordVisibility() {
     document.querySelectorAll('.btn-discord').forEach(link => {
         link.style.display = show ? 'inline-flex' : 'none';
     });
+    // The Contact & Support section holds nothing but the Discord button, so a
+    // hidden button would leave a heading over empty space. It travels with the
+    // link rather than being hidden in the markup, keeping one decision point.
+    document.querySelectorAll('[data-discord-section]').forEach(section => {
+        section.hidden = !show;
+    });
 }
 
 // ipapi.co is the only endpoint: the site is HTTPS, and ip-api.com's free tier
