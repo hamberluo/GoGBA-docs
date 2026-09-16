@@ -232,6 +232,19 @@
         .info-section li { margin-bottom: 6px; }
         .info-section a { color: var(--accent); }
 
+        .lookup-form { display: flex; gap: 8px; margin-top: 14px; }
+        .lookup-input {
+            flex: 1; min-width: 0;
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--card-bg);
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+        .lookup-result { margin-top: 12px; }
+        .lookup-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 1.1rem; user-select: all; }
+
         .steps { counter-reset: step; list-style: none; padding: 0; }
         .steps li { padding-left: 34px; position: relative; margin-bottom: 12px; }
         .steps li::before {
@@ -421,6 +434,16 @@
                 </div>
             </div>
 
+            <section class="info-section" id="lookup">
+                <h2 data-i18n="pr.lookup.title">找回激活码</h2>
+                <p data-i18n="pr.lookup.hint">输入订单号即可。本页显示过的订单号、微信支付账单里的交易单号、虎皮椒的订单号，任意一个都可以。</p>
+                <form class="lookup-form">
+                    <input class="lookup-input" type="text" autocomplete="off" required placeholder="订单号" data-i18n-attr="placeholder:pr.lookup.placeholder">
+                    <button type="submit" class="btn btn-primary" data-i18n="pr.lookup.button">找回</button>
+                </form>
+                <p class="lookup-result" role="status" hidden></p>
+            </section>
+
             <section class="info-section" id="buy">
                 <h2 data-i18n="pr.how.title">如何购买</h2>
                 <p data-i18n="pr.how.lead">全程自动，无需等待人工处理：</p>
@@ -494,6 +517,39 @@
                 return s || fallback;
             }
 
+            var PENDING_KEY = 'gogba.pendingOrder';
+
+            function storage() {
+                try { return window.localStorage; } catch (e) { return null; }
+            }
+
+            // Where a buyer left off. The gateway sends them back with the
+            // order in the query; a plain reload finds it in storage. The
+            // query wins, being the newer signal.
+            function pendingOrder(search, store) {
+                var params = new URLSearchParams(search);
+                if (params.get('order') && params.get('sku')) {
+                    return { orderNo: params.get('order'), sku: params.get('sku') };
+                }
+                if (!store) return null;
+                try {
+                    var saved = store.getItem(PENDING_KEY);
+                    return saved ? JSON.parse(saved) : null;
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            function remember(order) {
+                var store = storage();
+                if (store) try { store.setItem(PENDING_KEY, JSON.stringify(order)); } catch (e) {}
+            }
+
+            function forget() {
+                var store = storage();
+                if (store) try { store.removeItem(PENDING_KEY); } catch (e) {}
+            }
+
             function post(path, body) {
                 return fetch(API + path, {
                     method: 'POST',
@@ -553,6 +609,7 @@
                     // is sent as typed and the server keeps it only if usable.
                     post('/order', { sku: sku, email: email ? email.value.trim() : '' })
                         .then(function (order) {
+                            remember({ orderNo: order.orderNo, sku: sku });
                             showNotice('');
                             showStage('qr');
                             showPayment(order);
@@ -620,6 +677,7 @@
                 }
 
                 function showCode(code, orderNo) {
+                    forget();
                     showStage('done');
                     card.querySelector('.code-value').textContent = code;
                     card.querySelector('.order-no').textContent = orderNo;
@@ -656,7 +714,54 @@
                         copy.textContent = t('pr.longpress', '请长按选中的文字复制');
                     }
                 }
+
+                // Back from the cashier, or reloaded mid-purchase: straight to
+                // waiting on the order already placed, with nothing to scan.
+                function resume(orderNo) {
+                    panel.hidden = false;
+                    btn.setAttribute('aria-expanded', 'true');
+                    btn.textContent = t('pr.collapse', '收起');
+                    showStage('qr');
+                    card.querySelector('.qr-wrap').hidden = true;
+                    card.querySelector('.qr-steps').hidden = true;
+                    pollUntilPaid(orderNo);
+                    panel.scrollIntoView({ block: 'nearest' });
+                }
+
+                var pending = pendingOrder(window.location.search, storage());
+                if (pending && pending.sku === sku) {
+                    resume(pending.orderNo);
+                }
             });
+
+            var lookup = document.querySelector('.lookup-form');
+            if (lookup) {
+                var lookupInput = lookup.querySelector('.lookup-input');
+                var lookupResult = document.querySelector('.lookup-result');
+                lookup.addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    var reference = lookupInput.value.trim();
+                    if (!reference) return;
+                    lookupResult.hidden = false;
+                    lookupResult.textContent = t('pr.lookup.searching', '查询中…');
+
+                    post('/order/status', { orderNo: reference })
+                        .then(function (result) {
+                            if (result.status === 'delivered' && result.code) {
+                                lookupResult.textContent = t('pr.lookup.found', '激活码：');
+                                var code = document.createElement('span');
+                                code.className = 'lookup-code';
+                                code.textContent = result.code;
+                                lookupResult.appendChild(code);
+                            } else {
+                                lookupResult.textContent = t('pr.lookup.pending', '找到了订单，但还没有收到支付成功的通知。');
+                            }
+                        })
+                        .catch(function () {
+                            lookupResult.textContent = t('pr.lookup.notfound', '没有找到这个订单。请核对后重试，或联系客服。');
+                        });
+                });
+            }
 
         })();
     </script>

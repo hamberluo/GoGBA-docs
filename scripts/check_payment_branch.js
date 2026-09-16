@@ -3,7 +3,11 @@
 // itself. Showing the image on a phone asks the buyer to scan a code with the
 // screen displaying it — which is what shipped, and what support reported.
 //
-// Syntax checks cannot see this: the page was valid JavaScript throughout.
+// The second check is the same shape: on a phone the cashier replaces the
+// page, so the gateway sends the buyer back with the order in the query and
+// the page has to pick it up — or a paid buyer arrives at a blank buy page.
+//
+// Syntax checks cannot see either: the page was valid JavaScript throughout.
 import { readFileSync } from 'node:fs';
 
 const html = readFileSync(new URL('../premium.html', import.meta.url), 'utf8');
@@ -57,9 +61,28 @@ expect('desktop should not navigate', desktop.navigated === '');
 const withoutUrl = run(PHONES.iPhone, { paymentUrl: '', qrcodeUrl: ORDER.qrcodeUrl });
 expect('phone without url should fall back to the QR code', withoutUrl.elements['.pay-qr'].src === ORDER.qrcodeUrl);
 
+const pendingSource = html.match(/function pendingOrder\(search, store\) \{[\s\S]*?\n {12}\}/);
+if (!pendingSource) {
+  console.error('✗ premium.html: pendingOrder not found — this resume check is broken');
+  process.exit(1);
+}
+const pendingOrder = new Function('PENDING_KEY', `${pendingSource[0]}\nreturn pendingOrder;`)('k');
+const storage = (saved) => ({ getItem: () => saved });
+const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+
+expect('the query names the order to resume',
+  same(pendingOrder('?order=A1&sku=premium', storage(null)), { orderNo: 'A1', sku: 'premium' }));
+expect('storage is the fallback on a plain reload',
+  same(pendingOrder('', storage('{"orderNo":"B2","sku":"toolkit"}')), { orderNo: 'B2', sku: 'toolkit' }));
+expect('the query wins over storage',
+  same(pendingOrder('?order=A1&sku=premium', storage('{"orderNo":"B2","sku":"toolkit"}')), { orderNo: 'A1', sku: 'premium' }));
+expect('nothing pending resumes nothing', pendingOrder('', storage(null)) === null);
+expect('no storage at all resumes nothing', pendingOrder('', null) === null);
+expect('corrupt storage resumes nothing', pendingOrder('', storage('{not json')) === null);
+
 if (failures.length) {
   console.error('✗ payment branch failures:');
   for (const f of failures) console.error(`    ${f}`);
   process.exit(1);
 }
-console.log('✓ payment branch (phone → cashier, desktop → QR)');
+console.log('✓ payment branch (phone → cashier, desktop → QR; resume from query or storage)');
