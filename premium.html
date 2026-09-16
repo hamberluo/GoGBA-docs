@@ -97,12 +97,20 @@
         .price-unit { color: var(--text-secondary); }
         .price-note { color: var(--text-secondary); font-size: .9rem; margin-bottom: 24px; }
 
-        .price-card .btn-primary {
-            width: 100%;
-            text-align: center;
+        /* <button> inherits neither the page font nor the anchor styling the
+           shared .btn was written for, so every button.btn on this page is
+           brought back to the same baseline as the anchor version. */
+        button.btn {
             border: 0;
             cursor: pointer;
             font-family: inherit;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .price-card .btn-primary {
+            width: 100%;
+            text-align: center;
         }
 
         .pay-panel {
@@ -242,14 +250,15 @@
         .info-section li { margin-bottom: 6px; }
         .info-section a { color: var(--accent); }
 
-        .lookup-form { display: flex; align-items: stretch; gap: 10px; margin-top: 14px; }
+        .lookup-form { display: flex; align-items: center; gap: 10px; margin-top: 14px; }
         .lookup-input { flex: 1; min-width: 0; }
         /* .btn ships a 1rem top margin for the standalone CTA it was written
-           for; in a row beside an input that margin is what breaks the line. */
-        .lookup-form .btn { margin-top: 0; flex: none; padding: 0 1.75rem; }
+           for; in a row beside an input that margin is what breaks the line.
+           The vertical padding stays at .btn-primary's 0.9rem so the button
+           matches the buy button instead of being stretched to the input. */
+        .lookup-form .btn { margin-top: 0; flex: none; white-space: nowrap; }
         @media (max-width: 480px) {
             .lookup-form { flex-direction: column; }
-            .lookup-form .btn { padding: 0.75rem 1.75rem; }
         }
         .lookup-result { margin-top: 12px; color: var(--text-secondary); }
         .lookup-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 1.1rem; user-select: all; }
