@@ -113,22 +113,32 @@
 
         .pay-label { display: block; font-size: .9rem; font-weight: 600; margin-bottom: 8px; }
 
-        .pay-input {
+        /* One input spec for the page: the pay panel and the lookup form had
+           drifted apart on padding, radius and background. */
+        .pay-input,
+        .lookup-input {
             width: 100%;
             padding: 12px 14px;
             font-size: 1rem;
             font-family: inherit;
             /* The label wraps the input, so the bold label weight would leak in. */
             font-weight: 400;
+            line-height: 1.5;
             color: var(--text-primary);
             background: var(--hover-bg);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
+            /* 8px is the shared stylesheet's control radius (.btn, .lang-switch). */
+            border-radius: 8px;
             box-sizing: border-box;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
-        .pay-input:focus {
+        .pay-input::placeholder,
+        .lookup-input::placeholder { color: var(--text-secondary); opacity: .7; }
+        .pay-input:focus,
+        .lookup-input:focus {
             outline: none;
             border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.18);
         }
         .pay-input.is-invalid { border-color: #e0685f; }
 
@@ -232,17 +242,16 @@
         .info-section li { margin-bottom: 6px; }
         .info-section a { color: var(--accent); }
 
-        .lookup-form { display: flex; gap: 8px; margin-top: 14px; }
-        .lookup-input {
-            flex: 1; min-width: 0;
-            padding: 10px 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            background: var(--card-bg);
-            color: var(--text-primary);
-            font-size: 1rem;
+        .lookup-form { display: flex; align-items: stretch; gap: 10px; margin-top: 14px; }
+        .lookup-input { flex: 1; min-width: 0; }
+        /* .btn ships a 1rem top margin for the standalone CTA it was written
+           for; in a row beside an input that margin is what breaks the line. */
+        .lookup-form .btn { margin-top: 0; flex: none; padding: 0 1.75rem; }
+        @media (max-width: 480px) {
+            .lookup-form { flex-direction: column; }
+            .lookup-form .btn { padding: 0.75rem 1.75rem; }
         }
-        .lookup-result { margin-top: 12px; }
+        .lookup-result { margin-top: 12px; color: var(--text-secondary); }
         .lookup-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 1.1rem; user-select: all; }
 
         .steps { counter-reset: step; list-style: none; padding: 0; }
@@ -275,7 +284,7 @@
                     <li><a href="index.html" data-i18n="nav.home">Home</a></li>
                     <li><a href="about.html" data-i18n="nav.about">About</a></li>
                     <li><a href="reviews.html" data-i18n="nav.reviews">Reviews</a></li>
-                    <li data-lang-only="zh-Hans,zh-Hant"><a href="premium.html" class="active" data-i18n="nav.premium">高级版</a></li>
+                    <li data-lang-only="zh-Hans,zh-Hant" hidden><a href="premium.html" class="active" data-i18n="nav.premium">高级版</a></li>
                     <li><a href="support.html" data-i18n="nav.support">Support</a></li>
                     <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
                     <li><a href="terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
@@ -489,7 +498,7 @@
             <ul class="footer-links">
                 <li><a href="about.html" data-i18n="nav.about">About</a></li>
                 <li><a href="reviews.html" data-i18n="nav.reviews">Reviews</a></li>
-                <li data-lang-only="zh-Hans,zh-Hant"><a href="premium.html" data-i18n="nav.premium">高级版</a></li>
+                <li data-lang-only="zh-Hans,zh-Hant" hidden><a href="premium.html" data-i18n="nav.premium">高级版</a></li>
                 <li><a href="support.html" data-i18n="nav.support">Support</a></li>
                 <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
                 <li><a href="terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
