@@ -980,11 +980,6 @@ footer .container {
         height: 50px;
     }
 
-    .apk-badge {
-        width: 150px;
-        height: 50px;
-    }
-
     .apk-direct .apk-note { max-width: 150px; }
 
     footer .container {
@@ -1147,10 +1142,10 @@ html[lang="zh-Hant"] .beian {
 .beian a { color: inherit; text-decoration: none; }
 .beian a:hover { color: var(--accent); }
 
-/* Direct APK link, shown only in Chinese — see index.html. It sits under the
-   two store badges, so it is sized and aligned as a third badge rather than a
-   bare line of text: same 180px column, inheriting .download-badges alignment
-   (left on desktop, centred on narrow screens) instead of centring itself. */
+/* Direct APK link, shown only in Chinese — see index.html. It is a fallback
+   route, not a third store, so it stays a compact link inside the 180px badge
+   column: it inherits .download-badges alignment (left on desktop, centred on
+   narrow screens) instead of centring itself. */
 .apk-direct {
     display: flex;
     flex-direction: column;
@@ -1167,21 +1162,21 @@ html[lang="zh-Hant"] .beian {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 180px;
-    height: 60px;
+    /* Sized by its own text, not by the store badges: the padding keeps a
+       comfortable tap target without claiming a badge's visual weight. */
+    padding: 7px 14px;
     box-sizing: border-box;
     border-radius: 8px;
-    border: 1px solid rgba(var(--accent-rgb), 0.35);
-    background: rgba(var(--accent-rgb), 0.08);
+    border: 1px solid rgba(var(--accent-rgb), 0.3);
     color: var(--accent);
-    font-weight: 600;
+    font-size: .85rem;
+    font-weight: 500;
     text-decoration: none;
-    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 .apk-badge:hover {
-    background: rgba(var(--accent-rgb), 0.16);
-    border-color: rgba(var(--accent-rgb), 0.55);
-    transform: scale(1.05);
+    background: rgba(var(--accent-rgb), 0.12);
+    border-color: rgba(var(--accent-rgb), 0.5);
 }
 .apk-direct .apk-note {
     /* Wrap within the badge column rather than spilling past it. */
