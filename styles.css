@@ -955,12 +955,6 @@ footer .container {
         align-items: center;
     }
 
-    .apk-direct {
-        width: 150px;
-        align-items: center;
-        text-align: center;
-    }
-
     .hero-subtitle {
         font-size: 2rem;
     }
@@ -1146,7 +1140,9 @@ html[lang="zh-Hant"] .beian {
    a text link with an underline rather than a 180px bordered box, which at any
    height reads as a third button. Being narrower than the badges, it hangs off
    their right edge rather than stranding itself at the left: the block takes
-   the badge width and aligns its contents to the end. */
+   the badge width and aligns its contents to the end. The note below it stays
+   left-aligned — it is a sentence that wraps, and ragged-left wrapping leaves
+   the last line hanging away from where reading starts. */
 .apk-direct {
     display: flex;
     flex-direction: column;
@@ -1181,8 +1177,26 @@ html[lang="zh-Hant"] .beian {
     text-decoration-color: var(--accent-hover);
 }
 .apk-direct .apk-note {
-    /* The block's own width already confines it; no max-width needed. */
+    /* The block's own width already confines it; no max-width needed. It
+       overrides the block's right alignment: see the note above. */
+    align-self: stretch;
+    text-align: left;
     color: var(--text-secondary);
     font-size: .78rem;
     line-height: 1.45;
+}
+
+/* Narrow screens centre the badge column, so this block follows it. These
+   live after the desktop rules above rather than in the main 768px block
+   further up the file: at equal specificity the later rule wins, so from up
+   there they were silently overridden and the column stayed right-aligned. */
+@media (max-width: 768px) {
+    .apk-direct {
+        /* Matching the 150px the badges take at this width. */
+        width: 150px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .apk-direct .apk-note { text-align: center; }
 }
