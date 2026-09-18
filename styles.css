@@ -956,6 +956,7 @@ footer .container {
     }
 
     .apk-direct {
+        width: 150px;
         align-items: center;
         text-align: center;
     }
@@ -979,8 +980,6 @@ footer .container {
         width: 150px;
         height: 50px;
     }
-
-    .apk-direct .apk-note { max-width: 150px; }
 
     footer .container {
         flex-direction: column;
@@ -1145,14 +1144,18 @@ html[lang="zh-Hant"] .beian {
 /* Direct APK link, shown only in Chinese — see index.html. It is a fallback
    route, not a third store, so it deliberately breaks the badges' silhouette:
    a text link with an underline rather than a 180px bordered box, which at any
-   height reads as a third button. It inherits .download-badges alignment (left
-   on desktop, centred on narrow screens) instead of centring itself. */
+   height reads as a third button. Being narrower than the badges, it hangs off
+   their right edge rather than stranding itself at the left: the block takes
+   the badge width and aligns its contents to the end. */
 .apk-direct {
     display: flex;
     flex-direction: column;
-    /* A flex item of .download-badges: its column alignment and 1rem gap are
-       inherited from that container, so nothing is repeated per breakpoint. */
-    align-items: flex-start;
+    /* A flex item of .download-badges, so the 1rem gap is inherited. The width
+       matches the badges above (150px there on narrow screens) so that "end"
+       lands on their right edge rather than on the text's own. */
+    width: 180px;
+    align-items: flex-end;
+    text-align: right;
     gap: 6px;
 }
 /* i18n toggles [hidden] and never touches display, so the flex rule above has
@@ -1178,8 +1181,7 @@ html[lang="zh-Hant"] .beian {
     text-decoration-color: var(--accent-hover);
 }
 .apk-direct .apk-note {
-    /* Wrap within the badge column rather than spilling past it. */
-    max-width: 180px;
+    /* The block's own width already confines it; no max-width needed. */
     color: var(--text-secondary);
     font-size: .78rem;
     line-height: 1.45;
