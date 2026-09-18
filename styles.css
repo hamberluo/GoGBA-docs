@@ -980,6 +980,8 @@ footer .container {
         height: 50px;
     }
 
+    .apk-badge { width: 150px; }
+
     .apk-direct .apk-note { max-width: 150px; }
 
     footer .container {
@@ -1162,8 +1164,10 @@ html[lang="zh-Hant"] .beian {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    /* Sized by its own text, not by the store badges: the padding keeps a
-       comfortable tap target without claiming a badge's visual weight. */
+    /* Same width as the store badges above so the column has one edge, but
+       the height comes from the padding rather than matching their 60px: a
+       solid box that tall outweighs artwork with its own internal padding. */
+    width: 180px;
     padding: 7px 14px;
     box-sizing: border-box;
     border-radius: 8px;
