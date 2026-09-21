@@ -12,7 +12,16 @@
       ".git/**",
       ".DS_Store",
       "**/.DS_Store",
-      "downloads/*.apk"
+      "downloads/*.apk",
+      ".gitignore",
+      ".cursor/**",
+      "docs/**",
+      "scripts/**",
+      "cloudbaserc.json",
+      "cloudbaserc.local.json",
+      "README.md",
+      "SEO-OPTIMIZATION.md",
+      "URLS.md"
     ]
   }
 }
