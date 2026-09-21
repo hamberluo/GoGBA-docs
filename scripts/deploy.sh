@@ -27,14 +27,30 @@ command -v expect >/dev/null || {
 
 # The environment is pinned: run from elsewhere, or with several environments
 # on the account, tcb stops to ask which one and the deploy hangs unanswered.
+#
+# Each prompt is awaited in sequence rather than in one exp_continue loop. That
+# loop re-matched the overwrite question against output still in the buffer and
+# sent a second "y", which landed in the path field as "yy" and was rejected.
 expect <<'EXP'
 set timeout 900
 spawn tcb deploy --env-id gogba-license-d6gl8myhy2ea32f64
+
+# Only when the app already exists; a first deploy goes straight to the path.
 expect {
-    -re {Overwrite and update.*}  { send "y\r"; exp_continue }
-    -re {Deployment path.*}       { send "\r";  exp_continue }
-    eof
+    -re {Overwrite and update[^\r\n]*} { send "y\r" }
+    -re {Deployment path[^\r\n]*}      { send "\r"; set answered 1 }
+    timeout { puts stderr "\n^ timed out waiting for the first prompt"; exit 1 }
 }
+
+if {![info exists answered]} {
+    expect {
+        -re {Deployment path[^\r\n]*} { send "\r" }
+        timeout { puts stderr "\n^ timed out waiting for the path prompt"; exit 1 }
+    }
+}
+
+# The build runs server-side and its log streams until the process ends.
+expect eof
 catch wait result
 exit [lindex $result 3]
 EXP
