@@ -138,6 +138,7 @@
                         saves on exit and when backgrounded. Atomic writes prevent data corruption.
                         Cross-core save compatibility and RTC (Real-Time Clock) support.
                     </li>
+                    <li data-i18n-html="about.feature.backup"><strong>Data Backup:</strong> Export all game saves and cheats to one zip file and restore them later or on another device. Saves and cheats packed with your games come along when you import them. Save states are not included.</li>
                     <li data-i18n-html="about.feature.themes">
                         <strong>Dark Themes:</strong> 6 carefully designed dark themes optimized for
                         eye comfort during long sessions.
@@ -151,11 +152,8 @@
                         Arcade mode (LRAB four-directional buttons). Haptic feedback with adjustable strength.
                         Directional stick optimization for smooth control.
                     </li>
-                    <li data-i18n-html="about.feature.gamepad">
-                        <strong>Gamepad Support:</strong> Full controller support with customizable button
-                        mapping. Option to hide virtual buttons when gamepad is connected. Works on both
-                        Android and iOS.
-                    </li>
+                    <li data-i18n-html="about.feature.gamepad"><strong>Gamepad Support:</strong> Full controller support with customizable button mapping. Option to hide virtual buttons when gamepad is connected. Works on both Android and iOS. On Android, a device wrongly detected as a gamepad can be marked as not a gamepad so the on-screen buttons stay.</li>
+                    <li data-i18n-html="about.feature.link"><strong>Link Play:</strong> Play with a friend on the same Wi-Fi, like a link cable. Rooms nearby show up automatically, or join by IP address. Both players need the game; paired versions such as Ruby and Sapphire can link when both devices have both. Hosting a room requires Premium; joining is free.</li>
                     <li data-i18n-html="about.feature.ra">
                         <strong>RetroAchievements Integration:</strong> Unlock achievements, track progress,
                         compete on leaderboards. Rich Presence support shows your game status. Hardcore and
@@ -191,12 +189,7 @@
                         <strong>Custom Covers:</strong> Search and select game covers from the libretro database.
                         Automatic cover matching via SHA1/MD5 hash.
                     </li>
-                    <li data-i18n-html="about.feature.premium">
-                        <strong>Premium & Cloud Save:</strong> One-time in-app purchase unlocks Cloud Save
-                        (Google Drive on Android/cross-platform or iCloud on iOS, with optional auto-sync),
-                        the built-in cheat library, manual save slots, custom game speed (up to 16x), and the
-                        Pixel Font style. Cheats themselves and auto save are free.
-                    </li>
+                    <li data-i18n-html="about.feature.premium"><strong>Premium & Cloud Save:</strong> One-time in-app purchase unlocks Cloud Save (Google Drive on Android/cross-platform or iCloud on iOS, with optional auto-sync), hosting link play rooms, the built-in cheat library, manual save slots, custom game speed (up to 16x), and the Pixel Font style. Cheats themselves, joining link play and auto save are free.</li>
                 </ul>
 
                 <h2 data-i18n="about.tech.title">Technical Details</h2>
@@ -252,7 +245,8 @@
                     <li data-i18n="about.privacy.local">Core features store all data locally—no account required</li>
                     <li data-i18n="about.privacy.notrack">No data collection or tracking</li>
                     <li data-i18n="about.privacy.cloud">Optional Cloud Save requires a Google or Apple account to sync saves across devices</li>
-                    <li data-i18n="about.privacy.premium">Optional Premium upgrade (in-app purchase) unlocks Cloud Save on iOS and Android</li>
+                    <li data-i18n="about.privacy.link">Optional link play connects directly to the other player's device on your local network; nothing passes through our servers</li>
+                    <li data-i18n="about.privacy.premium">Optional Premium upgrade (in-app purchase) unlocks Cloud Save and hosting link play rooms on iOS and Android</li>
                     <li data-i18n-html="about.privacy.ai">Optional AI Screen Translation (subscription) sends captured game screen images to Google's AI when you use the feature; usage may be capped (limits can be updated via Firebase Remote Config)—see our <a href="privacy-policy.html">Privacy Policy</a></li>
                 </ul>
                 <p data-i18n-html="about.privacy.more">
@@ -289,16 +283,18 @@
                     <li data-i18n="about.maturity.emulation">Complete handheld emulation (GBA, GBC, GB) with the libretro mGBA core</li>
                     <li data-i18n="about.maturity.platform">Dual platform support (Android + iOS) with native integration</li>
                     <li data-i18n="about.maturity.save">Reliable save system with automatic saves and atomic writes</li>
+                    <li data-i18n="about.maturity.backup">Data backup and restore for game saves and cheats</li>
                     <li data-i18n="about.maturity.library">Game library management with auto-scan, favorites, search, and list/grid views</li>
                     <li data-i18n="about.maturity.controls">Virtual button controls with Normal/Arcade modes and haptic feedback</li>
                     <li data-i18n="about.maturity.gamepad">Full gamepad support with customizable button mapping</li>
+                    <li data-i18n="about.maturity.link">Two-player link play over the local network, like a link cable</li>
                     <li data-i18n="about.maturity.ra">RetroAchievements integration with achievements, leaderboards, and Rich Presence</li>
                     <li data-i18n="about.maturity.lang">Multi-language support (24 languages, including App Store metadata)</li>
                     <li data-i18n="about.maturity.themes">6 dark themes optimized for long sessions</li>
                     <li data-i18n="about.maturity.covers">Game cover search and automatic matching</li>
                     <li data-i18n="about.maturity.filters">Video rendering filters (LCD, scanlines, bilinear, HQ2x)</li>
                     <li data-i18n="about.maturity.bios">BIOS management for enhanced compatibility</li>
-                    <li data-i18n="about.maturity.premium">Premium in-app purchase with Cloud Save (Google Drive / iCloud), the built-in cheat library, manual save slots, custom game speed (up to 16x), and Pixel Font style</li>
+                    <li data-i18n="about.maturity.premium">Premium in-app purchase with Cloud Save (Google Drive / iCloud), hosting link play rooms, the built-in cheat library, manual save slots, custom game speed (up to 16x), and Pixel Font style</li>
                     <li data-i18n="about.maturity.perf">Performance optimizations for smooth 60 FPS gameplay</li>
                     <li data-i18n="about.maturity.deploy">Automated deployment infrastructure (Fastlane)</li>
                     <li data-i18n="about.maturity.monitor">Monitoring and analytics (Firebase Analytics + Crashlytics)</li>

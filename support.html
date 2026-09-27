@@ -75,7 +75,23 @@
           "name": "Can I use GoGBA with a controller?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes! GoGBA has full gamepad support on both Android and iOS. It automatically detects connected gamepads, supports customizable button mapping, and allows hiding virtual buttons when a gamepad is connected. Configure in Settings → Controls → Gamepad Mapping."
+            "text": "Yes! GoGBA has full gamepad support on both Android and iOS. It automatically detects connected gamepads, supports customizable button mapping, and allows hiding virtual buttons when a gamepad is connected. On Android, a device wrongly detected as a gamepad can be marked as not a gamepad. Configure in Settings → Controls → Gamepad Mapping."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I back up or move my saves?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Go to Settings → Data backup and tap Export backup to save all game saves and cheats into one .zip file. To restore, tap Restore from backup, pick the backup file from Add game, or open it in GoGBA from another app. Add your games first so saves can be matched to them. Save states are not included."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I play with a friend (link play)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Link play works like a link cable over your local network: both devices need to be on the same Wi-Fi. Long-press a game on the home screen and choose Link play (or use the in-game menu). Hosting a room requires Premium; joining is free, either from rooms found nearby or by the host's IP address. Both players need the game; paired versions such as Ruby and Sapphire can link when both devices have both."
           }
         },
         {
@@ -162,7 +178,7 @@
                     <li data-i18n-html="support.faq.addgames.item1"><strong>Individual file selection:</strong> Tap the "Add Games" button and select a supported ROM (<code>.gba</code>, <code>.gbc</code>, or <code>.gb</code>) or a <code>.zip</code> archive using the file picker. Files are copied into the app's games directory.</li>
                     <li data-i18n-html="support.faq.addgames.item2"><strong>Auto-scan directory:</strong> The app scans the games directory on startup and when loading the home page. Place <code>.gba</code>, <code>.gbc</code>, <code>.gb</code>, or <code>.zip</code> files there.</li>
                     <li data-i18n-html="support.faq.addgames.item3"><strong>External app opening:</strong> Open supported files from other apps (file managers, email, etc.). GoGBA imports and opens them when possible.</li>
-                    <li data-i18n-html="support.faq.addgames.item4"><strong>ZIP support:</strong> ZIP archives are unpacked when added; supported ROMs inside are imported.</li>
+                    <li data-i18n-html="support.faq.addgames.item4"><strong>ZIP support:</strong> ZIP archives are unpacked when added; supported ROMs inside are imported, along with any saves and cheats packed with them.</li>
                 </ol>
                 <p data-i18n-html="support.faq.addgames.outro">
                     Games are stored in the app's documents directory under the <code>games</code> subdirectory.
@@ -188,20 +204,29 @@
                 <ul>
                     <li data-i18n="support.faq.controller.item1">Automatically detects connected gamepads</li>
                     <li data-i18n="support.faq.controller.item2">Customizable button mapping (configure in Settings → Controls → Gamepad Mapping)</li>
-                    <li data-i18n="support.faq.controller.item3">Option to hide virtual buttons when gamepad is connected</li>
+                    <li data-i18n="support.faq.controller.item3">Option to hide virtual buttons when a gamepad is connected; a one-time notice tells you when a gamepad hides them</li>
                     <li data-i18n="support.faq.controller.item4">Works with most standard Bluetooth and USB controllers</li>
+                    <li data-i18n="support.faq.controller.item5">On Android, Gamepad Mapping lists the devices recognised as gamepads; if one is wrongly detected, switch on "Not a gamepad" to keep the on-screen buttons</li>
                 </ul>
                 <p data-i18n="support.faq.controller.outro">
                     To configure gamepad buttons, go to Settings → Controls → Gamepad Mapping.
                 </p>
 
                 <h3 data-i18n="support.faq.cloud.q">Does GoGBA support cloud saves?</h3>
-                <p data-i18n-html="support.faq.cloud.body">
-                    <strong>Optional Cloud Save</strong> is available as part of <strong>Premium</strong> (in-app purchase).
-                    When enabled, you can sync battery saves with <strong>Google Drive</strong> (Android / cross-device)
-                    or <strong>iCloud</strong> (iOS), depending on platform and settings. Without Premium, saves stay
-                    on your device only—we still recommend backing up <code>.sav</code> files you care about.
-                </p>
+                <p data-i18n-html="support.faq.cloud.body"><strong>Optional Cloud Save</strong> is available as part of <strong>Premium</strong> (in-app purchase). When enabled, you can sync battery saves with <strong>Google Drive</strong> (Android / cross-device) or <strong>iCloud</strong> (iOS), depending on platform and settings. Without Premium, saves stay on your device only—to keep a copy or move them to another device, use <strong>Settings → Data backup</strong>.</p>
+
+                <h3 data-i18n="support.faq.backup.q">How do I back up or move my saves?</h3>
+                <p data-i18n-html="support.faq.backup.body">Go to <strong>Settings → Data backup</strong> and tap <strong>Export backup</strong> to save all your game saves and cheats into one <code>.zip</code> file, wherever you choose. To restore, tap <strong>Restore from backup</strong>, pick the backup file from <strong>Add game</strong>, or open it in GoGBA from another app. Saves and cheats are matched to the games in your library, so add your games first. Saves and cheats also come along when you import a game <code>.zip</code> that contains them, or a folder where they sit next to the ROMs. Save states are not included.</p>
+
+                <h3 data-i18n="support.faq.link.q">How do I play with a friend (link play)?</h3>
+                <p data-i18n="support.faq.link.intro">Link play works like a link cable over your local network. Both devices need to be on the same Wi-Fi:</p>
+                <ol>
+                    <li data-i18n-html="support.faq.link.item1"><strong>Host:</strong> Long-press a game on the home screen and choose <strong>Link play</strong> (or use the in-game menu), then host a room. Hosting requires <strong>Premium</strong>.</li>
+                    <li data-i18n-html="support.faq.link.item2"><strong>Join:</strong> Your friend opens Link play on their device and joins. Rooms nearby appear automatically, or enter the host's IP address. Joining is free.</li>
+                    <li data-i18n-html="support.faq.link.item3"><strong>Games:</strong> Both players need the game. Paired versions such as Ruby and Sapphire can link when both devices have both versions.</li>
+                    <li data-i18n-html="support.faq.link.item4"><strong>While linked:</strong> Fast-forward, save states, cheats, reset and RetroAchievements are unavailable. If the connection drops, the game carries on single-player.</li>
+                </ol>
+                <p data-i18n="support.faq.link.outro">Both devices need the same version of GoGBA. On iOS, if no rooms appear, allow GoGBA under Settings → Privacy &amp; Security → Local Network.</p>
 
                 <h3 data-i18n="support.faq.speed.q">How do I change the game speed?</h3>
                 <p data-i18n-html="support.faq.speed.body">

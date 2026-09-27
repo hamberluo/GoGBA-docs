@@ -56,7 +56,7 @@
       "name": "Privacy Policy - GoGBA",
       "description": "GoGBA Privacy Policy - Learn how we protect your data",
       "url": "https://gogba.xyz/privacy-policy.html",
-      "dateModified": "2026-03-27"
+      "dateModified": "2026-09-27"
     }
     </script>
 </head>
@@ -98,7 +98,7 @@
             <div class="content-page">
                 <h1 data-i18n="privacy.title">Privacy Policy</h1>
 
-                <p class="policy-meta" data-i18n-html="privacy.updated"><em>Last updated: March 27, 2026</em></p>
+                <p class="policy-meta" data-i18n-html="privacy.updated"><em>Last updated: September 27, 2026</em></p>
 
                 <p data-i18n="privacy.intro">
                     This Privacy Policy describes how GoGBA ("we", "our", or "us") collects, uses,
@@ -121,12 +121,7 @@
                         you select through your device's file system. These files remain on your device
                         and are never transmitted to us or any third party.
                     </li>
-                    <li data-i18n-html="privacy.s1.2.saves">
-                        <strong>Save Files:</strong> Game save files (.sav files) are stored locally on
-                        your device. By default, we do not access, collect, or transmit your save data.
-                        If you enable the optional Cloud Save feature (requires Premium), save files may
-                        be uploaded to Google Drive or iCloud, depending on the provider you choose.
-                    </li>
+                    <li data-i18n-html="privacy.s1.2.saves"><strong>Save Files:</strong> Game save files (.sav files) are stored locally on your device. By default, we do not access, collect, or transmit your save data. If you enable the optional Cloud Save feature (requires Premium), save files may be uploaded to Google Drive or iCloud, depending on the provider you choose. If you use link play, your save file is sent directly to the other player's device as described in Section 1.8.</li>
                     <li data-i18n-html="privacy.s1.2.config">
                         <strong>App Configuration:</strong> Settings such as theme preferences, language
                         selection, and orientation preferences are stored locally on your device.
@@ -220,6 +215,12 @@
                     if configuration cannot be retrieved, a built-in default may apply.
                 </p>
 
+                <h3 data-i18n="privacy.s1.8.title">1.8 Link Play (Optional)</h3>
+                <p data-i18n="privacy.s1.8.body1">Link play lets two devices on the same local network play together, like a link cable. GoGBA connects directly to the other player's device over your local network. Nothing passes through our servers, and we do not store any of it.</p>
+                <p data-i18n="privacy.s1.8.body2">While you host a room, GoGBA announces it on your local network so nearby devices can find it. Other devices on that network can see this announcement, which includes the game name, a hash of the ROM file, the system type (GBA, GBC or GB) and emulator version information.</p>
+                <p data-i18n="privacy.s1.8.body3">When a player joins, the two devices exchange this game information (plus the ROM file size), and each sends the other its game save file so both can run the linked game. During the session, button inputs and periodic sync checks are sent directly between the two devices. Your ROM file itself is never sent.</p>
+                <p data-i18n="privacy.s1.8.body4">Link play runs only while you host or join a room. On iOS, the App asks for Local Network permission to find and connect to rooms; you can change this at any time in Settings → Privacy &amp; Security → Local Network.</p>
+
                 <h2 data-i18n="privacy.s2.title">2. How We Use Your Information</h2>
                 <p data-i18n="privacy.s2.intro">We use the information collected solely for the following purposes:</p>
                 <ul>
@@ -228,6 +229,7 @@
                     <li data-i18n="privacy.s2.item3">To provide technical support when requested</li>
                     <li data-i18n="privacy.s2.item4">When you use AI Screen Translation, to send the captured screen and related parameters
                         to Google's AI services solely to generate translations you requested</li>
+                    <li data-i18n="privacy.s2.item5">When you use link play, to send game information, your save file and button inputs directly to the other player's device so the linked game can run</li>
                 </ul>
 
                 <h2 data-i18n="privacy.s3.title">3. Data Storage and Security</h2>
@@ -251,6 +253,7 @@
                     Data you generate for optional AI Screen Translation is processed on Google's systems
                     when you use that feature; it is not stored on servers we operate.
                 </p>
+                <p data-i18n="privacy.s3.backup">Data backup files you export (Settings → Data backup) are created on your device and contain your game saves and cheats. They are saved wherever you choose and are never sent to us.</p>
                 <p data-i18n="privacy.s3.retention">
                     Data retention: We do not operate our own servers and therefore retain no user data
                     ourselves. Data stored locally on your device (game files, save files, settings, cached
@@ -315,16 +318,7 @@
                     to third parties as described in this Policy (for example, Cloud Save,
                     RetroAchievements, crash reports, or AI Screen Translation).
                 </p>
-                <p data-i18n="privacy.s5.body2">
-                    Data is only transmitted to the services you explicitly use: RetroAchievements
-                    (for achievements); for Cloud Save, to Google Drive or iCloud—whichever provider
-                    you choose; and if you purchase and use AI Screen Translation, to Google's AI services
-                    (Firebase AI / Gemini) as described in Section 1.7. Cloud Save data is sent only to the
-                    selected provider's servers. We do not operate our own servers that receive your game
-                    ROMs, personal profile, or payment details. You can use the App without signing in to
-                    RetroAchievements, enabling Cloud Save, purchasing Premium or AI Screen Translation,
-                    or using AI Screen Translation.
-                </p>
+                <p data-i18n="privacy.s5.body2">Data is only transmitted to the services and devices you explicitly use: RetroAchievements (for achievements); for Cloud Save, to Google Drive or iCloud—whichever provider you choose; and if you purchase and use AI Screen Translation, to Google's AI services (Firebase AI / Gemini) as described in Section 1.7. When you use link play, game information, your save file and button inputs go directly to the other player's device on your local network, as described in Section 1.8. Cloud Save data is sent only to the selected provider's servers. We do not operate our own servers that receive your game ROMs, personal profile, or payment details. You can use the App without signing in to RetroAchievements, enabling Cloud Save, using link play, purchasing Premium or AI Screen Translation, or using AI Screen Translation.</p>
 
                 <h2 data-i18n="privacy.s6.title">6. Children's Privacy</h2>
                 <p data-i18n="privacy.s6.body1">
@@ -357,6 +351,7 @@
                     <li data-i18n="privacy.s7.item7">Manage or delete your Cloud Save data through your Google Account or Apple ID settings</li>
                     <li data-i18n="privacy.s7.item8">Avoid using AI Screen Translation if you do not want game screen images processed by Google</li>
                     <li data-i18n="privacy.s7.item9">Cancel or manage the AI Screen Translation subscription through the App Store or Google Play</li>
+                    <li data-i18n="privacy.s7.link">End link play at any time, and on iOS deny Local Network permission if you do not want GoGBA to find or host rooms</li>
                     <li data-i18n="privacy.s7.item10">Contact us with questions about your privacy</li>
                 </ul>
 
