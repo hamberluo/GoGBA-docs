@@ -68,6 +68,11 @@
         /* i18n toggles [hidden] without touching display. */
         .foreign-note[hidden] { display: none; }
 
+        /* Shown while WeChat Pay collection is suspended; reuses the
+           foreign-note box so the two notices read as one family. */
+        .pay-paused { text-align: center; }
+        button.btn:disabled { opacity: .5; cursor: not-allowed; }
+
         .premium-head { text-align: center; margin-bottom: 40px; }
         .premium-head h1 { font-size: 2rem; margin-bottom: 12px; }
         .premium-head p { color: var(--text-secondary); max-width: 40em; margin: 0 auto; }
@@ -331,6 +336,10 @@
                 <p data-i18n="pr.intro">GoGBA 本体永久免费。高级版与游戏工具箱是两项可选的付费升级，均为一次买断、永久有效，可按需单独购买。感谢你的支持 — 是这份付费让 GoGBA 能一直做下去。</p>
             </div>
 
+            <!-- WeChat Pay collection is under risk review. Remove this note and
+                 the disabled attribute on both .buy-btn once it is lifted. -->
+            <p class="foreign-note pay-paused" role="status" data-i18n="pr.paused">微信收款通道正在风控审核中，等待解封，期间暂停购买。已购买的激活码不受影响，可正常激活与找回。恢复后本页会第一时间更新。</p>
+
             <div class="price-grid">
                 <div class="price-card" data-sku="premium">
                     <div class="price-name" data-i18n="pr.premium.name">高级版</div>
@@ -339,7 +348,7 @@
                         <span class="price-unit" data-i18n="pr.oneoff">一次买断</span>
                     </div>
                     <p class="price-note" data-i18n="pr.premium.note">开设联机房间、云存档、内置金手指库等 6 项功能。一次付费，永久有效。</p>
-                    <button type="button" class="btn btn-primary buy-btn" aria-expanded="false" data-i18n="pr.buy">立即购买</button>
+                    <button type="button" class="btn btn-primary buy-btn" aria-expanded="false" disabled data-i18n="pr.buy">立即购买</button>
                     <p class="buy-hint" data-i18n="pr.buyhint">微信扫码支付，支付成功后当场显示激活码</p>
 
                     <div class="pay-panel" hidden>
@@ -387,7 +396,7 @@
                         <span class="price-unit" data-i18n="pr.oneoff">一次买断</span>
                     </div>
                     <p class="price-note" data-i18n="pr.toolkit.note">解锁游戏内调用：不退出游戏即可叠层查阅资料，也可对准画面识别当前内容。离线可用，无广告。</p>
-                    <button type="button" class="btn btn-primary buy-btn" aria-expanded="false" data-i18n="pr.buy">立即购买</button>
+                    <button type="button" class="btn btn-primary buy-btn" aria-expanded="false" disabled data-i18n="pr.buy">立即购买</button>
                     <p class="buy-hint" data-i18n="pr.buyhint">微信扫码支付，支付成功后当场显示激活码</p>
 
                     <div class="pay-panel" hidden>

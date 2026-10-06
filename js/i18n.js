@@ -11,6 +11,7 @@
             // carry the Simplified text purely to keep the key sets aligned.
             'pr.title': 'GoGBA 付费解锁',
             'pr.intro': 'GoGBA 本体永久免费。高级版与游戏工具箱是两项可选的付费升级，均为一次买断、永久有效，可按需单独购买。感谢你的支持 — 是这份付费让 GoGBA 能一直做下去。',
+            'pr.paused': '微信收款通道正在风控审核中，等待解封，期间暂停购买。已购买的激活码不受影响，可正常激活与找回。恢复后本页会第一时间更新。',
             'pr.premium.name': '高级版',
             'pr.toolkit.name': '游戏工具箱',
             'pr.oneoff': '一次买断',
@@ -537,6 +538,7 @@
         'zh-Hans': {
             'pr.title': 'GoGBA 付费解锁',
             'pr.intro': 'GoGBA 本体永久免费。高级版与游戏工具箱是两项可选的付费升级，均为一次买断、永久有效，可按需单独购买。感谢你的支持 — 是这份付费让 GoGBA 能一直做下去。',
+            'pr.paused': '微信收款通道正在风控审核中，等待解封，期间暂停购买。已购买的激活码不受影响，可正常激活与找回。恢复后本页会第一时间更新。',
             'pr.premium.name': '高级版',
             'pr.toolkit.name': '游戏工具箱',
             'pr.oneoff': '一次买断',
@@ -1063,6 +1065,7 @@
         'zh-Hant': {
             'pr.title': 'GoGBA 付費解鎖',
             'pr.intro': 'GoGBA 本體永久免費。高級版與遊戲工具箱是兩項可選的付費升級，均為一次買斷、永久有效，可按需單獨購買。感謝你的支持 — 是這份付費讓 GoGBA 能一直做下去。',
+            'pr.paused': '微信收款通道正在風控審核中，等待解封，期間暫停購買。已購買的啟用碼不受影響，可正常啟用與找回。恢復後本頁會第一時間更新。',
             'pr.premium.name': '高級版',
             'pr.toolkit.name': '遊戲工具箱',
             'pr.oneoff': '一次買斷',
