@@ -763,11 +763,15 @@
                 }
 
                 // A disabled buy button means sales are paused: an order left in
-                // storage from before is not resumed, or the card sits on
-                // "waiting for payment" with no way to pay. The order stays
-                // stored and the lookup form below still retrieves its code.
+                // storage from before is dropped rather than resumed, or the
+                // card sits on "waiting for payment" with no way to pay, and
+                // comes back stale once sales reopen.
+                if (btn.disabled) {
+                    forget();
+                    return;
+                }
                 var pending = pendingOrder(window.location.search, storage());
-                if (pending && pending.sku === sku && !btn.disabled) {
+                if (pending && pending.sku === sku) {
                     resume(pending.orderNo);
                 }
             });
