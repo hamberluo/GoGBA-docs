@@ -19,7 +19,7 @@ If you ever publish **only** via the default GitHub Pages URL without a custom d
 - **Immersive:** Clean UI, transparent on-screen controls, optional gamepad
 - **Comfortable:** Multiple dark themes for long sessions
 
-Key features include RetroAchievements integration, gamepad support, many UI languages, video filters, optional Premium (speed, cheats, cloud save), and optional AI screen translation.
+Key features include RetroAchievements integration, gamepad support, many UI languages, video filters, optional Premium (link play rooms, cloud save, cheat library, rewind, speed, cartridge colours, button skins, pixel font), and optional AI screen translation.
 
 ## Pages
 
