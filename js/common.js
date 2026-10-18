@@ -42,34 +42,6 @@ function initMobileMenu() {
     }
 }
 
-// Header scroll shrink functionality
-function initHeaderScroll() {
-    const header = document.querySelector('header');
-    if (!header) return;
-
-    const scrollThreshold = 50;
-
-    function handleScroll() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        header.classList.toggle('scrolled', scrollTop > scrollThreshold);
-    }
-
-    // Throttle scroll events for better performance
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                handleScroll();
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
-
-    // Check initial scroll position
-    handleScroll();
-}
-
 // Discord links ship hidden (styles.css .btn-discord) and are revealed only to
 // a reader we have positively established is not a Chinese one — Discord is
 // unreachable there, so offering the link is at best a dead end.
@@ -133,7 +105,6 @@ async function detectIPLocation() {
 function init() {
     if (window.GoGBAI18n) window.GoGBAI18n.init();
     initMobileMenu();
-    initHeaderScroll();
     // Show platform-specific download cards on mobile
     initPlatformSpecificDownloads();
     // Re-decide on every language switch; the IP verdict is already cached.

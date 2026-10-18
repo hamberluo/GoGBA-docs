@@ -161,13 +161,12 @@
     <main>
         <section class="hero">
             <div class="container">
-                <div class="hero-content">
-                    <!-- Introduction Text -->
-                    <div class="hero-text">
-                        <p class="hero-subtitle" data-i18n="home.hero.subtitle">A quiet, reliable, and immersive handheld emulator</p>
-                        <p class="hero-description" data-i18n="home.hero.description">Play Game Boy Advance, Game Boy Color, and Game Boy classics with optimized touch controls, seamless saves, RetroAchievements integration, and full gamepad support.</p>
-                    </div>
-                    
+                <div class="hero-text">
+                    <span class="eyebrow">GBA · GBC · GB</span>
+                    <h1 class="hero-title" data-i18n="home.hero.title">Your cartridges,
+in your pocket.</h1>
+                    <p class="hero-description" data-i18n="home.hero.description">Play Game Boy Advance, Game Boy Color and Game Boy games on iPhone, iPad and Android. No ads, no account.</p>
+
                     <!-- Download Section -->
                     <div class="download-section">
                         <div class="download-badges">
@@ -183,7 +182,7 @@
                                  Chinese only: it is the build that accepts
                                  activation codes, which no other audience can
                                  buy or redeem. Kept inside .download-badges so
-                                 it shares the badges' alignment at every width
+                                 it follows the badges' alignment at every width
                                  instead of needing its own breakpoint rules. -->
                             <div class="apk-direct" data-lang-only="zh-Hans,zh-Hant" hidden>
                                 <a href="downloads/GoGBA.apk" download class="apk-badge" data-i18n="home.apk.link">下载 APK</a>
@@ -195,74 +194,134 @@
                         </a>
                     </div>
                 </div>
+                <div class="phone phone-bleed">
+                    <img src="images/shots/en/01.webp" data-shot="01" width="600" height="1304" alt="" />
+                </div>
             </div>
         </section>
 
-        <section class="features">
+        <section class="feature-row band">
             <div class="container">
-                <h2 data-i18n="home.features.title">Key Features</h2>
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <h3 data-i18n="home.feature.seamless.title">Seamless Experience</h3>
-                        <p data-i18n="home.feature.seamless.desc">Open and continue playing instantly. Your saves are always safe.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3 data-i18n="home.feature.save.title">Reliable Save System</h3>
-                        <p data-i18n="home.feature.save.desc">Automatic battery-save writes every 30 seconds while you play, plus saves on exit and when backgrounded.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3 data-i18n="home.feature.backup.title">Data Backup</h3>
-                        <p data-i18n="home.feature.backup.desc">Export all saves and cheats to one file and restore them on another device.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3 data-i18n="home.feature.touch.title">Optimized Touch Controls</h3>
-                        <p data-i18n="home.feature.touch.desc">Normal and Arcade control modes with haptic feedback.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3 data-i18n="home.feature.gamepad.title">Gamepad Support</h3>
-                        <p data-i18n="home.feature.gamepad.desc">Use the whole app with a controller, with button hints and customizable mapping. Clip-on controllers keep the game in view.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3 data-i18n="home.feature.link.title">Link Play</h3>
-                        <p data-i18n="home.feature.link.desc">Up to four players on the same Wi-Fi, like a link cable, or two players on one device.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3 data-i18n="home.feature.ra.title">RetroAchievements</h3>
-                        <p data-i18n="home.feature.ra.desc">Unlock achievements and compete on leaderboards.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3 data-i18n="home.feature.themes.title">Dark Themes</h3>
-                        <p data-i18n="home.feature.themes.desc">6 carefully designed dark themes for eye comfort.</p>
-                    </div>
+                <div class="feature-text">
+                    <span class="eyebrow" data-i18n="home.f.ads.label">No ads · No popups</span>
+                    <h2 data-i18n="home.f.ads.title">Boss fights,
+zero ads.</h2>
+                    <p data-i18n="home.f.ads.desc">Nothing pops up between you and the game. Leave mid-level and it picks up right where you stopped.</p>
                 </div>
+                <div class="phone phone-bleed-top">
+                    <img src="images/shots/en/02.webp" data-shot="02" width="600" height="1304" alt="" loading="lazy" />
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-row flip">
+            <div class="container">
+                <div class="feature-text">
+                    <span class="eyebrow" data-i18n="home.f.link.label">Link play</span>
+                    <h2 data-i18n="home.f.link.title">Four players.
+No link cable.</h2>
+                    <p data-i18n="home.f.link.desc">Up to four players on the same Wi-Fi, like a link cable, or two players on one device.</p>
+                </div>
+                <div class="phone phone-bleed">
+                    <img src="images/shots/en/03.webp" data-shot="03" width="600" height="1304" alt="" loading="lazy" />
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-row">
+            <div class="container">
+                <div class="feature-text">
+                    <span class="eyebrow" data-i18n="home.f.pad.label">Controllers</span>
+                    <h2 data-i18n="home.f.pad.title">One controller
+runs it all.</h2>
+                    <p data-i18n="home.f.pad.desc">Library, menus, settings and the game itself, all from the controller. Clip-on controllers keep the game in view.</p>
+                </div>
+                <div class="phone phone-bleed-top">
+                    <img src="images/shots/en/04.webp" data-shot="04" width="600" height="1304" alt="" loading="lazy" />
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-row flip">
+            <div class="container">
+                <div class="feature-text">
+                    <span class="eyebrow" data-i18n="home.f.save.label">Save anywhere</span>
+                    <h2 data-i18n="home.f.save.title">Save before
+the hard part.</h2>
+                    <p data-i18n="home.f.save.desc">Take a quick save before a tough fight and load it if things go wrong. Your game save is also written every 30 seconds and whenever you leave.</p>
+                </div>
+                <div class="phone phone-bleed">
+                    <img src="images/shots/en/05.webp" data-shot="05" width="600" height="1304" alt="" loading="lazy" />
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-row band">
+            <div class="container">
+                <div class="feature-text">
+                    <span class="eyebrow" data-i18n="home.f.cheats.label">Cheats</span>
+                    <h2 data-i18n="home.f.cheats.title">Cheats,
+one tap away.</h2>
+                    <p data-i18n="home.f.cheats.desc">Add a code once, then switch it on or off from the game menu.</p>
+                </div>
+                <div class="phone phone-bleed-top">
+                    <img src="images/shots/en/06.webp" data-shot="06" width="600" height="1304" alt="" loading="lazy" />
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-row flip">
+            <div class="container">
+                <div class="feature-text">
+                    <span class="eyebrow" data-i18n="home.f.skins.label">Skins</span>
+                    <h2 data-i18n="home.f.skins.title">New shells
+for your buttons.</h2>
+                    <p data-i18n="home.f.skins.desc">Five built-in skins for the on-screen buttons, for every game or just one.</p>
+                </div>
+                <div class="phone phone-bleed">
+                    <img src="images/shots/en/07.webp" data-shot="07" width="600" height="1304" alt="" loading="lazy" />
+                </div>
+            </div>
+        </section>
+
+        <section class="more">
+            <div class="container">
+                <span class="eyebrow" data-i18n="home.more.label">And more</span>
+                <h2 data-i18n="home.more.title">Plenty more inside.</h2>
+                <ul class="chip-list">
+                    <li data-i18n="home.more.speed">Up to 16× speed</li>
+                    <li data-i18n="home.more.rewind">Rewind</li>
+                    <li>RetroAchievements</li>
+                    <li data-i18n="home.more.translate">AI screen translation</li>
+                    <li data-i18n="home.more.cloud">Cloud saves</li>
+                    <li data-i18n="home.more.backup">One-file backup</li>
+                    <li data-i18n="home.more.filters">Video filters</li>
+                </ul>
+                <p class="more-note" data-i18n-html="home.more.note">Speeds above 3×, rewind and cloud saves come with Premium. AI translation is a subscription. <a href="about.html">Full feature list</a></p>
             </div>
         </section>
 
         <section class="demo-games">
             <div class="container">
-                <h2 data-i18n="home.demo.title">Demo Games</h2>
-                <div class="demo-game-card" style="max-width: 800px; margin: 2rem auto; padding: 2rem; background-color: var(--bg-secondary); border-radius: 12px; border: 1px solid var(--border-color);">
-                    <h3 style="margin-top: 0;" data-i18n="home.demo.name">A Rushed Hack Job</h3>
+                <h2 class="section-title" data-i18n="home.demo.title">Demo Games</h2>
+                <div class="demo-game-card">
+                    <h3 data-i18n="home.demo.name">A Rushed Hack Job</h3>
                     <p data-i18n="home.demo.desc">A GBA-format homebrew demo ROM to try GoGBA (also supports GBC and GB titles).</p>
-                    <div style="margin: 1.5rem 0;">
-                        <a href="demos/ARushedHackJob_jam.gba" download="ARushedHackJob_jam.gba" class="btn" style="display: inline-block; margin-right: 1rem;" data-i18n="home.demo.download">Download Demo Game</a>
-                    </div>
-                    <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
-                        <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text-secondary);" data-i18n-html="home.demo.source">
-                            Open-source homebrew game. See details on
-                            <a href="https://gamebrew.org/wiki/A_Rushed_Hack_Job_GBA" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">GameBrew</a>.
-                        </p>
-                    </div>
+                    <a href="demos/ARushedHackJob_jam.gba" download="ARushedHackJob_jam.gba" class="btn" data-i18n="home.demo.download">Download Demo Game</a>
+                    <p class="demo-source" data-i18n-html="home.demo.source">
+                        Open-source homebrew game. See details on
+                        <a href="https://gamebrew.org/wiki/A_Rushed_Hack_Job_GBA" target="_blank" rel="noopener noreferrer">GameBrew</a>.
+                    </p>
                 </div>
             </div>
         </section>
 
         <section class="contact" data-discord-section hidden>
             <div class="container">
-                <h2 data-i18n="home.contact.title">Contact & Support</h2>
+                <h2 class="section-title" data-i18n="home.contact.title">Contact & Support</h2>
                 <p>
                     <a href="https://discord.gg/FJptrBxA73" target="_blank" rel="noopener noreferrer" class="btn btn-discord">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink: 0;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
                         </svg>
                         <span data-i18n="home.contact.discord">Join Discord</span>
@@ -291,131 +350,10 @@
     </footer>
 
     <script>
-        // Cards fade in as they are scrolled to. They start at opacity 0, so
-        // anything the observer does not reach stays invisible — which is what
-        // a bottom inset did to the cards already on screen at load, leaving
-        // the "Key Features" heading above an empty stretch of page.
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        // Initialize everything when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            // Detect device type and show/hide download options
-            function detectDeviceAndShowDownloads() {
-                const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-                const ua = userAgent.toLowerCase();
-                
-                const isIOS = /iphone|ipad|ipod/.test(ua);
-                const isAndroid = /android/.test(ua);
-                const isMobile = isIOS || isAndroid;
-                
-                const downloadCards = document.querySelectorAll('.download-card[data-platform]');
-                
-                if (isMobile) {
-                    // Mobile device: show only the matching platform
-                    downloadCards.forEach(card => {
-                        const platform = card.getAttribute('data-platform');
-                        if (isIOS && platform === 'ios') {
-                            card.style.display = 'block';
-                        } else if (isAndroid && platform === 'android') {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                } else {
-                    // PC/Mac: show all download options
-                    downloadCards.forEach(card => {
-                        card.style.display = 'block';
-                    });
-                }
-            }
-            
-            // Run device detection
-            detectDeviceAndShowDownloads();
-            
-            // Disable long press on all buttons
-            const allButtons = document.querySelectorAll('button, .btn, a.btn, .mobile-menu-toggle');
-            allButtons.forEach(button => {
-                // Prevent context menu (right-click/long-press menu)
-                button.addEventListener('contextmenu', (e) => {
-                    e.preventDefault();
-                    return false;
-                });
-                // Prevent long press on touch devices
-                let touchStartTime = 0;
-                button.addEventListener('touchstart', (e) => {
-                    touchStartTime = Date.now();
-                });
-                button.addEventListener('touchend', (e) => {
-                    const touchDuration = Date.now() - touchStartTime;
-                    if (touchDuration > 500) { // 500ms threshold for long press
-                        e.preventDefault();
-                        return false;
-                    }
-                });
-            });
-
-            // Observe all animated elements. A card that is already on screen
-            // is shown outright: the observer would fire for it anyway, but not
-            // before a first paint that would flash the section empty.
-            const animatedElements = document.querySelectorAll('.feature-card, .demo-game-card, .download-card');
-            animatedElements.forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight) {
-                    el.classList.add('visible');
-                } else {
-                    observer.observe(el);
-                }
-            });
-            
-            // Add subtle parallax effect to hero section
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                window.addEventListener('scroll', () => {
-                    const scrolled = window.pageYOffset;
-                    if (scrolled < window.innerHeight) {
-                        hero.style.transform = `translateY(${scrolled * 0.2}px)`;
-                    }
-                }, { passive: true });
-            }
-
-            // Add smooth scroll behavior for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const href = this.getAttribute('href');
-                    if (href !== '#' && href.length > 1) {
-                        e.preventDefault();
-                        const target = document.querySelector(href);
-                        if (target) {
-                            target.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-                        }
-                    }
-                });
-            });
-        });
-
-        // Add subtle cursor glow effect with tech feel
-        document.addEventListener('mousemove', (e) => {
-            const cards = document.querySelectorAll('.feature-card, .download-card, .demo-game-card');
-            cards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
-                    card.style.setProperty('--mouse-x', `${x}px`);
-                    card.style.setProperty('--mouse-y', `${y}px`);
-                }
-            });
+        // No long-press menu on buttons: on a phone it pops the link
+        // preview over the button instead of following it.
+        document.querySelectorAll('button, .btn, .mobile-menu-toggle').forEach(button => {
+            button.addEventListener('contextmenu', (e) => e.preventDefault());
         });
     </script>
     <script src="js/i18n.js"></script>
