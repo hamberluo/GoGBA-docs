@@ -10,6 +10,3 @@ Allow: /
 # Sitemap location
 Sitemap: https://gogba.xyz/sitemap.xml
 
-# Crawl-delay (optional, helps prevent server overload)
-Crawl-delay: 1
-
