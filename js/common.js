@@ -4,16 +4,11 @@
 // visible by default (styles.css), so this only ever removes one: anything not
 // recognised as iOS or Android — desktop included — keeps both.
 function initPlatformSpecificDownloads() {
-    const iosBadge = document.querySelector('.app-store-badge[data-platform="ios"]');
-    const androidBadge = document.querySelector('.google-play-badge[data-platform="android"]');
-    if (!iosBadge || !androidBadge) return;
-
     const ua = (navigator.userAgent || '').toLowerCase();
-    if (/iphone|ipad|ipod/.test(ua)) {
-        androidBadge.style.display = 'none';
-    } else if (/android/.test(ua)) {
-        iosBadge.style.display = 'none';
-    }
+    const hide = /iphone|ipad|ipod/.test(ua) ? '.google-play-badge[data-platform="android"]'
+        : /android/.test(ua) ? '.app-store-badge[data-platform="ios"]' : null;
+    if (!hide) return;
+    document.querySelectorAll(hide).forEach(badge => { badge.style.display = 'none'; });
 }
 
 // Mobile menu toggle functionality

@@ -380,11 +380,13 @@ header {
     color: var(--accent);
 }
 
-/* Promo video, between the hero and the first feature row. */
+/* Promo video and the closing store badges, after the feature rows. */
 .promo {
     padding: 5rem 0;
     text-align: center;
-    background: var(--bg-secondary);
+    background:
+        radial-gradient(40rem 24rem at 50% 100%, var(--glow), transparent 70%),
+        var(--bg-color);
 }
 
 .promo .section-title {
@@ -400,6 +402,15 @@ header {
     border-radius: 20px;
     background: var(--band-bg);
     box-shadow: 0 40px 80px -30px rgba(30, 24, 56, 0.45);
+}
+
+.promo .download-badges {
+    justify-content: center;
+    margin-top: 2.5rem;
+}
+
+.promo .apk-direct {
+    align-items: center;
 }
 
 /* Section headings outside the feature rows. */

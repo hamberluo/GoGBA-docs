@@ -119,7 +119,7 @@
             'home.hero.title': 'Your cartridges,\nin your pocket.',
             'home.hero.description': 'Play Game Boy Advance, Game Boy Color and Game Boy games on iPhone, iPad and Android. No account needed.',
             'home.video.label': '30 seconds',
-            'home.video.title': 'Watch it play.',
+            'home.video.title': 'Now watch it all move.',
             'home.video.alt': 'GoGBA promo video',
             'home.f.ads.label': 'No ads · No popups',
             'home.f.ads.title': 'Boss fights,\nzero ads.',
@@ -662,7 +662,7 @@
             'home.hero.title': '卡带墙\n装进口袋',
             'home.hero.description': '在 iPhone、iPad 和 Android 上玩 Game Boy Advance、Game Boy Color 和 Game Boy 游戏。不用注册账号。',
             'home.video.label': '30 秒',
-            'home.video.title': '看它跑起来',
+            'home.video.title': '动起来再看一遍',
             'home.video.alt': 'GoGBA 宣传视频',
             'home.f.ads.label': '无广告 · 无弹窗',
             'home.f.ads.title': '打 Boss\n不弹广告',
@@ -1205,7 +1205,7 @@
             'home.hero.title': '卡帶牆\n裝進口袋',
             'home.hero.description': '在 iPhone、iPad 和 Android 上玩 Game Boy Advance、Game Boy Color 和 Game Boy 遊戲。不用註冊帳號。',
             'home.video.label': '30 秒',
-            'home.video.title': '看它跑起來',
+            'home.video.title': '動起來再看一遍',
             'home.video.alt': 'GoGBA 宣傳影片',
             'home.f.ads.label': '無廣告 · 無彈出視窗',
             'home.f.ads.title': '打 Boss\n不跳廣告',
@@ -1750,13 +1750,13 @@
     // page follow the same rule, from images/shots/<lang>/.
     function updateBadges(lang) {
         var L = SUPPORTED.indexOf(lang) > -1 ? lang : resolveLang();
-        var appstore = document.querySelector('[data-badge="appstore"]');
-        if (appstore) {
-            appstore.setAttribute('src', 'images/app_store_' + L + '_blk.svg');
+        var appstore = document.querySelectorAll('[data-badge="appstore"]');
+        for (var a = 0; a < appstore.length; a++) {
+            appstore[a].setAttribute('src', 'images/app_store_' + L + '_blk.svg');
         }
-        var googleplay = document.querySelector('[data-badge="googleplay"]');
-        if (googleplay) {
-            googleplay.setAttribute('src', 'images/play_store_' + L + '.svg');
+        var googleplay = document.querySelectorAll('[data-badge="googleplay"]');
+        for (var g = 0; g < googleplay.length; g++) {
+            googleplay[g].setAttribute('src', 'images/play_store_' + L + '.svg');
         }
         var shots = document.querySelectorAll('[data-shot]');
         for (var i = 0; i < shots.length; i++) {
