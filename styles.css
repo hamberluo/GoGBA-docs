@@ -375,10 +375,8 @@ header {
         var(--bg-secondary);
 }
 
-.more h2 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 2rem;
+.more .eyebrow {
+    margin-bottom: 1.5rem;
 }
 
 .chip-list {
@@ -775,7 +773,6 @@ footer .container {
         padding: 4rem 0;
     }
 
-    .more h2,
     .section-title {
         font-size: 1.9rem;
     }
