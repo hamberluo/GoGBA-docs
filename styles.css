@@ -380,6 +380,28 @@ header {
     color: var(--accent);
 }
 
+/* Promo video, between the hero and the first feature row. */
+.promo {
+    padding: 5rem 0;
+    text-align: center;
+    background: var(--bg-secondary);
+}
+
+.promo .section-title {
+    margin-bottom: 2rem;
+}
+
+.promo-video {
+    display: block;
+    width: 100%;
+    max-width: 960px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 20px;
+    background: var(--band-bg);
+    box-shadow: 0 40px 80px -30px rgba(30, 24, 56, 0.45);
+}
+
 /* Section headings outside the feature rows. */
 .section-title {
     text-align: center;
@@ -741,8 +763,13 @@ footer .container {
         font-size: 2rem;
     }
 
-    .more {
+    .more,
+    .promo {
         padding: 4rem 0;
+    }
+
+    .promo-video {
+        border-radius: 12px;
     }
 
     .section-title {
