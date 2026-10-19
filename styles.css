@@ -204,11 +204,7 @@ header {
     grid-template-columns: 1.1fr 0.9fr;
     gap: 3rem;
     align-items: center;
-    /* The phone runs off the bottom edge, as on the deck's first slide. */
     padding-top: 4.5rem;
-}
-
-.hero-text {
     padding-bottom: 4.5rem;
 }
 
@@ -238,10 +234,10 @@ header {
     align-items: center;
 }
 
-/* Phone mock: the deck frames real captures in a near-black body, cut off
-   by the slide edge. Same here — .phone-bleed sinks it below its section. */
+/* Phone mock: real captures framed in a near-black body, shown whole so
+   every screen reads top to bottom. */
 .phone {
-    width: 300px;
+    width: 260px;
     max-width: 100%;
     aspect-ratio: 1320 / 2868;
     background: var(--band-bg);
@@ -258,14 +254,6 @@ header {
     height: 100%;
     object-fit: cover;
     border-radius: 36px;
-}
-
-.phone-bleed {
-    margin-bottom: -180px;
-}
-
-.phone-bleed-top {
-    margin-top: -180px;
 }
 
 .app-store-badge,
@@ -314,10 +302,8 @@ header {
     gap: 3rem;
     align-items: center;
     min-height: 560px;
-}
-
-.feature-row .feature-text {
-    padding: 4rem 0;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }
 
 /* Alternate sides so the page reads as a sequence, not a list. */
@@ -729,12 +715,10 @@ footer .container {
         text-align: center;
     }
 
-    .hero .container {
+    .hero .container,
+    .feature-row .container {
         padding-top: 3rem;
-    }
-
-    .hero-text {
-        padding-bottom: 0;
+        padding-bottom: 3rem;
     }
 
     .hero-title {
@@ -751,23 +735,13 @@ footer .container {
         justify-content: center;
     }
 
-    .feature-row .feature-text {
-        padding: 3.5rem 0 0;
-    }
-
-    /* Stacked, text always leads; every phone bleeds off the bottom. */
+    /* Stacked, text always leads. */
     .feature-row.flip .feature-text {
         order: 0;
     }
 
     .phone {
         width: 250px;
-    }
-
-    .phone-bleed,
-    .phone-bleed-top {
-        margin-top: 0;
-        margin-bottom: -170px;
     }
 
     .feature-row h2 {
