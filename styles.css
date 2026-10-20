@@ -853,14 +853,11 @@ footer .container {
     pointer-events: none;
 }
 
-.lang-picker:hover {
+/* Keyboard focus reuses the hover look instead of an outline ring */
+.lang-picker:hover,
+.lang-picker:has(.lang-switch:focus-visible) {
     color: var(--accent);
     background-color: rgba(var(--accent-rgb), 0.08);
-}
-
-.lang-picker:focus-within {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
 }
 
 .lang-switch {
