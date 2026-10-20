@@ -140,7 +140,7 @@
             color: var(--text-primary);
             background: var(--hover-bg);
             border: 1px solid var(--border-color);
-            /* 8px is the shared stylesheet's control radius (.btn, .lang-switch). */
+            /* 8px is the shared stylesheet's control radius (.btn). */
             border-radius: 8px;
             box-sizing: border-box;
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -306,10 +306,13 @@
                     <li class="nav-controls">
                         <!-- Chinese only: this page sells the activation-code
                              build, which no English-reading audience can buy. -->
-                        <select class="lang-switch" aria-label="Language">
-                            <option value="zh-Hans">简体中文</option>
-                            <option value="zh-Hant">繁體中文</option>
-                        </select>
+                        <label class="lang-picker" title="Language">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg>
+                            <select class="lang-switch" aria-label="Language">
+                                <option value="zh-Hans">简体中文</option>
+                                <option value="zh-Hant">繁體中文</option>
+                            </select>
+                        </label>
                     </li>
                 </ul>
             </div>
