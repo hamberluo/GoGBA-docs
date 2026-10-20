@@ -59,15 +59,7 @@
       /* Body wrapper — breathing room after the navbar and before the footer */
       .rv-body { padding-top: 2.5rem; padding-bottom: 4rem; }
 
-      /* Section head — matches .content-page h2 language */
       .rv-section { padding: 2.5rem 0 0; }
-      .rv-section:first-child { padding-top: 0; }
-      .rv-shead { margin-bottom: 1.25rem; }
-      .rv-shead h2 {
-        font-size: 1.6rem; margin: 0; font-weight: 700; color: var(--primary-color);
-        display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap;
-      }
-      .rv-shead .desc { color: var(--text-secondary); font-size: 0.95rem; margin: .4rem 0 0; }
 
       /* Card grid — regular columns, reuses .feature-card look */
       .rv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
@@ -128,33 +120,20 @@
         <div class="container rv-body">
           <h1 data-i18n="reviews.title">What Players Say</h1>
 
-          <!-- Best emulator -->
           <section class="rv-section">
-            <div class="rv-shead">
-              <h2><span data-i18n="reviews.g1.title">"The best emulator I've used"</span></h2>
-            </div>
             <div class="rv-grid">
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇫🇷</span><span class="rv-name">Paul Oyono</span></div><p class="rv-quote" data-i18n-html="reviews.r1"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Dav</span></div><p class="rv-quote" data-i18n-html="reviews.r2"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇹🇷</span><span class="rv-name">Mehmet</span></div><p class="rv-quote" data-i18n-html="reviews.r3"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Raffy</span></div><p class="rv-quote" data-i18n-html="reviews.r4"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Michael Zhang</span></div><p class="rv-quote" data-i18n-html="reviews.r5"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇩🇪</span><span class="rv-name">Purda Maximilian</span></div><p class="rv-quote" data-i18n-html="reviews.r6"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇮🇳</span><span class="rv-name">MANAS PANDEY</span></div><p class="rv-quote" data-i18n-html="reviews.r7"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Connie Liza Pasay</span></div><p class="rv-quote" data-i18n-html="reviews.r8"></p></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇩🇪</span><span class="rv-name">Alexander Martz</span></div><p class="rv-quote" data-i18n-html="reviews.r1"></p></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇺🇸</span><span class="rv-name">Vincent Currie</span></div><p class="rv-quote" data-i18n-html="reviews.r2"></p></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇨🇳</span><span class="rv-name">XuDouDouA</span></div><p class="rv-quote" data-i18n-html="reviews.r3"></p></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇨🇳</span><span class="rv-name">一个腾讯人</span></div><p class="rv-quote" data-i18n-html="reviews.r4"></p></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇫🇷</span><span class="rv-name">Paul Oyono</span></div><p class="rv-quote" data-i18n-html="reviews.r5"></p></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇰🇷</span><span class="rv-name">Nanal0309</span></div><p class="rv-quote" data-i18n-html="reviews.r6"></p></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇸🇦</span><span class="rv-name">Hossam Mostafa</span></div><p class="rv-quote" data-i18n-html="reviews.r7"></p></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇪🇸</span><span class="rv-name">Reynel Batista</span></div><p class="rv-quote" data-i18n-html="reviews.r8"></p></div>
               <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Daniel Assis</span></div><p class="rv-quote" data-i18n-html="reviews.r9"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇸🇦</span><span class="rv-name">Hossam Mostafa</span></div><p class="rv-quote" data-i18n-html="reviews.r10"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇪🇸</span><span class="rv-name">Reynel Batista</span></div><p class="rv-quote" data-i18n-html="reviews.r11"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇻🇳</span><span class="rv-name">Tưởng Văn</span></div><p class="rv-quote" data-i18n-html="reviews.r12"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇺🇸</span><span class="rv-name">JonathanRocks17</span></div><p class="rv-quote" data-i18n-html="reviews.r13"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇨🇳</span><span class="rv-name">Owen Eiffel</span></div><p class="rv-quote" data-i18n-html="reviews.r14"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇪🇸</span><span class="rv-name">Jose Carlos Gatti</span></div><p class="rv-quote" data-i18n-html="reviews.r15"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇺🇸</span><span class="rv-name">TripleTSahurCityBoi</span></div><p class="rv-quote" data-i18n-html="reviews.r16"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇦🇹</span><span class="rv-name">danibonbur</span></div><p class="rv-quote" data-i18n-html="reviews.r17"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇰🇷</span><span class="rv-name">Nanal0309</span></div><p class="rv-quote" data-i18n-html="reviews.r18"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇺🇸</span><span class="rv-name">MikeHerty</span></div><p class="rv-quote" data-i18n-html="reviews.r19"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇨🇳</span><span class="rv-name">XuDouDouA</span></div><p class="rv-quote" data-i18n-html="reviews.r20"></p></div>
-              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Luis Otavio Pancoti</span></div><p class="rv-quote" data-i18n-html="reviews.r21"></p></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇧🇷</span><span class="rv-name">Luis Otavio Pancoti</span></div><p class="rv-quote" data-i18n-html="reviews.r10"></p></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇬🇧</span><span class="rv-name">Raffy</span></div><p class="rv-quote" data-i18n-html="reviews.r11"></p></div>
+              <div class="rv-card"><div class="rv-top"><span class="rv-flag">🇺🇸</span><span class="rv-name">Christopher Fisher</span></div><p class="rv-quote" data-i18n-html="reviews.r12"></p></div>
             </div>
           </section>
 
