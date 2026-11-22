@@ -448,11 +448,51 @@ header {
 }
 
 /* The section ships with `hidden` in the markup, like .btn-discord ships
-   display:none — common.js reveals both together once the reader is placed
-   outside China, and a reader without JS never sees a heading over empty
-   space. This only restores the block display `hidden` suppresses. */
-[data-discord-section]:not([hidden]) {
+   display:none — common.js reveals it once it has something to show (Discord
+   abroad, QQ groups to Chinese readers), and a reader without JS never sees a
+   heading over empty space. This only restores the display `hidden` suppresses. */
+[data-contact-section]:not([hidden]) {
     display: block;
+}
+
+.qq-groups:not([hidden]) {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 760px;
+    margin: 1.5rem auto 0;
+    text-align: left;
+}
+
+@media (min-width: 720px) {
+    .qq-groups:not([hidden]) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.qq-card {
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+}
+
+.qq-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.6rem;
+}
+
+/* Clues are newline-separated in the dictionary. */
+.qq-riddle {
+    color: var(--text-secondary);
+    white-space: pre-line;
+    line-height: 1.8;
+}
+
+.qq-hint {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
 }
 
 .contact .section-title {
