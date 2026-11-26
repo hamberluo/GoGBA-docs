@@ -106,7 +106,7 @@
             <div class="content-page">
                 <h1 data-i18n="privacy.title">Privacy Policy</h1>
 
-                <p class="policy-meta" data-i18n-html="privacy.updated"><em>Last updated: September 28, 2026</em></p>
+                <p class="policy-meta" data-i18n-html="privacy.updated"><em>Last updated: November 26, 2026</em></p>
 
                 <p data-i18n="privacy.intro">
                     This Privacy Policy describes how GoGBA ("we", "our", or "us") collects, uses,
@@ -129,7 +129,7 @@
                         you select through your device's file system. These files remain on your device
                         and are never transmitted to us or any third party.
                     </li>
-                    <li data-i18n-html="privacy.s1.2.saves"><strong>Save Files:</strong> Game save files (.sav files) are stored locally on your device. By default, we do not access, collect, or transmit your save data. If you enable the optional Cloud Save feature (requires Premium), save files may be uploaded to Google Drive or iCloud, depending on the provider you choose. If you use link play, your save file is sent directly to the other player's device as described in Section 1.8.</li>
+                    <li data-i18n-html="privacy.s1.2.saves"><strong>Save Files:</strong> Game save files (.sav files) are stored locally on your device. By default, we do not access, collect, or transmit your save data. If you enable the optional Cloud Save feature (requires Premium), save files may be uploaded to Google Drive, iCloud or Nut Store, depending on the provider you choose. If you use link play, your save file is sent directly to the other players' devices as described in Section 1.8.</li>
                     <li data-i18n-html="privacy.s1.2.config">
                         <strong>App Configuration:</strong> Settings such as theme preferences, language
                         selection, and orientation preferences are stored locally on your device.
@@ -139,16 +139,7 @@
                         libretro database and cached locally on your device for faster loading.
                     </li>
                     <li data-i18n-html="privacy.s1.2.analytics"><strong>Usage Statistics:</strong> The App uses <strong>Google Firebase Analytics</strong> to learn how features are used — for example which features are opened, which settings are changed, and the names of games being played (such as when a game or a link play session starts). This data is tied to a random app-instance identifier, not to your name or any account, and is used only to improve the App. See <a href="https://firebase.google.com/support/privacy">Firebase Privacy Policy</a>.</li>
-                    <li data-i18n-html="privacy.s1.2.remote">
-                        <strong>Remote configuration:</strong> The App may contact
-                        <strong>Google Firebase Remote Config</strong> to retrieve configuration
-                        values that apply to all users or to broad app versions (for example, feature
-                        toggles and per-month usage caps for optional AI Screen Translation). These
-                        requests are handled by Google's systems; Firebase may process technical
-                        identifiers as described in
-                        <a href="https://firebase.google.com/support/privacy">Google's Firebase privacy
-                        materials</a>. This is separate from uploading game screens for translation.
-                    </li>
+                    <li data-i18n-html="privacy.s1.2.remote"><strong>Remote configuration:</strong> The App may contact <strong>Google Firebase Remote Config</strong> to retrieve configuration values that apply to all users or to broad app versions (for example, feature toggles and which AI model screen translation uses). These requests are handled by Google's systems; Firebase may process technical identifiers as described in <a href="https://firebase.google.com/support/privacy">Google's Firebase privacy materials</a>. This is separate from sending game screens for translation.</li>
                 </ul>
 
                 <h3 data-i18n="privacy.s1.3.title">1.3 Crash Reports</h3>
@@ -181,54 +172,24 @@
                 </p>
 
                 <h3 data-i18n="privacy.s1.5.title">1.5 Cloud Save (Optional)</h3>
-                <p data-i18n="privacy.s1.5.body">
-                    If you enable Cloud Save (a Premium feature), your game save files (.sav) may be
-                    synced to Google Drive or iCloud Documents, depending on the backend you select.
-                    This involves your Google account (for Drive) or Apple ID (for iCloud). GoGBA does
-                    not store your account credentials; authentication is managed by the respective
-                    platform (Google Sign-In or iCloud). Save data is transmitted only to the provider
-                    you choose and is subject to that provider's privacy policy.
-                </p>
+                <p data-i18n="privacy.s1.5.body">If you enable Cloud Save (a Premium feature), your game save files (.sav) may be synced to Google Drive, iCloud Documents or Nut Store (Jianguoyun's WebDAV service), depending on the backend you select. Google Drive and iCloud use your Google account or Apple ID, and sign-in is handled by the platform (Google Sign-In or iCloud); GoGBA does not store those credentials. For Nut Store you enter your account email and an app password, which the App keeps only on your device in secure storage (iOS Keychain / Android Keystore) and sends only to Nut Store. Save data is transmitted only to the provider you choose and is subject to that provider's privacy policy.</p>
 
-                <h3 data-i18n="privacy.s1.6.title">1.6 In-App Purchase</h3>
-                <p data-i18n="privacy.s1.6.body">
-                    If you purchase the Premium upgrade or the optional AI Screen Translation subscription
-                    (iOS/Android only), the transaction is processed by the App Store or Google Play.
-                    GoGBA does not collect, store, or process payment information. Purchase verification is
-                    performed locally on your device via the platform's in-app purchase API. We do not
-                    receive or retain any payment or billing data.
-                </p>
+                <h3 data-i18n="privacy.s1.6.title">1.6 In-App Purchases</h3>
+                <p data-i18n="privacy.s1.6.body">If you buy Premium or the Toolkit in the App Store or Google Play version, the transaction is processed by Apple or Google. GoGBA does not collect, store, or process payment information. Purchases are verified on your device through the platform's in-app purchase API. We do not receive or retain any payment or billing data. Purchases made on our website for the Android version downloaded from this site are covered in Section 1.9.</p>
 
-                <h3 data-i18n="privacy.s1.7.title">1.7 AI Screen Translation (Optional Subscription)</h3>
-                <p data-i18n-html="privacy.s1.7.body1">
-                    If you purchase and use the optional <strong>AI Screen Translation</strong> subscription,
-                    the App may capture the current game display as an image (for example, JPEG) and send it,
-                    together with your selected target language and instructions used to request a translation,
-                    to <strong>Google's AI services</strong> (Firebase AI Logic / Gemini) to produce translated
-                    on-screen text. This requires transmitting image data from your device; your ROM file is
-                    not uploaded for this feature.
-                </p>
-                <p data-i18n="privacy.s1.7.body2">
-                    Translation runs only when you actively start it during gameplay. We do not run AI
-                    translation on servers we operate; processing is performed by Google under Google's and
-                    Firebase's terms and privacy policies. Screen images may include in-game dialogue, menus,
-                    names, or other visible content—consider whether you are comfortable with that material
-                    being processed by a third-party AI service before using this feature.
-                </p>
-                <p data-i18n-html="privacy.s1.7.body3">
-                    If you subscribe to AI Screen Translation, the feature may be subject to
-                    <strong>reasonable usage limits</strong> (for example, a maximum number of
-                    translation requests per <strong>UTC calendar month</strong>). Those limits can be <strong>delivered or updated
-                    via Firebase Remote Config</strong> without requiring you to install an app update.
-                    The App applies the limit in effect after it successfully retrieves configuration;
-                    if configuration cannot be retrieved, a built-in default may apply.
-                </p>
+                <h3 data-i18n="privacy.s1.7.title">1.7 AI Screen Translation (Optional, Your Own API Key)</h3>
+                <p data-i18n-html="privacy.s1.7.body1">AI Screen Translation uses an API key that you obtain from <strong>Google (Gemini)</strong> or <strong>Moonshot AI (Kimi)</strong> and enter in the App. When you start a translation, the App captures the current game screen as an image (JPEG) and sends it, together with your selected target language and the instructions used to request a translation, directly from your device to the provider you chose. Your ROM file is not uploaded.</p>
+                <p data-i18n="privacy.s1.7.body2">Translation runs only when you actively start it during gameplay. We run no servers in this path and never receive the images, the translations or your key; the provider processes the request under your account with them and under its own terms and privacy policy, and any usage limits or charges are between you and that provider. Screen images may include in-game dialogue, menus, names, or other visible content—consider whether you are comfortable with a third-party AI service processing that material before using this feature.</p>
+                <p data-i18n-html="privacy.s1.7.body3">Your API key is stored only on your device, in secure storage (iOS Keychain / Android Keystore), and is sent only to the provider it belongs to. You can remove it at any time in the App's translation settings. Kimi has separate mainland China and international endpoints; the App tries the one matching your region first (see ip-api.com in Section 4).</p>
 
                 <h3 data-i18n="privacy.s1.8.title">1.8 Link Play (Optional)</h3>
                 <p data-i18n="privacy.s1.8.body1">Link play lets up to four devices on the same local network play together, like a link cable. GoGBA connects directly to the other players' devices over your local network. Nothing passes through our servers, and we do not store any of it. Link play on one device runs entirely on your device and sends nothing over the network.</p>
                 <p data-i18n="privacy.s1.8.body2">While you host a room, GoGBA announces it on your local network so nearby devices can find it. Other devices on that network can see this announcement, which includes the game name, a hash of the ROM file, the system type (GBA, GBC or GB) and emulator version information.</p>
                 <p data-i18n="privacy.s1.8.body3">When a player joins, the host and the joining device exchange this game information (plus the ROM file size), and every player's game save file is shared with the other devices in the room so all of them can run the linked game. During the session, button inputs and periodic sync checks are sent directly between the devices in the room. Your ROM file itself is never sent.</p>
                 <p data-i18n="privacy.s1.8.body4">Link play runs only while you host or join a room. On iOS, the App asks for Local Network permission to find and connect to rooms; you can change this at any time in Settings → Privacy &amp; Security → Local Network.</p>
+                <h3 data-i18n="privacy.s1.9.title">1.9 Website Purchases and Activation Codes</h3>
+                <p data-i18n-html="privacy.s1.9.body1">The Android version downloaded from our website (gogba.xyz) is unlocked with activation codes bought on that website. When you place an order, the product you chose and, if you enter it, your email address are sent to our server; payment is made with WeChat Pay through the payment service Hupijiao (xunhupay.com), which receives the order number, product name and amount, and we do not receive your payment details or WeChat account. We keep the order number, product, amount, payment status and times, the payment transaction number, the activation code and the optional email address so that you can retrieve your code and we can help with the order.</p>
+                <p data-i18n-html="privacy.s1.9.body2">When you enter an activation code in the App, it sends the code, a random installation identifier the App generates itself (not a hardware identifier) and your device's model name to our server, which binds the code to up to three devices and returns a signed certificate. The App renews that certificate from time to time and can list and unbind the devices linked to your code. The server runs on Tencent CloudBase. The App Store and Google Play versions do not use this service.</p>
 
                 <h2 data-i18n="privacy.s2.title">2. How We Use Your Information</h2>
                 <p data-i18n="privacy.s2.intro">We use the information collected solely for the following purposes:</p>
@@ -263,14 +224,7 @@
                     when you use that feature; it is not stored on servers we operate.
                 </p>
                 <p data-i18n="privacy.s3.backup">Data backup files you export (Settings → Storage &amp; Data → Data backup) are created on your device and contain your game saves and cheats. They are saved wherever you choose and are never sent to us.</p>
-                <p data-i18n="privacy.s3.retention">
-                    Data retention: We do not operate our own servers and therefore retain no user data
-                    ourselves. Data stored locally on your device (game files, save files, settings, cached
-                    covers) is kept until you delete it or uninstall the App. Data handled by third-party
-                    services you choose to enable&mdash;RetroAchievements, Google Firebase, Google Drive,
-                    or Apple iCloud&mdash;is retained according to those providers' own retention policies,
-                    which are linked in Section 4.
-                </p>
+                <p data-i18n="privacy.s3.retention">Data retention: Apart from the website purchase and activation records described in Section 1.9, we do not retain user data on servers of our own. Data stored locally on your device (game files, save files, settings, cached covers) is kept until you delete it or uninstall the App. Data handled by third-party services you choose to use—RetroAchievements, Google Firebase, Google Drive, Apple iCloud, Nut Store, or the AI translation provider you set up—is retained according to those providers' own retention policies, which are linked in Section 4.</p>
 
                 <h2 data-i18n="privacy.s4.title">4. Third-Party Services</h2>
                 <p data-i18n="privacy.s4.intro">The App uses the following third-party services:</p>
@@ -280,19 +234,9 @@
                         See <a href="https://firebase.google.com/support/privacy">Firebase Privacy Policy</a>.
                     </li>
                     <li data-i18n-html="privacy.s4.analytics"><strong>Firebase Analytics:</strong> For usage statistics that help improve the App (see Section 1.2). See <a href="https://firebase.google.com/support/privacy">Firebase Privacy Policy</a>.</li>
-                    <li data-i18n-html="privacy.s4.remote">
-                        <strong>Firebase Remote Config:</strong> To deliver app-wide configuration
-                        (including limits that may apply to optional AI Screen Translation).
-                        See <a href="https://firebase.google.com/support/privacy">Firebase Privacy Policy</a>.
-                    </li>
-                    <li data-i18n-html="privacy.s4.ai">
-                        <strong>Firebase AI / Google AI (Gemini):</strong> For optional AI Screen Translation
-                        (paid subscription). When you use this feature, game screen images and related request
-                        data are sent to Google for processing. See
-                        <a href="https://firebase.google.com/support/privacy">Firebase Privacy Policy</a>,
-                        <a href="https://policies.google.com/privacy">Google Privacy Policy</a>, and
-                        <a href="https://ai.google.dev/gemini-api/terms">Google AI Terms</a> as applicable.
-                    </li>
+                    <li data-i18n-html="privacy.s4.remote"><strong>Firebase Remote Config:</strong> To deliver app-wide configuration (such as which AI model screen translation uses). See <a href="https://firebase.google.com/support/privacy">Firebase Privacy Policy</a>.</li>
+                    <li data-i18n-html="privacy.s4.ai"><strong>Google Gemini API:</strong> For optional AI Screen Translation when you choose Gemini and enter your own API key. Game screen images and related request data are sent to Google for processing. See <a href="https://policies.google.com/privacy">Google Privacy Policy</a> and <a href="https://ai.google.dev/gemini-api/terms">Gemini API Terms</a>.</li>
+                    <li data-i18n-html="privacy.s4.kimi"><strong>Moonshot AI (Kimi):</strong> For optional AI Screen Translation when you choose Kimi and enter your own API key. Game screen images and related request data are sent to Moonshot AI (api.moonshot.cn or api.moonshot.ai) for processing under its own terms and privacy policy.</li>
                     <li data-i18n-html="privacy.s4.libretro">
                         <strong>libretro Database:</strong> For game cover images. Cover images are
                         downloaded from public databases and cached locally.
@@ -313,12 +257,10 @@
                         Cloud Save with iCloud, save files are stored in your iCloud container.
                         See <a href="https://support.apple.com/guide/icloud">Apple iCloud</a> for privacy details.
                     </li>
-                    <li data-i18n-html="privacy.s4.store">
-                        <strong>App Store / Google Play:</strong> For in-app purchases (Premium upgrade and
-                        optional AI Screen Translation subscription). Payment processing is handled entirely
-                        by Apple or Google. See the respective platform's terms and privacy policies for
-                        purchase-related data handling.
-                    </li>
+                    <li data-i18n-html="privacy.s4.nutstore"><strong>Nut Store (Jianguoyun):</strong> For optional Cloud Save (Premium feature). If you enable Cloud Save with Nut Store, save files are stored in your Nut Store account over WebDAV (dav.jianguoyun.com). See <a href="https://www.jianguoyun.com">jianguoyun.com</a> for its privacy policy.</li>
+                    <li data-i18n-html="privacy.s4.store"><strong>App Store / Google Play:</strong> For in-app purchases (Premium and the Toolkit). Payment processing is handled entirely by Apple or Google. See the respective platform's terms and privacy policies for purchase-related data handling.</li>
+                    <li data-i18n-html="privacy.s4.website"><strong>GoGBA website (gogba.xyz, on Tencent CloudBase):</strong> For website purchases (paid with WeChat Pay through Hupijiao, xunhupay.com) and activation codes as described in Section 1.9, for checking whether a newer release of the Android version from our website is available, and for downloading Pokédex voice clips when you use the Toolkit's read-aloud feature.</li>
+                    <li data-i18n-html="privacy.s4.ipapi"><strong>ip-api.com:</strong> When the App starts, it looks up the country of your IP address (only the country code is requested) to pick regional defaults, such as which translation service to suggest and which Kimi endpoint to try first. Nothing else is sent.</li>
                 </ul>
 
                 <h2 data-i18n="privacy.s5.title">5. Data Sharing</h2>
@@ -328,7 +270,7 @@
                     to third parties as described in this Policy (for example, Cloud Save,
                     RetroAchievements, crash reports, or AI Screen Translation).
                 </p>
-                <p data-i18n="privacy.s5.body2">Data is only transmitted to the services and devices you explicitly use: RetroAchievements (for achievements); for Cloud Save, to Google Drive or iCloud—whichever provider you choose; and if you purchase and use AI Screen Translation, to Google's AI services (Firebase AI / Gemini) as described in Section 1.7. When you use link play, game information, your save file and button inputs go directly to the other players' devices on your local network, as described in Section 1.8. Usage statistics are sent to Google Firebase Analytics as described in Section 1.2. Cloud Save data is sent only to the selected provider's servers. We do not operate our own servers that receive your game ROMs, personal profile, or payment details. You can use the App without signing in to RetroAchievements, enabling Cloud Save, using link play, purchasing Premium or AI Screen Translation, or using AI Screen Translation.</p>
+                <p data-i18n="privacy.s5.body2">Data is only transmitted to the services and devices you explicitly use: RetroAchievements (for achievements); for Cloud Save, to Google Drive, iCloud or Nut Store—whichever provider you choose; and if you use AI Screen Translation, to Google (Gemini) or Moonshot AI (Kimi)—whichever you set up—as described in Section 1.7. When you use link play, game information, your save file and button inputs go directly to the other players' devices on your local network, as described in Section 1.8. Usage statistics are sent to Google Firebase Analytics as described in Section 1.2. If you buy or enter an activation code for the Android version from our website, order and activation data go to our server as described in Section 1.9. We do not operate servers that receive your game ROMs, save files or payment details. You can use the App without signing in to RetroAchievements, enabling Cloud Save, using link play, making a purchase, or using AI Screen Translation.</p>
 
                 <h2 data-i18n="privacy.s6.title">6. Children's Privacy</h2>
                 <p data-i18n="privacy.s6.body1">
@@ -360,7 +302,7 @@
                     <li data-i18n="privacy.s7.item6">Disable Cloud Save at any time in GoGBA settings to stop syncing save files</li>
                     <li data-i18n="privacy.s7.item7">Manage or delete your Cloud Save data through your Google Account or Apple ID settings</li>
                     <li data-i18n="privacy.s7.item8">Avoid using AI Screen Translation if you do not want game screen images processed by Google</li>
-                    <li data-i18n="privacy.s7.item9">Cancel or manage the AI Screen Translation subscription through the App Store or Google Play</li>
+                    <li data-i18n="privacy.s7.item9">Remove your AI translation API key or your Nut Store credentials from the App's settings at any time</li>
                     <li data-i18n="privacy.s7.link">End link play at any time, and on iOS deny Local Network permission if you do not want GoGBA to find or host rooms</li>
                     <li data-i18n="privacy.s7.item10">Contact us with questions about your privacy</li>
                 </ul>
